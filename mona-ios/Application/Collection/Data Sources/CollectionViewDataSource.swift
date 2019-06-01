@@ -32,7 +32,8 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
         // Key: localIdentifier, Value: order in the array
         var localIdentifiersOrdered = [String : Int]()
         artworks.forEach { artwork in
-            localIdentifiersOrdered[artwork.photos!.lastObject! as! String] = 0
+            let photo = artwork.photos!.lastObject! as! Photo
+            localIdentifiersOrdered[photo.localIdentifier] = 0
         }
         // We fetch assets sorted by index. Some assets in the array could be nil because they don't exist anymore in the photolibrary
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MosaicCell.identifer, for: IndexPath(row: 0, section: 0)) as? MosaicCell else {

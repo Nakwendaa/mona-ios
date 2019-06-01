@@ -14,6 +14,8 @@
 		B407CA3C2285C55D00D02ABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B407CA3B2285C55D00D02ABC /* Assets.xcassets */; };
 		B407CA4A2285C55D00D02ABC /* mona_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B407CA492285C55D00D02ABC /* mona_iosTests.swift */; };
 		B407CA552285C55D00D02ABC /* mona_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B407CA542285C55D00D02ABC /* mona_iosUITests.swift */; };
+		B42AA67222A3319400D53E87 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B42AA66F22A3319400D53E87 /* Model.xcdatamodeld */; };
+		B42AA67422A3323900D53E87 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42AA67322A3323900D53E87 /* NavigationController.swift */; };
 		B48394BA2295A8E60003065B /* ArtworkDetailsDescriptionViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B48394BC2295A8E60003065B /* ArtworkDetailsDescriptionViewController.strings */; };
 		B48394C72295BA9E0003065B /* ArtworkDetailsFullMapViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B48394C92295BA9E0003065B /* ArtworkDetailsFullMapViewController.strings */; };
 		B48394DA2295C8AE0003065B /* ArtworkDetailsRatingViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B48394DC2295C8AE0003065B /* ArtworkDetailsRatingViewController.strings */; };
@@ -55,7 +57,6 @@
 		B487536822A3264C00EE6EE6 /* Address+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487534222A3264A00EE6EE6 /* Address+CoreDataProperties.swift */; };
 		B487536922A3264C00EE6EE6 /* Address+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487534322A3264A00EE6EE6 /* Address+CoreDataClass.swift */; };
 		B487536A22A3264C00EE6EE6 /* Technique+Namable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487534422A3264B00EE6EE6 /* Technique+Namable.swift */; };
-		B487536B22A3264C00EE6EE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B487534522A3264B00EE6EE6 /* Model.xcdatamodeld */; };
 		B487536C22A3264C00EE6EE6 /* Search+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487534822A3264B00EE6EE6 /* Search+CoreDataClass.swift */; };
 		B487536D22A3264C00EE6EE6 /* Technique+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487534922A3264B00EE6EE6 /* Technique+CoreDataProperties.swift */; };
 		B487536E22A3264C00EE6EE6 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487534A22A3264B00EE6EE6 /* Category+CoreDataClass.swift */; };
@@ -121,7 +122,6 @@
 		B48753F022A3286500EE6EE6 /* DailyArtworkMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753ED22A3286500EE6EE6 /* DailyArtworkMapViewController.swift */; };
 		B48753F222A3287000EE6EE6 /* DailyArtworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753F122A3287000EE6EE6 /* DailyArtworkViewController.swift */; };
 		B48753F422A3288000EE6EE6 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753F322A3288000EE6EE6 /* MainTableViewController.swift */; };
-		B48753F722A3288A00EE6EE6 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753F622A3288900EE6EE6 /* NavigationController.swift */; };
 		B48753F922A3289100EE6EE6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753F822A3289100EE6EE6 /* TabBarController.swift */; };
 		B487541022A328B300EE6EE6 /* MonaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753FC22A328B300EE6EE6 /* MonaAPI.swift */; };
 		B487541122A328B300EE6EE6 /* MonaAPI+Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753FE22A328B300EE6EE6 /* MonaAPI+Responses.swift */; };
@@ -212,6 +212,9 @@
 		B407CA502285C55D00D02ABC /* mona-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mona-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B407CA542285C55D00D02ABC /* mona_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mona_iosUITests.swift; sourceTree = "<group>"; };
 		B407CA562285C55D00D02ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B42AA67022A3319400D53E87 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
+		B42AA67122A3319400D53E87 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B42AA67322A3323900D53E87 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		B48394BB2295A8E60003065B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ArtworkDetailsDescriptionViewController.strings; sourceTree = "<group>"; };
 		B48394BD2295A8E80003065B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ArtworkDetailsDescriptionViewController.strings; sourceTree = "<group>"; };
 		B48394C82295BA9E0003065B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ArtworkDetailsFullMapViewController.strings; sourceTree = "<group>"; };
@@ -261,8 +264,6 @@
 		B487534222A3264A00EE6EE6 /* Address+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Address+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B487534322A3264A00EE6EE6 /* Address+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Address+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B487534422A3264B00EE6EE6 /* Technique+Namable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Technique+Namable.swift"; sourceTree = "<group>"; };
-		B487534622A3264B00EE6EE6 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
-		B487534722A3264B00EE6EE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B487534822A3264B00EE6EE6 /* Search+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Search+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B487534922A3264B00EE6EE6 /* Technique+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Technique+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B487534A22A3264B00EE6EE6 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -331,7 +332,6 @@
 		B48753ED22A3286500EE6EE6 /* DailyArtworkMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyArtworkMapViewController.swift; sourceTree = "<group>"; };
 		B48753F122A3287000EE6EE6 /* DailyArtworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyArtworkViewController.swift; sourceTree = "<group>"; };
 		B48753F322A3288000EE6EE6 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
-		B48753F622A3288900EE6EE6 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		B48753F822A3289100EE6EE6 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B48753FC22A328B300EE6EE6 /* MonaAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonaAPI.swift; sourceTree = "<group>"; };
 		B48753FE22A328B300EE6EE6 /* MonaAPI+Responses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MonaAPI+Responses.swift"; sourceTree = "<group>"; };
@@ -514,7 +514,7 @@
 		B407CA682285C79900D02ABC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				B487534522A3264B00EE6EE6 /* Model.xcdatamodeld */,
+				B42AA66F22A3319400D53E87 /* Model.xcdatamodeld */,
 				B487533E22A3264A00EE6EE6 /* CoreDataStack.swift */,
 				B487538022A3266000EE6EE6 /* Protocols */,
 				B4795CA2228D1480007688FA /* Seed */,
@@ -658,7 +658,7 @@
 		B48753F522A3288900EE6EE6 /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
-				B48753F622A3288900EE6EE6 /* NavigationController.swift */,
+				B42AA67322A3323900D53E87 /* NavigationController.swift */,
 			);
 			name = NavigationController;
 			path = "../../../../Documents/Documents/Travail/Université de Montréal/mona-ios/mona-ios/Application/NavigationController";
@@ -1264,7 +1264,6 @@
 				B487538E22A326A200EE6EE6 /* MosaicCell.swift in Sources */,
 				B487537222A3264C00EE6EE6 /* Photo+CoreDataProperties.swift in Sources */,
 				B407CA342285C55D00D02ABC /* LaunchScreenViewController.swift in Sources */,
-				B487536B22A3264C00EE6EE6 /* Model.xcdatamodeld in Sources */,
 				B4AD5E6C22908B410064A876 /* Truncation.swift in Sources */,
 				B48753E722A3285800EE6EE6 /* DailyArtworkImagePickerController.swift in Sources */,
 				B487536A22A3264C00EE6EE6 /* Technique+Namable.swift in Sources */,
@@ -1279,7 +1278,7 @@
 				B487541F22A328B300EE6EE6 /* MonaAPI+DecodableResponses.swift in Sources */,
 				B48753C822A327C100EE6EE6 /* ArtworkDetailsImagePickerController.swift in Sources */,
 				B487536322A3264C00EE6EE6 /* Material+CoreDataProperties.swift in Sources */,
-				B48753F722A3288A00EE6EE6 /* NavigationController.swift in Sources */,
+				B42AA67222A3319400D53E87 /* Model.xcdatamodeld in Sources */,
 				B487533122A3262700EE6EE6 /* CGRect+Extension.swift in Sources */,
 				B48753E822A3285800EE6EE6 /* DailyArtworkImagePickerControllerDelegate.swift in Sources */,
 				B487539322A326A200EE6EE6 /* MosaicLayout.swift in Sources */,
@@ -1315,6 +1314,7 @@
 				B48753F222A3287000EE6EE6 /* DailyArtworkViewController.swift in Sources */,
 				B4AD5E7922908B4F0064A876 /* UIScrollView+Helpers.swift in Sources */,
 				B487541C22A328B300EE6EE6 /* MonaAPI+ArtworksRequest.swift in Sources */,
+				B42AA67422A3323900D53E87 /* NavigationController.swift in Sources */,
 				B487531722A3261500EE6EE6 /* UserDefaultsManager.swift in Sources */,
 				B48753DC22A3282800EE6EE6 /* MainTableViewCell.swift in Sources */,
 				B487542722A329B500EE6EE6 /* AppDelegate.swift in Sources */,
@@ -1850,15 +1850,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B487534522A3264B00EE6EE6 /* Model.xcdatamodeld */ = {
+		B42AA66F22A3319400D53E87 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B487534622A3264B00EE6EE6 /* Model 2.xcdatamodel */,
-				B487534722A3264B00EE6EE6 /* Model.xcdatamodel */,
+				B42AA67022A3319400D53E87 /* Model 2.xcdatamodel */,
+				B42AA67122A3319400D53E87 /* Model.xcdatamodel */,
 			);
-			currentVersion = B487534722A3264B00EE6EE6 /* Model.xcdatamodel */;
-			name = Model.xcdatamodeld;
-			path = "../../../../Documents/Documents/Travail/Université de Montréal/mona-ios/mona-ios/CoreData/Model.xcdatamodeld";
+			currentVersion = B42AA67122A3319400D53E87 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
