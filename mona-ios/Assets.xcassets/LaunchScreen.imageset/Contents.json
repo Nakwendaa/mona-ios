@@ -1,0 +1,67 @@
+{
+  "images" : [
+    {
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
+      "subtype" : "retina4",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "LaunchScreen - 640 px x 960 px - iPhone 4:4S.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "LaunchScreen - 640 px x 1136 px - iPhone 5:5C:5S.png",
+      "subtype" : "retina4",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "LaunchScreen - 750 px x 1334 px - iPhone 6:7:8.png",
+      "subtype" : "667h",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "LaunchScreen - 828 px x 1792 px - iPhone Xr.png",
+      "subtype" : "1792h",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "subtype" : "retina4",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "LaunchScreen - 1242 px x 2208 px - iPhone 6:7:8 Plus.png",
+      "subtype" : "736h",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "LaunchScreen - 1125 px x 2436 px - iPhone Xs:X.png",
+      "subtype" : "2436h",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "LaunchScreen - 1242 px x 2688 px.png",
+      "subtype" : "2688h",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

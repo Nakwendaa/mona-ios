@@ -1,0 +1,15 @@
+/* 
+  ArtworkDetailsViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-05-22.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"untitled" = "untitled";
+
+"need authorization camera open settings title" = "need authorization to use the camera";
+"need authorization camera open settings message" = "please allow the application to use the camera to take a picture of an artwork.";
+
+"camera unavailable title" = "camera is unavailable";
+"camera unavailable message" = "unfortunately, it is not possible to use the camera because it seems unavailable. Please check your device.";

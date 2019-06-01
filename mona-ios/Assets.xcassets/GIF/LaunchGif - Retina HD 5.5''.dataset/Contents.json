@@ -1,0 +1,13 @@
+{
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "data" : [
+    {
+      "idiom" : "iphone",
+      "filename" : "LaunchScreen - 1242 px x 2208 px - iPhone 6:7:8 Plus.gif",
+      "universal-type-identifier" : "com.compuserve.gif"
+    }
+  ]
+}

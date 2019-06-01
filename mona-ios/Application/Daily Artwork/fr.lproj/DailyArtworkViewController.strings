@@ -1,0 +1,20 @@
+/* 
+  DailyArtworkViewController.strings
+  MONA
+
+  Created by Paul Chaffanet on 2019-05-06.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"daily artwork" = "œuvre du jour";
+"unknown date" = "date inconnue";
+"unknown artist" = "artiste inconnu";
+"unknown category" = "catégorie inconnue";
+"unknown title" = "non titré";
+"unknown dimensions" = "dimensions inconnues";
+
+"need authorization camera open settings title" = "besoin d'une autorisation pour utiliser la caméra";
+"need authorization camera open settings message" = "veuillez permettre à l'application d'utiliser l'appareil photo pour prendre une photo d'une œuvre d'art.";
+
+"camera unavailable title" = "appareil photo indisponible";
+"camera unavailable message" = "malheureusement, il n'est pas possible d'utiliser l'appareil photo car il semble indisponible. Veuillez vérifier votre téléphone.";

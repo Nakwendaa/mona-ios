@@ -1,0 +1,15 @@
+/* 
+  GeneralTableViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-05-18.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"artists" = "artistes";
+"materials" = "matériaux";
+"techniques" = "techniques";
+
+"artwork" = "œuvre";
+"artworks" = "œuvres";
+"unknown artist" = "artiste inconnu";

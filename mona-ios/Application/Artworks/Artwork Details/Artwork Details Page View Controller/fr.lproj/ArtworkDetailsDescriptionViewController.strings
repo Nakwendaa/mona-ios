@@ -1,0 +1,16 @@
+/* 
+  ArtworkDetailsDescriptionViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-05-22.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"unknown artist" = "artiste inconnu";
+"unknown dimensions" = "dimensions inconnues";
+"unknown category" = "catégorie inconnue";
+"unknown subcategory" = "sous-catégorie inconnu";
+"unknown district" = "arrondissement inconnu";
+"unknown techniques" = "techniques inconnues";
+"unknown materials" = "matériaux inconnus";
+"unknown date" = "date inconnue";

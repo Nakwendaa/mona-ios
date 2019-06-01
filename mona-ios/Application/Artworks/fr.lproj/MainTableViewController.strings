@@ -1,0 +1,20 @@
+/* 
+  MainTableViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-05-18.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"artworks-trunc" = "œuvres";
+"titles" = "titres";
+"artists" = "artistes";
+"districts" = "arrondissements";
+"categories" = "catégories";
+"materials" = "matériaux";
+"techniques" = "techniques";
+
+"unknown district" = "arrondissement inconnu";
+
+"need authorization location open settings title" = "besoin d'une autorisation pour utiliser votre localisation";
+"need authorization location open settings message" = "veuillez autoriser l'application à utiliser votre localisation afin de voir votre position sur la carte.";

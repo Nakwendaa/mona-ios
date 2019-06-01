@@ -1,0 +1,11 @@
+/* 
+  ArtworksTableViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-05-22.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"updating location" = "Mise à jour de votre position";
+"sort by distance can not be used if location services are not enabled" = "le tri par distance ne peut pas être utilisé si les service de localisation ne sont pas activés";
+"need authorization" = "autorisation nécessaire";

@@ -1,0 +1,11 @@
+/* 
+  ArtworkDetailsCommentViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-05-22.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"comment" = "comment";
+"write comment" = "write a comment about this artwork...";
+"done" = "done";

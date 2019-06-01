@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="Model">
+    <entity name="Address" representedClassName="Address" syncable="YES" codeGenerationType="class">
+        <relationship name="artwork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artwork" inverseName="address" inverseEntity="Artwork" syncable="YES"/>
+        <relationship name="coordinate" maxCount="1" deletionRule="Cascade" destinationEntity="Coordinate" inverseName="address" inverseEntity="Coordinate" syncable="YES"/>
+        <relationship name="district" maxCount="1" deletionRule="Nullify" destinationEntity="District" inverseName="addresses" inverseEntity="District" syncable="YES"/>
+    </entity>
+    <entity name="Artist" representedClassName="Artist" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isCollectiveName" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="artists" inverseEntity="Artwork" syncable="YES"/>
+    </entity>
+    <entity name="Artwork" representedClassName="Artwork" syncable="YES" codeGenerationType="class">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commentSent" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dimensions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isCollected" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isTargeted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="photoSent" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rating" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="ratingSent" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="address" maxCount="1" deletionRule="Cascade" destinationEntity="Address" inverseName="artwork" inverseEntity="Address" syncable="YES"/>
+        <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Artist" inverseName="artworks" inverseEntity="Artist" syncable="YES"/>
+        <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="artworks" inverseEntity="Category" syncable="YES"/>
+        <relationship name="district" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="District" inverseName="artworks" inverseEntity="District" syncable="YES"/>
+        <relationship name="materials" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Material" inverseName="artworks" inverseEntity="Material" syncable="YES"/>
+        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Photo" inverseName="artwork" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="subcategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Subcategory" inverseName="artworks" inverseEntity="Subcategory" syncable="YES"/>
+        <relationship name="techniques" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Technique" inverseName="artworks" inverseEntity="Technique" syncable="YES"/>
+        <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Thumbnail" inverseName="artwork" inverseEntity="Thumbnail" syncable="YES"/>
+    </entity>
+    <entity name="Badge" representedClassName="Badge" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="targetValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="collectedImage" maxCount="1" deletionRule="Cascade" destinationEntity="Photo" inverseName="collectedBadge" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="collectedThumbnail" maxCount="1" deletionRule="Cascade" destinationEntity="Thumbnail" inverseName="collectedBadge" inverseEntity="Thumbnail" syncable="YES"/>
+        <relationship name="notCollectedImage" maxCount="1" deletionRule="Cascade" destinationEntity="Photo" inverseName="notCollectedBadge" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="notCollectedThumbnail" maxCount="1" deletionRule="Cascade" destinationEntity="Thumbnail" inverseName="notCollectedBadge" inverseEntity="Thumbnail" syncable="YES"/>
+        <relationship name="translatedNames" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="TranslatedName" inverseName="badge" inverseEntity="TranslatedName" syncable="YES"/>
+    </entity>
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="category" inverseEntity="Artwork" syncable="YES"/>
+        <relationship name="subcategories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Subcategory" inverseName="category" inverseEntity="Subcategory" syncable="YES"/>
+        <relationship name="translatedNames" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="TranslatedName" inverseName="category" inverseEntity="TranslatedName" syncable="YES"/>
+    </entity>
+    <entity name="Coordinate" representedClassName=".Coordinate" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="coordinate" inverseEntity="Address" syncable="YES"/>
+    </entity>
+    <entity name="District" representedClassName="District" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" defaultValueString="inconnnu" syncable="YES"/>
+        <relationship name="addresses" toMany="YES" deletionRule="Nullify" destinationEntity="Address" inverseName="district" inverseEntity="Address" syncable="YES"/>
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="district" inverseEntity="Artwork" syncable="YES"/>
+    </entity>
+    <entity name="Material" representedClassName="Material" syncable="YES" codeGenerationType="class">
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="materials" inverseEntity="Artwork" syncable="YES"/>
+        <relationship name="translatedNames" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="TranslatedName" inverseName="material" inverseEntity="TranslatedName" syncable="YES"/>
+    </entity>
+    <entity name="Photo" representedClassName="Photo" syncable="YES" codeGenerationType="class">
+        <attribute name="photo" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="artwork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artwork" inverseName="photo" inverseEntity="Artwork" syncable="YES"/>
+        <relationship name="collectedBadge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Badge" inverseName="collectedImage" inverseEntity="Badge" syncable="YES"/>
+        <relationship name="notCollectedBadge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Badge" inverseName="notCollectedImage" inverseEntity="Badge" syncable="YES"/>
+    </entity>
+    <entity name="Search" representedClassName="Search" syncable="YES" codeGenerationType="class">
+        <attribute name="title" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Subcategory" representedClassName="Subcategory" syncable="YES" codeGenerationType="class">
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="subcategory" inverseEntity="Artwork" syncable="YES"/>
+        <relationship name="category" maxCount="1" deletionRule="Deny" destinationEntity="Category" inverseName="subcategories" inverseEntity="Category" syncable="YES"/>
+        <relationship name="translatedNames" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="TranslatedName" inverseName="subcategory" inverseEntity="TranslatedName" syncable="YES"/>
+    </entity>
+    <entity name="Technique" representedClassName="Technique" syncable="YES" codeGenerationType="class">
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="techniques" inverseEntity="Artwork" syncable="YES"/>
+        <relationship name="translatedNames" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="TranslatedName" inverseName="technique" inverseEntity="TranslatedName" syncable="YES"/>
+    </entity>
+    <entity name="Thumbnail" representedClassName="Thumbnail" syncable="YES" codeGenerationType="class">
+        <attribute name="thumbnail" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="artwork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artwork" inverseName="thumbnail" inverseEntity="Artwork" syncable="YES"/>
+        <relationship name="collectedBadge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Badge" inverseName="collectedThumbnail" inverseEntity="Badge" syncable="YES"/>
+        <relationship name="notCollectedBadge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Badge" inverseName="notCollectedThumbnail" inverseEntity="Badge" syncable="YES"/>
+    </entity>
+    <entity name="TranslatedName" representedClassName="TranslatedName" syncable="YES" codeGenerationType="class">
+        <attribute name="language" attributeType="Integer 32" minValueString="0" maxValueString="1" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="badge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Badge" inverseName="translatedNames" inverseEntity="Badge" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="translatedNames" inverseEntity="Category" syncable="YES"/>
+        <relationship name="material" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Material" inverseName="translatedNames" inverseEntity="Material" syncable="YES"/>
+        <relationship name="subcategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Subcategory" inverseName="translatedNames" inverseEntity="Subcategory" syncable="YES"/>
+        <relationship name="technique" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Technique" inverseName="translatedNames" inverseEntity="Technique" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Address" positionX="-282.69921875" positionY="253.80859375" width="128" height="88"/>
+        <element name="Artist" positionX="163.19140625" positionY="487.6875" width="128" height="103"/>
+        <element name="Artwork" positionX="119.33984375" positionY="-60.828125" width="128" height="343"/>
+        <element name="Badge" positionX="556.99609375" positionY="293.09765625" width="128" height="148"/>
+        <element name="Category" positionX="374.45703125" positionY="-143.8515625" width="128" height="88"/>
+        <element name="Coordinate" positionX="-505.4453125" positionY="224.03125" width="128" height="88"/>
+        <element name="District" positionX="-74.1328125" positionY="387.0546875" width="128" height="88"/>
+        <element name="Material" positionX="-108.4140625" positionY="-124.4296875" width="128" height="73"/>
+        <element name="Photo" positionX="510.80859375" positionY="142.9921875" width="128" height="103"/>
+        <element name="Search" positionX="451.96484375" positionY="-219.26953125" width="128" height="60"/>
+        <element name="Subcategory" positionX="630.72265625" positionY="37.828125" width="128" height="88"/>
+        <element name="Technique" positionX="397.9609375" positionY="2.18359375" width="128" height="73"/>
+        <element name="Thumbnail" positionX="392.49609375" positionY="482.5703125" width="128" height="103"/>
+        <element name="TranslatedName" positionX="65.21875" positionY="-297.1953125" width="128" height="148"/>
+    </elements>
+</model>

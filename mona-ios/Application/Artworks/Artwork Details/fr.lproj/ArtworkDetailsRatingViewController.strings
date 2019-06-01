@@ -1,0 +1,10 @@
+/* 
+  ArtworkDetailsRatingViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-05-22.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"rate hint" = "notez cette œuvre d'art";
+"next" = "suivant";

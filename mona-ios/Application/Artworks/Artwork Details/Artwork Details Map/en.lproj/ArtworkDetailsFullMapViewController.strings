@@ -1,0 +1,10 @@
+/* 
+  ArtworkDetailsFullMapViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-05-22.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"need authorization location open settings title" = "need authorization to use your location";
+"need authorization location open settings message" = "please allow the application to use your location to see your position on the map.";

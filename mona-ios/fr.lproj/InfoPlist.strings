@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-05-22.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+NSLocationWhenInUseUsageDescription = "Cette application requiert les services de localisation pour vous localiser sur la carte des œuvres d'art.";
+NSCameraUsageDescription = "Cette application requiert l'utilisation de l'appareil photo pour prendre en photo les œuvres d'art.";
+NSPhotoLibraryUsageDescription = "Cette application requiert l'utilisation de votre bibliothèque de photos afin de sauvegarder les photos des œuvres d'art.";

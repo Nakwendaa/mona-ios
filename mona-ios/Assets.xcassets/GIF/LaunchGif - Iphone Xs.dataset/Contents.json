@@ -1,0 +1,13 @@
+{
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "data" : [
+    {
+      "idiom" : "iphone",
+      "filename" : "LaunchScreen - 1125 px x 2436 px - iPhone Xs:X.gif",
+      "universal-type-identifier" : "com.compuserve.gif"
+    }
+  ]
+}

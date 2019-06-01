@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="Model">
+    <entity name="Address" representedClassName="Address" syncable="YES">
+        <relationship name="artwork" maxCount="1" deletionRule="Nullify" destinationEntity="Artwork" inverseName="address" inverseEntity="Artwork" syncable="YES"/>
+        <relationship name="coordinate" maxCount="1" deletionRule="Cascade" destinationEntity="Coordinate" inverseName="address" inverseEntity="Coordinate" syncable="YES"/>
+        <relationship name="district" maxCount="1" deletionRule="Nullify" destinationEntity="District" inverseName="addresses" inverseEntity="District" syncable="YES"/>
+    </entity>
+    <entity name="Artist" representedClassName="Artist" syncable="YES">
+        <attribute name="id" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isCollectiveName" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="artists" inverseEntity="Artwork" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Artwork" representedClassName="Artwork" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commentSent" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dimensions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isCollected" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isTargeted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="photoSent" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rating" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="ratingSent" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Address" inverseName="artwork" inverseEntity="Address" syncable="YES"/>
+        <relationship name="artists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Artist" inverseName="artworks" inverseEntity="Artist" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="artworks" inverseEntity="Category" syncable="YES"/>
+        <relationship name="district" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="District" inverseName="artworks" inverseEntity="District" syncable="YES"/>
+        <relationship name="materials" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Material" inverseName="artworks" inverseEntity="Material" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Photo" inverseName="artwork" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="subcategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Subcategory" inverseName="artworks" inverseEntity="Subcategory" syncable="YES"/>
+        <relationship name="techniques" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Technique" inverseName="artworks" inverseEntity="Technique" syncable="YES"/>
+    </entity>
+    <entity name="Badge" representedClassName="Badge" parentEntity="LocalizableEntity" syncable="YES">
+        <attribute name="collectedImageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="notCollectedImageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="targetValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="Category" representedClassName="Category" parentEntity="LocalizableEntity" syncable="YES">
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="category" inverseEntity="Artwork" syncable="YES"/>
+        <relationship name="subcategories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Subcategory" inverseName="category" inverseEntity="Subcategory" syncable="YES"/>
+    </entity>
+    <entity name="Coordinate" representedClassName="Coordinate" syncable="YES">
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="address" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="coordinate" inverseEntity="Address" syncable="YES"/>
+    </entity>
+    <entity name="District" representedClassName="District" syncable="YES">
+        <attribute name="name" attributeType="String" defaultValueString="inconnnu" syncable="YES"/>
+        <relationship name="addresses" toMany="YES" deletionRule="Nullify" destinationEntity="Address" inverseName="district" inverseEntity="Address" syncable="YES"/>
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="district" inverseEntity="Artwork" syncable="YES"/>
+    </entity>
+    <entity name="LocalizableEntity" representedClassName="LocalizableEntity" isAbstract="YES" syncable="YES">
+        <relationship name="localizedNames" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="LocalizedString" inverseName="localizableEntity" inverseEntity="LocalizedString" syncable="YES"/>
+    </entity>
+    <entity name="LocalizedString" representedClassName="LocalizedString" syncable="YES">
+        <attribute name="language" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="localizedString" attributeType="String" syncable="YES"/>
+        <relationship name="localizableEntity" maxCount="1" deletionRule="Nullify" destinationEntity="LocalizableEntity" inverseName="localizedNames" inverseEntity="LocalizableEntity" syncable="YES"/>
+    </entity>
+    <entity name="Material" representedClassName="Material" parentEntity="LocalizableEntity" syncable="YES">
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="materials" inverseEntity="Artwork" syncable="YES"/>
+    </entity>
+    <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="localIdentifier" attributeType="String" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="artwork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artwork" inverseName="photos" inverseEntity="Artwork" syncable="YES"/>
+    </entity>
+    <entity name="Search" representedClassName="Search" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Subcategory" representedClassName="Subcategory" parentEntity="LocalizableEntity" syncable="YES">
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="subcategory" inverseEntity="Artwork" syncable="YES"/>
+        <relationship name="category" maxCount="1" deletionRule="Deny" destinationEntity="Category" inverseName="subcategories" inverseEntity="Category" syncable="YES"/>
+    </entity>
+    <entity name="Technique" representedClassName="Technique" parentEntity="LocalizableEntity" syncable="YES">
+        <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="techniques" inverseEntity="Artwork" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Address" positionX="-277.859375" positionY="103.1875" width="128" height="88"/>
+        <element name="Artist" positionX="176.43359375" positionY="366.87890625" width="128" height="103"/>
+        <element name="Artwork" positionX="99.0390625" positionY="-61.671875" width="128" height="328"/>
+        <element name="Badge" positionX="-92.6796875" positionY="-252.3671875" width="128" height="103"/>
+        <element name="Category" positionX="657.046875" positionY="-237.50390625" width="128" height="73"/>
+        <element name="Coordinate" positionX="-454.41015625" positionY="88.27734375" width="128" height="88"/>
+        <element name="District" positionX="-85.625" positionY="251.359375" width="128" height="88"/>
+        <element name="LocalizableEntity" positionX="130.671875" positionY="-228.12109375" width="128" height="58"/>
+        <element name="LocalizedString" positionX="152.57421875" positionY="-378.546875" width="152.11328125" height="88"/>
+        <element name="Material" positionX="-119.56640625" positionY="-7.7890625" width="128" height="58"/>
+        <element name="Photo" positionX="509.359375" positionY="163.12109375" width="128" height="73"/>
+        <element name="Search" positionX="442.71484375" positionY="-370.265625" width="128" height="58"/>
+        <element name="Subcategory" positionX="472.0546875" positionY="-167.59375" width="128" height="73"/>
+        <element name="Technique" positionX="332.8203125" positionY="255.8984375" width="128" height="58"/>
+    </elements>
+</model>

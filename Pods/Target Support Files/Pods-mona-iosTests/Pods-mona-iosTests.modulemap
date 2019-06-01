@@ -1,0 +1,6 @@
+framework module Pods_mona_iosTests {
+  umbrella header "Pods-mona-iosTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

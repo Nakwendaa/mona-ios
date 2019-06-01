@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GeP-26-H4g">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="S71-lY-Sv1">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GeP-26-H4g" customClass="TabBarController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vJN-2k-LXE">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="2R8-N1-886" kind="relationship" relationship="viewControllers" id="Ar5-jS-x41"/>
+                        <segue destination="iIu-Gb-goJ" kind="relationship" relationship="viewControllers" id="UUy-Kr-ttd"/>
+                        <segue destination="aAm-rj-jw0" kind="relationship" relationship="viewControllers" id="0mJ-7a-giu"/>
+                        <segue destination="wSi-8n-S7T" kind="relationship" relationship="viewControllers" id="W4l-Mb-Z9v"/>
+                        <segue destination="TFT-hV-dgV" kind="relationship" relationship="viewControllers" id="AXV-Bq-KOc"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="98l-l8-ULQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86.956521739130437" y="34.821428571428569"/>
+        </scene>
+        <!--Artworks-->
+        <scene sceneID="Fvz-GX-zNA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Artworks" id="iIu-Gb-goJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Artworks" image="Artworks Tabbar Default Image" selectedImage="Artworks Tabbar Selected Image" id="Ehy-yI-cak">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="artworks"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DRV-v8-mXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-257" y="488"/>
+        </scene>
+        <!--More-->
+        <scene sceneID="toE-xy-W6y">
+            <objects>
+                <viewControllerPlaceholder storyboardName="More" id="TFT-hV-dgV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="m7o-L2-oYM">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="more"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T9A-cj-hIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="802" y="488"/>
+        </scene>
+        <!--DailyArtwork-->
+        <scene sceneID="qsL-Ot-t63">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DailyArtwork" id="2R8-N1-886" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Daily Artwork" image="Daily Artwork Tabbar Default Image" selectedImage="Daily Artwork Tabbar Selected Image" id="DXm-3J-KjU">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="daily artwork"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hYx-Gx-lI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-633" y="488"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="iut-7g-16f">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="aAm-rj-jw0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="Map Tabbar Default Image" selectedImage="Map Tabbar Selected Image" id="vpc-3E-azv">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="map"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GQY-Nq-nMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="488"/>
+        </scene>
+        <!--Collection-->
+        <scene sceneID="KTa-CI-9Fl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Collection" id="wSi-8n-S7T" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Collection" image="Collection Tabbar Default Image" selectedImage="Collection Tabbar Selected Image" id="bXJ-sb-7go"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XXb-qn-IrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="431" y="488"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Artworks Tabbar Default Image" width="20.5" height="25"/>
+        <image name="Artworks Tabbar Selected Image" width="20.5" height="25"/>
+        <image name="Collection Tabbar Default Image" width="25" height="25"/>
+        <image name="Collection Tabbar Selected Image" width="25" height="25"/>
+        <image name="Daily Artwork Tabbar Default Image" width="23" height="23"/>
+        <image name="Daily Artwork Tabbar Selected Image" width="23" height="23"/>
+        <image name="Map Tabbar Default Image" width="25" height="25"/>
+        <image name="Map Tabbar Selected Image" width="25" height="25"/>
+    </resources>
+</document>
