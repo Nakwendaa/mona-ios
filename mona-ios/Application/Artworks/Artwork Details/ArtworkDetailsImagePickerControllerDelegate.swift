@@ -10,14 +10,18 @@ import UIKit
 import Photos
 import CoreData
 
-class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, Contextualizable {
     
     //MARK: - Types
     struct Segues {
         static let showArtworkDetailsRatingViewController = "showArtworkDetailsRatingViewController"
+        static let presentWonBadge = "presentWonBadge"
     }
     
     weak var artwork: Artwork?
+    //MARK: - Contextualizable
+    var viewContext: NSManagedObjectContext?
+    
     let onSuccess : (() -> Void)?
     let onFailure : ((Error) -> Void)?
     
@@ -49,7 +53,9 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
                                     onSuccess: {
                                         localIdentifier in
                                         log.info("Successfully saved image to Camera Roll with localIdentifier \(localIdentifier).")
-                                        let context = CoreDataStack.mainContext
+                                        guard let context = self.viewContext else {
+                                            return
+                                        }
                                         let entityName = String(describing: Photo.self)
                                         let entityDescription = NSEntityDescription.entity(forEntityName: entityName, in: context)
                                         let photo = Photo(entity: entityDescription!, insertInto: context)
@@ -59,12 +65,38 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
                                         artwork.isCollected = true
                                         artwork.isTargeted = false
                                         
+                                        /*
+                                        CoreDataStack.fetchAsynchronously(type: Badge.self, context: context, entityName: "Badge") { badges, privateManagedContext in
+                                            for badge in badges {
+                                                if badge.localizedName == artwork.district.name {
+                                                    badge.currentValue += 1
+                                                }
+                                                else if ["1", "3", "5", "8", "10", "15", "20", "25", "30"].contains(badge.localizedName) {
+                                                    badge.currentValue += 1
+                                                }
+                                            }
+                                            do {
+                                                try privateManagedContext.save()
+                                                do {
+                                                    try context.save()
+                                                }
+                                                catch {
+                                                    log.error("Failed to save context: \(error)")
+                                                }
+                                            }
+                                            catch {
+                                                log.error("Failed to save context: \(error)")
+                                            }
+                                        }
+                                        */
+                                        
 
                                         MonaAPI.shared.artwork(id: Int(artwork.id), rating: nil, comment: nil, photo: originalImage) { (result) in
                                             switch result {
                                             case .success(_):
                                                 log.info("Successful upload for artwork's photo with id: \(artwork.id).")
                                                 artwork.photoSent = true
+                                                context.mergePolicy = NSOverwriteMergePolicy
                                                 do {
                                                     try context.save()
                                                 }
@@ -76,9 +108,7 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
                                                 log.error(userArtworkError)
                                                 log.error(userArtworkError.localizedDescription)
                                             }
-                                            
                                         }
-                                        
                                         do {
                                             try context.save()
                                         }
@@ -101,6 +131,28 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
         
         
         if !artwork.isCollected {
+            let context = viewContext!
+            let fetchRequest = NSFetchRequest<Badge>(entityName: "Badge")
+            do {
+                let badges = try context.fetch(fetchRequest)
+                let notCollectedBadges = badges.filter { !$0.isCollected }
+                
+                
+                for notCollectedBadge in notCollectedBadges {
+                    if notCollectedBadge.localizedName == artwork.district.name {
+                        notCollectedBadge.currentValue += 1
+                    }
+                    else if ["1", "3", "5", "8", "10", "15", "20", "25", "30"].contains(notCollectedBadge.collectedImageName) {
+                        notCollectedBadge.currentValue += 1
+                    }
+                }
+                let newlyCollectedBadges = notCollectedBadges.filter { $0.isCollected }
+                picker.performSegue(withIdentifier: Segues.presentWonBadge, sender: newlyCollectedBadges)
+                
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+            
             picker.performSegue(withIdentifier: Segues.showArtworkDetailsRatingViewController, sender: picker)
         }
         else {

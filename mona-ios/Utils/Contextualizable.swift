@@ -11,3 +11,5 @@ import CoreData
 protocol Contextualizable {
     var viewContext : NSManagedObjectContext? { get set }
 }
+
+var viewContext: NSManagedObjectContext?

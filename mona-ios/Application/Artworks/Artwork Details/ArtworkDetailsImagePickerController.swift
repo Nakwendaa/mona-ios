@@ -7,10 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
-class ArtworkDetailsImagePickerController: UIImagePickerController {
+class ArtworkDetailsImagePickerController: UIImagePickerController, Contextualizable {
+    
+    
+    //MARK: - Types
+    struct Segues {
+        static let showArtworkDetailsRatingViewController = "showArtworkDetailsRatingViewController"
+        static let presentWonBadge = "presentWonBadge"
+    }
     
     weak var artwork: Artwork?
+    //MARK: - Contextualizable
+    var viewContext: NSManagedObjectContext?
     var onSuccess: (() -> Void)?
     var onFailure: ((Error) -> Void)?
     var artworkDetailsImagePickerControllerDelegate : ArtworkDetailsImagePickerControllerDelegate!
@@ -18,15 +28,21 @@ class ArtworkDetailsImagePickerController: UIImagePickerController {
     override func viewDidLoad() {
         super.viewDidLoad()
         artworkDetailsImagePickerControllerDelegate = ArtworkDetailsImagePickerControllerDelegate(artwork: artwork, onSuccess: onSuccess, onFailure: onFailure)
+        artworkDetailsImagePickerControllerDelegate.viewContext = viewContext
         delegate = artworkDetailsImagePickerControllerDelegate
     }
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showArtworkDetailsRatingViewController" {
+        if segue.identifier == Segues.showArtworkDetailsRatingViewController {
             let artworkDetailsRatingViewController = segue.destination as! ArtworkDetailsRatingViewController
             artworkDetailsRatingViewController.artwork = artwork
+        }
+        else if segue.identifier == Segues.presentWonBadge {
+            let navigationController = segue.destination as! UINavigationController
+            let wonBadgeViewController = navigationController.viewControllers[0] as! WonBadgeViewController
+            wonBadgeViewController.badges = sender as? [Badge]
         }
     }
     

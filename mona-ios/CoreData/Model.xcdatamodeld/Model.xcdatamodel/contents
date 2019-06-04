@@ -39,9 +39,11 @@
     </entity>
     <entity name="Badge" representedClassName="Badge" parentEntity="LocalizableEntity" syncable="YES">
         <attribute name="collectedImageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentValue" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="notCollectedImageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="targetValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="comments" toMany="YES" deletionRule="Cascade" destinationEntity="LocalizedString" inverseName="badge" inverseEntity="LocalizedString" syncable="YES"/>
     </entity>
     <entity name="Category" representedClassName="Category" parentEntity="LocalizableEntity" syncable="YES">
         <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="category" inverseEntity="Artwork" syncable="YES"/>
@@ -63,7 +65,8 @@
     <entity name="LocalizedString" representedClassName="LocalizedString" syncable="YES">
         <attribute name="language" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="localizedString" attributeType="String" syncable="YES"/>
-        <relationship name="localizableEntity" maxCount="1" deletionRule="Nullify" destinationEntity="LocalizableEntity" inverseName="localizedNames" inverseEntity="LocalizableEntity" syncable="YES"/>
+        <relationship name="badge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Badge" inverseName="comments" inverseEntity="Badge" syncable="YES"/>
+        <relationship name="localizableEntity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LocalizableEntity" inverseName="localizedNames" inverseEntity="LocalizableEntity" syncable="YES"/>
     </entity>
     <entity name="Material" representedClassName="Material" parentEntity="LocalizableEntity" syncable="YES">
         <relationship name="artworks" toMany="YES" deletionRule="Deny" destinationEntity="Artwork" inverseName="materials" inverseEntity="Artwork" syncable="YES"/>
@@ -86,11 +89,11 @@
         <element name="Address" positionX="-277.859375" positionY="103.1875" width="128" height="88"/>
         <element name="Artist" positionX="176.43359375" positionY="366.87890625" width="128" height="103"/>
         <element name="Artwork" positionX="99.0390625" positionY="-61.671875" width="128" height="328"/>
-        <element name="Badge" positionX="-92.6796875" positionY="-252.3671875" width="128" height="103"/>
+        <element name="Badge" positionX="-60.59375" positionY="-265.546875" width="128" height="133"/>
         <element name="Category" positionX="657.046875" positionY="-237.50390625" width="128" height="73"/>
         <element name="Coordinate" positionX="-454.41015625" positionY="88.27734375" width="128" height="88"/>
         <element name="District" positionX="-85.625" positionY="251.359375" width="128" height="88"/>
-        <element name="LocalizableEntity" positionX="130.671875" positionY="-228.12109375" width="128" height="58"/>
+        <element name="LocalizableEntity" positionX="213.734375" positionY="-228.109375" width="128" height="58"/>
         <element name="LocalizedString" positionX="152.57421875" positionY="-378.546875" width="152.11328125" height="88"/>
         <element name="Material" positionX="-119.56640625" positionY="-7.7890625" width="128" height="58"/>
         <element name="Photo" positionX="509.359375" positionY="163.12109375" width="128" height="73"/>

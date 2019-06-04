@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-class ArtworkDetailsRatingViewController: UIViewController {
+class ArtworkDetailsRatingViewController: UIViewController, Contextualizable {
     
     //MARK: - Types
     struct Segues {
@@ -26,6 +27,8 @@ class ArtworkDetailsRatingViewController: UIViewController {
     
     //MARK: - Properties
     weak var artwork : Artwork?
+    //MARK: - Contextualizable
+    var viewContext: NSManagedObjectContext?
     
     //MARK: - User Interface properties
     @IBOutlet weak var hintLabel: UILabel!

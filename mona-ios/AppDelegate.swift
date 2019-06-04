@@ -88,6 +88,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupData() {
+        setupArtworks()
+        setupBadges()
+    }
+    
+    private func setupArtworks() {
         MonaAPI.shared.artworks { (result) in
             switch result {
             case .success(let artworksResponse):
@@ -106,6 +111,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 log.error(artworksError)
                 log.error(artworksError.localizedDescription)
             }
+        }
+    }
+    
+    private func setupBadges() {
+        let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        context.persistentStoreCoordinator = CoreDataStack.persistentStoreCoordinator
+        let badgeEntityDescription = NSEntityDescription.entity(forEntityName: "Badge", in: context)!
+        let localizedStringEntityDescription = NSEntityDescription.entity(forEntityName: "LocalizedString", in: context)!
+        
+        for (id, dict) in badgesData {
+            let badge = Badge(entity: badgeEntityDescription, insertInto: context)
+            badge.id = id
+            let englishLocalizedStringName = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
+            let frenchLocalizedStringName = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
+            englishLocalizedStringName.language = Language.en
+            frenchLocalizedStringName.language = Language.fr
+            let name = dict["name"]! as! [Language : String]
+            englishLocalizedStringName.localizedString = name[.en]!
+            frenchLocalizedStringName.localizedString = name[.fr]!
+            badge.addToLocalizedNames(englishLocalizedStringName)
+            badge.addToLocalizedNames(frenchLocalizedStringName)
+            badge.currentValue = Int16(dict["currentValue"]! as! Int)
+            badge.targetValue = Int16(dict["targetValue"]! as! Int)
+            badge.collectedImageName = dict["collectedImageName"]! as! String
+            badge.notCollectedImageName = dict["notCollectedImageName"]! as! String
+            let englishLocalizedStringComment = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
+            let frenchLocalizedStringComment = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
+            englishLocalizedStringComment.language = Language.en
+            frenchLocalizedStringComment.language = Language.fr
+            let comments = dict["comment"]! as! [Language : String]
+            englishLocalizedStringComment.localizedString = comments[.en]!
+            frenchLocalizedStringComment.localizedString = comments[.fr]!
+            badge.addToComments(englishLocalizedStringComment)
+            badge.addToComments(frenchLocalizedStringComment)
+            
+            
+        }
+        do {
+            try context.save()
+        }
+        catch {
+            log.error("Saving failed. Error: \(error)")
         }
     }
     

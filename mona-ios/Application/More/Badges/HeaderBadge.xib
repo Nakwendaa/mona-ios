@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="243"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dkJ-3S-89t">
+                    <rect key="frame" x="8" y="44" width="359" height="68"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDE-GV-yym">
+                            <rect key="frame" x="0.0" y="0.0" width="175.5" height="68"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="90"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fy8-jS-sAL">
+                            <rect key="frame" x="183.5" y="0.0" width="175.5" height="68"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9V-r0-CnV">
+                                    <rect key="frame" x="0.0" y="26" width="175.5" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="42" id="i2M-Nd-Nbw"/>
+                                    </constraints>
+                                    <string key="text">oeuvres
+collectionnées</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="f9V-r0-CnV" secondAttribute="trailing" id="eFO-zu-lr1"/>
+                                <constraint firstAttribute="bottom" secondItem="f9V-r0-CnV" secondAttribute="bottom" id="gjW-8t-I0N"/>
+                                <constraint firstItem="f9V-r0-CnV" firstAttribute="leading" secondItem="Fy8-jS-sAL" secondAttribute="leading" id="nFC-Zf-kCY"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="68" id="Ae9-UP-Wy6"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="0Fd-JS-VUb">
+                    <rect key="frame" x="8" y="128" width="359" height="21"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 sculptures" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VV5-Jo-z93">
+                            <rect key="frame" x="0.0" y="0.0" width="123" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 installations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apW-Qt-8vP">
+                            <rect key="frame" x="123" y="0.0" width="134.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 murales" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1M-Ug-T1W">
+                            <rect key="frame" x="257.5" y="0.0" width="101.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="2gi-z7-CG6"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XnY-PZ-aL6">
+                    <rect key="frame" x="8" y="193" width="359" height="29.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quartier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zca-Ni-9wT">
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="20.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="3nz-jq-Jfp"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHt-IP-3rD">
+                            <rect key="frame" x="0.0" y="28.5" width="359" height="1"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="9A8-Gd-lUj"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0Fd-JS-VUb" firstAttribute="top" secondItem="dkJ-3S-89t" secondAttribute="bottom" constant="16" id="0eE-KP-DVD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XnY-PZ-aL6" secondAttribute="trailing" constant="8" id="5mA-sZ-QQO"/>
+                <constraint firstItem="dkJ-3S-89t" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="71X-0z-EyO"/>
+                <constraint firstAttribute="trailing" secondItem="dkJ-3S-89t" secondAttribute="trailing" constant="8" id="8HK-IU-CQe"/>
+                <constraint firstItem="dkJ-3S-89t" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="44" id="Hvh-Bx-fZs"/>
+                <constraint firstItem="XnY-PZ-aL6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="Vm5-rC-5fy"/>
+                <constraint firstItem="0Fd-JS-VUb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="aiM-Hw-Bch"/>
+                <constraint firstItem="XnY-PZ-aL6" firstAttribute="top" secondItem="0Fd-JS-VUb" secondAttribute="bottom" constant="44" id="fUC-Hx-6Aa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0Fd-JS-VUb" secondAttribute="trailing" constant="8" id="qVa-y4-fMm"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="9.5" y="-193.5"/>
+        </view>
+    </objects>
+</document>

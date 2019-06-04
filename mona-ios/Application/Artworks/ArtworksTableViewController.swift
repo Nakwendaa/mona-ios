@@ -35,7 +35,7 @@ class ArtworksTableViewController : UIViewController, Contextualizable {
     var canPerformTableViewIndexAnimation = true
     
     // This variable is useful to avoid unnecessary tableview.reloadData when the viewDidLoad
-    var didViewLoaded = true
+    var didViewLoaded = false
     
     struct Strings {
         private static let tableName = "ArtworksTableViewController"
@@ -78,7 +78,11 @@ class ArtworksTableViewController : UIViewController, Contextualizable {
         tableView.delegate = self
         tableViewIndex.delegate = self
         //setup(artworksID: artworksIds)
-        CoreDataStack.fetchAsynchronously(type: Artwork.self, context: viewContext!, entityName: "Artwork") {
+        var predicate : NSPredicate? = nil
+        if let ids = artworksIds {
+            predicate = NSPredicate(format: "id IN %@", ids)
+        }
+        CoreDataStack.fetchAsynchronously(type: Artwork.self, context: viewContext!, entityName: "Artwork", predicate: predicate) {
             artworks in 
             self.artworksTableViewDataSource = ArtworksTableViewDataSource(artworks: artworks)
             self.tableViewIndexDataSource = self.artworksTableViewDataSource
@@ -104,10 +108,10 @@ class ArtworksTableViewController : UIViewController, Contextualizable {
         tableView.tableHeaderView?.updateConstraints()
         
         // Refresh visible thumbnails when back from a view
-        if !didViewLoaded {
+        if didViewLoaded {
             tableView.reloadData()
         }
-        didViewLoaded = false
+        didViewLoaded = true
         
     }
     
@@ -123,7 +127,7 @@ class ArtworksTableViewController : UIViewController, Contextualizable {
             let vc = segue.destination as? ArtworkDetailsViewController,
             let cell = sender as? ArtworkTableViewCell {
             vc.title = cell.titleLabel.text
-            
+            vc.viewContext = viewContext
             guard let context = viewContext else {
                 return
             }

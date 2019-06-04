@@ -1,20 +1,15 @@
-/*
-See LICENSE folder for this sample’s licensing information.
+//
+//  CollectionViewLayout.swift
+//  mona-ios
+//
+//  Created by Paul Chaffanet on 2019-06-01.
+//  Copyright © 2019 Paul Chaffanet. All rights reserved.
+//
 
-Abstract:
-Custom view flow layout for mosaic-style appearance.
-*/
 
 import UIKit
 
-enum MosaicSegmentStyle {
-    case fullWidth
-    case fiftyFifty
-    case twoThirdsOneThird
-    case oneThirdTwoThirds
-}
-
-class MosaicLayout: UICollectionViewLayout {
+class CollectionViewLayout: UICollectionViewLayout {
 
     var contentBounds = CGRect.zero
     var cachedAttributes = [UICollectionViewLayoutAttributes]()
@@ -24,7 +19,6 @@ class MosaicLayout: UICollectionViewLayout {
         super.prepare()
         
         guard let collectionView = collectionView else { return }
-
         // Reset cached information.
         cachedAttributes.removeAll()
         contentBounds = CGRect(origin: .zero, size: collectionView.bounds.size)
@@ -34,38 +28,29 @@ class MosaicLayout: UICollectionViewLayout {
         //  - Store attributes in the cachedAttributes array.
         //  - Combine contentBounds with attributes.frame.
         let count = collectionView.numberOfItems(inSection: 0)
-        
+        log.debug("NumberOfItems in collectionView in section 0: \(count)")
         var currentIndex = 0
-        var segment: MosaicSegmentStyle = .fiftyFifty
+        let nombre = 4
         var lastFrame: CGRect = .zero
         
         let cvWidth = collectionView.bounds.size.width
+        let cvHeight = cvWidth * (4.0/3.0) / CGFloat(nombre)
+        
+        // Header
+        let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: IndexPath(item: currentIndex, section: 0))
+        let frame = CGRect(x: 0, y: 0, width: cvWidth, height: 90)
+        attributes.frame = frame
+        cachedAttributes.append(attributes)
+        contentBounds = contentBounds.union(lastFrame)
+        lastFrame = frame
         
         while currentIndex < count {
-            let segmentFrame = CGRect(x: 0, y: lastFrame.maxY + 1.0, width: cvWidth, height: 200.0)
-            
-            var segmentRects = [CGRect]()
-            switch segment {
-            case .fullWidth:
-                segmentRects = [segmentFrame]
-                
-            case .fiftyFifty:
-                let horizontalSlices = segmentFrame.dividedIntegral(fraction: 0.5, from: .minXEdge)
-                segmentRects = [horizontalSlices.first, horizontalSlices.second]
-                
-            case .twoThirdsOneThird:
-                let horizontalSlices = segmentFrame.dividedIntegral(fraction: (2.0 / 3.0), from: .minXEdge)
-                let verticalSlices = horizontalSlices.second.dividedIntegral(fraction: 0.5, from: .minYEdge)
-                segmentRects = [horizontalSlices.first, verticalSlices.first, verticalSlices.second]
-                
-            case .oneThirdTwoThirds:
-                let horizontalSlices = segmentFrame.dividedIntegral(fraction: (1.0 / 3.0), from: .minXEdge)
-                let verticalSlices = horizontalSlices.first.dividedIntegral(fraction: 0.5, from: .minYEdge)
-                segmentRects = [verticalSlices.first, verticalSlices.second, horizontalSlices.second]
-            }
+            let segmentFrame = CGRect(x: 0, y: lastFrame.maxY + 1.0, width: cvWidth, height: cvHeight)
+            let segmentRects = segmentFrame.divided(numberOfSlices: nombre, spacing: 1.0, from: .minXEdge)
             
             // Create and cache layout attributes for calculated frames.
             for rect in segmentRects {
+                if currentIndex >= count { break }
                 let attributes = UICollectionViewLayoutAttributes(forCellWith: IndexPath(item: currentIndex, section: 0))
                 attributes.frame = rect
                 
@@ -75,25 +60,7 @@ class MosaicLayout: UICollectionViewLayout {
                 currentIndex += 1
                 lastFrame = rect
             }
-
-            // Determine the next segment style.
-            switch count - currentIndex {
-            case 1:
-                segment = .fullWidth
-            case 2:
-                segment = .fiftyFifty
-            default:
-                switch segment {
-                case .fullWidth:
-                    segment = .fiftyFifty
-                case .fiftyFifty:
-                    segment = .twoThirdsOneThird
-                case .twoThirdsOneThird:
-                    segment = .oneThirdTwoThirds
-                case .oneThirdTwoThirds:
-                    segment = .fiftyFifty
-                }
-            }
+            
         }
     }
 
@@ -110,6 +77,7 @@ class MosaicLayout: UICollectionViewLayout {
     
     /// - Tag: LayoutAttributesForItem
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        print("Item: \(indexPath.item)")
         return cachedAttributes[indexPath.item]
     }
     

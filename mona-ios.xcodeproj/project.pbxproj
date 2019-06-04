@@ -14,6 +14,13 @@
 		B407CA3C2285C55D00D02ABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B407CA3B2285C55D00D02ABC /* Assets.xcassets */; };
 		B407CA4A2285C55D00D02ABC /* mona_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B407CA492285C55D00D02ABC /* mona_iosTests.swift */; };
 		B407CA552285C55D00D02ABC /* mona_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B407CA542285C55D00D02ABC /* mona_iosUITests.swift */; };
+		B428794722A49D6800EABBE6 /* HeaderBadge.xib in Resources */ = {isa = PBXBuildFile; fileRef = B428794122A49D6800EABBE6 /* HeaderBadge.xib */; };
+		B428794822A49D6800EABBE6 /* BadgesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428794222A49D6800EABBE6 /* BadgesData.swift */; };
+		B428794A22A49D6800EABBE6 /* BadgeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428794422A49D6800EABBE6 /* BadgeDetailsViewController.swift */; };
+		B428795122A4A8AB00EABBE6 /* BadgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428795022A4A8AB00EABBE6 /* BadgesViewController.swift */; };
+		B428795422A562F600EABBE6 /* BadgesViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B428795622A562F600EABBE6 /* BadgesViewController.strings */; };
+		B428795922A5A38400EABBE6 /* WonBadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428795822A5A38400EABBE6 /* WonBadgeViewController.swift */; };
+		B428795C22A60CA500EABBE6 /* BadgeDetailsViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B428795E22A60CA500EABBE6 /* BadgeDetailsViewController.strings */; };
 		B42AA67222A3319400D53E87 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B42AA66F22A3319400D53E87 /* Model.xcdatamodeld */; };
 		B42AA67422A3323900D53E87 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42AA67322A3323900D53E87 /* NavigationController.swift */; };
 		B48394BA2295A8E60003065B /* ArtworkDetailsDescriptionViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B48394BC2295A8E60003065B /* ArtworkDetailsDescriptionViewController.strings */; };
@@ -82,7 +89,7 @@
 		B487538E22A326A200EE6EE6 /* MosaicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487538522A326A200EE6EE6 /* MosaicCell.swift */; };
 		B487539122A326A200EE6EE6 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487538822A326A200EE6EE6 /* CollectionViewController.swift */; };
 		B487539222A326A200EE6EE6 /* Collection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B487538922A326A200EE6EE6 /* Collection.storyboard */; };
-		B487539322A326A200EE6EE6 /* MosaicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487538B22A326A200EE6EE6 /* MosaicLayout.swift */; };
+		B487539322A326A200EE6EE6 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487538B22A326A200EE6EE6 /* CollectionViewLayout.swift */; };
 		B487539622A326CA00EE6EE6 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487539522A326CA00EE6EE6 /* CollectionViewDataSource.swift */; };
 		B48753A522A3271100EE6EE6 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B487539C22A3271100EE6EE6 /* Map.storyboard */; };
 		B48753A622A3271100EE6EE6 /* ArtworkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487539D22A3271100EE6EE6 /* ArtworkAnnotation.swift */; };
@@ -212,6 +219,15 @@
 		B407CA502285C55D00D02ABC /* mona-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mona-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B407CA542285C55D00D02ABC /* mona_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mona_iosUITests.swift; sourceTree = "<group>"; };
 		B407CA562285C55D00D02ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B428794122A49D6800EABBE6 /* HeaderBadge.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderBadge.xib; sourceTree = "<group>"; };
+		B428794222A49D6800EABBE6 /* BadgesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesData.swift; sourceTree = "<group>"; };
+		B428794422A49D6800EABBE6 /* BadgeDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeDetailsViewController.swift; sourceTree = "<group>"; };
+		B428795022A4A8AB00EABBE6 /* BadgesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesViewController.swift; sourceTree = "<group>"; };
+		B428795522A562F600EABBE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BadgesViewController.strings; sourceTree = "<group>"; };
+		B428795722A562F900EABBE6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/BadgesViewController.strings; sourceTree = "<group>"; };
+		B428795822A5A38400EABBE6 /* WonBadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WonBadgeViewController.swift; sourceTree = "<group>"; };
+		B428795D22A60CA500EABBE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BadgeDetailsViewController.strings; sourceTree = "<group>"; };
+		B428795F22A60CA600EABBE6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/BadgeDetailsViewController.strings; sourceTree = "<group>"; };
 		B42AA67022A3319400D53E87 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		B42AA67122A3319400D53E87 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B42AA67322A3323900D53E87 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -289,8 +305,7 @@
 		B487538522A326A200EE6EE6 /* MosaicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MosaicCell.swift; sourceTree = "<group>"; };
 		B487538822A326A200EE6EE6 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		B487538922A326A200EE6EE6 /* Collection.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Collection.storyboard; sourceTree = "<group>"; };
-		B487538B22A326A200EE6EE6 /* MosaicLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MosaicLayout.swift; sourceTree = "<group>"; };
-		B487538C22A326A200EE6EE6 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		B487538B22A326A200EE6EE6 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		B487539522A326CA00EE6EE6 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		B487539C22A3271100EE6EE6 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		B487539D22A3271100EE6EE6 /* ArtworkAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkAnnotation.swift; sourceTree = "<group>"; };
@@ -554,6 +569,40 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		B428794C22A49E6E00EABBE6 /* Badges */ = {
+			isa = PBXGroup;
+			children = (
+				B428794222A49D6800EABBE6 /* BadgesData.swift */,
+				B428795022A4A8AB00EABBE6 /* BadgesViewController.swift */,
+				B428795622A562F600EABBE6 /* BadgesViewController.strings */,
+				B428794422A49D6800EABBE6 /* BadgeDetailsViewController.swift */,
+				B428795E22A60CA500EABBE6 /* BadgeDetailsViewController.strings */,
+				B428794122A49D6800EABBE6 /* HeaderBadge.xib */,
+			);
+			path = Badges;
+			sourceTree = "<group>";
+		};
+		B428794D22A49E7900EABBE6 /* About MONA */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "About MONA";
+			sourceTree = "<group>";
+		};
+		B428794E22A49E8700EABBE6 /* Targeted */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Targeted;
+			sourceTree = "<group>";
+		};
+		B428794F22A49E8B00EABBE6 /* Data Privacy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Privacy";
+			sourceTree = "<group>";
+		};
 		B4795CA2228D1480007688FA /* Seed */ = {
 			isa = PBXGroup;
 			children = (
@@ -606,6 +655,7 @@
 				B48394DC2295C8AE0003065B /* ArtworkDetailsRatingViewController.strings */,
 				B48753C122A327B900EE6EE6 /* ArtworkDetailsCommentViewController.swift */,
 				B48394E02295C9030003065B /* ArtworkDetailsCommentViewController.strings */,
+				B428795822A5A38400EABBE6 /* WonBadgeViewController.swift */,
 				B48394C42295B2790003065B /* Artwork Details Map */,
 				B48394B72295A63E0003065B /* Artwork Details Page View Controller */,
 			);
@@ -616,6 +666,10 @@
 			isa = PBXGroup;
 			children = (
 				B487538122A3268900EE6EE6 /* More.storyboard */,
+				B428794C22A49E6E00EABBE6 /* Badges */,
+				B428794E22A49E8700EABBE6 /* Targeted */,
+				B428794F22A49E8B00EABBE6 /* Data Privacy */,
+				B428794D22A49E7900EABBE6 /* About MONA */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -641,8 +695,7 @@
 		B487538A22A326A200EE6EE6 /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
-				B487538B22A326A200EE6EE6 /* MosaicLayout.swift */,
-				B487538C22A326A200EE6EE6 /* LICENSE.txt */,
+				B487538B22A326A200EE6EE6 /* CollectionViewLayout.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -1127,6 +1180,9 @@
 				B48394EF229609400003065B /* InfoPlist.strings in Resources */,
 				B4AD5E54229026D50064A876 /* GeneralTableViewCell.xib in Resources */,
 				B4AD5E562290271A0064A876 /* ArtworkTableViewCell.xib in Resources */,
+				B428795C22A60CA500EABBE6 /* BadgeDetailsViewController.strings in Resources */,
+				B428794722A49D6800EABBE6 /* HeaderBadge.xib in Resources */,
+				B428795422A562F600EABBE6 /* BadgesViewController.strings in Resources */,
 				B4D0637F229462EF006E280D /* ArtworksTableViewDataSource.strings in Resources */,
 				B48753A522A3271100EE6EE6 /* Map.storyboard in Resources */,
 				B49CA252229014CB00FBA757 /* Artworks.storyboard in Resources */,
@@ -1248,6 +1304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4AD5E6D22908B410064A876 /* Layout.swift in Sources */,
+				B428794822A49D6800EABBE6 /* BadgesData.swift in Sources */,
 				B487535F22A3264C00EE6EE6 /* Artist+CoreDataClass.swift in Sources */,
 				B48753D822A3280400EE6EE6 /* GeneralTableViewController.swift in Sources */,
 				B48753F922A3289100EE6EE6 /* TabBarController.swift in Sources */,
@@ -1281,7 +1338,7 @@
 				B42AA67222A3319400D53E87 /* Model.xcdatamodeld in Sources */,
 				B487533122A3262700EE6EE6 /* CGRect+Extension.swift in Sources */,
 				B48753E822A3285800EE6EE6 /* DailyArtworkImagePickerControllerDelegate.swift in Sources */,
-				B487539322A326A200EE6EE6 /* MosaicLayout.swift in Sources */,
+				B487539322A326A200EE6EE6 /* CollectionViewLayout.swift in Sources */,
 				B4AD5E7B22908B4F0064A876 /* KeyValueObserver.swift in Sources */,
 				B487533222A3262700EE6EE6 /* UIDevice+Extension.swift in Sources */,
 				B487541A22A328B300EE6EE6 /* MonaAPI+RegisterRequest.swift in Sources */,
@@ -1310,6 +1367,7 @@
 				B48753B522A3277A00EE6EE6 /* ArtworkDetailsCommentRatingViewController.swift in Sources */,
 				B487531422A3260100EE6EE6 /* Language.swift in Sources */,
 				B487537622A3264C00EE6EE6 /* Material+CoreDataClass.swift in Sources */,
+				B428795122A4A8AB00EABBE6 /* BadgesViewController.swift in Sources */,
 				B487539122A326A200EE6EE6 /* CollectionViewController.swift in Sources */,
 				B48753F222A3287000EE6EE6 /* DailyArtworkViewController.swift in Sources */,
 				B4AD5E7922908B4F0064A876 /* UIScrollView+Helpers.swift in Sources */,
@@ -1358,9 +1416,11 @@
 				B487532F22A3262700EE6EE6 /* UIViewController+Extension.swift in Sources */,
 				B487536E22A3264C00EE6EE6 /* Category+CoreDataClass.swift in Sources */,
 				B487541822A328B300EE6EE6 /* HTTPHeaders.swift in Sources */,
+				B428795922A5A38400EABBE6 /* WonBadgeViewController.swift in Sources */,
 				B48753C722A327C100EE6EE6 /* ArtworkDetailsImagePickerControllerDelegate.swift in Sources */,
 				B48753EA22A3285800EE6EE6 /* DailyArtworkCommentViewController.swift in Sources */,
 				B487533422A3262700EE6EE6 /* Notification.Name+Extension.swift in Sources */,
+				B428794A22A49D6800EABBE6 /* BadgeDetailsViewController.swift in Sources */,
 				B487537922A3264C00EE6EE6 /* Coordinate+CoreDataClass.swift in Sources */,
 				B487537D22A3264C00EE6EE6 /* District+Namable.swift in Sources */,
 				B487537122A3264C00EE6EE6 /* Subcategory+CoreDataClass.swift in Sources */,
@@ -1417,6 +1477,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B428795622A562F600EABBE6 /* BadgesViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B428795522A562F600EABBE6 /* en */,
+				B428795722A562F900EABBE6 /* fr */,
+			);
+			name = BadgesViewController.strings;
+			sourceTree = "<group>";
+		};
+		B428795E22A60CA500EABBE6 /* BadgeDetailsViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B428795D22A60CA500EABBE6 /* en */,
+				B428795F22A60CA600EABBE6 /* fr */,
+			);
+			name = BadgeDetailsViewController.strings;
+			sourceTree = "<group>";
+		};
 		B48394BC2295A8E60003065B /* ArtworkDetailsDescriptionViewController.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

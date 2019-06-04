@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-class ArtworkDetailsCommentViewController: UIViewController {
+class ArtworkDetailsCommentViewController: UIViewController, Contextualizable {
     
     //MARK: - Types
     struct Style {
@@ -27,6 +28,8 @@ class ArtworkDetailsCommentViewController: UIViewController {
     }
     //MARK: - Properties
     weak var artwork: Artwork?
+    //MARK: - Contextualizable
+    var viewContext: NSManagedObjectContext?
     
     //MARK: - User Interface properties
     @IBOutlet weak var hintLabel: UILabel!

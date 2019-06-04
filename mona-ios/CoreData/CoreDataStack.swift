@@ -106,7 +106,7 @@ class CoreDataStack {
         privateManagedContext.parent = context
         
         let syncFetchRequest = NSFetchRequest<T>(entityName: entityName)
-        
+        syncFetchRequest.predicate = predicate
         let asyncFetchRequest = NSAsynchronousFetchRequest(fetchRequest: syncFetchRequest) { result in
             guard let finalResult = result.finalResult else { return }
             
@@ -116,6 +116,32 @@ class CoreDataStack {
                     .compactMap { context.object(with: $0) as? T }
                 
                 completion(arrayResult)
+            }
+        }
+        do {
+            try privateManagedContext.execute(asyncFetchRequest)
+        }
+        catch {
+            log.error("Failed to fetch techniques asynchronously. Error: \(error)")
+        }
+    }
+    
+    static func fetchAsynchronously<T: NSManagedObject>(type: T.Type, context: NSManagedObjectContext, entityName: String, predicate : NSPredicate? = nil, completion: @escaping ([T], NSManagedObjectContext) -> Void) {
+        
+        let privateManagedContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateManagedContext.parent = context
+        
+        let syncFetchRequest = NSFetchRequest<T>(entityName: entityName)
+        syncFetchRequest.predicate = predicate
+        let asyncFetchRequest = NSAsynchronousFetchRequest(fetchRequest: syncFetchRequest) { result in
+            guard let finalResult = result.finalResult else { return }
+            
+            DispatchQueue.main.async {
+                let arrayResult: [T] = finalResult.lazy
+                    .compactMap { $0.objectID } // Retrives all the objectsID
+                    .compactMap { context.object(with: $0) as? T }
+                
+                completion(arrayResult, privateManagedContext)
             }
         }
         do {

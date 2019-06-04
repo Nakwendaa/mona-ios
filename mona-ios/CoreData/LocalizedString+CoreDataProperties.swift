@@ -2,7 +2,7 @@
 //  LocalizedString+CoreDataProperties.swift
 //  mona-ios
 //
-//  Created by Paul Chaffanet on 2019-05-16.
+//  Created by Paul Chaffanet on 2019-06-03.
 //  Copyright © 2019 Paul Chaffanet. All rights reserved.
 //
 //
@@ -19,6 +19,7 @@ extension LocalizedString {
 
     @NSManaged public var language: Language
     @NSManaged public var localizedString: String
-    @NSManaged public var localizableEntity: LocalizableEntity
+    @NSManaged public var localizableEntity: LocalizableEntity?
+    @NSManaged public var badge: Badge?
 
 }
