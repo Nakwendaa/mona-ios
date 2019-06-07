@@ -19,5 +19,4 @@ extension UIViewController {
         navigationController?.navigationBar.tintColor = tintColor
     }
     
-    
 }

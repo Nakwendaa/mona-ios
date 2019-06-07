@@ -10,14 +10,19 @@ import UIKit
 
 class ArtworkTableViewCell: UITableViewCell {
     
+    //MARK: - Static properties
     static let reuseIdentifier = "ArtworkTableViewCell"
     
-    var artworkId: Int16!
+    //MARK: - Properties
+    var artwork: Artwork!
+    
+    //MARK: - UI Properties
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var trailingMarginConstraint: NSLayoutConstraint!
     
+    //MARK: - Overriden methods
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Paul Chaffanet. All rights reserved.
 //
 
-extension Technique : Namable {
+extension Technique : FetchableNamable {
     typealias T = Technique
     
     var nameNamable: String {

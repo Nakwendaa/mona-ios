@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class BadgesViewController: UIViewController, Contextualizable {
+class BadgesViewController: UIViewController {
     
     //MARK: - Types
     struct Segues {
@@ -21,24 +21,25 @@ class BadgesViewController: UIViewController, Contextualizable {
         static let collectedArtworks = NSLocalizedString("collected artworks", tableName: tableName, bundle: .main, value: "", comment: "")
         static let districts = NSLocalizedString("districts", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
     }
-    
-    var viewContext : NSManagedObjectContext? = CoreDataStack.mainContext
-    var collectionViewCells = [Badge]()
+
+    var collectionViewCells = AppData.badges.filter { !Set([15,16,17,18,19,20,21,22,23]).contains(Int($0.id)) }
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
+    var didViewLoaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        let predicate = NSPredicate(format: "NOT (id IN %@)", [15,16,17,18,19,20,21,22,23])
-        CoreDataStack.fetchAsynchronously(type: Badge.self, context: viewContext!, entityName: "Badge", predicate: predicate) { badges in
-            self.collectionViewCells = badges
-            self.collectionView.reloadData()
-        }
         setTransparentNavigationBar(tintColor: .black)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if didViewLoaded {
+            collectionView.reloadData()
+        }
+        didViewLoaded = true
     }
     
     
@@ -88,27 +89,22 @@ extension BadgesViewController : UICollectionViewDataSource {
             let districtLabel = collectionReusableView.subviews[2].subviews[0] as! UILabel
             districtLabel.text = Strings.districts
             
-            CoreDataStack.fetchAsynchronously(type: Artwork.self, context: viewContext!, entityName: "Artwork") { artworks in
-                
-                let collectedArtworksCount = artworks.filter({ $0.isCollected }).count
-                collectedArtworksCountLabel.text = String(collectedArtworksCount)
-                collectedArtworksHintLabel.text = collectedArtworksCount == 1 ? Strings.collectedArtwork : Strings.collectedArtworks
-            }
-            
-            CoreDataStack.fetchAsynchronously(type: Category.self, context: viewContext!, entityName: "Category") { categories in
-                let firstCategory = categories[0]
-                firstCategoryLabel.text = firstCategory.localizedName.lowercased()
-                let secondCategory = categories[1]
-                secondCategoryLabel.text = secondCategory.localizedName.lowercased()
-                let thirdCategory = categories[2]
-                thirdCategoryLabel.text = thirdCategory.localizedName.lowercased()
-                let firstCategoryCollectedArtworksCount = firstCategory.artworks.filter({ $0.isCollected }).count
-                firstCategoryCollectedArtworksCountLabel.text = String(firstCategoryCollectedArtworksCount)
-                let secondCategoryCollectedArtworksCount = secondCategory.artworks.filter({ $0.isCollected }).count
-                secondCategoryCollectedArtworksCountLabel.text = String(secondCategoryCollectedArtworksCount)
-                let thirdCategoryCollectedArtworksCount = thirdCategory.artworks.filter({ $0.isCollected }).count
-                thirdCategoryCollectedArtworksCountLabel.text = String(thirdCategoryCollectedArtworksCount)
-            }
+            let collectedArtworksCount = AppData.artworks.filter({ $0.isCollected }).count
+            collectedArtworksCountLabel.text = String(collectedArtworksCount)
+            collectedArtworksHintLabel.text = collectedArtworksCount == 1 ? Strings.collectedArtwork : Strings.collectedArtworks
+
+            let firstCategory = AppData.categories[0]
+            firstCategoryLabel.text = firstCategory.localizedName.lowercased()
+            let secondCategory = AppData.categories[1]
+            secondCategoryLabel.text = secondCategory.localizedName.lowercased()
+            let thirdCategory = AppData.categories[2]
+            thirdCategoryLabel.text = thirdCategory.localizedName.lowercased()
+            let firstCategoryCollectedArtworksCount = firstCategory.artworks.filter({ $0.isCollected }).count
+            firstCategoryCollectedArtworksCountLabel.text = String(firstCategoryCollectedArtworksCount)
+            let secondCategoryCollectedArtworksCount = secondCategory.artworks.filter({ $0.isCollected }).count
+            secondCategoryCollectedArtworksCountLabel.text = String(secondCategoryCollectedArtworksCount)
+            let thirdCategoryCollectedArtworksCount = thirdCategory.artworks.filter({ $0.isCollected }).count
+            thirdCategoryCollectedArtworksCountLabel.text = String(thirdCategoryCollectedArtworksCount)
             
             return collectionReusableView
         }

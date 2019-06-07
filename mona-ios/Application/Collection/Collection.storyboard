@@ -106,11 +106,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LAu-xx-2UQ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Collection" id="PWJ-bd-3WW">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="0Ic-HL-ajN">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Collection" id="PWJ-bd-3WW"/>
                     <connections>
                         <outlet property="collectionView" destination="j5W-bh-O9L" id="q1j-gx-AQr"/>
                         <segue destination="rTE-pC-Pr6" kind="show" identifier="showArtworkDetailsViewController" id="sq9-8d-lVH"/>

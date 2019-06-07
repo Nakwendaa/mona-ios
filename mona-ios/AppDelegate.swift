@@ -10,7 +10,20 @@ import UIKit
 import CoreData
 import SwiftyBeaver
 import Foundation
+
 let log = SwiftyBeaver.self
+
+struct AppData {
+    static var context = CoreDataStack.mainContext
+    static var artists = [Artist]()
+    static var artworks = [Artwork]()
+    static var badges = [Badge]()
+    static var categories = [Category]()
+    static var districts = [District]()
+    static var materials = [Material]()
+    static var subcategories = [Subcategory]()
+    static var techniques = [Technique]()
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -49,8 +62,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         //print(CoreDataStack.applicationDocumentsDirectory.path)
-        setupData()
-        showApp()
+        AppData.context.retainsRegisteredObjects = true
+        fetchData { result in
+            switch result {
+            case .success():
+                if !AppData.artworks.isEmpty {
+                    self.setupArtworks { result in
+                        switch result {
+                        case .success():
+                            self.setupBadges { _ in
+                                DispatchQueue.main.async {
+                                    self.showApp()
+                                }
+                            }
+                        case .failure:
+                            DispatchQueue.main.async {
+                                self.showApp()
+                            }
+                        }
+                    }
+                }
+                else {
+                    self.setupArtworks { result in
+                        switch result {
+                        case .success():
+                            self.setupBadges { result in
+                                switch result {
+                                case .success:
+                                    DispatchQueue.main.async {
+                                        self.showApp()
+                                    }
+                                case .failure(let error):
+                                    fatalError(error.localizedDescription)
+                                }
+                            }
+                        case .failure(let error):
+                            fatalError(error.localizedDescription)
+                        }
+                    }
+                }
+                return
+            case .failure(let error):
+                fatalError(error.localizedDescription)
+            }
+        }
         return true
     }
 
@@ -87,79 +142,135 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.defaultSetup()
     }
     
-    private func setupData() {
-        setupArtworks()
-        setupBadges()
+    private func fetchData(completion: @escaping (Result<Void, Error>) -> Void) {
+        let artworksFetchRequest = NSFetchRequest<Artwork>(entityName: "Artwork")
+        let artistsFetchRequest = NSFetchRequest<Artist>(entityName: "Artist")
+        let badgesFetchRequest = NSFetchRequest<Badge>(entityName: "Badge")
+        let categoriesFetchRequest = NSFetchRequest<Category>(entityName: "Category")
+        let districtsFetchRequest = NSFetchRequest<District>(entityName: "District")
+        let materialsFetchRequest = NSFetchRequest<Material>(entityName: "Material")
+        let subcategoriesFetchRequest = NSFetchRequest<Subcategory>(entityName: "Subcategory")
+        let techniquesFetchRequest = NSFetchRequest<Technique>(entityName: "Technique")
+        do {
+            AppData.artworks = try AppData.context.fetch(artworksFetchRequest)
+            AppData.artists = try AppData.context.fetch(artistsFetchRequest)
+            AppData.badges = try AppData.context.fetch(badgesFetchRequest)
+            AppData.categories = try AppData.context.fetch(categoriesFetchRequest)
+            AppData.districts = try AppData.context.fetch(districtsFetchRequest)
+            AppData.materials = try AppData.context.fetch(materialsFetchRequest)
+            AppData.subcategories = try AppData.context.fetch(subcategoriesFetchRequest)
+            AppData.techniques = try AppData.context.fetch(techniquesFetchRequest)
+            completion(.success(()))
+        }
+        catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            completion(.failure(error))
+        }
     }
     
-    private func setupArtworks() {
-        MonaAPI.shared.artworks { (result) in
+    private func setupArtworks(completion: @escaping (Result<Void, Error>) -> Void) {
+        MonaAPI.shared.artworks { result in
             switch result {
             case .success(let artworksResponse):
-                if let artworks = artworksResponse.data {
+                if let artworksData = artworksResponse.data {
                     let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
                     context.persistentStoreCoordinator = CoreDataStack.persistentStoreCoordinator
-                    artworks.createOrUpdate(into: context)
+                    artworksData.createOrUpdate(into: context)
+                   
+                    let artworksFetchRequest = NSFetchRequest<Artwork>(entityName: "Artwork")
+                    let artistsFetchRequest = NSFetchRequest<Artist>(entityName: "Artist")
+                    let categoriesFetchRequest = NSFetchRequest<Category>(entityName: "Category")
+                    let districtsFetchRequest = NSFetchRequest<District>(entityName: "District")
+                    let materialsFetchRequest = NSFetchRequest<Material>(entityName: "Material")
+                    let subcategoriesFetchRequest = NSFetchRequest<Subcategory>(entityName: "Subcategory")
+                    let techniquesFetchRequest = NSFetchRequest<Technique>(entityName: "Technique")
+                    
                     do {
                         try context.save()
+                        AppData.context.reset()
+                        AppData.artworks = try AppData.context.fetch(artworksFetchRequest)
+                        AppData.artists = try AppData.context.fetch(artistsFetchRequest)
+                        AppData.categories = try AppData.context.fetch(categoriesFetchRequest)
+                        AppData.districts = try AppData.context.fetch(districtsFetchRequest)
+                        AppData.materials = try AppData.context.fetch(materialsFetchRequest)
+                        AppData.subcategories = try AppData.context.fetch(subcategoriesFetchRequest)
+                        AppData.techniques = try AppData.context.fetch(techniquesFetchRequest)
+                        completion(.success(()))
                     }
-                    catch {
-                        log.error("Saving failed. Error: \(error)")
+                    catch let error as NSError {
+                        print("Save or fetch failed. \(error), \(error.userInfo)")
+                        completion(.failure(error))
                     }
+                    
                 }
             case .failure(let artworksError):
                 log.error(artworksError)
                 log.error(artworksError.localizedDescription)
+                completion(.failure(artworksError))
             }
         }
     }
     
-    private func setupBadges() {
+    private func setupBadges(completion: @escaping (Result<Void, Error>) -> Void) {
         let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.persistentStoreCoordinator = CoreDataStack.persistentStoreCoordinator
-        let badgeEntityDescription = NSEntityDescription.entity(forEntityName: "Badge", in: context)!
-        let localizedStringEntityDescription = NSEntityDescription.entity(forEntityName: "LocalizedString", in: context)!
-        
-        for (id, dict) in badgesData {
-            let badge = Badge(entity: badgeEntityDescription, insertInto: context)
-            badge.id = id
-            let englishLocalizedStringName = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
-            let frenchLocalizedStringName = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
-            englishLocalizedStringName.language = Language.en
-            frenchLocalizedStringName.language = Language.fr
-            let name = dict["name"]! as! [Language : String]
-            englishLocalizedStringName.localizedString = name[.en]!
-            frenchLocalizedStringName.localizedString = name[.fr]!
-            badge.addToLocalizedNames(englishLocalizedStringName)
-            badge.addToLocalizedNames(frenchLocalizedStringName)
-            badge.currentValue = Int16(dict["currentValue"]! as! Int)
-            badge.targetValue = Int16(dict["targetValue"]! as! Int)
-            badge.collectedImageName = dict["collectedImageName"]! as! String
-            badge.notCollectedImageName = dict["notCollectedImageName"]! as! String
-            let englishLocalizedStringComment = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
-            let frenchLocalizedStringComment = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
-            englishLocalizedStringComment.language = Language.en
-            frenchLocalizedStringComment.language = Language.fr
-            let comments = dict["comment"]! as! [Language : String]
-            englishLocalizedStringComment.localizedString = comments[.en]!
-            frenchLocalizedStringComment.localizedString = comments[.fr]!
-            badge.addToComments(englishLocalizedStringComment)
-            badge.addToComments(frenchLocalizedStringComment)
-            
-            
-        }
+        let fetchRequest = NSFetchRequest<Badge>(entityName: "Badge")
         do {
-            try context.save()
+            let badges = try context.fetch(fetchRequest)
+            var badgesDict = [Int16 : Badge]()
+            badges.forEach { badge in
+                badgesDict[badge.id] = badge
+            }
+            
+            let badgeEntityDescription = NSEntityDescription.entity(forEntityName: "Badge", in: context)!
+            let localizedStringEntityDescription = NSEntityDescription.entity(forEntityName: "LocalizedString", in: context)!
+            
+            for (id, dict) in badgesData {
+                if badgesDict[id] != nil {
+                    continue
+                }
+                let badge = Badge(entity: badgeEntityDescription, insertInto: context)
+                badge.id = id
+                let englishLocalizedStringName = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
+                let frenchLocalizedStringName = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
+                englishLocalizedStringName.language = Language.en
+                frenchLocalizedStringName.language = Language.fr
+                let name = dict["name"]! as! [Language : String]
+                englishLocalizedStringName.localizedString = name[.en]!
+                frenchLocalizedStringName.localizedString = name[.fr]!
+                badge.addToLocalizedNames(englishLocalizedStringName)
+                badge.addToLocalizedNames(frenchLocalizedStringName)
+                badge.currentValue = Int16(dict["currentValue"]! as! Int)
+                badge.targetValue = Int16(dict["targetValue"]! as! Int)
+                badge.collectedImageName = dict["collectedImageName"]! as! String
+                badge.notCollectedImageName = dict["notCollectedImageName"]! as! String
+                let englishLocalizedStringComment = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
+                let frenchLocalizedStringComment = LocalizedString(entity: localizedStringEntityDescription, insertInto: context)
+                englishLocalizedStringComment.language = Language.en
+                frenchLocalizedStringComment.language = Language.fr
+                let comments = dict["comment"]! as! [Language : String]
+                englishLocalizedStringComment.localizedString = comments[.en]!
+                frenchLocalizedStringComment.localizedString = comments[.fr]!
+                badge.addToComments(englishLocalizedStringComment)
+                badge.addToComments(frenchLocalizedStringComment)
+            }
+            if context.hasChanges {
+                try context.save()
+            }
+            let badgesFetchRequest = NSFetchRequest<Badge>(entityName: "Badge")
+            AppData.badges = try AppData.context.fetch(badgesFetchRequest)
+            completion(.success(()))
         }
-        catch {
-            log.error("Saving failed. Error: \(error)")
+        catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            completion(.failure(error))
         }
+        
     }
     
     private func showApp() {
         let storyboard = UIStoryboard(name: "Tabbar", bundle: nil)
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-        tabBarController.viewContext = CoreDataStack.mainContext
         self.window?.rootViewController = tabBarController
         self.window?.rootViewController!.view.alpha = 0.0;
         UIView.animate(withDuration: 0.5, animations: {

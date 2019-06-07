@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MainTableViewController: UIViewController, Contextualizable {
+class MainTableViewController: SearchViewController {
     
     //MARK: - Types
     struct Strings {
@@ -24,7 +24,7 @@ class MainTableViewController: UIViewController, Contextualizable {
         static let unknownDistrict = NSLocalizedString("unknown district", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
     }
     
-    struct SeguesIdentifiers {
+    struct Segues {
         static let showCategoryDistrictMainTableViewController = "showCategoryDistrictMainTableViewController"
         static let showSubcategories = "showSubcategories"
         static let showGeneralTableViewController = "showGeneralTableViewController"
@@ -32,7 +32,6 @@ class MainTableViewController: UIViewController, Contextualizable {
     }
     
     //MARK: - Properties
-    var viewContext: NSManagedObjectContext?
     var tableViewCellCollection : [String] = [
         Strings.titles,
         Strings.artists,
@@ -62,25 +61,29 @@ class MainTableViewController: UIViewController, Contextualizable {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier, let senderString = sender as? String else {
+        guard let identifier = segue.identifier else {
             return
         }
-        
-        // Pass context
-        if var contextualizableViewController = segue.destination as? Contextualizable {
-            contextualizableViewController.viewContext = viewContext
-        }
-
         switch identifier {
-        case SeguesIdentifiers.showCategoryDistrictMainTableViewController:
-            prepareShowCategoryDistrictMainTableViewController(segue: segue, senderString: senderString)
-        case SeguesIdentifiers.showSubcategories:
-            prepareShowSubcategories(segue: segue, senderString: senderString)
+        case Segues.showArtworksTableViewController:
+            let title = sender as! String
+            let destination = segue.destination as! ArtworksTableViewController
+            prepareShowArtworksTableViewController(sender: self.title!, title: title, destination: destination)
             return
-        case SeguesIdentifiers.showGeneralTableViewController:
-            segue.destination.title = senderString
-        case SeguesIdentifiers.showArtworksTableViewController:
-            prepareShowArtworksTableViewController(segue: segue, senderString: senderString)
+        case Segues.showGeneralTableViewController:
+            let title = sender as! String
+            let destination = segue.destination as! GeneralTableViewController
+            prepareShowGeneralTableViewController(title: title, destination: destination)
+        case Segues.showCategoryDistrictMainTableViewController:
+            let title = sender as! String
+            let destination = segue.destination as! MainTableViewController
+            prepareShowCategoryDistrictMainTableViewController(title: title, destination: destination)
+            return
+        case Segues.showSubcategories:
+            let categoryName = sender as! String
+            let destination = segue.destination as! MainTableViewController
+            prepareShowSubcategories(categoryName: categoryName, destination: destination)
+            return
         default:
             return
         }
@@ -96,42 +99,77 @@ class MainTableViewController: UIViewController, Contextualizable {
         
     }
     private func setupTableView() {
-        tableView.dataSource = self
+        DispatchQueue.main.async {
+            self.tableView.dataSource = self
+            self.tableView.reloadData()
+        }
         tableView.delegate = self
         headerViewLabel.text = title
     }
     
-    private func prepareShowCategoryDistrictMainTableViewController(segue: UIStoryboardSegue, senderString: String) {
-        let vc = segue.destination as! MainTableViewController
-        // Get the viewContext
-        guard let context = viewContext else {
+    private func prepareShowGeneralTableViewController(title: String, destination: GeneralTableViewController) {
+        destination.title = title
+        DispatchQueue.main.async {
+            switch title {
+            case Strings.artists:
+                destination.namables = AppData.artists
+            case Strings.materials:
+                destination.namables = AppData.materials
+            case Strings.techniques:
+                destination.namables = AppData.techniques
+            default:
+                return
+            }
+        }
+    }
+    
+    private func prepareShowArtworksTableViewController(sender: String, title: String, destination: ArtworksTableViewController) {
+        switch sender {
+        case Strings.artworksTrunc:
+            destination.title = Strings.titles
+            DispatchQueue.main.async {
+                destination.artworks = AppData.artworks
+            }
+            return
+        case Strings.categories:
+            let categoryName = title
+            destination.title = categoryName
+            guard let category = AppData.categories.first(where: { $0.localizedName == categoryName }) else {
+                return
+            }
+            destination.artworks = Array(category.artworks)
+            return
+        case Strings.districts:
+            let districtName = title
+            destination.title = districtName
+            guard let district = AppData.districts.first(where: { $0.name == districtName }) else {
+                return
+            }
+            destination.artworks = Array(district.artworks)
+            return
+        default:
+            let subcategoryName = title
+            destination.title = subcategoryName
+            guard let subcategory = AppData.subcategories.first(where: { $0.localizedName == subcategoryName }) else {
+                return
+            }
+            destination.artworks = Array(subcategory.artworks)
             return
         }
-        
-        switch senderString {
+    }
+    
+    private func prepareShowCategoryDistrictMainTableViewController(title: String, destination: MainTableViewController) {
+        switch title {
         case Strings.categories:
-            // Prepare
-            let fetchRequest : NSFetchRequest<Category> = Category.fetchRequest()
-            do {
-                let categories = try context.fetch(fetchRequest)
-                vc.tableViewCellCollection = categories.map({$0.localizedName}).sorted()
-                vc.title = Strings.categories
-            }
-            catch {
-                log.error("Failing to fetch categories. Error: \(error)")
+            destination.title = Strings.categories
+            DispatchQueue.main.async {
+                destination.tableViewCellCollection = AppData.categories.map { $0.localizedName }.sorted()
             }
             return
         case Strings.districts:
-            let fetchRequest : NSFetchRequest<District> = District.fetchRequest()
-            do {
-                let districts = try context.fetch(fetchRequest)
-                vc.tableViewCellCollection = districts.map({
-                    $0.name
-                }).sorted()
-                vc.title = Strings.districts
-            }
-            catch {
-                log.error("Failing to fetch districts. Error: \(error)")
+            destination.title = Strings.districts
+            DispatchQueue.main.async {
+                destination.tableViewCellCollection = AppData.districts.map { $0.name }.sorted()
             }
             return
         default:
@@ -139,86 +177,18 @@ class MainTableViewController: UIViewController, Contextualizable {
         }
     }
     
-    private func prepareShowArtworksTableViewController(segue: UIStoryboardSegue, senderString: String) {
-        guard let context = viewContext else {
+    private func prepareShowSubcategories(categoryName: String, destination: MainTableViewController) {
+        guard let category = AppData.categories.first(where:{$0.localizedName == categoryName}) else {
+            log.error("Category with localized name \"\(categoryName)\" not found.")
             return
         }
-        if let vc = segue.destination as? ArtworksTableViewController {
-            if title == Strings.districts {
-                let districtName = senderString
-                vc.title = districtName
-                let fetchDistrictRequest : NSFetchRequest<District> = District.fetchRequest()
-                fetchDistrictRequest.predicate = NSPredicate(format: "name == %@", districtName)
-                fetchDistrictRequest.fetchLimit = 1
-                do {
-                    let districts = try context.fetch(fetchDistrictRequest)
-                    if let district = districts.first {
-                        vc.artworksIds = district.artworks.map({$0.id})
-                    }
-                    else {
-                        vc.artworksIds = [Int16]()
-                    }
-                }
-                catch {
-                    log.error("Failing to fetch district. Error: \(error)")
-                }
-            }
-            else if title == Strings.categories {
-                let categoryName = senderString
-                //Show artworks of the category
-                vc.title = categoryName
-                let fetchCategoryRequest : NSFetchRequest<Category> = Category.fetchRequest()
-                fetchCategoryRequest.predicate = NSPredicate(format: "%@ IN localizedNames.localizedString", categoryName)
-                fetchCategoryRequest.fetchLimit = 1
-                do {
-                    let categories = try context.fetch(fetchCategoryRequest)
-                    if let category = categories.first {
-                        vc.artworksIds = category.artworks.map({$0.id})
-                    }
-                    else {
-                        vc.artworksIds = [Int16]()
-                    }
-                }
-                catch {
-                    log.error("Failed to fetch category with name \"\(categoryName)\". Error: \(error).")
-                }
-            }
-            else if title == Strings.artworksTrunc {
-                vc.title = Strings.titles
-            }
-            else {
-                //Show subcategories
-                let subcategoryName = senderString
-                vc.title = subcategoryName
-                let fetchSubcategoryRequest : NSFetchRequest<Subcategory> = Subcategory.fetchRequest()
-                fetchSubcategoryRequest.predicate = NSPredicate(format: "%@ IN localizedNames.localizedString", subcategoryName)
-                fetchSubcategoryRequest.fetchLimit = 1
-                do {
-                    let subcategories = try context.fetch(fetchSubcategoryRequest)
-                    if let subcategory = subcategories.first {
-                        vc.artworksIds = subcategory.artworks.map({$0.id})
-                    }
-                    else {
-                        vc.artworksIds = [Int16]()
-                    }
-                }
-                catch {
-                    log.error("Failing to fetch subcategory. Error: \(error)")
-                }
-            }
-        }
-    }
-    
-    private func prepareShowSubcategories(segue: UIStoryboardSegue, senderString: String) {
-        guard let context = viewContext else {
+        guard let subcategories = category.subcategories, !subcategories.isEmpty else {
+            log.error("Category with localized name \"\(categoryName)\" has a empty subcategories' set.")
             return
         }
-        let categoryName = senderString
-        if  let vc = segue.destination as? MainTableViewController,
-            let fetchedCategory = Category.fetchRequest(name: categoryName, context: context),
-            let subcategories = fetchedCategory.subcategories {
-            vc.title = categoryName
-            vc.tableViewCellCollection = subcategories.map({ $0.localizedName }).sorted()
+        destination.title = categoryName
+        DispatchQueue.main.async {
+            destination.tableViewCellCollection = subcategories.map{ $0.localizedName }.sorted()
         }
     }
 
@@ -253,36 +223,35 @@ extension MainTableViewController : UITableViewDelegate {
         case Strings.artworksTrunc:
             switch tableViewCellCollection[indexPath.row] {
             case Strings.titles:
-                return performSegue(withIdentifier: SeguesIdentifiers.showArtworksTableViewController, sender: Strings.titles)
+                return performSegue(withIdentifier: Segues.showArtworksTableViewController, sender: Strings.titles)
             case Strings.artists:
-                return performSegue(withIdentifier: SeguesIdentifiers.showGeneralTableViewController, sender: Strings.artists)
+                return performSegue(withIdentifier: Segues.showGeneralTableViewController, sender: Strings.artists)
             case Strings.districts:
-                return performSegue(withIdentifier: SeguesIdentifiers.showCategoryDistrictMainTableViewController, sender: Strings.districts)
+                return performSegue(withIdentifier: Segues.showCategoryDistrictMainTableViewController, sender: Strings.districts)
             case Strings.categories:
-                return performSegue(withIdentifier: SeguesIdentifiers.showCategoryDistrictMainTableViewController, sender: Strings.categories)
+                return performSegue(withIdentifier: Segues.showCategoryDistrictMainTableViewController, sender: Strings.categories)
             case Strings.materials:
-                return performSegue(withIdentifier: SeguesIdentifiers.showGeneralTableViewController, sender: Strings.materials)
+                return performSegue(withIdentifier: Segues.showGeneralTableViewController, sender: Strings.materials)
             case Strings.techniques:
-                return performSegue(withIdentifier: SeguesIdentifiers.showGeneralTableViewController, sender: Strings.techniques)
+                return performSegue(withIdentifier: Segues.showGeneralTableViewController, sender: Strings.techniques)
             default:
                 return
             }
         case Strings.categories:
-            guard let context = viewContext else {
+            let categoryName = tableViewCellCollection[indexPath.row]
+            guard let category = AppData.categories.first(where: { $0.localizedName == categoryName}) else {
                 return
             }
-            let categoryName = tableViewCellCollection[indexPath.row]
-            if  let fetchedCategory = Category.fetchRequest(name: categoryName, context: context),
-                fetchedCategory.subcategories != nil, !fetchedCategory.subcategories!.isEmpty{
-                return performSegue(withIdentifier: SeguesIdentifiers.showSubcategories, sender: tableViewCellCollection[indexPath.row])
+            if let subcategories = category.subcategories, !subcategories.isEmpty {
+                return performSegue(withIdentifier: Segues.showSubcategories, sender: tableViewCellCollection[indexPath.row])
             }
             else {
-                return performSegue(withIdentifier: SeguesIdentifiers.showArtworksTableViewController, sender: tableViewCellCollection[indexPath.row])
+                return performSegue(withIdentifier: Segues.showArtworksTableViewController, sender: tableViewCellCollection[indexPath.row])
             }
         case Strings.districts:
-            return performSegue(withIdentifier: SeguesIdentifiers.showArtworksTableViewController, sender: tableViewCellCollection[indexPath.row])
+            return performSegue(withIdentifier: Segues.showArtworksTableViewController, sender: tableViewCellCollection[indexPath.row])
         default:
-            return performSegue(withIdentifier: SeguesIdentifiers.showArtworksTableViewController, sender: tableViewCellCollection[indexPath.row])
+            return performSegue(withIdentifier: Segues.showArtworksTableViewController, sender: tableViewCellCollection[indexPath.row])
         }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ArtworkDetailsCommentViewController: UIViewController, Contextualizable {
+class ArtworkDetailsCommentViewController: UIViewController {
     
     //MARK: - Types
     struct Style {
@@ -27,9 +27,7 @@ class ArtworkDetailsCommentViewController: UIViewController, Contextualizable {
         static let writeComment = NSLocalizedString("write comment", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
     }
     //MARK: - Properties
-    weak var artwork: Artwork?
-    //MARK: - Contextualizable
-    var viewContext: NSManagedObjectContext?
+    var artwork: Artwork!
     
     //MARK: - User Interface properties
     @IBOutlet weak var hintLabel: UILabel!
@@ -56,11 +54,10 @@ class ArtworkDetailsCommentViewController: UIViewController, Contextualizable {
     @IBAction func validateButtonTapped(_ sender: UIButton) {
         dismissKeyboard()
         
-        if let artwork = self.artwork, artwork.comment != nil && artwork.comment != "" {
+        if artwork.comment != nil && artwork.comment != "" {
             artwork.commentSent = false
-            let context = CoreDataStack.mainContext
             do {
-                try context.save()
+                try AppData.context.save()
             }
             catch {
                 log.error("Failed to save context: \(error)")
@@ -69,16 +66,16 @@ class ArtworkDetailsCommentViewController: UIViewController, Contextualizable {
             MonaAPI.shared.artwork(id: Int(artwork.id), rating: nil, comment: artwork.comment, photo: nil) { (result) in
                 switch result {
                 case .success(_):
-                    log.info("Comment sent \"\(artwork.comment!)\" successfully for artwork with id: \(artwork.id).")
-                    artwork.commentSent = true
+                    log.info("Comment sent \"\(self.artwork.comment!)\" successfully for artwork with id: \(self.artwork.id).")
+                    self.artwork.commentSent = true
                     do {
-                        try context.save()
+                        try AppData.context.save()
                     }
                     catch {
                         log.error("Failed to save context: \(error)")
                     }
                 case .failure(let userArtworkError):
-                    log.error("Failed to send comment \"\(artwork.comment!)\" for artwork with id: \(artwork.id).")
+                    log.error("Failed to send comment \"\(self.artwork.comment!)\" for artwork with id: \(self.artwork.id).")
                     log.error(userArtworkError)
                     log.error(userArtworkError.localizedDescription)
                 }
@@ -108,9 +105,6 @@ extension ArtworkDetailsCommentViewController: UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        guard let artwork = artwork else {
-            return
-        }
         
         if textView.textColor != Style.TextView.textHintColor && textView.text != "" {
             artwork.comment = textView.text

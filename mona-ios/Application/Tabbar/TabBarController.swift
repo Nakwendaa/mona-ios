@@ -9,18 +9,11 @@
 import UIKit
 import CoreData
 
-class TabBarController: UITabBarController, Contextualizable {
-    
-    var viewContext: NSManagedObjectContext?
+class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Pass current viewContext to rootViewControllers of each tab
-        viewControllers?.forEach { viewController in
-            if var contextualizableViewController = viewController as? Contextualizable {
-                contextualizableViewController.viewContext = viewContext
-            }
-        }
     }
+    
 
 }

@@ -249,7 +249,7 @@ class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, TableViewIn
         let artwork = sections[indexPath.section].items[indexPath.row]
         
         // Set id of the artwork for the cell
-        cell.artworkId = artwork.id
+        cell.artwork = artwork
         if artwork.title == nil || artwork.title == "" {
             cell.titleLabel.text = Strings.unknownTitle
         }

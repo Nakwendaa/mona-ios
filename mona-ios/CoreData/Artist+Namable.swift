@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Artist : Namable {
+extension Artist : FetchableNamable {
     
     var nameNamable: String {
         guard let name = name else {

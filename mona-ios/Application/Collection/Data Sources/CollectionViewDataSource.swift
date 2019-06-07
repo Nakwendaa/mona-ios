@@ -23,7 +23,7 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
     }
     
     //MARK: - Initializers
-    init(collectionView: UICollectionView, artworks: [Artwork]) {
+    init(artworks: [Artwork]) {
         super.init()
         self.artworks = artworks
         // Setup image request options
@@ -42,9 +42,6 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
             localIdentifiersOrdered[photo.localIdentifier] = index
             index += 1
         }
-        // We fetch assets sorted by index. Some assets in the array could be nil because they don't exist anymore in the photolibrary
-        let layout = collectionView.collectionViewLayout
-        //let targetSize = layout.layoutAttributesForItem(at: IndexPath(row: 0, section: 0))!.bounds.size
         assets = MonaPhotosAlbum.shared.fetchAssets(withLocalIdentifiers: localIdentifiersOrdered).compactMap { $0 }
         cachingImageManager.startCachingImages(for: assets, targetSize: CGSize(width: 100, height: 200), contentMode: .aspectFill, options: imageRequestOptions)
         NotificationCenter.default.addObserver(self, selector: #selector(didAddPhotoToArtwork(_:)), name: .didAddPhotoToArtwork, object: nil)

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Paul Chaffanet. All rights reserved.
 //
 
-extension Material : Namable {
+extension Material : FetchableNamable {
     
     typealias T = Material
     

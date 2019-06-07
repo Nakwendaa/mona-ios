@@ -6,7 +6,7 @@
 //  Copyright © 2019 Paul Chaffanet. All rights reserved.
 //
 
-extension District : Namable {
+extension District : FetchableNamable {
     typealias T = District
     
     var nameNamable: String {

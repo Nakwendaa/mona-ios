@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 
-class MapViewController: UIViewController, Contextualizable {
+class MapViewController: SearchViewController {
     
     //MARK: - Types
     struct Strings {
@@ -35,7 +35,7 @@ class MapViewController: UIViewController, Contextualizable {
     //MARK: - Properties
     var viewContext: NSManagedObjectContext?
     let locationManager = CLLocationManager()
-    var artworks : [Artwork]?
+    var artworks : [Artwork] = AppData.artworks
     
     //MARK: - UI Properties
     @IBOutlet weak var mapView: MKMapView!
@@ -54,14 +54,7 @@ class MapViewController: UIViewController, Contextualizable {
         let initialLocation = CLLocation(latitude: 45.6, longitude: -73.65)
         // Set the initial zoom
         centerOnLocation(initialLocation, regionRadius: 30000)
-        CoreDataStack.fetchAsynchronously(type: Artwork.self, context: viewContext!, entityName: "Artwork") {
-            artworks in
-            self.artworks = artworks
-            // Set the artworks
-            artworks.forEach({
-                self.mapView.addAnnotation(ArtworkAnnotation(artwork: $0))
-            })
-        }
+        mapView.addAnnotations(artworks.map{ ArtworkAnnotation(artwork: $0)})
         setupLegendView()
     }
     
@@ -205,10 +198,6 @@ class MapViewController: UIViewController, Contextualizable {
         }
         
         sender.isSelected = !sender.isSelected
-        
-        guard let artworks = artworks else {
-            return
-        }
         
         
         // 001

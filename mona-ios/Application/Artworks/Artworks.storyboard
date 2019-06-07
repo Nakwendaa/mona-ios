@@ -270,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JdP-1C-Leg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4905" y="-561"/>
+            <point key="canvasLocation" x="4905" y="-564"/>
         </scene>
         <!--General Table View Controller-->
         <scene sceneID="lEu-sa-FB9">
@@ -1053,16 +1053,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Lorem ipsum" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ar8-jQ-WH5">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ar8-jQ-WH5">
                                                 <rect key="frame" x="0.0" y="28.5" width="325" height="117.5"/>
                                                 <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="0.38613013699999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
                                             </textView>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ZP-ah-Qa9">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ZP-ah-Qa9">
                                                 <rect key="frame" x="205" y="154" width="120" height="24"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9Rg-q8-M8A" customClass="RatingControl" customModule="mona_ios" customModuleProvider="target">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9Rg-q8-M8A" customClass="RatingControl" customModule="mona_ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="24"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
@@ -1084,7 +1084,7 @@
                                                     <constraint firstItem="9Rg-q8-M8A" firstAttribute="top" secondItem="9ZP-ah-Qa9" secondAttribute="top" id="pRM-cc-Jur"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFo-Ql-vH5">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFo-Ql-vH5">
                                                 <rect key="frame" x="8" y="150" width="61" height="30"/>
                                                 <state key="normal" title="Terminer"/>
                                                 <connections>
@@ -1380,6 +1380,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="k57-ET-KWn"/>
-        <segue reference="TQh-Cm-Sfo"/>
+        <segue reference="TSS-os-uw0"/>
     </inferredMetricsTieBreakers>
 </document>

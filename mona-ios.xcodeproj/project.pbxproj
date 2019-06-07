@@ -21,6 +21,19 @@
 		B428795422A562F600EABBE6 /* BadgesViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B428795622A562F600EABBE6 /* BadgesViewController.strings */; };
 		B428795922A5A38400EABBE6 /* WonBadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428795822A5A38400EABBE6 /* WonBadgeViewController.swift */; };
 		B428795C22A60CA500EABBE6 /* BadgeDetailsViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B428795E22A60CA500EABBE6 /* BadgeDetailsViewController.strings */; };
+		B428796222A6129700EABBE6 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B428796122A6129700EABBE6 /* Search.storyboard */; };
+		B428796822A6DAF100EABBE6 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428796722A6DAF100EABBE6 /* SearchResultsController.swift */; };
+		B428796A22A6F32A00EABBE6 /* SearchResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428796922A6F32A00EABBE6 /* SearchResultsDataSource.swift */; };
+		B428796C22A6F74F00EABBE6 /* Namable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428796B22A6F74F00EABBE6 /* Namable.swift */; };
+		B428796E22A6FD3D00EABBE6 /* Artwork+Namable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428796D22A6FD3D00EABBE6 /* Artwork+Namable.swift */; };
+		B428797022A7005100EABBE6 /* Category+Namable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428796F22A7005100EABBE6 /* Category+Namable.swift */; };
+		B428797222A700C900EABBE6 /* Subcategory+Namable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428797122A700C900EABBE6 /* Subcategory+Namable.swift */; };
+		B428797522A7037800EABBE6 /* SearchResultsDataSource.strings in Resources */ = {isa = PBXBuildFile; fileRef = B428797722A7037800EABBE6 /* SearchResultsDataSource.strings */; };
+		B428797B22A74F1800EABBE6 /* SearchResultsController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B428797D22A74F1800EABBE6 /* SearchResultsController.strings */; };
+		B428798022A7521300EABBE6 /* SearchGeneralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428797F22A7521300EABBE6 /* SearchGeneralTableViewController.swift */; };
+		B428798222A7568B00EABBE6 /* ArtworksFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428798122A7568B00EABBE6 /* ArtworksFetchable.swift */; };
+		B428798522A8208D00EABBE6 /* GeneralTableViewDataSource.strings in Resources */ = {isa = PBXBuildFile; fileRef = B428798722A8208D00EABBE6 /* GeneralTableViewDataSource.strings */; };
+		B428798A22A897BD00EABBE6 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428798922A897BD00EABBE6 /* SearchController.swift */; };
 		B42AA67222A3319400D53E87 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B42AA66F22A3319400D53E87 /* Model.xcdatamodeld */; };
 		B42AA67422A3323900D53E87 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42AA67322A3323900D53E87 /* NavigationController.swift */; };
 		B48394BA2295A8E60003065B /* ArtworkDetailsDescriptionViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B48394BC2295A8E60003065B /* ArtworkDetailsDescriptionViewController.strings */; };
@@ -58,7 +71,7 @@
 		B487536222A3264C00EE6EE6 /* Badge+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487533C22A3264A00EE6EE6 /* Badge+CoreDataProperties.swift */; };
 		B487536322A3264C00EE6EE6 /* Material+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487533D22A3264A00EE6EE6 /* Material+CoreDataProperties.swift */; };
 		B487536422A3264C00EE6EE6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487533E22A3264A00EE6EE6 /* CoreDataStack.swift */; };
-		B487536522A3264C00EE6EE6 /* Namable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487533F22A3264A00EE6EE6 /* Namable.swift */; };
+		B487536522A3264C00EE6EE6 /* FetchableNamable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487533F22A3264A00EE6EE6 /* FetchableNamable.swift */; };
 		B487536622A3264C00EE6EE6 /* Subcategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487534022A3264A00EE6EE6 /* Subcategory+CoreDataProperties.swift */; };
 		B487536722A3264C00EE6EE6 /* Technique+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487534122A3264A00EE6EE6 /* Technique+CoreDataClass.swift */; };
 		B487536822A3264C00EE6EE6 /* Address+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B487534222A3264A00EE6EE6 /* Address+CoreDataProperties.swift */; };
@@ -111,10 +124,7 @@
 		B48753CA22A327C700EE6EE6 /* ArtworkDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753C922A327C700EE6EE6 /* ArtworkDetailsViewController.swift */; };
 		B48753CC22A327DA00EE6EE6 /* ArtworksTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753CB22A327DA00EE6EE6 /* ArtworksTableViewDataSource.swift */; };
 		B48753CE22A327E200EE6EE6 /* ArtworksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753CD22A327E100EE6EE6 /* ArtworksTableViewController.swift */; };
-		B48753D322A327FE00EE6EE6 /* ArtistsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753CF22A327FE00EE6EE6 /* ArtistsTableViewDataSource.swift */; };
-		B48753D422A327FE00EE6EE6 /* TechniquesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753D022A327FE00EE6EE6 /* TechniquesTableViewDataSource.swift */; };
-		B48753D522A327FE00EE6EE6 /* MaterialsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753D122A327FE00EE6EE6 /* MaterialsTableViewDataSource.swift */; };
-		B48753D622A327FE00EE6EE6 /* NamableTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753D222A327FE00EE6EE6 /* NamableTableViewDataSource.swift */; };
+		B48753D622A327FE00EE6EE6 /* GeneralTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753D222A327FE00EE6EE6 /* GeneralTableViewDataSource.swift */; };
 		B48753D822A3280400EE6EE6 /* GeneralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753D722A3280400EE6EE6 /* GeneralTableViewController.swift */; };
 		B48753DA22A3281200EE6EE6 /* FilterPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753D922A3281200EE6EE6 /* FilterPopoverViewController.swift */; };
 		B48753DC22A3282800EE6EE6 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753DB22A3282700EE6EE6 /* MainTableViewCell.swift */; };
@@ -185,6 +195,7 @@
 		B4AD5E8A22908B710064A876 /* TableViewIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD5E8822908B710064A876 /* TableViewIndex.swift */; };
 		B4AD5E8C22908E860064A876 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B4AD5E8B22908E860064A876 /* LICENSE */; };
 		B4AD5E8F229095A60064A876 /* GeneralTableViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4AD5E91229095A60064A876 /* GeneralTableViewController.strings */; };
+		B4C8C9CE22A9DEEE00555CDC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8C9CD22A9DEEE00555CDC /* SearchViewController.swift */; };
 		B4D0637F229462EF006E280D /* ArtworksTableViewDataSource.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4D06381229462EF006E280D /* ArtworksTableViewDataSource.strings */; };
 /* End PBXBuildFile section */
 
@@ -228,6 +239,22 @@
 		B428795822A5A38400EABBE6 /* WonBadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WonBadgeViewController.swift; sourceTree = "<group>"; };
 		B428795D22A60CA500EABBE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/BadgeDetailsViewController.strings; sourceTree = "<group>"; };
 		B428795F22A60CA600EABBE6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/BadgeDetailsViewController.strings; sourceTree = "<group>"; };
+		B428796122A6129700EABBE6 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		B428796722A6DAF100EABBE6 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
+		B428796922A6F32A00EABBE6 /* SearchResultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDataSource.swift; sourceTree = "<group>"; };
+		B428796B22A6F74F00EABBE6 /* Namable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Namable.swift; sourceTree = "<group>"; };
+		B428796D22A6FD3D00EABBE6 /* Artwork+Namable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Artwork+Namable.swift"; sourceTree = "<group>"; };
+		B428796F22A7005100EABBE6 /* Category+Namable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Namable.swift"; sourceTree = "<group>"; };
+		B428797122A700C900EABBE6 /* Subcategory+Namable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subcategory+Namable.swift"; sourceTree = "<group>"; };
+		B428797622A7037800EABBE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SearchResultsDataSource.strings; sourceTree = "<group>"; };
+		B428797822A7037B00EABBE6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SearchResultsDataSource.strings; sourceTree = "<group>"; };
+		B428797C22A74F1800EABBE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SearchResultsController.strings; sourceTree = "<group>"; };
+		B428797E22A74F1B00EABBE6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/SearchResultsController.strings; sourceTree = "<group>"; };
+		B428797F22A7521300EABBE6 /* SearchGeneralTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGeneralTableViewController.swift; sourceTree = "<group>"; };
+		B428798122A7568B00EABBE6 /* ArtworksFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworksFetchable.swift; sourceTree = "<group>"; };
+		B428798622A8208D00EABBE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/GeneralTableViewDataSource.strings; sourceTree = "<group>"; };
+		B428798822A8209100EABBE6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/GeneralTableViewDataSource.strings; sourceTree = "<group>"; };
+		B428798922A897BD00EABBE6 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		B42AA67022A3319400D53E87 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		B42AA67122A3319400D53E87 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B42AA67322A3323900D53E87 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -274,7 +301,7 @@
 		B487533C22A3264A00EE6EE6 /* Badge+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Badge+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B487533D22A3264A00EE6EE6 /* Material+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Material+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B487533E22A3264A00EE6EE6 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		B487533F22A3264A00EE6EE6 /* Namable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Namable.swift; sourceTree = "<group>"; };
+		B487533F22A3264A00EE6EE6 /* FetchableNamable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchableNamable.swift; sourceTree = "<group>"; };
 		B487534022A3264A00EE6EE6 /* Subcategory+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Subcategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B487534122A3264A00EE6EE6 /* Technique+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Technique+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B487534222A3264A00EE6EE6 /* Address+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Address+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -329,10 +356,7 @@
 		B48753C922A327C700EE6EE6 /* ArtworkDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkDetailsViewController.swift; sourceTree = "<group>"; };
 		B48753CB22A327DA00EE6EE6 /* ArtworksTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworksTableViewDataSource.swift; sourceTree = "<group>"; };
 		B48753CD22A327E100EE6EE6 /* ArtworksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworksTableViewController.swift; sourceTree = "<group>"; };
-		B48753CF22A327FE00EE6EE6 /* ArtistsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistsTableViewDataSource.swift; sourceTree = "<group>"; };
-		B48753D022A327FE00EE6EE6 /* TechniquesTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechniquesTableViewDataSource.swift; sourceTree = "<group>"; };
-		B48753D122A327FE00EE6EE6 /* MaterialsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialsTableViewDataSource.swift; sourceTree = "<group>"; };
-		B48753D222A327FE00EE6EE6 /* NamableTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamableTableViewDataSource.swift; sourceTree = "<group>"; };
+		B48753D222A327FE00EE6EE6 /* GeneralTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableViewDataSource.swift; sourceTree = "<group>"; };
 		B48753D722A3280400EE6EE6 /* GeneralTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableViewController.swift; sourceTree = "<group>"; };
 		B48753D922A3281200EE6EE6 /* FilterPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPopoverViewController.swift; sourceTree = "<group>"; };
 		B48753DB22A3282700EE6EE6 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
@@ -409,6 +433,7 @@
 		B4AD5E8B22908E860064A876 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B4AD5E90229095A60064A876 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/GeneralTableViewController.strings; sourceTree = "<group>"; };
 		B4AD5E92229095AA0064A876 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/GeneralTableViewController.strings; sourceTree = "<group>"; };
+		B4C8C9CD22A9DEEE00555CDC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B4D06380229462EF006E280D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ArtworksTableViewDataSource.strings; sourceTree = "<group>"; };
 		B4D06382229462F0006E280D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ArtworksTableViewDataSource.strings; sourceTree = "<group>"; };
 		DEE08286C27FB802BF9DAE6C /* Pods-mona-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mona-ios.release.xcconfig"; path = "Target Support Files/Pods-mona-ios/Pods-mona-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -540,10 +565,12 @@
 				B487533A22A3264A00EE6EE6 /* Artist+Namable.swift */,
 				B487534F22A3264B00EE6EE6 /* Artwork+CoreDataClass.swift */,
 				B487535822A3264C00EE6EE6 /* Artwork+CoreDataProperties.swift */,
+				B428796D22A6FD3D00EABBE6 /* Artwork+Namable.swift */,
 				B487534B22A3264B00EE6EE6 /* Badge+CoreDataClass.swift */,
 				B487533C22A3264A00EE6EE6 /* Badge+CoreDataProperties.swift */,
 				B487534A22A3264B00EE6EE6 /* Category+CoreDataClass.swift */,
 				B487535722A3264C00EE6EE6 /* Category+CoreDataProperties.swift */,
+				B428796F22A7005100EABBE6 /* Category+Namable.swift */,
 				B487535522A3264B00EE6EE6 /* Coordinate+CoreDataClass.swift */,
 				B487533B22A3264A00EE6EE6 /* Coordinate+CoreDataProperties.swift */,
 				B487535122A3264B00EE6EE6 /* District+CoreDataClass.swift */,
@@ -562,6 +589,7 @@
 				B487535422A3264B00EE6EE6 /* Search+CoreDataProperties.swift */,
 				B487534D22A3264B00EE6EE6 /* Subcategory+CoreDataClass.swift */,
 				B487534022A3264A00EE6EE6 /* Subcategory+CoreDataProperties.swift */,
+				B428797122A700C900EABBE6 /* Subcategory+Namable.swift */,
 				B487534122A3264A00EE6EE6 /* Technique+CoreDataClass.swift */,
 				B487534922A3264B00EE6EE6 /* Technique+CoreDataProperties.swift */,
 				B487534422A3264B00EE6EE6 /* Technique+Namable.swift */,
@@ -601,6 +629,21 @@
 			children = (
 			);
 			path = "Data Privacy";
+			sourceTree = "<group>";
+		};
+		B428796022A6127C00EABBE6 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B428796122A6129700EABBE6 /* Search.storyboard */,
+				B4C8C9CD22A9DEEE00555CDC /* SearchViewController.swift */,
+				B428798922A897BD00EABBE6 /* SearchController.swift */,
+				B428796722A6DAF100EABBE6 /* SearchResultsController.swift */,
+				B428797D22A74F1800EABBE6 /* SearchResultsController.strings */,
+				B428796922A6F32A00EABBE6 /* SearchResultsDataSource.swift */,
+				B428797722A7037800EABBE6 /* SearchResultsDataSource.strings */,
+				B428797F22A7521300EABBE6 /* SearchGeneralTableViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		B4795CA2228D1480007688FA /* Seed */ = {
@@ -678,7 +721,9 @@
 			isa = PBXGroup;
 			children = (
 				B487533722A3264A00EE6EE6 /* FetchRequest.swift */,
-				B487533F22A3264A00EE6EE6 /* Namable.swift */,
+				B428798122A7568B00EABBE6 /* ArtworksFetchable.swift */,
+				B487533F22A3264A00EE6EE6 /* FetchableNamable.swift */,
+				B428796B22A6F74F00EABBE6 /* Namable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -823,6 +868,7 @@
 				B4E73C3A228FCE7500350FC1 /* Map */,
 				B4E73C3B228FCE8A00350FC1 /* Collection */,
 				B48394E22295CBD10003065B /* More */,
+				B428796022A6127C00EABBE6 /* Search */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -983,20 +1029,10 @@
 			children = (
 				B48753D722A3280400EE6EE6 /* GeneralTableViewController.swift */,
 				B4AD5E91229095A60064A876 /* GeneralTableViewController.strings */,
-				B4D0637422918D21006E280D /* General Table View Data Sources */,
+				B48753D222A327FE00EE6EE6 /* GeneralTableViewDataSource.swift */,
+				B428798722A8208D00EABBE6 /* GeneralTableViewDataSource.strings */,
 			);
 			path = GeneralTableViewController;
-			sourceTree = "<group>";
-		};
-		B4D0637422918D21006E280D /* General Table View Data Sources */ = {
-			isa = PBXGroup;
-			children = (
-				B48753CF22A327FE00EE6EE6 /* ArtistsTableViewDataSource.swift */,
-				B48753D122A327FE00EE6EE6 /* MaterialsTableViewDataSource.swift */,
-				B48753D022A327FE00EE6EE6 /* TechniquesTableViewDataSource.swift */,
-				B48753D222A327FE00EE6EE6 /* NamableTableViewDataSource.swift */,
-			);
-			path = "General Table View Data Sources";
 			sourceTree = "<group>";
 		};
 		B4E73C39228FCE6700350FC1 /* Artworks */ = {
@@ -1164,17 +1200,21 @@
 				B48753AF22A3273700EE6EE6 /* MapViewController.strings in Resources */,
 				B488589E2289E8980011360D /* DailyArtworkViewController.strings in Resources */,
 				B48394F7229610B30003065B /* ArtworkDetailsViewController.strings in Resources */,
+				B428797B22A74F1800EABBE6 /* SearchResultsController.strings in Resources */,
 				B487539222A326A200EE6EE6 /* Collection.storyboard in Resources */,
 				B407CA3C2285C55D00D02ABC /* Assets.xcassets in Resources */,
 				B487538D22A326A200EE6EE6 /* LICENSE.txt in Resources */,
 				B49CA2612290196400FBA757 /* MainTableViewController.strings in Resources */,
 				B48394DA2295C8AE0003065B /* ArtworkDetailsRatingViewController.strings in Resources */,
 				B48394BA2295A8E60003065B /* ArtworkDetailsDescriptionViewController.strings in Resources */,
+				B428797522A7037800EABBE6 /* SearchResultsDataSource.strings in Resources */,
 				B49CA256229014E700FBA757 /* MainListHeaderView.xib in Resources */,
 				B4AD5E8C22908E860064A876 /* LICENSE in Resources */,
 				B4AD5E8F229095A60064A876 /* GeneralTableViewController.strings in Resources */,
 				B487542B22A32DA200EE6EE6 /* Tabbar.storyboard in Resources */,
+				B428798522A8208D00EABBE6 /* GeneralTableViewDataSource.strings in Resources */,
 				B49CA2582290154100FBA757 /* ArtworksListHeaderView.xib in Resources */,
+				B428796222A6129700EABBE6 /* Search.storyboard in Resources */,
 				B48753AB22A3271800EE6EE6 /* ArtworkAnnotation.strings in Resources */,
 				B488587D2289E78E0011360D /* DailyArtwork.storyboard in Resources */,
 				B48394EF229609400003065B /* InfoPlist.strings in Resources */,
@@ -1308,6 +1348,7 @@
 				B487535F22A3264C00EE6EE6 /* Artist+CoreDataClass.swift in Sources */,
 				B48753D822A3280400EE6EE6 /* GeneralTableViewController.swift in Sources */,
 				B48753F922A3289100EE6EE6 /* TabBarController.swift in Sources */,
+				B428798222A7568B00EABBE6 /* ArtworksFetchable.swift in Sources */,
 				B48753CC22A327DA00EE6EE6 /* ArtworksTableViewDataSource.swift in Sources */,
 				B487536922A3264C00EE6EE6 /* Address+CoreDataClass.swift in Sources */,
 				B487536622A3264C00EE6EE6 /* Subcategory+CoreDataProperties.swift in Sources */,
@@ -1324,6 +1365,7 @@
 				B4AD5E6C22908B410064A876 /* Truncation.swift in Sources */,
 				B48753E722A3285800EE6EE6 /* DailyArtworkImagePickerController.swift in Sources */,
 				B487536A22A3264C00EE6EE6 /* Technique+Namable.swift in Sources */,
+				B4C8C9CE22A9DEEE00555CDC /* SearchViewController.swift in Sources */,
 				B487536122A3264C00EE6EE6 /* Coordinate+CoreDataProperties.swift in Sources */,
 				B487541522A328B300EE6EE6 /* HTTPResponse.swift in Sources */,
 				B48753BE22A3279600EE6EE6 /* ArtworkDetailsAnnotationView.swift in Sources */,
@@ -1331,11 +1373,13 @@
 				B487537C22A3264C00EE6EE6 /* Artwork+CoreDataProperties.swift in Sources */,
 				B487532922A3262700EE6EE6 /* NSDate+Extension.swift in Sources */,
 				B4AD5E8222908B640064A876 /* TruncationItem.swift in Sources */,
+				B428796822A6DAF100EABBE6 /* SearchResultsController.swift in Sources */,
 				B48753F422A3288000EE6EE6 /* MainTableViewController.swift in Sources */,
 				B487541F22A328B300EE6EE6 /* MonaAPI+DecodableResponses.swift in Sources */,
 				B48753C822A327C100EE6EE6 /* ArtworkDetailsImagePickerController.swift in Sources */,
 				B487536322A3264C00EE6EE6 /* Material+CoreDataProperties.swift in Sources */,
 				B42AA67222A3319400D53E87 /* Model.xcdatamodeld in Sources */,
+				B428798022A7521300EABBE6 /* SearchGeneralTableViewController.swift in Sources */,
 				B487533122A3262700EE6EE6 /* CGRect+Extension.swift in Sources */,
 				B48753E822A3285800EE6EE6 /* DailyArtworkImagePickerControllerDelegate.swift in Sources */,
 				B487539322A326A200EE6EE6 /* CollectionViewLayout.swift in Sources */,
@@ -1343,7 +1387,6 @@
 				B487533222A3262700EE6EE6 /* UIDevice+Extension.swift in Sources */,
 				B487541A22A328B300EE6EE6 /* MonaAPI+RegisterRequest.swift in Sources */,
 				B4AD5E6B22908B410064A876 /* BackgroundView.swift in Sources */,
-				B48753D522A327FE00EE6EE6 /* MaterialsTableViewDataSource.swift in Sources */,
 				B48753EF22A3286500EE6EE6 /* DailyArtworkAnnotation.swift in Sources */,
 				B4AD5E6E22908B410064A876 /* Style.swift in Sources */,
 				B48753B922A3278100EE6EE6 /* ArtworkDetailsPageViewController.swift in Sources */,
@@ -1352,7 +1395,6 @@
 				B48753DA22A3281200EE6EE6 /* FilterPopoverViewController.swift in Sources */,
 				B4AD5E8A22908B710064A876 /* TableViewIndex.swift in Sources */,
 				B487532722A3262700EE6EE6 /* String+Extension.swift in Sources */,
-				B48753D422A327FE00EE6EE6 /* TechniquesTableViewDataSource.swift in Sources */,
 				B4AD5E8422908B640064A876 /* ImageItem.swift in Sources */,
 				B487537522A3264C00EE6EE6 /* District+CoreDataClass.swift in Sources */,
 				B487535C22A3264C00EE6EE6 /* LocalizableEntity+CoreDataProperties.swift in Sources */,
@@ -1374,9 +1416,12 @@
 				B487541C22A328B300EE6EE6 /* MonaAPI+ArtworksRequest.swift in Sources */,
 				B42AA67422A3323900D53E87 /* NavigationController.swift in Sources */,
 				B487531722A3261500EE6EE6 /* UserDefaultsManager.swift in Sources */,
+				B428796C22A6F74F00EABBE6 /* Namable.swift in Sources */,
 				B48753DC22A3282800EE6EE6 /* MainTableViewCell.swift in Sources */,
 				B487542722A329B500EE6EE6 /* AppDelegate.swift in Sources */,
 				B4AD5E8522908B640064A876 /* StringItem.swift in Sources */,
+				B428798A22A897BD00EABBE6 /* SearchController.swift in Sources */,
+				B428797022A7005100EABBE6 /* Category+Namable.swift in Sources */,
 				B48753C222A327BA00EE6EE6 /* ArtworkDetailsCommentViewController.swift in Sources */,
 				B487537B22A3264C00EE6EE6 /* Category+CoreDataProperties.swift in Sources */,
 				B4AD5E7A22908B4F0064A876 /* GeometryHelpers.swift in Sources */,
@@ -1417,6 +1462,7 @@
 				B487536E22A3264C00EE6EE6 /* Category+CoreDataClass.swift in Sources */,
 				B487541822A328B300EE6EE6 /* HTTPHeaders.swift in Sources */,
 				B428795922A5A38400EABBE6 /* WonBadgeViewController.swift in Sources */,
+				B428796E22A6FD3D00EABBE6 /* Artwork+Namable.swift in Sources */,
 				B48753C722A327C100EE6EE6 /* ArtworkDetailsImagePickerControllerDelegate.swift in Sources */,
 				B48753EA22A3285800EE6EE6 /* DailyArtworkCommentViewController.swift in Sources */,
 				B487533422A3262700EE6EE6 /* Notification.Name+Extension.swift in Sources */,
@@ -1430,16 +1476,17 @@
 				B4AD5E7822908B4F0064A876 /* ObjCHelpers.swift in Sources */,
 				B487541022A328B300EE6EE6 /* MonaAPI.swift in Sources */,
 				B487536F22A3264C00EE6EE6 /* Badge+CoreDataClass.swift in Sources */,
+				B428796A22A6F32A00EABBE6 /* SearchResultsDataSource.swift in Sources */,
 				B48753CE22A327E200EE6EE6 /* ArtworksTableViewController.swift in Sources */,
 				B487541222A328B300EE6EE6 /* DataError.swift in Sources */,
-				B487536522A3264C00EE6EE6 /* Namable.swift in Sources */,
+				B487536522A3264C00EE6EE6 /* FetchableNamable.swift in Sources */,
 				B487539622A326CA00EE6EE6 /* CollectionViewDataSource.swift in Sources */,
 				B487541D22A328B300EE6EE6 /* MonaAPI+LoginRequest.swift in Sources */,
-				B48753D322A327FE00EE6EE6 /* ArtistsTableViewDataSource.swift in Sources */,
+				B428797222A700C900EABBE6 /* Subcategory+Namable.swift in Sources */,
 				B487537022A3264C00EE6EE6 /* Material+Namable.swift in Sources */,
 				B487541122A328B300EE6EE6 /* MonaAPI+Responses.swift in Sources */,
 				B4AD5E6A22908B410064A876 /* IndexView.swift in Sources */,
-				B48753D622A327FE00EE6EE6 /* NamableTableViewDataSource.swift in Sources */,
+				B48753D622A327FE00EE6EE6 /* GeneralTableViewDataSource.swift in Sources */,
 				B48753BA22A3278100EE6EE6 /* ArtworkDetailsDescriptionViewController.swift in Sources */,
 				B48753E022A3282F00EE6EE6 /* ArtworkTableViewCell.swift in Sources */,
 			);
@@ -1493,6 +1540,33 @@
 				B428795F22A60CA600EABBE6 /* fr */,
 			);
 			name = BadgeDetailsViewController.strings;
+			sourceTree = "<group>";
+		};
+		B428797722A7037800EABBE6 /* SearchResultsDataSource.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B428797622A7037800EABBE6 /* en */,
+				B428797822A7037B00EABBE6 /* fr */,
+			);
+			name = SearchResultsDataSource.strings;
+			sourceTree = "<group>";
+		};
+		B428797D22A74F1800EABBE6 /* SearchResultsController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B428797C22A74F1800EABBE6 /* en */,
+				B428797E22A74F1B00EABBE6 /* fr */,
+			);
+			name = SearchResultsController.strings;
+			sourceTree = "<group>";
+		};
+		B428798722A8208D00EABBE6 /* GeneralTableViewDataSource.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B428798622A8208D00EABBE6 /* en */,
+				B428798822A8209100EABBE6 /* fr */,
+			);
+			name = GeneralTableViewDataSource.strings;
 			sourceTree = "<group>";
 		};
 		B48394BC2295A8E60003065B /* ArtworkDetailsDescriptionViewController.strings */ = {

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ArtworkDetailsRatingViewController: UIViewController, Contextualizable {
+class ArtworkDetailsRatingViewController: UIViewController {
     
     //MARK: - Types
     struct Segues {
@@ -26,9 +26,7 @@ class ArtworkDetailsRatingViewController: UIViewController, Contextualizable {
     
     
     //MARK: - Properties
-    weak var artwork : Artwork?
-    //MARK: - Contextualizable
-    var viewContext: NSManagedObjectContext?
+    var artwork : Artwork!
     
     //MARK: - User Interface properties
     @IBOutlet weak var hintLabel: UILabel!
@@ -68,42 +66,36 @@ class ArtworkDetailsRatingViewController: UIViewController, Contextualizable {
     //MARK: - Actions
     @IBAction func validateButtonTapped(_ sender: UIButton) {
         if validateButton.isEnabled {
-            guard let artwork = self.artwork else {
-                return
-            }
             
             artwork.rating = Int16(ratingControl.rating)
             artwork.ratingSent = false
             
-            let context = CoreDataStack.mainContext
-            
             do {
-                try context.save()
+                try AppData.context.save()
             }
             catch {
                 log.error("Failed to save context: \(error)")
                 return
             }
             
-            MonaAPI.shared.artwork(id: Int(artwork.id), rating: Int(artwork.rating), comment: nil, photo: nil) { (result) in
+            MonaAPI.shared.artwork(id: Int(self.artwork.id), rating: Int(self.artwork.rating), comment: nil, photo: nil) { (result) in
                 switch result {
                 case .success(_):
-                    log.info("Rating \"\(artwork.rating)\" sent successfully for artwork with id: \(artwork.id).")
-                    artwork.ratingSent = true
+                    log.info("Rating \"\(self.artwork.rating)\" sent successfully for artwork with id: \(self.artwork.id).")
+                    self.artwork.ratingSent = true
                     do {
-                        try context.save()
+                        try AppData.context.save()
                     }
                     catch {
                         log.error("Failed to save context: \(error)")
                     }
                 case .failure(let userArtworkError):
-                    log.error("Failed to send rating \"\(artwork.rating)\" for artwork with id: \(artwork.id).")
+                    log.error("Failed to send rating \"\(self.artwork.rating)\" for artwork with id: \(self.artwork.id).")
                     log.error(userArtworkError)
                     log.error(userArtworkError.localizedDescription)
                 }   
             }
             
-            //commentViewController.artwork = artwork
             performSegue(withIdentifier: Segues.showArtworkDetailsCommentViewController, sender: self)
         }
     }

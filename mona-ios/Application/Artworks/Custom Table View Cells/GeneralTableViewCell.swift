@@ -10,10 +10,13 @@ import UIKit
 
 class GeneralTableViewCell: UITableViewCell {
     
+    //MARK: - Static properties
+    static let reuseIdentifier = "GeneralTableViewCell"
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var trailingMarginConstraint: NSLayoutConstraint!
-    var artworksIds : [Int16]!
+    var artworks = [Artwork]()
     
     
     override func awakeFromNib() {

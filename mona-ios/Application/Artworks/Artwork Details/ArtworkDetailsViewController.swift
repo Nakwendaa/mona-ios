@@ -12,7 +12,7 @@ import CoreData
 import AVFoundation
 import Photos
 
-class ArtworkDetailsViewController: UIViewController, Contextualizable {
+class ArtworkDetailsViewController: SearchViewController {
     
     //MARK: - Types
     struct Segues {
@@ -40,8 +40,6 @@ class ArtworkDetailsViewController: UIViewController, Contextualizable {
     //MARK: - Properties
     let locationManager = CLLocationManager()
     var artwork : Artwork!
-    //MARK: - Contextualizable
-    var viewContext: NSManagedObjectContext?
     
     //MARK: - Utils properties
     var keyboardWasShown = false
@@ -98,7 +96,6 @@ class ArtworkDetailsViewController: UIViewController, Contextualizable {
             let vc = segue.destination as? ArtworkDetailsImagePickerController {
             vc.sourceType = .camera
             vc.artwork = artwork
-            vc.viewContext = viewContext
             vc.onSuccess = {
                 DispatchQueue.main.async {
                     self.setupDefaultView()

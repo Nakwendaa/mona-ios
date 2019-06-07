@@ -10,25 +10,28 @@
 import UIKit
 import CoreData
 
-class NamableTableViewDataSource<T : Namable>: NSObject, UITableViewDataSource, TableViewIndexDataSource {
+class GeneralTableViewDataSource: NSObject, UITableViewDataSource, TableViewIndexDataSource {
     
-    
+    //MARK: - Types
     struct Section {
         var name : String?
-        var items : [T]
+        var items : [ArtworksNamable]
     }
     
-    let artwork = NSLocalizedString("artwork", tableName: "GeneralTableViewController", bundle: .main, value: "", comment: "")
-    let artworks = NSLocalizedString("artworks", tableName: "GeneralTableViewController", bundle: .main, value: "", comment: "")
+    struct Strings {
+        private static let tableName = "GeneralTableViewDataSource"
+        static let artwork = NSLocalizedString("artwork", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let artworks = NSLocalizedString("artworks", tableName: tableName, bundle: .main, value: "", comment: "")
+    }
     
     var sections : [Section]
     
-    init(namables: [T]) {
+    init(namables: [ArtworksNamable]) {
         self.sections = [Section]()
         let nam = namables.sorted(by: {
             $0.nameNamable < $1.nameNamable
         })
-        var sectionsNamables = [String: [T]]()
+        var sectionsNamables = [String: [ArtworksNamable]]()
         var lastSectionUsed = ""
         // Build the sections that we're gonna use for the alphabetical sort
         for namable in nam {
@@ -75,9 +78,8 @@ class NamableTableViewDataSource<T : Namable>: NSObject, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "GeneralTableViewCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GeneralTableViewCell  else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: GeneralTableViewCell.reuseIdentifier, for: indexPath) as? GeneralTableViewCell  else {
             fatalError("The dequeued cell is not an instance of GeneralTableViewCell.")
         }
         
@@ -85,12 +87,12 @@ class NamableTableViewDataSource<T : Namable>: NSObject, UITableViewDataSource, 
         let namable = self.sections[indexPath.section].items[indexPath.row]
         cell.titleLabel.text = namable.nameNamable
         if namable.artworks.count == 1 {
-            cell.subtitleLabel.text = String(namable.artworks.count) + " " + TechniquesTableViewDataSource.artwork
+            cell.subtitleLabel.text = String(namable.artworks.count) + " " + Strings.artwork
         }
         else {
-            cell.subtitleLabel.text = String(namable.artworks.count) + " " + TechniquesTableViewDataSource.artworks
+            cell.subtitleLabel.text = String(namable.artworks.count) + " " + Strings.artworks
         }
-        cell.artworksIds = namable.artworks.map({$0.id})
+        cell.artworks = Array(namable.artworks)
         return cell
     }
     

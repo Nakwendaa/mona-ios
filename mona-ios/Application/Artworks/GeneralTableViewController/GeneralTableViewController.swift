@@ -9,10 +9,7 @@
 import UIKit
 import CoreData
 
-class GeneralTableViewController : UIViewController, Contextualizable {
-    
-    //Contextualizable
-    var viewContext: NSManagedObjectContext?
+class GeneralTableViewController : SearchViewController {
     
     // Table View
     @IBOutlet weak var tableView: UITableView!
@@ -28,6 +25,9 @@ class GeneralTableViewController : UIViewController, Contextualizable {
     // Table View Index Animation
     var canPerformTableViewIndexAnimation = true
     
+    struct Segues {
+        static let showArtworksTableViewController = "showArtworksTableViewController"
+    }
     struct Strings {
         private static let tableName = "GeneralTableViewController"
         static let artists = NSLocalizedString("artists", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
@@ -48,22 +48,20 @@ class GeneralTableViewController : UIViewController, Contextualizable {
     }
     
     var progressView : UIProgressView!
+    var namables = [ArtworksNamable]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        switch title {
-        case Strings.artists:
-            setup(type: Artist.self)
-            break
-        case Strings.materials:
-            setup(type: Material.self)
-            break
-        case Strings.techniques:
-            //setupProgressView()
-            setup(type: Technique.self)
-            break
-        default:
-            break
+        
+        //Setup tableviewdatasourcel
+        DispatchQueue.main.async {
+            let tableViewDataSource = GeneralTableViewDataSource(namables: self.namables)
+            self.tableViewDataSource = tableViewDataSource
+            self.tableViewIndexDataSource = tableViewDataSource
+            self.tableView.dataSource = tableViewDataSource
+            self.tableViewIndex.dataSource = tableViewDataSource
+            self.tableView.reloadData()
+            self.tableViewIndex.reloadData()
         }
         
         headerTableViewLabel.text = title
@@ -77,71 +75,21 @@ class GeneralTableViewController : UIViewController, Contextualizable {
         setTransparentNavigationBar(tintColor: .black)
     }
     
-    private func setup<T : NSManagedObject & Namable>(type: T.Type) {
-        guard let context = viewContext else {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
             return
         }
-        let privateManagedContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        privateManagedContext.parent = context
-
-        let syncNamablesFetchRequest : NSFetchRequest<T.T> = T.fetchRequest()
-        let asyncNamablesFetchRequest = NSAsynchronousFetchRequest(fetchRequest: syncNamablesFetchRequest) { result in
-            guard let namablesAsync = result.finalResult else { return }
-            
-            DispatchQueue.main.async {
-                let namables: [T] = namablesAsync.lazy
-                    .compactMap { $0.objectID } // Retrives all the objectsID
-                    .compactMap { context.object(with: $0) as? T }
-                
-                // Techniques
-                let tableViewDataSource = NamableTableViewDataSource(namables: namables)
-                self.tableViewDataSource = tableViewDataSource
-                self.tableViewIndexDataSource = tableViewDataSource
-                self.tableView.dataSource = tableViewDataSource
-                self.tableViewIndex.dataSource = tableViewDataSource
-                //self.progressView.removeFromSuperview()
-                self.tableView.reloadData()
-                self.tableViewIndex.reloadData()
-            }
-        }
-        do {
-            // Creates a new `Progress` object
-            let progress = Progress(totalUnitCount: 1)
-            
-            // Sets the new progess as default one in the current thread
-            progress.becomeCurrent(withPendingUnitCount: 1)
-            
-            // Keeps a reference of `NSPersistentStoreAsynchronousResult` returned by `execute`
-            let fetchResult = try privateManagedContext.execute(asyncNamablesFetchRequest) as? NSPersistentStoreAsynchronousResult
-            
-            // Resigns the current progress
-            progress.resignCurrent()
-            
-            // Adds observer
-            fetchResult?.progress?.addObserver(self, forKeyPath: #keyPath(Progress.completedUnitCount), options: .new, context: nil)
-        }
-        catch {
-            log.error("Failed to fetch techniques asynchronously. Error: \(error)")
+        
+        switch identifier {
+        case Segues.showArtworksTableViewController:
+            let destination = segue.destination as! ArtworksTableViewController
+            let cell = sender as! GeneralTableViewCell
+            destination.title = cell.titleLabel.text
+            destination.artworks = cell.artworks
+        default:
+            return
         }
     }
-    
-    /*
-    private func setupProgressView() {
-        progressView = UIProgressView(progressViewStyle: .default)
-        progressView.center = view.center
-        progressView.setProgress(0, animated: true)
-        progressView.trackTintColor = .lightGray
-        progressView.tintColor = .blue
-        view.addSubview(progressView)
-    }
-    */
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == #keyPath(Progress.completedUnitCount), let newValue = change?[.newKey] as? Float {
-            //progressView.setProgress(newValue, animated: true)
-        }
-    }
-    
 }
 
 //MARK: - UITableViewDelegate
@@ -169,12 +117,8 @@ extension GeneralTableViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.cellForRow(at: indexPath) as! GeneralTableViewCell
-        let viewController = UIStoryboard(name: "Artworks", bundle: nil).instantiateViewController(withIdentifier: "ArtworksTableViewController") as! ArtworksTableViewController
-        viewController.artworksIds = cell.artworksIds
-        viewController.title = cell.titleLabel.text
-        viewController.viewContext = viewContext
-        navigationController?.pushViewController(viewController, animated: true)
+        let cell = tableView.cellForRow(at: indexPath)
+        performSegue(withIdentifier: Segues.showArtworksTableViewController, sender: cell)
     }
 }
 

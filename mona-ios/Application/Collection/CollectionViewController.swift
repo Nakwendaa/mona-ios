@@ -9,10 +9,8 @@
 import UIKit
 import CoreData
 
-class CollectionViewController: UIViewController, Contextualizable {
+class CollectionViewController: SearchViewController {
     
-    //MARK: - Contextualizable
-    var viewContext: NSManagedObjectContext?
     //MARK: - Properties
     var collectionViewDataSource: UICollectionViewDataSource?
     // This variable is useful to avoid unnecessary tableview.reloadData when the viewDidLoad
@@ -23,13 +21,9 @@ class CollectionViewController: UIViewController, Contextualizable {
     //MARK: - Overriden methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionViewDataSource = CollectionViewDataSource()
+        let collectedArtworks = AppData.artworks.filter { $0.isCollected }
+        collectionViewDataSource = CollectionViewDataSource(artworks: collectedArtworks)
         collectionView.dataSource = collectionViewDataSource
-        CoreDataStack.fetchAsynchronously(type: Artwork.self, context: viewContext!, entityName: "Artwork", predicate: NSPredicate(format: "isCollected == YES")) { artworks in
-            self.collectionViewDataSource = CollectionViewDataSource(collectionView: self.collectionView, artworks: artworks)
-            self.collectionView.dataSource = self.collectionViewDataSource
-            self.collectionView.reloadData()
-        }
         setTransparentNavigationBar(tintColor: .black)
         // Do any additional setup after loading the view.
     }
@@ -37,11 +31,10 @@ class CollectionViewController: UIViewController, Contextualizable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if didViewLoaded {
-            CoreDataStack.fetchAsynchronously(type: Artwork.self, context: viewContext!, entityName: "Artwork", predicate: NSPredicate(format: "isCollected == YES")) { artworks in
-                self.collectionViewDataSource = CollectionViewDataSource(collectionView: self.collectionView, artworks: artworks)
-                self.collectionView.dataSource = self.collectionViewDataSource
-                self.collectionView.reloadData()
-            }
+            let collectedArtworks = AppData.artworks.filter { $0.isCollected }
+            collectionViewDataSource = CollectionViewDataSource(artworks: collectedArtworks)
+            collectionView.dataSource = self.collectionViewDataSource
+            collectionView.reloadData()
         }
         didViewLoaded = true
     }

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ArtworkDetailsImagePickerController: UIImagePickerController, Contextualizable {
+class ArtworkDetailsImagePickerController: UIImagePickerController {
     
     
     //MARK: - Types
@@ -18,9 +18,7 @@ class ArtworkDetailsImagePickerController: UIImagePickerController, Contextualiz
         static let presentWonBadge = "presentWonBadge"
     }
     
-    weak var artwork: Artwork?
-    //MARK: - Contextualizable
-    var viewContext: NSManagedObjectContext?
+    var artwork: Artwork!
     var onSuccess: (() -> Void)?
     var onFailure: ((Error) -> Void)?
     var artworkDetailsImagePickerControllerDelegate : ArtworkDetailsImagePickerControllerDelegate!
@@ -28,7 +26,6 @@ class ArtworkDetailsImagePickerController: UIImagePickerController, Contextualiz
     override func viewDidLoad() {
         super.viewDidLoad()
         artworkDetailsImagePickerControllerDelegate = ArtworkDetailsImagePickerControllerDelegate(artwork: artwork, onSuccess: onSuccess, onFailure: onFailure)
-        artworkDetailsImagePickerControllerDelegate.viewContext = viewContext
         delegate = artworkDetailsImagePickerControllerDelegate
     }
     

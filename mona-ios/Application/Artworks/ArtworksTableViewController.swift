@@ -10,10 +10,7 @@ import UIKit
 import CoreData
 import CoreLocation
 
-class ArtworksTableViewController : UIViewController, Contextualizable {
-    
-    // Contextualizable
-    var viewContext: NSManagedObjectContext?
+class ArtworksTableViewController : SearchViewController {
     
     // Table View
     @IBOutlet weak var tableView: UITableView!
@@ -36,6 +33,9 @@ class ArtworksTableViewController : UIViewController, Contextualizable {
     
     // This variable is useful to avoid unnecessary tableview.reloadData when the viewDidLoad
     var didViewLoaded = false
+    
+    // This variable is useful to hide filter button if search
+    var hideFilterButton = false
     
     struct Strings {
         private static let tableName = "ArtworksTableViewController"
@@ -63,7 +63,7 @@ class ArtworksTableViewController : UIViewController, Contextualizable {
         static let showArtworkDetailsViewController = "showArtworkDetailsViewController"
     }
     
-    var artworksIds : [Int16]?
+    var artworks = [Artwork]()
     
     //MARK: Overriden methods
     override func viewDidLoad() {
@@ -77,24 +77,25 @@ class ArtworksTableViewController : UIViewController, Contextualizable {
         
         tableView.delegate = self
         tableViewIndex.delegate = self
-        //setup(artworksID: artworksIds)
-        var predicate : NSPredicate? = nil
-        if let ids = artworksIds {
-            predicate = NSPredicate(format: "id IN %@", ids)
-        }
-        CoreDataStack.fetchAsynchronously(type: Artwork.self, context: viewContext!, entityName: "Artwork", predicate: predicate) {
-            artworks in 
-            self.artworksTableViewDataSource = ArtworksTableViewDataSource(artworks: artworks)
+
+        DispatchQueue.main.async {
+            self.artworksTableViewDataSource = ArtworksTableViewDataSource(artworks: self.artworks)
             self.tableViewIndexDataSource = self.artworksTableViewDataSource
             self.tableView.dataSource = self.artworksTableViewDataSource
             self.tableViewIndex.dataSource = self.artworksTableViewDataSource
-            //self.progressView.removeFromSuperview()
             self.tableView.reloadData()
             self.tableViewIndex.reloadData()
         }
+        
+        
         setupRefreshControl()
         setupLocationManager()
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: .applicationDidBecomeActive, object: nil)
+        
+        if hideFilterButton {
+            filterButton.isHidden = true
+        }
+        
     }
     
     @objc func applicationDidBecomeActive() {
@@ -122,74 +123,26 @@ class ArtworksTableViewController : UIViewController, Contextualizable {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        if  segue.identifier == Segues.showArtworkDetailsViewController,
-            let vc = segue.destination as? ArtworkDetailsViewController,
-            let cell = sender as? ArtworkTableViewCell {
-            vc.title = cell.titleLabel.text
-            vc.viewContext = viewContext
-            guard let context = viewContext else {
-                return
-            }
-            
-            let fetchRequest : NSFetchRequest<Artwork> = Artwork.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "id == %d", cell.artworkId)
-            fetchRequest.fetchLimit = 1
-            do {
-                let artworks = try context.fetch(fetchRequest)
-                if let artwork = artworks.first {
-                    vc.artwork = artwork
-                }
-                else {
-                    log.error("Cannot find artwork with id: \(String(describing: cell.artworkId)). Fetch request return an empty array.")
-                }
-            }
-            catch {
-                log.error("Failed to fetch artwork with id: \(String(describing: cell.artworkId)). Error: \(error)")
-            }
-        }
-    }
-    
-    /*
-    private func setup(artworksID : [Int16]? = nil) {
         
-        guard let context = viewContext else {
+        guard let identifier = segue.identifier else {
             return
         }
-        let privateManagedContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        privateManagedContext.parent = context
         
-        let syncArtworksFetchRequest : NSFetchRequest<Artwork> = Artwork.fetchRequest()
-        if artworksID != nil {
-            syncArtworksFetchRequest.predicate = NSPredicate(format: "id in %@", artworksID!)
-        }
-        
-        let asyncArtworksFetchRequest = NSAsynchronousFetchRequest(fetchRequest: syncArtworksFetchRequest) { result in
-            guard let artworksAsync = result.finalResult else { return }
+        switch identifier {
             
-            DispatchQueue.main.async {
-                let artworks: [Artwork] = artworksAsync.lazy
-                    .compactMap { $0.objectID } // Retrives all the objectsID
-                    .compactMap { context.object(with: $0) as? Artwork }
-                
-                // Artworks
-                self.artworksTableViewDataSource = ArtworksTableViewDataSource(artworks: artworks)
-                self.tableViewIndexDataSource = self.artworksTableViewDataSource
-                self.tableView.dataSource = self.artworksTableViewDataSource
-                self.tableViewIndex.dataSource = self.artworksTableViewDataSource
-                //self.progressView.removeFromSuperview()
-                self.tableView.reloadData()
-                self.tableViewIndex.reloadData()
-            }
+        case Segues.showArtworkDetailsViewController:
+            let destination = segue.destination as! ArtworkDetailsViewController
+            let cell = sender as! ArtworkTableViewCell
+            destination.title = cell.titleLabel.text
+            destination.artwork = cell.artwork
+            return
+            
+        default:
+            return
+            
         }
-        do {
-            try privateManagedContext.execute(asyncArtworksFetchRequest)
-        }
-        catch {
-            log.error("Failed to fetch techniques asynchronously. Error: \(error)")
-        }
+        
     }
-    */
     
     private func setupLocationManager() {
         locationManager.delegate = self

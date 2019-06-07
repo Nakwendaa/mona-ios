@@ -154,7 +154,7 @@ class CoreDataStack {
     
     // MARK: - Core Data Saving support
     
-    static func saveContext () {
+    static func saveMainContext () {
         if mainContext.hasChanges {
             do {
                 try mainContext.save()

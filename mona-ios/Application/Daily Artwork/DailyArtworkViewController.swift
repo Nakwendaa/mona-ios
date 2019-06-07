@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import CoreData
 
-class DailyArtworkViewController: UIViewController, Contextualizable {
+class DailyArtworkViewController: UIViewController {
     
     //MARK: - Types
     struct Segues {
@@ -49,7 +49,6 @@ class DailyArtworkViewController: UIViewController, Contextualizable {
     }
     
     //MARK: - Properties
-    var viewContext: NSManagedObjectContext?
     var artwork: Artwork?
     
     //MARK: - UI Properties
@@ -67,7 +66,6 @@ class DailyArtworkViewController: UIViewController, Contextualizable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(contextDidSave), name: Notification.Name.NSManagedObjectContextDidSave, object: viewContext)
         setup()
     }
     
@@ -93,39 +91,28 @@ class DailyArtworkViewController: UIViewController, Contextualizable {
         }
     }
     
-    @objc private func contextDidSave() {
-        if self.artwork == nil {
-            setup()
-        }
-    }
+
+
     
-    /**
-     *
-     */
-    private func setup() {
-        guard let viewContext = viewContext, let artwork = getDailyArtwork(context: viewContext)  else {
-            return
-        }
-        self.artwork = artwork
-        setupViewController(artwork: artwork)
-    }
-    
-    /**
-     * Setup the artwork
-     */
-    private func getDailyArtwork(context: NSManagedObjectContext) -> Artwork? {
-        let lowerBound = 1
-        let upperBound = Artwork.getCount(context: context)
+
+    private func getDailyArtwork() -> Artwork? {
+        let lowerBound = 0
+        let upperBound = AppData.artworks.count
         guard upperBound >= lowerBound else {
             return nil
         }
-        let random = Int.random(in: lowerBound...upperBound)
-        return Artwork.fetchRequest(id: Int16(random), context: context)
+        let random = Int.random(in: lowerBound..<upperBound)
+        return AppData.artworks[random]
     }
     
-    /**
-     * Setup the view controller.
-     */
+    private func setup() {
+        artwork = getDailyArtwork()
+        guard let artwork = artwork else {
+            return
+        }
+        setupViewController(artwork: artwork)
+    }
+    
     private func setupViewController(artwork: Artwork) {
         
         title = Strings.General.title
