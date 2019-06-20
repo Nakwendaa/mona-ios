@@ -29,7 +29,7 @@ class BadgeDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        badgeNameLabel.text = badge.localizedName
+        badgeNameLabel.text = badge.text
         
         if badge.isCollected {
             badgeImageView.image = UIImage(named: badge.collectedImageName)

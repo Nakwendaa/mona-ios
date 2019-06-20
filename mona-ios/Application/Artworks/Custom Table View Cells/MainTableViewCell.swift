@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainTableViewCell: UITableViewCell {
+final class MainTableViewCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var lineView: UIView!

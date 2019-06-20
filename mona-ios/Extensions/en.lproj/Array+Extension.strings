@@ -1,0 +1,18 @@
+/* 
+  Array+Extension.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-06-17.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+// Sort by date
+"Unknown date" = "Unknown date";
+
+// Sort by distance
+"Less than 100 m" = "Less than 100 m";
+"Less than 1 km" = "Less than 1 km";
+"Less than 5 km" = "Less than 5 km";
+"Less than 10 km" = "Less than 10 km";
+"More than 10 km" = "More than 10 km";
+"Unknown distance" = "Unknown distance";

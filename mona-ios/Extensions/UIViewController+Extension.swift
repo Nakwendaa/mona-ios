@@ -19,4 +19,13 @@ extension UIViewController {
         navigationController?.navigationBar.tintColor = tintColor
     }
     
+    func setDefaultIosNavigationBar(tintColor: UIColor) {
+        navigationItem.titleView = nil
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = nil
+        navigationController?.navigationBar.tintColor = tintColor
+    }
+    
 }

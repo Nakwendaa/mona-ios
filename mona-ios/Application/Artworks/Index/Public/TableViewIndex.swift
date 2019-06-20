@@ -162,7 +162,7 @@ open class TableViewIndex : UIControl {
         }
     }
     
-    /* Three functions added by Paul Chaffanet */
+    /* Four functions added by Paul Chaffanet */
     
     private func selectTop() {
         
@@ -170,6 +170,14 @@ open class TableViewIndex : UIControl {
             , delegate.responds(to: #selector(TableViewIndexDelegate.tableViewIndexShouldScrollToTop(_:))) {
             
             delegate.tableViewIndexShouldScrollToTop!(self)
+        }
+    }
+    
+    private func isBeginningTouch() {
+        if let delegate = self.delegate
+            , delegate.responds(to: #selector(TableViewIndexDelegate.tableViewIndexBeginningTouches(_:))) {
+            
+            delegate.tableViewIndexBeginningTouches!(self)
         }
     }
     
@@ -340,6 +348,10 @@ open class TableViewIndex : UIControl {
     }
     
     private func beginTouch(_ touch: UITouch) {
+        // Begin of modifications by Paul Chaffanet
+        isBeginningTouch()
+        // End of modifications
+        
         currentTouch = touch
         isHighlighted = true
         prepareFeedbackGenerator()
@@ -469,6 +481,9 @@ public protocol TableViewIndexDelegate : NSObjectProtocol {
     // Delegate methods provided by Paul Chaffanet
     @objc(tableViewIndexShouldScrollToTop:)
     optional func tableViewIndexShouldScrollToTop(_ tableViewIndex: TableViewIndex)
+    
+    @objc(tableViewIndexBeginningTouches:)
+    optional func tableViewIndexBeginningTouches(_ tableViewIndex: TableViewIndex)
     
     @objc(tableViewIndexProcessingTouches:)
     optional func tableViewIndexProcessingTouches(_ tableViewIndex: TableViewIndex)

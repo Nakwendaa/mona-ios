@@ -8,17 +8,24 @@
 
 import UIKit
 
-class GeneralTableViewCell: UITableViewCell {
+final class GeneralTableViewCell: UITableViewCell {
     
-    //MARK: - Static properties
+    //MARK: - Properties
+    
+    
+    //MARK: Static
     static let reuseIdentifier = "GeneralTableViewCell"
     
+    //MARK: UI
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var trailingMarginConstraint: NSLayoutConstraint!
+    
+    //MARK: Properties
     var artworks = [Artwork]()
     
     
+    //MARK: - Overriden methods
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -37,7 +37,7 @@ class WonBadgeViewController: UIViewController {
     private func setupNextBadge() {
         let badge = badges.removeFirst()
         imageView.image = UIImage(named: badge.collectedImageName)
-        titleLabel.text = badge.localizedName.uppercased()
+        titleLabel.text = badge.text.uppercased()
         descriptionLabel.text = badge.localizedComment
     }
 }

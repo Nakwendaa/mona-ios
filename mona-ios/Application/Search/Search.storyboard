@@ -141,7 +141,6 @@
                         <outlet property="tapGestureRecognizer" destination="Hju-R9-ram" id="q5D-9S-yV4"/>
                         <segue destination="xul-eN-iSs" kind="show" identifier="showArtworkDetailsViewController" id="ccd-ao-j5V"/>
                         <segue destination="Hp9-gn-vH1" kind="show" identifier="showArtworksTableViewController" id="ifq-Ml-1jW"/>
-                        <segue destination="EGI-HZ-cOh" kind="show" identifier="showGeneralTableViewController" id="1Dl-nw-Hkc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="inz-x9-1tS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -152,14 +151,6 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3985.507246376812" y="-160.04464285714286"/>
-        </scene>
-        <!--GeneralTableViewController-->
-        <scene sceneID="4Z9-Eh-9Cb">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Artworks" referencedIdentifier="GeneralTableViewController" id="EGI-HZ-cOh" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xhF-lG-OcL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4753" y="-223"/>
         </scene>
         <!--ArtworksTableViewController-->
         <scene sceneID="HH7-lh-aCX">

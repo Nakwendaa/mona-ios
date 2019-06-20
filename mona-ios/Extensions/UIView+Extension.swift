@@ -37,6 +37,8 @@ extension UIView {
         border.frame = CGRect(x: 0, y: 0, width: width, height: self.frame.size.height)
         self.layer.addSublayer(border)
     }
-    
-    
 }
+
+extension UIView : UIViewLoading { }
+    
+

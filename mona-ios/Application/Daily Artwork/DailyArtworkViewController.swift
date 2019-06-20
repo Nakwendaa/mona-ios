@@ -59,11 +59,14 @@ class DailyArtworkViewController: UIViewController {
     @IBOutlet weak var dimensionsLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var subcategoryLabel: UILabel!
+    //MARK: Buttons
     @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var targetButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
     
     //var artworkImagePickerControllerDelegate : ArtworkImagePickerControllerDelegate!
     
+    //MARK: - Overriden methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -156,11 +159,11 @@ class DailyArtworkViewController: UIViewController {
         }
         
         // Set the category of the daily artwork
-        categoryLabel.text = artwork.category.localizedName
+        categoryLabel.text = artwork.category.text
         
         // Set the subcategory of the daily artwork
         if let subcategory = artwork.subcategory {
-            subcategoryLabel.text = subcategory.localizedName
+            subcategoryLabel.text = subcategory.text
         }
         else {
             subcategoryLabel.removeFromSuperview()
@@ -175,6 +178,7 @@ class DailyArtworkViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
+    //MARK: - Actions
     @IBAction func cameraButtonTapped(_ sender: UIButton) {
         
         func show() {
@@ -216,4 +220,27 @@ class DailyArtworkViewController: UIViewController {
         }
 
     }
+    
+    @IBAction func targetButtonTapped(_ sender: UIButton) {
+        
+        targetButton.isSelected = !targetButton.isSelected
+        
+        guard let artwork = artwork else {
+            targetButton.isSelected = targetButton.isSelected ? false : targetButton.isSelected
+            return
+        }
+        
+        artwork.isTargeted = targetButton.isSelected
+        
+        DispatchQueue.main.async {
+            do {
+                try AppData.context.save()
+            }
+            catch {
+                log.error("Failed to save context: \(error)")
+                return
+            }
+        }
+    }
+    
 }

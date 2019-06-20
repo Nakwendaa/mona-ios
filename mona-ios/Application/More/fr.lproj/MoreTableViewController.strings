@@ -1,0 +1,13 @@
+/* 
+  MoreTableViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-06-12.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"More" = "Autre";
+"Badges" = "Badges";
+"Targeted" = "Œuvres ciblées";
+"Data privacy" = "Confidentialité des données";
+"About" = "À propos de MONA";

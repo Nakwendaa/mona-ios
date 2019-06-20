@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Artist)
-public class Artist: NSManagedObject {
+final public class Artist: NSManagedObject {
     
     @nonobjc public class func fetchRequest(predicate: NSPredicate?, context: NSManagedObjectContext) -> [Artist] {
         do {

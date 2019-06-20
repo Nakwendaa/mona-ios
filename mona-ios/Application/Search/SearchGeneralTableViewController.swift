@@ -16,7 +16,7 @@ class SearchGeneralTableViewController: UIViewController {
     }
     
     //MARK: - Properties
-    var artworksNamables = [ArtworksNamable]()
+    var searchItems = [ArtworksSettable & TextRepresentable]()
     
     //MARK: - UI Properties
     @IBOutlet weak var tableView: UITableView!
@@ -50,13 +50,13 @@ class SearchGeneralTableViewController: UIViewController {
 extension SearchGeneralTableViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return artworksNamables.count
+        return searchItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = "tableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        cell.textLabel?.text = artworksNamables[indexPath.row].nameNamable
+        cell.textLabel?.text = searchItems[indexPath.row].text
         return cell
     }
     

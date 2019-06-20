@@ -57,6 +57,7 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MosaicCell.identifer, for: indexPath) as? MosaicCell else {
             return UICollectionViewCell()
         }
+        cell.artwork = artworks[indexPath.row]
         // Set thumbnail for the cell
         if cell.tag != 0 {
             cachingImageManager.cancelImageRequest(PHImageRequestID(cell.tag))
@@ -97,4 +98,3 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
     
     
 }
-

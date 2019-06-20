@@ -63,6 +63,7 @@ class ArtworkDetailsViewController: SearchViewController {
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var defaultView: UIView!
     @IBOutlet weak var defaultCameraButton: UIButton!
+    @IBOutlet weak var targetButton: UIButton!
     
     //MARK: - Overriden methods
     override func viewDidLoad() {
@@ -80,6 +81,9 @@ class ArtworkDetailsViewController: SearchViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if !artwork.isCollected {
+            targetButton.isSelected = artwork.isTargeted
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -224,6 +228,20 @@ class ArtworkDetailsViewController: SearchViewController {
         }
     }
     
+    @IBAction func targetButtonTapped(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        artwork.isTargeted = sender.isSelected
+        
+        DispatchQueue.main.async {
+            do {
+                try AppData.context.save()
+            }
+            catch {
+                log.error("Failed to save context: \(error)")
+                return
+            }
+        }
+    }
     
     @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
         makeAnimation()

@@ -38,7 +38,7 @@ class CollectionViewLayout: UICollectionViewLayout {
         
         // Header
         let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, with: IndexPath(item: currentIndex, section: 0))
-        let frame = CGRect(x: 0, y: 0, width: cvWidth, height: 90)
+        let frame = CGRect(x: 0, y: 0, width: cvWidth, height: 50)
         attributes.frame = frame
         cachedAttributes.append(attributes)
         contentBounds = contentBounds.union(lastFrame)

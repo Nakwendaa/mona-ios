@@ -1,0 +1,16 @@
+/* 
+  DataPrivacyViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-06-12.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"title" = "Confidentialité des données";
+"preamble" = "En utilisant le service, vous consentez à la collecte et à l'utilisation de vos renseignements personnels tel que décrit dans cette politique de confidentialité. Nous pouvons modifier la politique de confidentialité de temps à autre, et nous vous encourageons à la consulter régulièrement.";
+"first subtitle" = "Quelles données recueillons-nous ?";
+"first body text" = "Nous respectons votre vie privée et minimisons l'utilisation de vos données personnelles. Nous ne recueillons que les données pertinentes à notre recherche, c'est-à-dire vos photographies, évaluations et commentaires des œuvres d'art que vous visitez. Les données sont stockées anonymement sur nos serveurs universitaires et ne sont accessibles qu'à nos chercheurs.";
+"second subtitle" = "Pourquoi recueillons-nous des données ?";
+"second body text" = "Nous sommes intéressés à étudier l'intérêt des gens pour l'art public. Nous utilisons les données recueillies dans le contexte de la recherche académique pour comprendre comment vous percevez ces œuvres d'art.";
+"third subtitle" = "Vos droits";
+"third body text" = "Vous pouvez nous poser toute question concernant vos données ou demander la suppression complète de vos données sur notre serveur en nous contactant à mona-app@tutanota.com";

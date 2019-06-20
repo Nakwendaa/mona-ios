@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArtworkTableViewCell: UITableViewCell {
+final class ArtworkTableViewCell: UITableViewCell {
     
     //MARK: - Static properties
     static let reuseIdentifier = "ArtworkTableViewCell"

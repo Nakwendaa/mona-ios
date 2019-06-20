@@ -1,5 +1,5 @@
 //
-//  Subcategory+Namable.swift
+//  Category+Protocols.swift
 //  mona-ios
 //
 //  Created by Paul Chaffanet on 2019-06-04.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-extension Subcategory : ArtworksNamable {
+extension Category : ArtworksSettable {
     
-    var nameNamable : String {
-        return localizedName
-    }
+}
+
+extension Category : Fetchable {
     
 }

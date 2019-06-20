@@ -1,0 +1,17 @@
+/* 
+  AboutViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-06-12.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"title" = "À propos de MONA";
+
+"preamble" = "Découvrez la ville de Montréal et son art avec une application gratuite et amusante, MONA.\n\nLa ville devient votre terrain de jeu. Recherchez une œuvre d'art et prenez une photo pour l'ajouter à votre collection personnelle. Gardez un œil sur votre expérience en ajoutant vos propres évaluations et commentaires. En parcourant les quartiers de Montréal et en collectionnant des œuvres d'art, vous obtiendrez des récompenses en reconnaissance de votre dévouement en tant que collectionneur d'œuvres d'art.\n\nMONA est un projet gratuit et open source visant à faire découvrir et apprécier l'art public à tous. Pour en savoir plus sur notre philosophie, consultez notre site Internet : http://www.artetsite.org/mona.\n\nMONA est un projet de recherche universitaire basé à Montréal, Canada. Tel que détaillé dans la Politique de confidentialité, les données que nous recueillons ne servent qu'à des fins de recherche universitaire. Le projet est entièrement non commercial et aucun tiers n'y participe.";
+
+"license title" = "Licenses";
+"license body" = "MONA est disponible dans l'AppStore sous la licence Apache Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0): Copyright 2019 MONA\n\nLe design de MONA est sous licence Creative Commons Paternité 4.0 International Licence (https://creativecommons.org/licenses/by/4.0/)\n\nLes métadonnées des œuvres énumérées sont fournies par la Ville de Montréal sous la licence Creative Commons Paternité 4.0 (http://donnees.ville.montreal.qc.ca/dataset/art-public- information-sur-les-oeuvres-de-la-collection-municipale ; http://donnees.ville.montreal.qc.ca/dataset/murales)";
+
+"contributors title" = "Contributeurs";
+"contributors body" = "MONA a été créé avec le soutien du groupe de recherche \"art+site\", de la Faculté des arts et des sciences de l'Université de Montréal et de son Département d'histoire de l'art et d'études cinématographiques, en collaboration avec le Département d'informatique et de recherche opérationnelle et l'École de design de l'Université. Nous avons également reçu l'appui du Bureau d'art public de Montréal.\n\n Si vous souhaitez contribuer à MONA sous quelque forme que ce soit et partager vos commentaires avec nous, n'hésitez pas à nous contacter à mona-app@tutanota.com. Nous aimerions avoir de vos nouvelles !";

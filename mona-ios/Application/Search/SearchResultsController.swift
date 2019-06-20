@@ -14,7 +14,6 @@ class SearchResultsController: UIViewController, UISearchControllerDelegate {
     struct Segues {
         static let showArtworkDetailsViewController = "showArtworkDetailsViewController"
         static let showArtworksTableViewController = "showArtworksTableViewController"
-        static let showGeneralTableViewController = "showGeneralTableViewController"
     }
     
     struct Strings {
@@ -54,11 +53,8 @@ class SearchResultsController: UIViewController, UISearchControllerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else {
-            return
-        }
         
-        switch identifier {
+        switch segue.identifier {
         case Segues.showArtworksTableViewController:
             let destination = segue.destination as! ArtworksTableViewController
             if let cell = sender as? GeneralTableViewCell {
@@ -69,7 +65,6 @@ class SearchResultsController: UIViewController, UISearchControllerDelegate {
                 destination.title = title
                 destination.artworks = searchDataSource.artworksFiltered
             }
-            destination.hideFilterButton = true
             searchController?.searchBar.isHidden = true
             return
         case Segues.showArtworkDetailsViewController:
@@ -77,35 +72,44 @@ class SearchResultsController: UIViewController, UISearchControllerDelegate {
             let cell = sender as! ArtworkTableViewCell
             destination.artwork = cell.artwork
             searchController?.searchBar.isHidden = true
-        case Segues.showGeneralTableViewController:
-            let destination = segue.destination as! GeneralTableViewController
-            let sectionName = sender as! String
-            searchController?.searchBar.isHidden = true
-            switch sectionName {
-            case Strings.artists:
-                destination.namables = searchDataSource.artistsFiltered
-            case Strings.categories:
-                destination.namables = searchDataSource.categoriesFiltered
-            case Strings.districts:
-                destination.namables = searchDataSource.districtsFiltered
-            case Strings.materials:
-                destination.namables = searchDataSource.materialsFiltered
-            case Strings.subcategories:
-                destination.namables = searchDataSource.subcategoriesFiltered
-            case Strings.techniques:
-                destination.namables = searchDataSource.techniquesFiltered
-            default:
-                return
-            }
-            destination.title = sectionName
         default:
-            return
+            break
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    private func showGeneralTableViewController(title: String) {
+        
+        searchController?.searchBar.isHidden = true
+        
+        func showGeneralTableViewController<T: ArtworksSettable & TextRepresentable>(title: String, items: [T]) {
+            let generalTableViewController = GeneralTableViewController<T>(nibName: "GeneralTableViewController", bundle: .main)
+            generalTableViewController.title = title
+            generalTableViewController.items = items
+            navigationController?.pushViewController(generalTableViewController, animated: true)
+        }
+        
+        switch title {
+        case Strings.artists:
+            showGeneralTableViewController(title: title, items: searchDataSource.artistsFiltered)
+        case Strings.categories:
+            showGeneralTableViewController(title: title, items: searchDataSource.categoriesFiltered)
+        case Strings.districts:
+            showGeneralTableViewController(title: title, items: searchDataSource.districtsFiltered)
+        case Strings.materials:
+            showGeneralTableViewController(title: title, items: searchDataSource.materialsFiltered)
+        case Strings.subcategories:
+            showGeneralTableViewController(title: title, items: searchDataSource.subcategoriesFiltered)
+        case Strings.techniques:
+            showGeneralTableViewController(title: title, items: searchDataSource.techniquesFiltered)
+        default:
+            break
+        }
     }
     
     @IBAction func tableViewTapped(_ sender: UITapGestureRecognizer) {
@@ -149,7 +153,7 @@ extension SearchResultsController : UITableViewDelegate {
         case Strings.artworks:
             performSegue(withIdentifier: Segues.showArtworksTableViewController, sender: Strings.artworks)
         default:
-            performSegue(withIdentifier: Segues.showGeneralTableViewController, sender: sectionName)
+            showGeneralTableViewController(title: sectionName)
         }
         searchController?.searchBar.endEditing(true)
     }

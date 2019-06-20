@@ -9,53 +9,46 @@
 import UIKit
 import CoreData
 
-class GeneralTableViewController : SearchViewController {
+final class GeneralTableViewController<T: ArtworksSettable & TextRepresentable>: SearchViewController, UITableViewDelegate, UIScrollViewDelegate, TableViewIndexDelegate {
     
+    //MARK: - Properties
+    //MARK: UI Properties
     // Table View
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
     var tableViewDataSource : UITableViewDataSource?
-    @IBOutlet weak var headerTableViewLabel: UILabel!
-    
     // Table View Index
     @IBOutlet weak var tableViewIndex: TableViewIndex!
     var tableViewIndexDataSource : TableViewIndexDataSource?
     @IBOutlet weak var tableViewIndexWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewIndexTrailingConstraint: NSLayoutConstraint!
-   
-    // Table View Index Animation
-    var canPerformTableViewIndexAnimation = true
-    
-    struct Segues {
-        static let showArtworksTableViewController = "showArtworksTableViewController"
-    }
-    struct Strings {
-        private static let tableName = "GeneralTableViewController"
-        static let artists = NSLocalizedString("artists", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
-        static let materials = NSLocalizedString("materials", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
-        static let techniques = NSLocalizedString("techniques", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
-    }
-    
-    struct Style {
-        struct BackgroundViewOfHeaderViewStickingNavigationBar {
-            static let backgroundColor : UIColor = UIColor(red: 250.0/255.0, green: 217.0/255.0, blue: 1.0/255.0, alpha: 1)
-            static let shadowColor : CGColor = UIColor.gray.cgColor
-            static let shadowOffset : CGSize = CGSize(width: 0, height: 0.05)
-            static let shadowRadius : CGFloat = CGFloat(integerLiteral: 1)
-            static let shadowOpacity : Float = 1
-            static let bottomBorderColor : UIColor = .lightGray
-            static let bottomBorderWidth : CGFloat = 0.5
-        }
-    }
-    
+    // Progress View
     var progressView : UIProgressView!
-    var namables = [ArtworksNamable]()
     
+    //MARK: Strings
+    let artists = NSLocalizedString("artists", tableName: "GeneralTableViewController", bundle: .main, value: "", comment: "").capitalizingFirstLetter()
+    let materials = NSLocalizedString("materials", tableName: "GeneralTableViewController", bundle: .main, value: "", comment: "").capitalizingFirstLetter()
+    let techniques = NSLocalizedString("techniques", tableName: "GeneralTableViewController", bundle: .main, value: "", comment: "").capitalizingFirstLetter()
+    //MARK: Style for background view of header view stick navigation bar
+    let backgroundColorBackgroundViewOfHeaderViewStickingNavigationBar = UIColor(red: 250.0/255.0, green: 217.0/255.0, blue: 1.0/255.0, alpha: 1)
+    let shadowColorBackgroundViewOfHeaderViewStickingNavigationBar = UIColor.gray.cgColor
+    let shadowOffsetBackgroundViewOfHeaderViewStickingNavigationBar = CGSize(width: 0, height: 0.05)
+    let shadowRadiusBackgroundViewOfHeaderViewStickingNavigationBar = CGFloat(integerLiteral: 1)
+    let shadowOpacityBackgroundViewOfHeaderViewStickingNavigationBar : Float = 1
+    let borderColorBackgroundViewOfHeaderViewStickingNavigationBar : UIColor = .lightGray
+    let bottomBorderWidthBackgroundViewOfHeaderViewStickingNavigationBar : CGFloat = 0.5
+    //MARK: Properties
+    var canPerformTableViewIndexAnimation = true
+    var items = [T]()
+
+    
+    //MARK: - Overriden methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Setup tableviewdatasourcel
+        adjustTableViewInsets()
         DispatchQueue.main.async {
-            let tableViewDataSource = GeneralTableViewDataSource(namables: self.namables)
+            let tableViewDataSource = GeneralTableViewDataSource(items: self.items)
             self.tableViewDataSource = tableViewDataSource
             self.tableViewIndexDataSource = tableViewDataSource
             self.tableView.dataSource = tableViewDataSource
@@ -64,37 +57,62 @@ class GeneralTableViewController : SearchViewController {
             self.tableViewIndex.reloadData()
         }
         
-        headerTableViewLabel.text = title
         tableView.delegate = self
+        let tableHeaderView = MainListHeaderView.loadFromNib()
+        tableHeaderView.titleLabel.text = title
+        tableView.tableHeaderView = tableHeaderView
+        let generalTableViewCellNib = UINib(nibName: String(describing: GeneralTableViewCell.self), bundle: .main)
+        tableView.register(generalTableViewCellNib, forCellReuseIdentifier: GeneralTableViewCell.reuseIdentifier)
         tableViewIndex.delegate = self
         tableViewIndex.itemSpacing = 2
         tableViewIndexTrailingConstraint.constant = -tableViewIndex.frame.width
         tableViewIndex.indexOffset = UIOffset(horizontal: -4, vertical: 0)
-        //tableViewIndex.backgroundColor = .clear
-        //tableViewIndex.backgroundView.backgroundColor = .clear
+        tableViewIndex.backgroundColor = .clear
+        tableViewIndex.backgroundView.backgroundColor = .clear
         setTransparentNavigationBar(tintColor: .black)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else {
-            return
-        }
-        
-        switch identifier {
-        case Segues.showArtworksTableViewController:
-            let destination = segue.destination as! ArtworksTableViewController
-            let cell = sender as! GeneralTableViewCell
-            destination.title = cell.titleLabel.text
-            destination.artworks = cell.artworks
-        default:
-            return
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.tableHeaderView?.setNeedsLayout()
+        tableView.tableHeaderView?.layoutIfNeeded()
+        tableView.tableHeaderView?.updateConstraints()
     }
-}
-
-//MARK: - UITableViewDelegate
-extension GeneralTableViewController : UITableViewDelegate {
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        sizeHeaderToFit()
+    }
+    
+    private func sizeHeaderToFit() {
+        let tableHeaderView = tableView.tableHeaderView!
+        let tableEnclosingView = tableHeaderView.subviews[0]
+        
+        let width = tableView.frame.width
+        let height = tableEnclosingView.frame.height + 14.0
+        var frame = tableHeaderView.frame
+        frame.size.height = height
+        frame.size.width = width
+        tableHeaderView.frame = frame
+        tableView.tableHeaderView = tableHeaderView
+        tableHeaderView.setNeedsLayout()
+        tableHeaderView.layoutIfNeeded()
+    }
+    
+    private func adjustTableViewInsets() {
+        // Disable all automatic
+        automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+            tableView.insetsContentViewsToSafeArea = false
+        }
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        let navigationBarHeight = navigationController?.navigationBar.frame.height ?? 0
+        tableViewTopConstraint.constant = statusBarHeight + navigationBarHeight
+    }
+    
+    
+    //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         guard let tableViewHeaderFooterView = view as? UITableViewHeaderFooterView else {
@@ -117,23 +135,37 @@ extension GeneralTableViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.cellForRow(at: indexPath)
-        performSegue(withIdentifier: Segues.showArtworksTableViewController, sender: cell)
+        let cell = tableView.cellForRow(at: indexPath) as! GeneralTableViewCell
+        let storyboard = UIStoryboard(name: "Artworks", bundle: .main)
+        let artworksTableViewController = storyboard.instantiateViewController(withIdentifier: "ArtworksTableViewController") as! ArtworksTableViewController
+        artworksTableViewController.title = cell.titleLabel.text
+        artworksTableViewController.artworks = cell.artworks
+        navigationController?.pushViewController(artworksTableViewController, animated: true)
     }
-}
-
-// MARK: - Scroll View Delegate
-extension GeneralTableViewController : UIScrollViewDelegate {
     
+    //MARK: - ScrollViewDelegate
     // Code le fait que les headers views de chaque section change de couleur d'arrière-plan lorsque ceux-ci stick au top de la view
     // lorsque que l'on scrolle
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         guard let heightTableHeaderView = tableView.tableHeaderView?.frame.height,
-              let indexes = tableView.indexPathsForVisibleRows,
-              !indexes.isEmpty else {
-            return
+            let indexes = tableView.indexPathsForVisibleRows,
+            !indexes.isEmpty else {
+                return
         }
+        
+        // Show title if the user scrolled below the main tableHeaderView
+        let didTheUserScrolledBelowTableHeaderView = tableView.contentOffset.y >= heightTableHeaderView
+        switch (didTheUserScrolledBelowTableHeaderView, navigationItem.titleView) {
+        case (true, let titleView) where titleView != nil:
+            navigationItem.titleView = nil
+        case (false, nil):
+            navigationItem.titleView = UIView()
+        default:
+            break
+        }
+        
+        
         
         if indexes[0].section == 0 && tableView.contentOffset.y < heightTableHeaderView {
             
@@ -177,16 +209,22 @@ extension GeneralTableViewController : UIScrollViewDelegate {
             
             // Header View stick at navigation bar
             guard let headerViewStickingNavigationBar = tableView.headerView(forSection: indexes[0].section), let backgroundViewOfHeaderViewStickingNavigationBar = headerViewStickingNavigationBar.backgroundView else {
+                // Hide the title in the navigation bar (navigation item) by setting an empty view
                 return
             }
-
-            backgroundViewOfHeaderViewStickingNavigationBar.backgroundColor = Style.BackgroundViewOfHeaderViewStickingNavigationBar.backgroundColor
-            backgroundViewOfHeaderViewStickingNavigationBar.layer.shadowColor = Style.BackgroundViewOfHeaderViewStickingNavigationBar.shadowColor
-            backgroundViewOfHeaderViewStickingNavigationBar.layer.shadowOffset = Style.BackgroundViewOfHeaderViewStickingNavigationBar.shadowOffset
-            backgroundViewOfHeaderViewStickingNavigationBar.layer.shadowRadius = Style.BackgroundViewOfHeaderViewStickingNavigationBar.shadowRadius
-            backgroundViewOfHeaderViewStickingNavigationBar.layer.shadowOpacity = Style.BackgroundViewOfHeaderViewStickingNavigationBar.shadowOpacity
-            backgroundViewOfHeaderViewStickingNavigationBar.addBottomBorderWithColor(color: Style.BackgroundViewOfHeaderViewStickingNavigationBar.bottomBorderColor, width: Style.BackgroundViewOfHeaderViewStickingNavigationBar.bottomBorderWidth)
-            backgroundViewOfHeaderViewStickingNavigationBar.addTopBorderWithColor(color: Style.BackgroundViewOfHeaderViewStickingNavigationBar.bottomBorderColor, width: Style.BackgroundViewOfHeaderViewStickingNavigationBar.bottomBorderWidth)
+            
+            
+            backgroundViewOfHeaderViewStickingNavigationBar.backgroundColor = backgroundColorBackgroundViewOfHeaderViewStickingNavigationBar
+            backgroundViewOfHeaderViewStickingNavigationBar.layer.shadowColor = shadowColorBackgroundViewOfHeaderViewStickingNavigationBar
+            backgroundViewOfHeaderViewStickingNavigationBar.layer.shadowOffset = shadowOffsetBackgroundViewOfHeaderViewStickingNavigationBar
+            backgroundViewOfHeaderViewStickingNavigationBar.layer.shadowRadius = shadowRadiusBackgroundViewOfHeaderViewStickingNavigationBar
+            backgroundViewOfHeaderViewStickingNavigationBar.layer.shadowOpacity = shadowOpacityBackgroundViewOfHeaderViewStickingNavigationBar
+            backgroundViewOfHeaderViewStickingNavigationBar.addBottomBorderWithColor(
+                color: borderColorBackgroundViewOfHeaderViewStickingNavigationBar,
+                width: bottomBorderWidthBackgroundViewOfHeaderViewStickingNavigationBar)
+            backgroundViewOfHeaderViewStickingNavigationBar.addTopBorderWithColor(
+                color: borderColorBackgroundViewOfHeaderViewStickingNavigationBar,
+                width: bottomBorderWidthBackgroundViewOfHeaderViewStickingNavigationBar)
             
             for i in 1..<indexes[0].count {
                 tableView.headerView(forSection: indexes[0].section + i)?.backgroundView?.backgroundColor = .clear
@@ -196,11 +234,8 @@ extension GeneralTableViewController : UIScrollViewDelegate {
         }
     }
     
-}
-
-//MARK: - TableViewIndexDelegate
-extension GeneralTableViewController : TableViewIndexDelegate {
     
+    //MARK: - TableViewIndexDelegate
     func tableViewIndexProcessingTouches(_ tableViewIndex: TableViewIndex) {
         canPerformTableViewIndexAnimation = false
     }

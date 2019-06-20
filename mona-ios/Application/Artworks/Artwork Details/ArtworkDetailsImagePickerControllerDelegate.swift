@@ -97,7 +97,7 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
         if !artwork.isCollected {
             let notCollectedBadges = AppData.badges.filter { !$0.isCollected }
             for notCollectedBadge in notCollectedBadges {
-                if notCollectedBadge.localizedName == artwork.district.name {
+                if notCollectedBadge.text == artwork.district.name {
                     notCollectedBadge.currentValue += 1
                 }
                 else if ["1", "3", "5", "8", "10", "15", "20", "25", "30"].contains(notCollectedBadge.collectedImageName) {

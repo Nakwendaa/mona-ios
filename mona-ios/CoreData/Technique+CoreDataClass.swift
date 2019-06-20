@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Technique)
-public class Technique: LocalizableEntity {
+final public class Technique: LocalizableEntity {
     
     @nonobjc public class func fetchRequest(predicate: NSPredicate?, context: NSManagedObjectContext) -> [Technique] {
         do {

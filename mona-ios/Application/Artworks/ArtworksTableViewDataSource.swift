@@ -11,7 +11,7 @@ import CoreData
 import CoreLocation
 import Photos
 
-class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, TableViewIndexDataSource {
+final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, TableViewIndexDataSource {
     
     //MARK: - Types
     struct Style {
@@ -21,28 +21,28 @@ class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, TableViewIn
     }
     
     struct Strings {
-        static let unknownTitle = NSLocalizedString("untitled", tableName: "ArtworksTableViewDataSource", bundle: .main, value: "", comment: "").capitalizingFirstLetter()
-        static let unknownDate = NSLocalizedString("unknown{fem}{one}", tableName: "ArtworksTableViewDataSource", bundle: .main, value: "", comment: "").capitalizingFirstLetter()
-        static let unkn = NSLocalizedString("unkn", tableName: "ArtworksTableViewDataSource", bundle: .main, value: "", comment: "").capitalizingFirstLetter()
+        private static let tableName = "ArtworksTableViewDataSource"
+        static let unknownTitle = NSLocalizedString("Untitled", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let unknownDate = NSLocalizedString("Unknown date", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let unkn = NSLocalizedString("unkn", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let lessThan100m = NSLocalizedString("Less than 100 m", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let lessThan1km = NSLocalizedString("Less than 1 km", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let lessThan5km = NSLocalizedString("Less than 5 km", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let lessThan10km = NSLocalizedString("Less than 10 km", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let moreThan10km = NSLocalizedString("More than 10 km", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let unknownDistance = NSLocalizedString("Unknown distance", tableName: tableName, bundle: .main, value: "", comment: "")
     }
     
-    struct Section {
-        var name : String
-        var items : [Artwork]
-    }
-    
-    enum Sort {
-        case title
+    enum SortType {
+        case text
         case date
         case distance
     }
-    
-    //MARK: -  properties
-    private var sortUsed : Sort = .title
-    private var coordinateFrom = CLLocation(latitude: 0, longitude: 0)
 
     //MARK: - Properties
-    private var sections = [Section]()
+    private var sections = [ArtworksSection]()
+    private var usingSortType : SortType = .text
+    private var lastUserLocation = CLLocation(latitude: 0, longitude: 0)
 
     // Image Manager
     private let cachingImageManager = PHCachingImageManager()
@@ -55,7 +55,7 @@ class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, TableViewIn
     // Initializers
     init(artworks: [Artwork]) {
         super.init()
-        sections = sectionsByTitle(artworks: artworks)
+        sections = [ArtworksSection(name: "", items: artworks)].sortText()
             
         // Setup image request options
         imageRequestOptions = PHImageRequestOptions()
@@ -244,6 +244,10 @@ class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, TableViewIn
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ArtworkTableViewCell.reuseIdentifier, for: indexPath) as? ArtworkTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ArtworkTableViewCell.")
         }
+        
+        guard indexPath.section < sections.count, indexPath.row < sections[indexPath.section].items.count else {
+            return cell
+        }
 
         // Fetches the appropriate artwork for the data source layout.
         let artwork = sections[indexPath.section].items[indexPath.row]
@@ -258,11 +262,11 @@ class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, TableViewIn
         }
         
         // Set the subtitle of the cell
-        if sortUsed == .distance {
+        if usingSortType == .distance {
             // If artwork are sorted by distance
             
             // Compute distance between user location (that we can find in coordinateFrom, 0,0 by default) and artwork location
-            let distance = coordinateFrom.distance(from: CLLocation(latitude: artwork.address.coordinate.latitude, longitude: artwork.address.coordinate.longitude))
+            let distance = lastUserLocation.distance(from: CLLocation(latitude: artwork.address.coordinate.latitude, longitude: artwork.address.coordinate.longitude))
             
             if distance >= 1000 {
                             // If distance is more than 1000m, set subtitle of the cell in km instead of meters. Append district name to this string too.
@@ -319,32 +323,19 @@ class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, TableViewIn
             
             switch section.name {
                 
-            case NSLocalizedString("less than 100 m", comment: "").capitalizingFirstLetter():
+            case Strings.lessThan100m:
                 label.text = "< 100m"
-                break
-                
-            case NSLocalizedString("less than 1 km", comment: "").capitalizingFirstLetter():
+            case Strings.lessThan1km:
                 label.text = "< 1km"
-                break
-                
-            case NSLocalizedString("less than 5 km", comment: "").capitalizingFirstLetter():
+            case Strings.lessThan5km:
                 label.text = "< 5km"
-                break
-                
-            case NSLocalizedString("less than 10 km", comment: "").capitalizingFirstLetter():
+            case Strings.lessThan10km:
                 label.text = "< 10km"
-                break
-                
-            case NSLocalizedString("more than 10 km", comment: "").capitalizingFirstLetter():
+            case Strings.moreThan10km:
                 label.text = "> 10km"
-                break
-                
-            case NSLocalizedString("unknown{fem}{other}", comment: "").capitalizingFirstLetter():
-                label.text = NSLocalizedString("unkn", comment: "")
-                break
-                
+            case Strings.unknownDistance:
+                label.text = Strings.unkn
             default:
-                
                 return sections.map({
                     section in
                     let label = UILabel()
@@ -368,30 +359,24 @@ class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, TableViewIn
     }
     
     //MARK: - Public methods
-    func sort(by sort: Sort, coordinate: CLLocation?) {
-        let artworks = sections.flatMap({$0.items})
+    func sort(by sort: SortType, coordinate: CLLocation?) {
+        
+        usingSortType = sort
+        
         switch sort {
-        case .title:
-            sortUsed = .title
-            sections = sectionsByTitle(artworks: artworks)
-            break
+        case .text:
+            sections = sections.sortText()
         case .date:
-            sortUsed = .date
-            sections = sectionsByDate(artworks: artworks)
-            break
+            sections = sections.sortDate()
         case .distance:
-            sortUsed = .distance
-            if coordinate == nil {
-                sections = sectionsByDistance(artworks: artworks, coordinateFrom: CLLocation(latitude: 0, longitude: 0))
-            }
-            else {
-                sections = sectionsByDistance(artworks: artworks, coordinateFrom: coordinate!)
-            }
-            break
+            // It is useful to save this information in order to set subtitles
+            lastUserLocation = coordinate ?? CLLocation(latitude: 0, longitude: 0)
+            sections = sections.sortDistance(from: lastUserLocation)
         }
+        
     }
     
-    
+    /*
     //MARK: - Private methods
     private func sectionsByTitle(artworks: [Artwork]) -> [Section] {
         
@@ -527,7 +512,7 @@ class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, TableViewIn
             }
         }
         
-        self.coordinateFrom = coordinateFrom
+        self.lastUserLocation = coordinateFrom
         
         // The key is the name of the section. The value is an array of artworks
         var artworksSections = [String: [Distance]]()
@@ -584,6 +569,7 @@ class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, TableViewIn
         
         return sections
     }
+    */
     
     
 }

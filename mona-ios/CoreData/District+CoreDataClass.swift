@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(District)
-public class District: NSManagedObject {
+final public class District: NSManagedObject {
     
     @nonobjc public class func fetchRequest(predicate: NSPredicate?, context: NSManagedObjectContext) -> [District] {
         do {

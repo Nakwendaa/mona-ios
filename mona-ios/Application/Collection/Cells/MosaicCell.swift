@@ -12,6 +12,7 @@ class MosaicCell: UICollectionViewCell {
     static let identifer = "MosaicCollectionViewCell"
 
     var imageView = UIImageView()
+    var artwork : Artwork!
     var assetIdentifier: String?
     
     override init(frame: CGRect) {

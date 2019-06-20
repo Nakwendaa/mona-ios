@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Category)
-public class Category: LocalizableEntity {
+final public class Category: LocalizableEntity {
 
     @nonobjc public class func fetchRequest(predicate: NSPredicate?, context: NSManagedObjectContext) -> [Category] {
         do {

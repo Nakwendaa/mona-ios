@@ -10,33 +10,10 @@ import UIKit
 import CoreData
 import CoreLocation
 
-class ArtworksTableViewController : SearchViewController {
+final class ArtworksTableViewController : SearchViewController {
     
-    // Table View
-    @IBOutlet weak var tableView: UITableView!
-    var artworksTableViewDataSource : ArtworksTableViewDataSource!
-    @IBOutlet weak var headerTableViewLabel: UILabel!
-    @IBOutlet weak var filterButton: UIButton!
     
-    // Table View Index
-    @IBOutlet weak var tableViewIndex: TableViewIndex!
-    var tableViewIndexDataSource : TableViewIndexDataSource?
-    @IBOutlet weak var tableViewIndexTrailingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var tableViewIndexWidthConstraint: NSLayoutConstraint!
-
-    // Refresh Control
-    let refreshControl = UIRefreshControl()
-    let locationManager = CLLocationManager()
-    
-    // Table View Index Animation
-    var canPerformTableViewIndexAnimation = true
-    
-    // This variable is useful to avoid unnecessary tableview.reloadData when the viewDidLoad
-    var didViewLoaded = false
-    
-    // This variable is useful to hide filter button if search
-    var hideFilterButton = false
-    
+    //MARK: - Types
     struct Strings {
         private static let tableName = "ArtworksTableViewController"
         static let untitled = NSLocalizedString("untitled", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
@@ -63,15 +40,41 @@ class ArtworksTableViewController : SearchViewController {
         static let showArtworkDetailsViewController = "showArtworkDetailsViewController"
     }
     
+    
+    // Table View
+    @IBOutlet weak var tableView: UITableView!
+    var artworksTableViewDataSource : ArtworksTableViewDataSource!
+    @IBOutlet weak var headerTableViewLabel: UILabel!
+    
+    
+    // Table View Index
+    @IBOutlet weak var tableViewIndex: TableViewIndex!
+    var tableViewIndexDataSource : TableViewIndexDataSource?
+    @IBOutlet weak var tableViewIndexTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewIndexWidthConstraint: NSLayoutConstraint!
+
+    // Refresh Control
+    let refreshControl = UIRefreshControl()
+    let locationManager = CLLocationManager()
+    
+    // Table View Index Animation
+    var canPerformTableViewIndexAnimation = true
+    
+    // This variable is useful to avoid unnecessary tableview.reloadData when the viewDidLoad
+    var didViewLoaded = false
+    
     var artworks = [Artwork]()
     
     //MARK: Overriden methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        filterIsActive = true
         headerTableViewLabel.text = title
         tableViewIndex.itemSpacing = 2
         tableViewIndexTrailingConstraint.constant = -tableViewIndex.frame.width
         tableViewIndex.indexOffset = UIOffset(horizontal: -4, vertical: 0)
+        tableViewIndex.backgroundColor = .clear
+        tableViewIndex.backgroundView.backgroundColor = .clear
         setTransparentNavigationBar(tintColor: .black)
         
         
@@ -91,10 +94,6 @@ class ArtworksTableViewController : SearchViewController {
         setupRefreshControl()
         setupLocationManager()
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: .applicationDidBecomeActive, object: nil)
-        
-        if hideFilterButton {
-            filterButton.isHidden = true
-        }
         
     }
     
@@ -124,62 +123,31 @@ class ArtworksTableViewController : SearchViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let identifier = segue.identifier else {
-            return
-        }
-        
-        switch identifier {
-            
+        switch segue.identifier {
         case Segues.showArtworkDetailsViewController:
             let destination = segue.destination as! ArtworkDetailsViewController
             let cell = sender as! ArtworkTableViewCell
             destination.title = cell.titleLabel.text
             destination.artwork = cell.artwork
-            return
-            
         default:
-            return
+            break
             
         }
-        
     }
     
     private func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
     }
- 
     
     //MARK: Actions
-    @IBAction func filterButtonTapped(_ sender: UIButton) {
-        let filterPopoverViewController = FilterPopoverViewController()
-        filterPopoverViewController.preferredContentSize = CGSize(width: 128, height: 128)
-        filterPopoverViewController.modalPresentationStyle = .popover
-        
-        if let pres = filterPopoverViewController.presentationController {
-            pres.delegate = filterPopoverViewController
-        }
-        
-        if let pop = filterPopoverViewController.popoverPresentationController {
-            pop.sourceView = sender
-            pop.sourceRect = sender.bounds
-        }
-        
-        present(filterPopoverViewController, animated: true)
-        // Ajouter les actions pour les filtres
-        filterPopoverViewController.titleButton.addTarget(self, action: #selector(sortByTitle), for: .touchUpInside)
-        filterPopoverViewController.dateButton.addTarget(self, action: #selector(sortByDate), for: .touchUpInside)
-        filterPopoverViewController.distanceButton.addTarget(self, action: #selector(sortByDistance), for: .touchUpInside)
-    }
-    
-    //MARK: Private methods
     // Modifier la hauteur de la headerView
     private func sizeHeaderToFit() {
         let tableHeaderView = tableView.tableHeaderView!
         let tableEnclosingView = tableHeaderView.subviews[0]
         
         let width = tableView.frame.width
-        let height = tableEnclosingView.frame.height + filterButton.frame.height + 16.0
+        let height = tableEnclosingView.frame.height + 14.0
         var frame = tableHeaderView.frame
         frame.size.height = height
         frame.size.width = width
@@ -195,18 +163,20 @@ class ArtworksTableViewController : SearchViewController {
         refreshControl.addTarget(self, action: #selector(refreshLocation), for: .valueChanged)
     }
     
-    @objc func sortByTitle() {
+    @objc override func didTappedFilterTitleButton() {
         refreshControl.endRefreshing()
         refreshControl.removeFromSuperview()
-        artworksTableViewDataSource.sort(by: .title, coordinate: nil)
+        artworksTableViewDataSource.sort(by: .text, coordinate: nil)
         tableViewIndex.indexOffset = UIOffset(horizontal: -4, vertical: 0)
         tableViewIndexWidthConstraint.constant = 24
         tableViewIndexTrailingConstraint.constant = -tableViewIndexWidthConstraint.constant
         tableView.reloadData()
         tableViewIndex.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        tableView.setContentOffset(.zero, animated: false)
     }
     
-    @objc func sortByDate() {
+    @objc override func didTappedFilterDateButton() {
         refreshControl.endRefreshing()
         refreshControl.removeFromSuperview()
         artworksTableViewDataSource.sort(by: .date, coordinate: nil)
@@ -215,9 +185,11 @@ class ArtworksTableViewController : SearchViewController {
         tableViewIndexTrailingConstraint.constant = -tableViewIndexWidthConstraint.constant
         tableView.reloadData()
         tableViewIndex.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        tableView.setContentOffset(.zero, animated: false)
     }
     
-    @objc func sortByDistance() {
+    @objc override func didTappedFilterDistanceButton() {
         tableViewIndex.indexOffset = UIOffset(horizontal: -16, vertical: 0)
         tableViewIndexWidthConstraint.constant = 44
         tableViewIndexTrailingConstraint.constant = -tableViewIndexWidthConstraint.constant
@@ -229,7 +201,7 @@ class ArtworksTableViewController : SearchViewController {
     }
     
     @objc func refreshLocation() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -274,6 +246,9 @@ extension ArtworksTableViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        filterPopoverViewController?.dismiss(animated: true) {
+            self.filterPopoverViewController = nil
+        }
         performSegue(withIdentifier: Segues.showArtworkDetailsViewController, sender: tableView.cellForRow(at: indexPath))
     }
 }
@@ -283,6 +258,12 @@ extension ArtworksTableViewController : UIScrollViewDelegate {
     
     // Code le fait que les headers views de chaque section change de couleur d'arrière-plan lorsque ceux-ci stick au top de la view
     // lorsque que l'on scrolle
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        filterPopoverViewController?.dismiss(animated: true) {
+            self.filterPopoverViewController = nil
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         guard let heightTableHeaderView = tableView.tableHeaderView?.frame.height,
@@ -291,6 +272,17 @@ extension ArtworksTableViewController : UIScrollViewDelegate {
                 return
         }
         
+        // Show title if the user scrolled below the main tableHeaderView
+        let didTheUserScrolledBelowTableHeaderView = tableView.contentOffset.y >= heightTableHeaderView
+        switch (didTheUserScrolledBelowTableHeaderView, navigationItem.titleView) {
+        case (true, let titleView) where titleView != nil:
+            navigationItem.titleView = nil
+        case (false, nil):
+            navigationItem.titleView = UIView()
+        default:
+            break
+        }
+
         if indexes[0].section == 0 && tableView.contentOffset.y < heightTableHeaderView {
             
             tableView.headerView(forSection: 0)?.backgroundView?.backgroundColor = .clear
@@ -299,8 +291,8 @@ extension ArtworksTableViewController : UIScrollViewDelegate {
             if canPerformTableViewIndexAnimation {
                 
                 for cell in tableView.visibleCells {
-                    if let generalTableViewCell = cell as? GeneralTableViewCell {
-                        generalTableViewCell.trailingMarginConstraint.constant = 0
+                    if let artworkTableViewCell = cell as? ArtworkTableViewCell {
+                        artworkTableViewCell.trailingMarginConstraint.constant = 0
                     }
                 }
                 tableViewIndexTrailingConstraint.constant = -tableViewIndex.frame.width
@@ -317,8 +309,8 @@ extension ArtworksTableViewController : UIScrollViewDelegate {
             tableViewIndexTrailingConstraint.constant = 0
             
             for cell in tableView.visibleCells {
-                if let generalTableViewCell = cell as? GeneralTableViewCell {
-                    generalTableViewCell.trailingMarginConstraint.constant = tableViewIndex.frame.width
+                if let artworkTableViewCell = cell as? ArtworkTableViewCell {
+                    artworkTableViewCell.trailingMarginConstraint.constant = tableViewIndex.frame.width
                 }
             }
             
@@ -335,6 +327,7 @@ extension ArtworksTableViewController : UIScrollViewDelegate {
             guard let headerViewStickingNavigationBar = tableView.headerView(forSection: indexes[0].section), let backgroundViewOfHeaderViewStickingNavigationBar = headerViewStickingNavigationBar.backgroundView else {
                 return
             }
+            
             
             backgroundViewOfHeaderViewStickingNavigationBar.backgroundColor = Style.BackgroundViewOfHeaderViewStickingNavigationBar.backgroundColor
             backgroundViewOfHeaderViewStickingNavigationBar.layer.shadowColor = Style.BackgroundViewOfHeaderViewStickingNavigationBar.shadowColor
@@ -356,6 +349,12 @@ extension ArtworksTableViewController : UIScrollViewDelegate {
 
 //MARK: - TableViewIndexDelegate
 extension ArtworksTableViewController : TableViewIndexDelegate {
+    
+    func tableViewIndexBeginningTouches(_ tableViewIndex: TableViewIndex) {
+        if presentedViewController is FilterPopoverViewController {
+            presentedViewController?.dismiss(animated: true)
+        }
+    }
     
     func tableViewIndexProcessingTouches(_ tableViewIndex: TableViewIndex) {
         canPerformTableViewIndexAnimation = false

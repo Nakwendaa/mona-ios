@@ -78,12 +78,12 @@ class ArtworkDetailsDescriptionViewController: UIViewController {
     }
     
     private func setupCategoryLabel() {
-        categoryLabel.text = artwork.category.localizedName
+        categoryLabel.text = artwork.category.text
     }
 
     private func setupSubcategoryLabel() {
         if let subcategory = artwork.subcategory {
-            subcategoryLabel.text = subcategory.localizedName
+            subcategoryLabel.text = subcategory.text
         }
         else {
             subcategoryLabel.removeFromSuperview()
@@ -95,7 +95,7 @@ class ArtworkDetailsDescriptionViewController: UIViewController {
             materialsLabel.text = Strings.unknownMaterials
         }
         else {
-            materialsLabel.text = artwork.materials.map({ $0.localizedName}).joined(separator: ", ")
+            materialsLabel.text = artwork.materials.map({ $0.text}).joined(separator: ", ")
         }
     }
     
@@ -104,7 +104,7 @@ class ArtworkDetailsDescriptionViewController: UIViewController {
             techniquesLabel.text = Strings.unknownTechniques
         }
         else {
-            techniquesLabel.text = artwork.techniques.map({ $0.localizedName}).joined(separator: ", ")
+            techniquesLabel.text = artwork.techniques.map({ $0.text}).joined(separator: ", ")
         }
     }
 

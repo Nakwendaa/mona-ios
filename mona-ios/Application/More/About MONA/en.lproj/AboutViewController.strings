@@ -1,0 +1,17 @@
+/* 
+  AboutViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-06-12.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"title" = "About MONA";
+
+"preamble" = "Discover the city of Montreal and its art with a free and fun app, MONA.\n\nThe city becomes your playground. Search for art and take a photo to add it to your personal collection. Keep tabs on your experience by adding your own ratings and comments. As you roam through Montreal's districts and collect artworks, you will win rewards recognizing your dedication as art collector.\n\nMONA is a free and open source project aiming for all people to discover and enjoy public art. Find out more about our philosophy on our website: http://www.artetsite.org/mona .\n\nMONA is an academic research project based in Montreal, Canada. As detailed in Privacy Policy, the data we collect only serves the purpose of academic research. The project is entirely non-commercial and no third parties are involved.";
+
+"license title" = "Licensing";
+"license body" = "MONA is released in the AppStore under the Apache Version 2.0 licence (https://www.apache.org/licenses/LICENSE-2.0 ): Copyright 2019 MONA\n\nMONA's design is licensed under a Creative Commons Attribution 4.0 International Licence (https://creativecommons.org/licenses/by/4.0/ )\n\nThe metadata of the listed artworks is provided by the city of Montreal under the Creative Commons Attribution 4.0 Licence (http://donnees.ville.montreal.qc.ca/dataset/art-public-information-sur-les-oeuvres-de-la-collection-municipale ; http://donnees.ville.montreal.qc.ca/dataset/murales )";
+
+"contributors title" = "Contributors";
+"contributors body" = "MONA was created with the support of the research group \"art+site\", the Faculty of Arts and Science of the Université de Montréal and its Departement of Art History and Cinematographic Studies, in collaboration with the Department of Computer Science and Operations Research and the School of Design of the University. We have also received support from the Montreal Public Art Bureau.\n\nIf you would like to contribute to MONA in any form and share feedback with us, please do not hesitate to contact us at mona-app@tutanota.com. We'd love to hear from you!";

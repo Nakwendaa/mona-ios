@@ -94,11 +94,11 @@ extension BadgesViewController : UICollectionViewDataSource {
             collectedArtworksHintLabel.text = collectedArtworksCount == 1 ? Strings.collectedArtwork : Strings.collectedArtworks
 
             let firstCategory = AppData.categories[0]
-            firstCategoryLabel.text = firstCategory.localizedName.lowercased()
+            firstCategoryLabel.text = firstCategory.text.lowercased()
             let secondCategory = AppData.categories[1]
-            secondCategoryLabel.text = secondCategory.localizedName.lowercased()
+            secondCategoryLabel.text = secondCategory.text.lowercased()
             let thirdCategory = AppData.categories[2]
-            thirdCategoryLabel.text = thirdCategory.localizedName.lowercased()
+            thirdCategoryLabel.text = thirdCategory.text.lowercased()
             let firstCategoryCollectedArtworksCount = firstCategory.artworks.filter({ $0.isCollected }).count
             firstCategoryCollectedArtworksCountLabel.text = String(firstCategoryCollectedArtworksCount)
             let secondCategoryCollectedArtworksCount = secondCategory.artworks.filter({ $0.isCollected }).count

@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension Category : ArtworksNamable {
+extension Category : TextRepresentable {
     
-    var nameNamable : String {
+    var text : String {
         return localizedName
     }
     

@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQ1-fd-BLl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4639" y="-824"/>
+            <point key="canvasLocation" x="4638" y="-885"/>
         </scene>
         <!--Badges View Controller-->
         <scene sceneID="65l-Ku-UZK">
@@ -275,12 +275,20 @@ collectionnées</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBJ-HO-g5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3662" y="-823"/>
+            <point key="canvasLocation" x="3665" y="-884"/>
         </scene>
-        <!--Table View Controller-->
+        <!--ArtworksTableViewController-->
+        <scene sceneID="79H-hl-6nJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Artworks" referencedIdentifier="ArtworksTableViewController" id="93d-S9-DpK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CJF-mt-PMs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3665" y="-476"/>
+        </scene>
+        <!--More Table View Controller-->
         <scene sceneID="3XM-Dm-Ida">
             <objects>
-                <tableViewController id="vJU-dj-DsB" sceneMemberID="viewController">
+                <tableViewController id="vJU-dj-DsB" customClass="MoreTableViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="drl-t4-e5M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -324,6 +332,9 @@ collectionnées</string>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="93d-S9-DpK" kind="show" identifier="showTargetedArtworksTableViewController" id="RaS-PV-KMT"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="SS5-WC-5Ji" style="IBUITableViewCellStyleDefault" id="dvk-OD-X9D">
                                         <rect key="frame" x="0.0" y="123" width="375" height="44"/>
@@ -341,6 +352,9 @@ collectionnées</string>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="aqh-gO-Zni" kind="show" id="VUu-yz-d7P"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="HYf-Oo-dFz" style="IBUITableViewCellStyleDefault" id="5al-kE-zf3">
                                         <rect key="frame" x="0.0" y="167" width="375" height="44"/>
@@ -358,6 +372,9 @@ collectionnées</string>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="A8N-if-uUg" kind="show" id="wwx-Pd-3qA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -368,6 +385,12 @@ collectionnées</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="9qb-5g-bEj"/>
+                    <connections>
+                        <outlet property="aboutTableViewCellLabel" destination="HYf-Oo-dFz" id="ciD-H9-esa"/>
+                        <outlet property="badgesTableViewCellLabel" destination="QaI-1N-AeV" id="C77-9S-jLl"/>
+                        <outlet property="dataPrivacyTableViewCellLabel" destination="SS5-WC-5Ji" id="6ri-T3-yL5"/>
+                        <outlet property="targetedTableViewCellLabel" destination="327-Cw-sot" id="ybx-04-4rl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IAS-W1-m8u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -398,6 +421,219 @@ collectionnées</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rns-gW-K30" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1837.5999999999999" y="-475.41229385307349"/>
+        </scene>
+        <!--Data Privacy-->
+        <scene sceneID="Kaf-Y5-a8P">
+            <objects>
+                <viewController storyboardIdentifier="DataPrivacyViewController" title="Data Privacy" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aqh-gO-Zni" customClass="DataPrivacyViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="smU-GS-kxJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amV-eS-hTP">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02w-Km-It6" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="581.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yTu-PL-ymW">
+                                                <rect key="frame" x="8" y="8" width="359" height="565.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-kk-T5U" userLabel="Body Label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="130.5"/>
+                                                        <string key="text">By using the Service, you are agreeing to the collection and use of your personal information as outlined in this Privacy Policy. We may change the Privacy Policy from time to time, and we encourage you to consult the Privacy Policy regularly for changes.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What data do we collect?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jq-y7-f4M" userLabel="Subtitle Label">
+                                                        <rect key="frame" x="0.0" y="138.5" width="359" height="20.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zat-yq-rno" userLabel="Body Label">
+                                                        <rect key="frame" x="0.0" y="167" width="359" height="152.5"/>
+                                                        <string key="text">We value your privacy and minimize the use of your personal data. We solely collect the data relevant to our research, meaning your photographs, ratings and comments of the artworks you visit. The data is stored anonymously on our university servers and is only accessible to our researchers.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why do we collect data?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lg3-ID-pNS" userLabel="Subtitle Label">
+                                                        <rect key="frame" x="0.0" y="327.5" width="359" height="20.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQF-ww-MjD" userLabel="Body Label">
+                                                        <rect key="frame" x="0.0" y="356" width="359" height="86.5"/>
+                                                        <string key="text">We are interested in studying people's interests in public art. We use the collected data in the context of academic research to understand how you perceive such artworks.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your rights" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1F-tj-g3v" userLabel="Subtitle Label">
+                                                        <rect key="frame" x="0.0" y="450.5" width="359" height="20.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsa-dd-t5K" userLabel="Body Label">
+                                                        <rect key="frame" x="0.0" y="479" width="359" height="86.5"/>
+                                                        <string key="text">You may ask us any questions regarding your data or request the complete deletion of your data on our server by contacting us at mona-app@tutanota.com</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="yTu-PL-ymW" secondAttribute="bottom" constant="8" id="64m-BK-kdJ"/>
+                                            <constraint firstItem="yTu-PL-ymW" firstAttribute="top" secondItem="02w-Km-It6" secondAttribute="top" constant="8" id="8dE-hD-qKm"/>
+                                            <constraint firstItem="yTu-PL-ymW" firstAttribute="leading" secondItem="02w-Km-It6" secondAttribute="leading" constant="8" id="d8I-JS-pX2"/>
+                                            <constraint firstAttribute="trailing" secondItem="yTu-PL-ymW" secondAttribute="trailing" constant="8" id="fRr-kN-ZFj"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="02w-Km-It6" firstAttribute="top" secondItem="amV-eS-hTP" secondAttribute="top" id="G1L-ae-iqb"/>
+                                    <constraint firstAttribute="trailing" secondItem="02w-Km-It6" secondAttribute="trailing" id="JWU-gH-35O"/>
+                                    <constraint firstItem="02w-Km-It6" firstAttribute="leading" secondItem="amV-eS-hTP" secondAttribute="leading" id="kiL-Wu-Iqg"/>
+                                    <constraint firstAttribute="bottom" secondItem="02w-Km-It6" secondAttribute="bottom" id="lF7-0q-uv8"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="02w-Km-It6" firstAttribute="height" secondItem="smU-GS-kxJ" secondAttribute="height" priority="250" id="DAL-14-yTW"/>
+                            <constraint firstItem="amV-eS-hTP" firstAttribute="top" secondItem="0Ju-GM-McQ" secondAttribute="top" id="Kli-EL-oty"/>
+                            <constraint firstItem="amV-eS-hTP" firstAttribute="leading" secondItem="0Ju-GM-McQ" secondAttribute="leading" id="Tw8-eT-HGh"/>
+                            <constraint firstItem="0Ju-GM-McQ" firstAttribute="trailing" secondItem="amV-eS-hTP" secondAttribute="trailing" id="i2a-2m-I83"/>
+                            <constraint firstItem="0Ju-GM-McQ" firstAttribute="bottom" secondItem="amV-eS-hTP" secondAttribute="bottom" id="mun-3S-GDj"/>
+                            <constraint firstItem="02w-Km-It6" firstAttribute="width" secondItem="smU-GS-kxJ" secondAttribute="width" id="pi3-dC-46T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0Ju-GM-McQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="firstBodyTextLabel" destination="Zat-yq-rno" id="DrR-kL-AsQ"/>
+                        <outlet property="firstSubtitleLabel" destination="5jq-y7-f4M" id="6wr-jI-gDB"/>
+                        <outlet property="preambleLabel" destination="fXX-kk-T5U" id="axN-xv-tHv"/>
+                        <outlet property="secondBodyTextLabel" destination="eQF-ww-MjD" id="Ub7-Sb-98D"/>
+                        <outlet property="secondSubtitleLabel" destination="Lg3-ID-pNS" id="0uu-gB-mVg"/>
+                        <outlet property="thirdBodyTextLabel" destination="gsa-dd-t5K" id="W8d-1L-dNd"/>
+                        <outlet property="thirdSubtitleLabel" destination="W1F-tj-g3v" id="X7r-oe-UZb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SAr-aM-U19" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3665" y="-57"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="Hf3-hO-rT6">
+            <objects>
+                <viewController storyboardIdentifier="AboutViewController" title="About" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="A8N-if-uUg" customClass="AboutViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K94-e9-oiI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Y3-51-YOk">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqy-ov-fx3" userLabel="contentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1404.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cDq-iy-UTq">
+                                                <rect key="frame" x="8" y="8" width="359" height="1388.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="322-QP-gGh" userLabel="Preamble">
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="614.5"/>
+                                                        <string key="text">Découvrez la ville de Montréal et son art avec une application gratuite et amusante, MONA.
+
+La ville devient votre terrain de jeu. Recherchez une œuvre d'art et prenez une photo pour l'ajouter à votre collection personnelle. Gardez un œil sur votre expérience en ajoutant vos propres évaluations et commentaires. En parcourant les quartiers de Montréal et en collectionnant des œuvres d'art, vous obtiendrez des récompenses en reconnaissance de votre dévouement en tant que collectionneur d'œuvres d'art.
+
+MONA est un projet gratuit et open source visant à faire découvrir et apprécier l'art public à tous. Pour en savoir plus sur notre philosophie, consultez notre site Internet : http://www.artetsite.org/mona.
+
+MONA est un projet de recherche universitaire basé à Montréal, Canada. Tel que détaillé dans la Politique de confidentialité, les données que nous recueillons ne servent qu'à des fins de recherche universitaire. Le projet est entièrement non commercial et aucun tiers n'y participe.</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Licences" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHB-Xu-4a9" userLabel="Licensing Title">
+                                                        <rect key="frame" x="0.0" y="622.5" width="359" height="31.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nn-Xk-8VB" userLabel="Licensing Body">
+                                                        <rect key="frame" x="0.0" y="662" width="359" height="350.5"/>
+                                                        <string key="text">MONA est disponible dans l'AppStore sous la licence Apache Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0) : Copyright 2019 MONA
+
+Le design de MONA est sous licence Creative Commons Paternité 4.0 International Licence (https://creativecommons.org/licenses/by/4.0/)
+
+Les métadonnées des œuvres énumérées sont fournies par la Ville de Montréal sous la licence Creative Commons Paternité 4.0 (http://donnees.ville.montreal.qc.ca/dataset/art-public- information-sur-les-oeuvres-de-la-collection-municipale ; http://donnees.ville.montreal.qc.ca/dataset/murales)</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contributeurs" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lq0-tS-Z67" userLabel="Contributors Title">
+                                                        <rect key="frame" x="0.0" y="1020.5" width="359" height="31.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQV-UQ-RNb" userLabel="Contributors Body">
+                                                        <rect key="frame" x="0.0" y="1060" width="359" height="328.5"/>
+                                                        <string key="text">MONA a été créé avec le soutien du groupe de recherche "art+site", de la Faculté des arts et des sciences de l'Université de Montréal et de son Département d'histoire de l'art et d'études cinématographiques, en collaboration avec le Département d'informatique et de recherche opérationnelle et l'École de design de l'Université. Nous avons également reçu l'appui du Bureau d'art public de Montréal.
+
+Si vous souhaitez contribuer à MONA sous quelque forme que ce soit et partager vos commentaires avec nous, n'hésitez pas à nous contacter à mona-app@tutanota.com. Nous aimerions avoir de vos nouvelles !</string>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="cDq-iy-UTq" firstAttribute="top" secondItem="tqy-ov-fx3" secondAttribute="top" constant="8" id="DEo-VR-Zn1"/>
+                                            <constraint firstAttribute="trailing" secondItem="cDq-iy-UTq" secondAttribute="trailing" constant="8" id="Ira-6R-1nS"/>
+                                            <constraint firstAttribute="bottom" secondItem="cDq-iy-UTq" secondAttribute="bottom" constant="8" id="Ps3-41-LIs"/>
+                                            <constraint firstItem="cDq-iy-UTq" firstAttribute="leading" secondItem="tqy-ov-fx3" secondAttribute="leading" constant="8" id="xSY-00-f1B"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tqy-ov-fx3" secondAttribute="trailing" id="8K0-DN-dW4"/>
+                                    <constraint firstAttribute="bottom" secondItem="tqy-ov-fx3" secondAttribute="bottom" id="KdP-Cl-j0C"/>
+                                    <constraint firstItem="tqy-ov-fx3" firstAttribute="top" secondItem="9Y3-51-YOk" secondAttribute="top" id="O9U-vi-zBm"/>
+                                    <constraint firstItem="tqy-ov-fx3" firstAttribute="leading" secondItem="9Y3-51-YOk" secondAttribute="leading" id="tmb-Wf-bdo"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tqy-ov-fx3" firstAttribute="width" secondItem="K94-e9-oiI" secondAttribute="width" id="4WO-BH-mOZ"/>
+                            <constraint firstItem="9Y3-51-YOk" firstAttribute="top" secondItem="PBS-tF-WNf" secondAttribute="top" id="NUH-Um-wu3"/>
+                            <constraint firstItem="PBS-tF-WNf" firstAttribute="trailing" secondItem="9Y3-51-YOk" secondAttribute="trailing" id="b61-fY-sBD"/>
+                            <constraint firstItem="tqy-ov-fx3" firstAttribute="height" secondItem="K94-e9-oiI" secondAttribute="height" priority="250" id="ghg-eK-Qgq"/>
+                            <constraint firstItem="9Y3-51-YOk" firstAttribute="leading" secondItem="PBS-tF-WNf" secondAttribute="leading" id="hH6-X4-stJ"/>
+                            <constraint firstItem="PBS-tF-WNf" firstAttribute="bottom" secondItem="9Y3-51-YOk" secondAttribute="bottom" id="scc-ey-QJf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PBS-tF-WNf"/>
+                    </view>
+                    <connections>
+                        <outlet property="contributorsBodyLabel" destination="cQV-UQ-RNb" id="c7U-CV-buW"/>
+                        <outlet property="contributorsTitleLabel" destination="Lq0-tS-Z67" id="Lho-Cd-DvE"/>
+                        <outlet property="licenseBodyLabel" destination="5nn-Xk-8VB" id="OlC-eF-pmv"/>
+                        <outlet property="licenseTitleLabel" destination="JHB-Xu-4a9" id="Q1z-X5-T2U"/>
+                        <outlet property="preambleLabel" destination="322-QP-gGh" id="qhe-gg-rKh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWY-dt-Izn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2764" y="354"/>
         </scene>
     </scenes>
     <resources>

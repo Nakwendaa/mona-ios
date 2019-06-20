@@ -10,17 +10,24 @@ import UIKit
 
 final class SearchController: UISearchController {
     
-    class func commonInit() -> SearchController {
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    init() {
         let storyboard = UIStoryboard(name: "Search", bundle: .main)
         let searchResultsNavigationController = storyboard.instantiateViewController(withIdentifier: "SearchResultsNavigationController") as! UINavigationController
+        super.init(searchResultsController: searchResultsNavigationController)
         let searchResultsController = searchResultsNavigationController.viewControllers[0] as! SearchResultsController
-        let searchController = SearchController(searchResultsController: searchResultsNavigationController)
-        searchResultsController.searchController = searchController
-        searchController.delegate = searchResultsController
-        searchController.searchBar.delegate = searchResultsController
-        searchController.searchResultsUpdater = searchResultsController
-        searchController.searchBar.tintColor = .black
-        return searchController
+        searchResultsController.searchController = self
+        delegate = searchResultsController
+        searchBar.delegate = searchResultsController
+        searchResultsUpdater = searchResultsController
+        searchBar.tintColor = .black
     }
     
     override func viewDidLoad() {

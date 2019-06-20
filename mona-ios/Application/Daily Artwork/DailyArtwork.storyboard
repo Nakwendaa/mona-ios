@@ -86,19 +86,19 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="hrL-8y-0sg">
-                                                <rect key="frame" x="0.0" y="66" width="375" height="434.5"/>
+                                                <rect key="frame" x="72" y="66" width="231" height="444.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OEUVRE DU JOUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEY-fg-jRA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="26.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="231" height="26.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fB7-6p-8Jw">
-                                                        <rect key="frame" x="0.0" y="58.5" width="375" height="90"/>
+                                                        <rect key="frame" x="0.0" y="58.5" width="231" height="90"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Daily Artwork" translatesAutoresizingMaskIntoConstraints="NO" id="6IY-5m-Y2H">
-                                                                <rect key="frame" x="128.5" y="0.0" width="90" height="90"/>
+                                                                <rect key="frame" x="56.5" y="0.0" width="90" height="90"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="90" id="SaC-eX-zwV"/>
@@ -119,16 +119,16 @@
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="P9Q-qH-2b4">
-                                                        <rect key="frame" x="0.0" y="180.5" width="375" height="170"/>
+                                                        <rect key="frame" x="0.0" y="180.5" width="231" height="170"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="La mort de Dante" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSd-xV-nKv">
-                                                                <rect key="frame" x="16" y="0.0" width="343" height="26.5"/>
+                                                                <rect key="frame" x="16" y="0.0" width="199" height="26.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fB-DZ-FTv">
-                                                                <rect key="frame" x="140.5" y="42.5" width="94" height="1.5"/>
+                                                                <rect key="frame" x="68.5" y="42.5" width="94" height="1.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1.5" id="S6l-lk-xr6"/>
@@ -136,31 +136,31 @@
                                                                 </constraints>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="lU0-7X-DpP">
-                                                                <rect key="frame" x="16" y="60" width="343" height="110"/>
+                                                                <rect key="frame" x="16" y="60" width="199" height="110"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carlo Balboni, 1921" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2E-49-d2A">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="19.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="19.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7sW-8I-yce">
-                                                                        <rect key="frame" x="0.0" y="43.5" width="343" height="66.5"/>
+                                                                        <rect key="frame" x="0.0" y="43.5" width="199" height="66.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="390x250x241 cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXU-4l-ROq">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="19.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="199" height="19.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beaux-arts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApR-CY-2zx">
-                                                                                <rect key="frame" x="0.0" y="23.5" width="343" height="19.5"/>
+                                                                                <rect key="frame" x="0.0" y="23.5" width="199" height="19.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sculpture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPn-YE-89a">
-                                                                                <rect key="frame" x="0.0" y="47" width="343" height="19.5"/>
+                                                                                <rect key="frame" x="0.0" y="47" width="199" height="19.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
@@ -177,66 +177,50 @@
                                                             <constraint firstItem="lU0-7X-DpP" firstAttribute="leading" secondItem="P9Q-qH-2b4" secondAttribute="leading" constant="16" id="wzc-aE-G9w"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lec-uI-AUn">
-                                                        <rect key="frame" x="0.0" y="382.5" width="375" height="52"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="lec-uI-AUn">
+                                                        <rect key="frame" x="0.0" y="382.5" width="231" height="62"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BwV-Yx-wp3" userLabel="cameraButtonView">
-                                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="52"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StP-0C-yIZ">
-                                                                        <rect key="frame" x="54" y="1" width="80" height="50"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="50" id="Ng4-sz-dgl"/>
-                                                                            <constraint firstAttribute="width" constant="80" id="WqX-FB-net"/>
-                                                                        </constraints>
-                                                                        <state key="normal" image="Daily Artwork Camera Button Default"/>
-                                                                        <connections>
-                                                                            <action selector="cameraButtonTapped:" destination="UqB-aZ-pab" eventType="touchUpInside" id="4fa-I5-FJm"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                </subviews>
+                                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StP-0C-yIZ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="68" height="62"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="StP-0C-yIZ" firstAttribute="centerX" secondItem="BwV-Yx-wp3" secondAttribute="centerX" id="ZA3-Cl-CCx"/>
-                                                                    <constraint firstItem="StP-0C-yIZ" firstAttribute="centerY" secondItem="BwV-Yx-wp3" secondAttribute="centerY" id="twF-cX-xjo"/>
+                                                                    <constraint firstAttribute="width" secondItem="StP-0C-yIZ" secondAttribute="height" multiplier="83:76" id="u4X-iJ-y9o"/>
                                                                 </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAU-gX-tGa" userLabel="mapButtonView">
-                                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="52"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvr-mQ-Aou">
-                                                                        <rect key="frame" x="66.5" y="1" width="55" height="50"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="55" id="Xx7-Ep-4KT"/>
-                                                                            <constraint firstAttribute="height" constant="50" id="o5F-DL-XYK"/>
-                                                                        </constraints>
-                                                                        <state key="normal" title="" image="Daily Artwork Map Button Default"/>
-                                                                        <connections>
-                                                                            <segue destination="Zv0-9n-cNx" kind="show" identifier="showDailyArtworkMapViewController" id="JYc-Z0-uwd"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                </subviews>
+                                                                <state key="normal" image="Daily Artwork Camera Button Default"/>
+                                                                <connections>
+                                                                    <action selector="cameraButtonTapped:" destination="UqB-aZ-pab" eventType="touchUpInside" id="4fa-I5-FJm"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxP-1i-cUb">
+                                                                <rect key="frame" x="84" y="0.0" width="62" height="62"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="Vvr-mQ-Aou" firstAttribute="centerX" secondItem="iAU-gX-tGa" secondAttribute="centerX" id="Pxr-y9-fNC"/>
-                                                                    <constraint firstItem="Vvr-mQ-Aou" firstAttribute="centerY" secondItem="iAU-gX-tGa" secondAttribute="centerY" id="zMy-8p-x55"/>
+                                                                    <constraint firstAttribute="width" secondItem="bxP-1i-cUb" secondAttribute="height" multiplier="1:1" id="XDG-F2-J64"/>
                                                                 </constraints>
-                                                            </view>
+                                                                <state key="normal" image="Daily Artwork Target Button Default"/>
+                                                                <state key="selected" image="Daily Artwork Target Button Selected"/>
+                                                                <connections>
+                                                                    <action selector="targetButtonTapped:" destination="UqB-aZ-pab" eventType="touchUpInside" id="pXW-pg-1ul"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvr-mQ-Aou">
+                                                                <rect key="frame" x="162" y="0.0" width="69" height="62"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="Vvr-mQ-Aou" secondAttribute="height" multiplier="10:9" id="HvM-St-8cX"/>
+                                                                </constraints>
+                                                                <state key="normal" title="" image="Daily Artwork Map Button Default"/>
+                                                                <connections>
+                                                                    <segue destination="Zv0-9n-cNx" kind="show" identifier="showDailyArtworkMapViewController" id="JYc-Z0-uwd"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="BwV-Yx-wp3" firstAttribute="top" secondItem="lec-uI-AUn" secondAttribute="top" id="Qng-Nd-F5d"/>
-                                                            <constraint firstItem="iAU-gX-tGa" firstAttribute="top" secondItem="lec-uI-AUn" secondAttribute="top" id="dsI-TR-bIn"/>
-                                                            <constraint firstAttribute="bottom" secondItem="iAU-gX-tGa" secondAttribute="bottom" id="kD0-gP-U82"/>
-                                                            <constraint firstAttribute="height" constant="52" id="pma-GK-Y64"/>
-                                                            <constraint firstAttribute="bottom" secondItem="BwV-Yx-wp3" secondAttribute="bottom" id="pub-gQ-tVX"/>
-                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.70588235290000001" green="0.71764705880000002" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="hrL-8y-0sg" secondAttribute="trailing" id="KVa-fm-dos"/>
+                                            <constraint firstAttribute="trailing" secondItem="hrL-8y-0sg" secondAttribute="trailing" constant="72" id="KVa-fm-dos"/>
                                             <constraint firstItem="hrL-8y-0sg" firstAttribute="top" secondItem="ErB-it-Um6" secondAttribute="top" constant="66" id="fKs-hb-h1r"/>
-                                            <constraint firstItem="hrL-8y-0sg" firstAttribute="leading" secondItem="ErB-it-Um6" secondAttribute="leading" id="gs2-Tn-VS4"/>
+                                            <constraint firstItem="hrL-8y-0sg" firstAttribute="leading" secondItem="ErB-it-Um6" secondAttribute="leading" constant="72" id="gs2-Tn-VS4"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -270,6 +254,7 @@
                         <outlet property="imageView" destination="6IY-5m-Y2H" id="dF4-A7-mbR"/>
                         <outlet property="mapButton" destination="Vvr-mQ-Aou" id="dqV-pk-dx5"/>
                         <outlet property="subcategoryLabel" destination="wPn-YE-89a" id="5ur-io-rnI"/>
+                        <outlet property="targetButton" destination="bxP-1i-cUb" id="J6P-ht-a1J"/>
                         <outlet property="titleLabel" destination="lEY-fg-jRA" id="1Ae-g1-gFR"/>
                         <segue destination="HGv-Lz-dsw" kind="show" identifier="showDailyArtworkImagePickerController" id="pXw-he-YY4"/>
                     </connections>
@@ -421,10 +406,12 @@
     </scenes>
     <resources>
         <image name="Daily Artwork" width="981" height="982"/>
-        <image name="Daily Artwork Camera Button Default" width="150" height="94"/>
-        <image name="Daily Artwork Map Button Default" width="150" height="135.5"/>
+        <image name="Daily Artwork Camera Button Default" width="997" height="913"/>
+        <image name="Daily Artwork Map Button Default" width="300" height="271"/>
         <image name="Daily Artwork Tabbar Default Image" width="23" height="23"/>
         <image name="Daily Artwork Tabbar Selected Image" width="23" height="23"/>
+        <image name="Daily Artwork Target Button Default" width="1000" height="1000"/>
+        <image name="Daily Artwork Target Button Selected" width="1000" height="1000"/>
         <image name="Localize User Default" width="1000" height="1000"/>
     </resources>
 </document>

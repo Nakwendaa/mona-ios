@@ -24,7 +24,7 @@ class SearchResultsDataSource : NSObject, UITableViewDataSource {
     
     struct Section {
         var name : String
-        var items : [Namable]
+        var items : [TextRepresentable]
     }
     
     var sections = [Section]()
@@ -72,7 +72,7 @@ class SearchResultsDataSource : NSObject, UITableViewDataSource {
             // Fetches the appropriate artwork for the data source layout.
             let artwork = artworksFiltered[indexPath.row]
             cell.titleLabel.text = artwork.title
-            cell.subtitleLabel.text = artwork.address.district.nameNamable
+            cell.subtitleLabel.text = artwork.address.district.text
             cell.artwork = artwork
             guard let photos = artwork.photos, let photo = photos.firstObject as? Photo else {
                 return cell
@@ -90,37 +90,37 @@ class SearchResultsDataSource : NSObject, UITableViewDataSource {
             if sections[indexPath.section].name == Strings.artists {
                 let artist = artistsFiltered[indexPath.row]
                 cell.artworks = Array(artist.artworks)
-                cell.titleLabel.text = artist.nameNamable
+                cell.titleLabel.text = artist.text
                 cell.subtitleLabel.text = "\(cell.artworks.count) " + Strings.artworks.lowercased()
             }
             else if sections[indexPath.section].name == Strings.categories {
                 let category = categoriesFiltered[indexPath.row]
                 cell.artworks = Array(category.artworks)
-                cell.titleLabel.text = category.nameNamable
+                cell.titleLabel.text = category.text
                 cell.subtitleLabel.text = "\(cell.artworks.count) " + Strings.artworks.lowercased()
             }
             else if sections[indexPath.section].name == Strings.districts {
                 let district = districtsFiltered[indexPath.row]
                 cell.artworks = Array(district.artworks)
-                cell.titleLabel.text = district.nameNamable
+                cell.titleLabel.text = district.text
                 cell.subtitleLabel.text = "\(cell.artworks.count) " + Strings.artworks.lowercased()
             }
             else if sections[indexPath.section].name == Strings.materials {
                 let material = materialsFiltered[indexPath.row]
                 cell.artworks = Array(material.artworks)
-                cell.titleLabel.text = material.nameNamable
+                cell.titleLabel.text = material.text
                 cell.subtitleLabel.text = "\(cell.artworks.count) " + Strings.artworks.lowercased()
             }
             else if sections[indexPath.section].name == Strings.subcategories {
                 let subcategory = subcategoriesFiltered[indexPath.row]
                 cell.artworks = Array(subcategory.artworks)
-                cell.titleLabel.text = subcategory.nameNamable
+                cell.titleLabel.text = subcategory.text
                 cell.subtitleLabel.text = "\(cell.artworks.count) " + Strings.artworks.lowercased().lowercased()
             }
             else if sections[indexPath.section].name == Strings.techniques {
                 let technique = techniquesFiltered[indexPath.row]
                 cell.artworks = Array(technique.artworks)
-                cell.titleLabel.text = technique.nameNamable
+                cell.titleLabel.text = technique.text
                 cell.subtitleLabel.text = "\(cell.artworks.count) " + Strings.artworks.lowercased()
             }
             
@@ -137,11 +137,11 @@ class SearchResultsDataSource : NSObject, UITableViewDataSource {
         
         // Artists
         artistsFiltered = AppData.artists.filter { artist in
-            var artistName = artist.nameNamable.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+            var artistName = artist.text.lowercased().folding(options: .diacriticInsensitive, locale: .current)
             artistName = artistName.replacingOccurences(target: "-", withString: " ")
             return artistName.range(of: searchString) != nil
         }
-        artistsFiltered.sort { $0.nameNamable < $1.nameNamable }
+        artistsFiltered.sort { $0.text < $1.text }
         
         var artists = [Artist]()
         
@@ -155,13 +155,13 @@ class SearchResultsDataSource : NSObject, UITableViewDataSource {
         
         // Artworks
         artworksFiltered = AppData.artworks.filter { artwork in
-            var artworkName = artwork.nameNamable.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+            var artworkName = artwork.text.lowercased().folding(options: .diacriticInsensitive, locale: .current)
             artworkName = artworkName.replacingOccurences(target: "-", withString: " ")
             return artworkName.range(of: searchString) != nil
         }
         
         artworksFiltered = artworksFiltered.sorted {
-            $0.nameNamable < $1.nameNamable
+            $0.text < $1.text
         }
         
         var artworks = [Artwork]()
@@ -176,12 +176,12 @@ class SearchResultsDataSource : NSObject, UITableViewDataSource {
         
         // Categories
         categoriesFiltered = AppData.categories.filter { category in
-            var categoryName = category.nameNamable.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+            var categoryName = category.text.lowercased().folding(options: .diacriticInsensitive, locale: .current)
             categoryName = categoryName.replacingOccurences(target: "-", withString: " ")
             return categoryName.range(of: searchString) != nil
         }
         
-        categoriesFiltered = categoriesFiltered.sorted(by: {$0.nameNamable < $1.nameNamable })
+        categoriesFiltered = categoriesFiltered.sorted(by: {$0.text < $1.text })
         
         var categories = [Category]()
         
@@ -195,11 +195,11 @@ class SearchResultsDataSource : NSObject, UITableViewDataSource {
         
         // Districts
         districtsFiltered = AppData.districts.filter { district in
-            var districtName = district.nameNamable.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+            var districtName = district.text.lowercased().folding(options: .diacriticInsensitive, locale: .current)
             districtName = districtName.replacingOccurences(target: "-", withString: " ")
             return districtName.range(of: searchString) != nil
         }
-        districtsFiltered = districtsFiltered.sorted(by: {$0.nameNamable < $1.nameNamable })
+        districtsFiltered = districtsFiltered.sorted(by: {$0.text < $1.text })
         
         var districts = [District]()
         
@@ -213,11 +213,11 @@ class SearchResultsDataSource : NSObject, UITableViewDataSource {
         
         // Materials
         materialsFiltered = AppData.materials.filter { material in
-            var materialName = material.nameNamable.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+            var materialName = material.text.lowercased().folding(options: .diacriticInsensitive, locale: .current)
             materialName = materialName.replacingOccurences(target: "-", withString: " ")
             return materialName.range(of: searchString) != nil
         }
-        materialsFiltered = materialsFiltered.sorted(by: {$0.nameNamable < $1.nameNamable })
+        materialsFiltered = materialsFiltered.sorted(by: {$0.text < $1.text })
         
         var materials = [Material]()
         
@@ -231,11 +231,11 @@ class SearchResultsDataSource : NSObject, UITableViewDataSource {
         
         // Subcategories
         subcategoriesFiltered = AppData.subcategories.filter { subcategory in
-            var subcategoryName = subcategory.nameNamable.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+            var subcategoryName = subcategory.text.lowercased().folding(options: .diacriticInsensitive, locale: .current)
             subcategoryName = subcategoryName.replacingOccurences(target: "-", withString: " ")
             return subcategoryName.range(of: searchString) != nil
         }
-        subcategoriesFiltered = subcategoriesFiltered.sorted(by: {$0.nameNamable < $1.nameNamable })
+        subcategoriesFiltered = subcategoriesFiltered.sorted(by: {$0.text < $1.text })
         
         var subcategories = [Subcategory]()
         
@@ -249,11 +249,11 @@ class SearchResultsDataSource : NSObject, UITableViewDataSource {
         
         // Techniques
         techniquesFiltered = AppData.techniques.filter { technique in
-            var techniqueName = technique.nameNamable.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+            var techniqueName = technique.text.lowercased().folding(options: .diacriticInsensitive, locale: .current)
             techniqueName = techniqueName.replacingOccurences(target: "-", withString: " ")
             return techniqueName.range(of: searchString) != nil
         }
-        techniquesFiltered = techniquesFiltered.sorted(by: {$0.nameNamable < $1.nameNamable })
+        techniquesFiltered = techniquesFiltered.sorted(by: {$0.text < $1.text })
         
         var techniques = [Technique]()
         

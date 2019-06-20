@@ -14,15 +14,12 @@ class FilterPopoverViewController: UIViewController {
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var distanceButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
 }
 
 extension FilterPopoverViewController : UIAdaptivePresentationControllerDelegate {
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.none
+        return .none
     }
+
 }

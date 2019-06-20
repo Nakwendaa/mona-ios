@@ -69,23 +69,18 @@ class MainTableViewController: SearchViewController {
             let title = sender as! String
             let destination = segue.destination as! ArtworksTableViewController
             prepareShowArtworksTableViewController(sender: self.title!, title: title, destination: destination)
-            return
         case Segues.showGeneralTableViewController:
-            let title = sender as! String
-            let destination = segue.destination as! GeneralTableViewController
-            prepareShowGeneralTableViewController(title: title, destination: destination)
+            break
         case Segues.showCategoryDistrictMainTableViewController:
             let title = sender as! String
             let destination = segue.destination as! MainTableViewController
             prepareShowCategoryDistrictMainTableViewController(title: title, destination: destination)
-            return
         case Segues.showSubcategories:
             let categoryName = sender as! String
             let destination = segue.destination as! MainTableViewController
             prepareShowSubcategories(categoryName: categoryName, destination: destination)
-            return
         default:
-            return
+            break
         }
         
     }
@@ -107,20 +102,21 @@ class MainTableViewController: SearchViewController {
         headerViewLabel.text = title
     }
     
-    private func prepareShowGeneralTableViewController(title: String, destination: GeneralTableViewController) {
+    private func showGeneralTableViewController<T: ArtworksSettable & TextRepresentable>(title: String, type: T.Type) {
+        let destination = GeneralTableViewController<T>(nibName: "GeneralTableViewController", bundle: .main)
         destination.title = title
         DispatchQueue.main.async {
-            switch title {
-            case Strings.artists:
-                destination.namables = AppData.artists
-            case Strings.materials:
-                destination.namables = AppData.materials
-            case Strings.techniques:
-                destination.namables = AppData.techniques
-            default:
-                return
+            if let generalTableVC = destination as? GeneralTableViewController<Artist> {
+                generalTableVC.items = AppData.artists
+            }
+            else if let generalTableVC = destination as? GeneralTableViewController<Material> {
+                generalTableVC.items = AppData.materials
+            }
+            else if let generalTableVC = destination as? GeneralTableViewController<Technique> {
+                generalTableVC.items = AppData.techniques
             }
         }
+        navigationController?.pushViewController(destination, animated: true)
     }
     
     private func prepareShowArtworksTableViewController(sender: String, title: String, destination: ArtworksTableViewController) {
@@ -134,7 +130,7 @@ class MainTableViewController: SearchViewController {
         case Strings.categories:
             let categoryName = title
             destination.title = categoryName
-            guard let category = AppData.categories.first(where: { $0.localizedName == categoryName }) else {
+            guard let category = AppData.categories.first(where: { $0.text == categoryName }) else {
                 return
             }
             destination.artworks = Array(category.artworks)
@@ -150,7 +146,7 @@ class MainTableViewController: SearchViewController {
         default:
             let subcategoryName = title
             destination.title = subcategoryName
-            guard let subcategory = AppData.subcategories.first(where: { $0.localizedName == subcategoryName }) else {
+            guard let subcategory = AppData.subcategories.first(where: { $0.text == subcategoryName }) else {
                 return
             }
             destination.artworks = Array(subcategory.artworks)
@@ -163,7 +159,7 @@ class MainTableViewController: SearchViewController {
         case Strings.categories:
             destination.title = Strings.categories
             DispatchQueue.main.async {
-                destination.tableViewCellCollection = AppData.categories.map { $0.localizedName }.sorted()
+                destination.tableViewCellCollection = AppData.categories.map { $0.text }.sorted()
             }
             return
         case Strings.districts:
@@ -178,7 +174,7 @@ class MainTableViewController: SearchViewController {
     }
     
     private func prepareShowSubcategories(categoryName: String, destination: MainTableViewController) {
-        guard let category = AppData.categories.first(where:{$0.localizedName == categoryName}) else {
+        guard let category = AppData.categories.first(where:{$0.text == categoryName}) else {
             log.error("Category with localized name \"\(categoryName)\" not found.")
             return
         }
@@ -188,7 +184,7 @@ class MainTableViewController: SearchViewController {
         }
         destination.title = categoryName
         DispatchQueue.main.async {
-            destination.tableViewCellCollection = subcategories.map{ $0.localizedName }.sorted()
+            destination.tableViewCellCollection = subcategories.map{ $0.text }.sorted()
         }
     }
 
@@ -223,23 +219,23 @@ extension MainTableViewController : UITableViewDelegate {
         case Strings.artworksTrunc:
             switch tableViewCellCollection[indexPath.row] {
             case Strings.titles:
-                return performSegue(withIdentifier: Segues.showArtworksTableViewController, sender: Strings.titles)
+                performSegue(withIdentifier: Segues.showArtworksTableViewController, sender: Strings.titles)
             case Strings.artists:
-                return performSegue(withIdentifier: Segues.showGeneralTableViewController, sender: Strings.artists)
+                showGeneralTableViewController(title: Strings.artists, type: Artist.self)
             case Strings.districts:
-                return performSegue(withIdentifier: Segues.showCategoryDistrictMainTableViewController, sender: Strings.districts)
+                performSegue(withIdentifier: Segues.showCategoryDistrictMainTableViewController, sender: Strings.districts)
             case Strings.categories:
                 return performSegue(withIdentifier: Segues.showCategoryDistrictMainTableViewController, sender: Strings.categories)
             case Strings.materials:
-                return performSegue(withIdentifier: Segues.showGeneralTableViewController, sender: Strings.materials)
+                showGeneralTableViewController(title: Strings.materials, type: Material.self)
             case Strings.techniques:
-                return performSegue(withIdentifier: Segues.showGeneralTableViewController, sender: Strings.techniques)
+                showGeneralTableViewController(title: Strings.techniques, type: Technique.self)
             default:
                 return
             }
         case Strings.categories:
             let categoryName = tableViewCellCollection[indexPath.row]
-            guard let category = AppData.categories.first(where: { $0.localizedName == categoryName}) else {
+            guard let category = AppData.categories.first(where: { $0.text == categoryName}) else {
                 return
             }
             if let subcategories = category.subcategories, !subcategories.isEmpty {
@@ -256,3 +252,23 @@ extension MainTableViewController : UITableViewDelegate {
     }
 }
 
+extension MainTableViewController : UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // Show title if the user scrolled below the main tableHeaderView
+        
+        guard let heightTableHeaderView = tableView.tableHeaderView?.bounds.height else {
+                return
+        }
+        
+        let didTheUserScrolledBelowTableHeaderView = tableView.contentOffset.y >= heightTableHeaderView
+        switch (didTheUserScrolledBelowTableHeaderView, navigationItem.titleView) {
+        case (true, let titleView) where titleView != nil:
+            navigationItem.titleView = nil
+        case (false, nil):
+            navigationItem.titleView = UIView()
+        default:
+            break
+        }
+    }
+}
