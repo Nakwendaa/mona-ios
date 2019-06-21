@@ -13,32 +13,42 @@ class SearchViewController : UIViewController, UITabBarControllerDelegate {
     var searchController : UISearchController?
     var filterPopoverViewController : FilterPopoverViewController?
     
+    
+    lazy var searchBarButtonItem = UIBarButtonItem(
+        barButtonSystemItem: .search,
+        target: self,
+        action:#selector(searchTapped))
+    
     var searchIsActive = false {
         willSet {
             if newValue {
-                let searchBarButtonItem = UIBarButtonItem(
-                    barButtonSystemItem: .search,
-                    target: self,
-                    action:#selector(searchTapped))
                 addBarButtonItem(searchBarButtonItem)
+            }
+            else {
+                removeBarButtonItem(searchBarButtonItem)
             }
         }
     }
     
+    lazy var filterBarButtonItem = UIBarButtonItem(
+        image: #imageLiteral(resourceName: "Filter Button"),
+        style: .plain,
+        target: self,
+        action: #selector(didTappedFilterButton))
+    
     var filterIsActive = false {
         willSet {
             if newValue {
-                let filterBarButtonItem = UIBarButtonItem(
-                    image: #imageLiteral(resourceName: "Filter Button"),
-                    style: .plain,
-                    target: self,
-                    action: #selector(didTappedFilterButton))
                 addBarButtonItem(filterBarButtonItem)
+            }
+            else {
+                removeBarButtonItem(filterBarButtonItem)
             }
         }
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         searchIsActive = !(navigationController?.viewControllers[0] is SearchResultsController)
     }
     
@@ -49,6 +59,23 @@ class SearchViewController : UIViewController, UITabBarControllerDelegate {
         else {
             navigationItem.rightBarButtonItems = [button]
         }
+    }
+    
+    private func removeBarButtonItem(_ button: UIBarButtonItem) {
+        guard var rightBarButtonItems = navigationItem.rightBarButtonItems else {
+            return
+        }
+        var indexes = [Int]()
+        let range = 0..<rightBarButtonItems.count
+        range.forEach {
+            if rightBarButtonItems[$0] == button {
+                indexes.append($0)
+            }
+        }
+        indexes.forEach {
+            rightBarButtonItems.remove(at: $0)
+        }
+        navigationItem.rightBarButtonItems = rightBarButtonItems
     }
     
     @objc func searchTapped() {

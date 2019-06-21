@@ -8,7 +8,7 @@
 
 import MapKit
 
-class ArtworkDetailsFullMapViewController: UIViewController {
+class ArtworkDetailsFullMapViewController: SearchViewController {
     
     //MARK: - Types
     struct Strings {

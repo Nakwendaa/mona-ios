@@ -176,6 +176,12 @@
 		B49CA254229014D700FBA757 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B49CA253229014D700FBA757 /* MainTableViewCell.xib */; };
 		B49CA256229014E700FBA757 /* MainListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B49CA255229014E700FBA757 /* MainListHeaderView.xib */; };
 		B49CA2612290196400FBA757 /* MainTableViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B49CA2632290196400FBA757 /* MainTableViewController.strings */; };
+		B4A3D63922BD32B1006CD2FE /* CollectionViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4A3D63B22BD32B1006CD2FE /* CollectionViewController.strings */; };
+		B4A3D63E22BD3FB7006CD2FE /* TargetedArtworksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3D63D22BD3FB7006CD2FE /* TargetedArtworksTableViewController.swift */; };
+		B4A3D64122BD4299006CD2FE /* TargetedArtworksTableViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4A3D64322BD4299006CD2FE /* TargetedArtworksTableViewController.strings */; };
+		B4A3D64722BD5427006CD2FE /* LegendPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3D64522BD5427006CD2FE /* LegendPopoverViewController.swift */; };
+		B4A3D64822BD5427006CD2FE /* LegendPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4A3D64622BD5427006CD2FE /* LegendPopoverViewController.xib */; };
+		B4A3D64B22BD569A006CD2FE /* LegendPopoverViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4A3D64D22BD569A006CD2FE /* LegendPopoverViewController.strings */; };
 		B4AD5E54229026D50064A876 /* GeneralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4AD5E53229026D50064A876 /* GeneralTableViewCell.xib */; };
 		B4AD5E562290271A0064A876 /* ArtworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4AD5E552290271A0064A876 /* ArtworkTableViewCell.xib */; };
 		B4AD5E5F22908ACD0064A876 /* FilterPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4AD5E5E22908ACD0064A876 /* FilterPopoverViewController.xib */; };
@@ -202,6 +208,7 @@
 		B4AD5E8F229095A60064A876 /* GeneralTableViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4AD5E91229095A60064A876 /* GeneralTableViewController.strings */; };
 		B4BC300222BC096E000F8303 /* CollectionFilterPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BC300022BC096E000F8303 /* CollectionFilterPopoverViewController.swift */; };
 		B4BC300322BC096E000F8303 /* CollectionFilterPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BC300122BC096E000F8303 /* CollectionFilterPopoverViewController.xib */; };
+		B4BC300522BC4BA6000F8303 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BC300422BC4BA6000F8303 /* UIColor+Extension.swift */; };
 		B4C75B4622B7ED2100D73C7D /* DateRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C75B4522B7ED2100D73C7D /* DateRepresentable.swift */; };
 		B4C75B4922B7F02D00D73C7D /* Artist+Protocols.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4C75B4B22B7F02D00D73C7D /* Artist+Protocols.strings */; };
 		B4C75B4F22B7F15800D73C7D /* Artwork+Protocols.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4C75B5122B7F15800D73C7D /* Artwork+Protocols.strings */; };
@@ -433,6 +440,15 @@
 		B49CA255229014E700FBA757 /* MainListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainListHeaderView.xib; sourceTree = "<group>"; };
 		B49CA2622290196400FBA757 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainTableViewController.strings; sourceTree = "<group>"; };
 		B49CA2642290196800FBA757 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainTableViewController.strings; sourceTree = "<group>"; };
+		B4A3D63A22BD32B1006CD2FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CollectionViewController.strings; sourceTree = "<group>"; };
+		B4A3D63C22BD32B5006CD2FE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CollectionViewController.strings; sourceTree = "<group>"; };
+		B4A3D63D22BD3FB7006CD2FE /* TargetedArtworksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetedArtworksTableViewController.swift; sourceTree = "<group>"; };
+		B4A3D64222BD4299006CD2FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TargetedArtworksTableViewController.strings; sourceTree = "<group>"; };
+		B4A3D64422BD429A006CD2FE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/TargetedArtworksTableViewController.strings; sourceTree = "<group>"; };
+		B4A3D64522BD5427006CD2FE /* LegendPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendPopoverViewController.swift; sourceTree = "<group>"; };
+		B4A3D64622BD5427006CD2FE /* LegendPopoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LegendPopoverViewController.xib; sourceTree = "<group>"; };
+		B4A3D64C22BD569A006CD2FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LegendPopoverViewController.strings; sourceTree = "<group>"; };
+		B4A3D64E22BD569E006CD2FE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LegendPopoverViewController.strings; sourceTree = "<group>"; };
 		B4AD5E53229026D50064A876 /* GeneralTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralTableViewCell.xib; sourceTree = "<group>"; };
 		B4AD5E552290271A0064A876 /* ArtworkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtworkTableViewCell.xib; sourceTree = "<group>"; };
 		B4AD5E5E22908ACD0064A876 /* FilterPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterPopoverViewController.xib; sourceTree = "<group>"; };
@@ -460,6 +476,7 @@
 		B4AD5E92229095AA0064A876 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/GeneralTableViewController.strings; sourceTree = "<group>"; };
 		B4BC300022BC096E000F8303 /* CollectionFilterPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFilterPopoverViewController.swift; sourceTree = "<group>"; };
 		B4BC300122BC096E000F8303 /* CollectionFilterPopoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionFilterPopoverViewController.xib; sourceTree = "<group>"; };
+		B4BC300422BC4BA6000F8303 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B4C75B4522B7ED2100D73C7D /* DateRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRepresentable.swift; sourceTree = "<group>"; };
 		B4C75B4A22B7F02D00D73C7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/Artist+Protocols.strings"; sourceTree = "<group>"; };
 		B4C75B4C22B7F03200D73C7D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = "fr.lproj/Artist+Protocols.strings"; sourceTree = "<group>"; };
@@ -665,6 +682,8 @@
 		B428794E22A49E8700EABBE6 /* Targeted */ = {
 			isa = PBXGroup;
 			children = (
+				B4A3D63D22BD3FB7006CD2FE /* TargetedArtworksTableViewController.swift */,
+				B4A3D64322BD4299006CD2FE /* TargetedArtworksTableViewController.strings */,
 			);
 			path = Targeted;
 			sourceTree = "<group>";
@@ -890,6 +909,7 @@
 				B487531A22A3262600EE6EE6 /* NSDate+Extension.swift */,
 				B487531822A3262600EE6EE6 /* String+Extension.swift */,
 				B487532422A3262700EE6EE6 /* UIAlertController+Extension.swift */,
+				B4BC300422BC4BA6000F8303 /* UIColor+Extension.swift */,
 				B487532322A3262700EE6EE6 /* UIDevice+Extension.swift */,
 				B487531B22A3262600EE6EE6 /* UIImage+Extension.swift */,
 				B487532122A3262700EE6EE6 /* UILabel+Extension.swift */,
@@ -1118,6 +1138,9 @@
 				B487539C22A3271100EE6EE6 /* Map.storyboard */,
 				B487539F22A3271100EE6EE6 /* MapViewController.swift */,
 				B48753B122A3273700EE6EE6 /* MapViewController.strings */,
+				B4A3D64622BD5427006CD2FE /* LegendPopoverViewController.xib */,
+				B4A3D64522BD5427006CD2FE /* LegendPopoverViewController.swift */,
+				B4A3D64D22BD569A006CD2FE /* LegendPopoverViewController.strings */,
 				B487539D22A3271100EE6EE6 /* ArtworkAnnotation.swift */,
 				B48753AD22A3271800EE6EE6 /* ArtworkAnnotation.strings */,
 				B487539E22A3271100EE6EE6 /* ArtworkAnnotationView.swift */,
@@ -1130,6 +1153,7 @@
 			children = (
 				B487538922A326A200EE6EE6 /* Collection.storyboard */,
 				B487538822A326A200EE6EE6 /* CollectionViewController.swift */,
+				B4A3D63B22BD32B1006CD2FE /* CollectionViewController.strings */,
 				B487539922A326F200EE6EE6 /* Data Sources */,
 				B487538322A326A200EE6EE6 /* Cells */,
 				B487538A22A326A200EE6EE6 /* Layouts */,
@@ -1253,6 +1277,7 @@
 				B48858AC2289F29A0011360D /* Tabbar.strings in Resources */,
 				B48394DE2295C9030003065B /* ArtworkDetailsCommentViewController.strings in Resources */,
 				B49CA254229014D700FBA757 /* MainTableViewCell.xib in Resources */,
+				B4A3D64122BD4299006CD2FE /* TargetedArtworksTableViewController.strings in Resources */,
 				B48394FD22961DBA0003065B /* ArtworksTableViewController.strings in Resources */,
 				B48753AF22A3273700EE6EE6 /* MapViewController.strings in Resources */,
 				B488589E2289E8980011360D /* DailyArtworkViewController.strings in Resources */,
@@ -1275,6 +1300,7 @@
 				B487542B22A32DA200EE6EE6 /* Tabbar.storyboard in Resources */,
 				B428798522A8208D00EABBE6 /* GeneralTableViewDataSource.strings in Resources */,
 				B4C75B4922B7F02D00D73C7D /* Artist+Protocols.strings in Resources */,
+				B4A3D63922BD32B1006CD2FE /* CollectionViewController.strings in Resources */,
 				B428796222A6129700EABBE6 /* Search.storyboard in Resources */,
 				B48753AB22A3271800EE6EE6 /* ArtworkAnnotation.strings in Resources */,
 				B488587D2289E78E0011360D /* DailyArtwork.storyboard in Resources */,
@@ -1284,11 +1310,13 @@
 				B428795C22A60CA500EABBE6 /* BadgeDetailsViewController.strings in Resources */,
 				B455C41122B1795300064F9F /* MoreTableViewController.strings in Resources */,
 				B428794722A49D6800EABBE6 /* HeaderBadge.xib in Resources */,
+				B4A3D64B22BD569A006CD2FE /* LegendPopoverViewController.strings in Resources */,
 				B428795422A562F600EABBE6 /* BadgesViewController.strings in Resources */,
 				B4D0637F229462EF006E280D /* ArtworksTableViewDataSource.strings in Resources */,
 				B48753A522A3271100EE6EE6 /* Map.storyboard in Resources */,
 				B49CA252229014CB00FBA757 /* Artworks.storyboard in Resources */,
 				B4BC300322BC096E000F8303 /* CollectionFilterPopoverViewController.xib in Resources */,
+				B4A3D64822BD5427006CD2FE /* LegendPopoverViewController.xib in Resources */,
 				B455C40922B16CBF00064F9F /* AboutViewController.strings in Resources */,
 				B487538222A3268900EE6EE6 /* More.storyboard in Resources */,
 				B48394C72295BA9E0003065B /* ArtworkDetailsFullMapViewController.strings in Resources */,
@@ -1463,6 +1491,7 @@
 				B48753DA22A3281200EE6EE6 /* FilterPopoverViewController.swift in Sources */,
 				B4AD5E8A22908B710064A876 /* TableViewIndex.swift in Sources */,
 				B487532722A3262700EE6EE6 /* String+Extension.swift in Sources */,
+				B4A3D64722BD5427006CD2FE /* LegendPopoverViewController.swift in Sources */,
 				B4AD5E8422908B640064A876 /* ImageItem.swift in Sources */,
 				B487537522A3264C00EE6EE6 /* District+CoreDataClass.swift in Sources */,
 				B4BC300222BC096E000F8303 /* CollectionFilterPopoverViewController.swift in Sources */,
@@ -1509,6 +1538,7 @@
 				B48753B622A3277A00EE6EE6 /* ArtworkDetailsMapViewController.swift in Sources */,
 				B487537822A3264C00EE6EE6 /* Search+CoreDataProperties.swift in Sources */,
 				B487536222A3264C00EE6EE6 /* Badge+CoreDataProperties.swift in Sources */,
+				B4BC300522BC4BA6000F8303 /* UIColor+Extension.swift in Sources */,
 				B487531322A3260100EE6EE6 /* Contextualizable.swift in Sources */,
 				B4C75B5622B7F8BA00D73C7D /* Section.swift in Sources */,
 				B4AD5E8322908B640064A876 /* SearchItem.swift in Sources */,
@@ -1560,6 +1590,7 @@
 				B487541122A328B300EE6EE6 /* MonaAPI+Responses.swift in Sources */,
 				B4AD5E6A22908B410064A876 /* IndexView.swift in Sources */,
 				B48753D622A327FE00EE6EE6 /* GeneralTableViewDataSource.swift in Sources */,
+				B4A3D63E22BD3FB7006CD2FE /* TargetedArtworksTableViewController.swift in Sources */,
 				B48753BA22A3278100EE6EE6 /* ArtworkDetailsDescriptionViewController.swift in Sources */,
 				B4C75B5E22B8110700D73C7D /* LocationRepresentable.swift in Sources */,
 				B48753E022A3282F00EE6EE6 /* ArtworkTableViewCell.swift in Sources */,
@@ -1794,6 +1825,33 @@
 				B49CA2642290196800FBA757 /* fr */,
 			);
 			name = MainTableViewController.strings;
+			sourceTree = "<group>";
+		};
+		B4A3D63B22BD32B1006CD2FE /* CollectionViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4A3D63A22BD32B1006CD2FE /* en */,
+				B4A3D63C22BD32B5006CD2FE /* fr */,
+			);
+			name = CollectionViewController.strings;
+			sourceTree = "<group>";
+		};
+		B4A3D64322BD4299006CD2FE /* TargetedArtworksTableViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4A3D64222BD4299006CD2FE /* en */,
+				B4A3D64422BD429A006CD2FE /* fr */,
+			);
+			name = TargetedArtworksTableViewController.strings;
+			sourceTree = "<group>";
+		};
+		B4A3D64D22BD569A006CD2FE /* LegendPopoverViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4A3D64C22BD569A006CD2FE /* en */,
+				B4A3D64E22BD569E006CD2FE /* fr */,
+			);
+			name = LegendPopoverViewController.strings;
 			sourceTree = "<group>";
 		};
 		B4AD5E91229095A60064A876 /* GeneralTableViewController.strings */ = {

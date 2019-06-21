@@ -9,11 +9,16 @@
 import UIKit
 import CoreData
 
-class CollectionViewController: SearchViewController {
+final class CollectionViewController: SearchViewController {
     
     //MARK: - Properties
     private struct Segues {
         static let showArtworkDetailsViewController = "showArtworkDetailsViewController"
+    }
+    
+    private struct Strings {
+        private static let tableName = "CollectionViewController"
+        static let emptyCollection = NSLocalizedString("empty collection", tableName: tableName, bundle: .main, value: "", comment: "")
     }
     
     var collectionViewDataSource: UICollectionViewDataSource?
@@ -21,6 +26,7 @@ class CollectionViewController: SearchViewController {
     var didViewLoaded = false
     //MARK: - UI properties
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var emptyCollectionLabel: UILabel!
     
     var heightHeaderCollectionView : CGFloat = 0
     
@@ -28,9 +34,21 @@ class CollectionViewController: SearchViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let collectedArtworks = AppData.artworks.filter { $0.isCollected }
+        
+        emptyCollectionLabel.text = Strings.emptyCollection
+        if collectedArtworks.isEmpty {
+            emptyCollectionLabel.isHidden = false
+            collectionView.isScrollEnabled = false
+        }
+        else {
+            emptyCollectionLabel.isHidden = true
+            collectionView.isScrollEnabled = true
+        }
+        
         collectionViewDataSource = CollectionViewDataSource(artworks: collectedArtworks)
         collectionView.dataSource = collectionViewDataSource
         collectionView.delegate = self
+        
         setTransparentNavigationBar(tintColor: .black)
         // Do any additional setup after loading the view.
     }
@@ -38,10 +56,25 @@ class CollectionViewController: SearchViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if didViewLoaded {
+            
             let collectedArtworks = AppData.artworks.filter { $0.isCollected }
+            
+            if collectedArtworks.isEmpty {
+                emptyCollectionLabel.isHidden = false
+                collectionView.isScrollEnabled = false
+            }
+            else {
+                emptyCollectionLabel.isHidden = true
+                collectionView.isScrollEnabled = true
+            }
+            
             collectionViewDataSource = CollectionViewDataSource(artworks: collectedArtworks)
-            collectionView.dataSource = self.collectionViewDataSource
+            collectionView.dataSource = collectionViewDataSource
             collectionView.reloadData()
+            
+            if navigationController?.navigationBar.tintColor != .black {
+                setTransparentNavigationBar(tintColor: .black)
+            }
         }
         didViewLoaded = true
     }

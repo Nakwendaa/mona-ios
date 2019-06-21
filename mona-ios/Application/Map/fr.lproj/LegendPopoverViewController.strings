@@ -1,0 +1,11 @@
+/* 
+  LegendPopoverViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-06-21.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"Collected" = "Collectionnée";
+"Targeted" = "Ciblée";
+"Unvisited" = "Non visitée";

@@ -22,7 +22,7 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
     
     struct Strings {
         private static let tableName = "ArtworksTableViewDataSource"
-        static let unknownTitle = NSLocalizedString("Untitled", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let unknownTitle = NSLocalizedString("Unknown title", tableName: tableName, bundle: .main, value: "", comment: "")
         static let unknownDate = NSLocalizedString("Unknown date", tableName: tableName, bundle: .main, value: "", comment: "")
         static let unkn = NSLocalizedString("unkn", tableName: tableName, bundle: .main, value: "", comment: "")
         static let lessThan100m = NSLocalizedString("Less than 100 m", tableName: tableName, bundle: .main, value: "", comment: "")

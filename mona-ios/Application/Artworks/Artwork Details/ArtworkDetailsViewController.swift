@@ -23,7 +23,7 @@ class ArtworkDetailsViewController: SearchViewController {
     
     struct Strings {
         private static let tableName = "ArtworkDetailsViewController"
-        static let untitled = NSLocalizedString("untitled", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
+        static let unknownTitle = NSLocalizedString("Unknown title", tableName: tableName, bundle: .main, value: "", comment: "")
         
         struct NeedAuthorizationCameraOpenSettings {
             static let title = NSLocalizedString("need authorization camera open settings title", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
@@ -54,6 +54,7 @@ class ArtworkDetailsViewController: SearchViewController {
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var detailsViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var detailsViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var detailsViewPanGesture: UIPanGestureRecognizer!
     // Details View's Header
     @IBOutlet weak var headerDetailsView: UIView!
     // Details View's Header's Title
@@ -119,7 +120,7 @@ class ArtworkDetailsViewController: SearchViewController {
             titleLabel.text = title
         }
         else {
-            titleLabel.text = Strings.untitled
+            titleLabel.text = Strings.unknownTitle
         }
         if titleLabel.isTruncated {
             titleLabelHeightLayoutConstraint.constant += 24
@@ -161,6 +162,25 @@ class ArtworkDetailsViewController: SearchViewController {
                 result, info in
                 if let image = result {
                     self.photoImageView.image = image
+                    /*
+                    guard   let navigationBar = self.navigationController?.navigationBar,
+                            let averageColor = image.averageColor(rect: (x: 0, y: 0, width: navigationBar.frame.width, height: navigationBar.frame.height)) else {
+                        return
+                    }
+                    self.setTransparentNavigationBar(tintColor: UIColor.getBestContrastColor(color: averageColor))
+                    */
+                    /*
+                    let averageColorRgb = averageColor.rgbaInt
+                    print("averageColorRgb: r: \(averageColorRgb.red) g: \(averageColorRgb.green) b: \(averageColorRgb.blue)")
+                    let complementaryRgb = averageColor.complementaryRgb.rgbaInt
+                    print("complementaryRgb: r: \(complementaryRgb.red) g: \(complementaryRgb.green) b: \(complementaryRgb.blue)")
+                    let averageColorHsv = averageColor.hsvaInt
+                    print("averageColorHsv: h: \(averageColorHsv.hue) s: \(averageColorHsv.saturation) b: \(averageColorHsv.brightness)")
+                    let complementaryHsv = averageColor.complementaryHsv.hsvaInt
+                    print("complementaryHsv: h: \(complementaryHsv.hue) s: \(complementaryHsv.saturation) b: \(complementaryHsv.brightness)")
+                    print("Contrast ratio averageColor-complementaryRgb: \(UIColor.contrastRatio(averageColor, averageColor.complementaryRgb))")
+                    print("Contrast ratio averageColor-complementaryHsv: \(UIColor.contrastRatio(averageColor, averageColor.complementaryHsv))")
+                    */
                 }
             })
         }
@@ -169,22 +189,6 @@ class ArtworkDetailsViewController: SearchViewController {
     private func setupNotificationsForKeyboard() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    private func makeAnimation() {
-        UIView.animate(withDuration: 0.6, animations: {
-            if self.detailsViewBottomConstraint.constant == 0 {
-                self.detailsViewBottomConstraint.constant = -self.detailsView.frame.height + self.headerDetailsView.frame.height
-                self.detailsView.backgroundColor = self.detailsView.backgroundColor?.withAlphaComponent(0.4)
-                self.titleLabel.textColor = UIColor(red: CGFloat(18)/255.0, green: CGFloat(22)/255.0, blue: CGFloat(26)/255.0, alpha: 1.0)
-            }
-            else {
-                self.detailsViewBottomConstraint.constant = 0
-                self.detailsView.backgroundColor = self.detailsView.backgroundColor?.withAlphaComponent(1.0)
-                self.titleLabel.textColor = UIColor(red: CGFloat(18)/255.0, green: CGFloat(22)/255.0, blue: CGFloat(26)/255.0, alpha: 1.0)
-            }
-            self.view.layoutIfNeeded()
-        })
     }
     
     //MARK: - Actions
@@ -244,14 +248,137 @@ class ArtworkDetailsViewController: SearchViewController {
     }
     
     @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
-        makeAnimation()
+        
+        guard defaultView == nil else {
+            return
+        }
+        
+        UIView.animate(withDuration: 0.45, animations: {
+            if self.detailsViewBottomConstraint.constant == 0 {
+                self.detailsViewBottomConstraint.constant = -self.detailsView.frame.height + self.headerDetailsView.frame.height
+            }
+            else {
+                self.detailsViewBottomConstraint.constant = 0
+            }
+            self.view.layoutIfNeeded()
+        })
         view.endEditing(true)
     }
     
+
+    var bottomConstant : CGFloat = 0
+    
+    private enum PanGestureDirection {
+        case up, down, left, right, undefined
+        init(velocity: CGPoint) {
+            switch velocity {
+            case let point where point.y < 0:
+                self = .up
+            case let point where point.y > 0:
+                self = .down
+            case let point where point.x < 0:
+                self = .left
+            case let point where point.x > 0:
+                self = .right
+            default:
+                self = .undefined
+            }
+        }
+    }
+    
+    @IBAction
+    func detailsViewPanned(_ sender: UIPanGestureRecognizer) {
+        
+        guard defaultView == nil else {
+            return
+        }
+        
+        guard let detailsView = sender.view else {
+            return
+        }
+        
+        let upBoundary : CGFloat = 0
+        let downBoundary = -detailsView.frame.height + self.headerDetailsView.frame.height
+        let translation = sender.translation(in: detailsView)
+        
+        if sender.state == .began {
+            bottomConstant = detailsViewBottomConstraint.constant
+        }
+        // Update the position for the .began and .changed  states
+        if sender.state == .began || sender.state == .changed {
+            print(detailsViewBottomConstraint.constant)
+            if bottomConstant - translation.y < downBoundary {
+                detailsViewBottomConstraint.constant = downBoundary
+            }
+            else if bottomConstant - translation.y > upBoundary {
+                detailsViewBottomConstraint.constant = upBoundary
+            }
+            else {
+                detailsViewBottomConstraint.constant = bottomConstant - translation.y
+            }
+        }
+        
+        if sender.state == .ended {
+            switch PanGestureDirection(velocity: sender.velocity(in: detailsView)) {
+            case .up:
+                // Calcul débile mais qui passe pour ce cas. À revoir.
+                // constant = 10
+                // 1 - (-10/-210) => down
+                // Si down, alors abs(constant) / abs(minOffSet)
+                // 1 - 200/210 => up
+                // Si up, alors abs(minOffset) - abs(constant) / abs(minOffset)
+                let fraction = 1 - (abs(downBoundary) - abs(self.detailsViewBottomConstraint.constant)) / abs(downBoundary)
+                UIView.animate(withDuration: TimeInterval(0.45 * fraction)) {
+                    self.detailsViewBottomConstraint.constant = upBoundary
+                    self.view.layoutIfNeeded()
+                }
+            case .down:
+                let fraction = 1 - abs(self.detailsViewBottomConstraint.constant) / abs(downBoundary)
+                UIView.animate(withDuration: TimeInterval(0.45 * fraction)) {
+                    self.detailsViewBottomConstraint.constant = downBoundary
+                    self.view.layoutIfNeeded()
+                }
+            default:
+                let fraction = 1 - abs(self.detailsViewBottomConstraint.constant) / abs(downBoundary)
+                UIView.animate(withDuration: TimeInterval(0.45 * fraction)) {
+                    self.detailsViewBottomConstraint.constant = downBoundary
+                    self.view.layoutIfNeeded()
+                }
+                break
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        /*
+        switch sender.state {
+        case .changed:
+            sender.tran
+        case .ended:
+            UIView.animate(withDuration: 0.45, delay: 0, options: [.curveEaseOut, .allowUserInteraction], animations: {
+                if self.detailsViewBottomConstraint.constant == 0 {
+                    self.detailsViewBottomConstraint.constant = -self.detailsView.frame.height + self.headerDetailsView.frame.height
+                }
+                else {
+                    self.detailsViewBottomConstraint.constant = 0
+                }
+                self.view.layoutIfNeeded()
+            })
+            view.endEditing(true)
+        default:
+            break
+        }
+        */
+    }
     
     //MARK: - Notifications handlers
-    @objc func keyboardWasShown(notification: NSNotification)
-    {
+    @objc
+    func keyboardWasShown(notification: NSNotification) {
         keyboardWasShown = true
         let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height - (tabBarController?.tabBar.frame.height ?? 0)
         log.debug("Keyboard's height is \(keyboardHeight)")

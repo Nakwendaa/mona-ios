@@ -20,10 +20,6 @@ final class MoreTableViewController : UITableViewController {
         static let about = NSLocalizedString("About", tableName: tableName, bundle: .main, value: "", comment: "")
     }
     
-    struct Segues {
-        static let showTargetedArtworksTableViewController = "showTargetedArtworksTableViewController"
-    }
-    
     //MARK: - UI Properties
     @IBOutlet weak var badgesTableViewCellLabel: UILabel!
     @IBOutlet weak var targetedTableViewCellLabel: UILabel!
@@ -45,17 +41,4 @@ final class MoreTableViewController : UITableViewController {
         setDefaultIosNavigationBar(tintColor: .black)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        switch segue.identifier {
-        case Segues.showTargetedArtworksTableViewController:
-            let artworksTableViewController = segue.destination as! ArtworksTableViewController
-            artworksTableViewController.title = Strings.targeted
-            DispatchQueue.main.async {
-                artworksTableViewController.artworks = AppData.artworks.filter { $0.isTargeted }
-            }
-        default:
-            break
-        }
-    }
 }

@@ -40,7 +40,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNi-3n-5X0" userLabel="Localize User">
-                                <rect key="frame" x="315" y="80" width="44" height="44"/>
+                                <rect key="frame" x="315" y="542" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="pi1-CW-nDc"/>
                                     <constraint firstAttribute="width" constant="44" id="sVk-WW-AHa"/>
@@ -53,10 +53,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="MNi-3n-5X0" firstAttribute="top" secondItem="IUf-bV-aqB" secondAttribute="top" constant="16" id="2TH-X6-B5A"/>
                             <constraint firstAttribute="trailing" secondItem="Psz-9q-pMT" secondAttribute="trailing" id="2zF-5h-avk"/>
-                            <constraint firstItem="IUf-bV-aqB" firstAttribute="trailing" secondItem="MNi-3n-5X0" secondAttribute="trailing" constant="16" id="FPe-2S-MgS"/>
+                            <constraint firstItem="IUf-bV-aqB" firstAttribute="bottom" secondItem="MNi-3n-5X0" secondAttribute="bottom" constant="32" id="6cC-fc-dvZ"/>
                             <constraint firstItem="Psz-9q-pMT" firstAttribute="top" secondItem="Ry7-qV-RnU" secondAttribute="top" id="Fjl-2o-Fdw"/>
+                            <constraint firstItem="IUf-bV-aqB" firstAttribute="trailing" secondItem="MNi-3n-5X0" secondAttribute="trailing" constant="16" id="NQy-xj-vrv"/>
                             <constraint firstItem="Psz-9q-pMT" firstAttribute="leading" secondItem="Ry7-qV-RnU" secondAttribute="leading" id="OTp-E6-vlV"/>
                             <constraint firstAttribute="bottom" secondItem="Psz-9q-pMT" secondAttribute="bottom" id="SCd-22-yta"/>
                         </constraints>

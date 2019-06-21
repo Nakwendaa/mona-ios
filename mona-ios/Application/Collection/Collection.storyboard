@@ -27,6 +27,13 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <label key="backgroundView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pas d'oeuvres" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ppV-82-kSd">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MosaicCollectionViewCell" id="6Kk-cc-lAQ" customClass="MosaicCell" customModule="mona_ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="50" height="50"/>
@@ -90,6 +97,7 @@
                     <navigationItem key="navigationItem" title="Collection" id="PWJ-bd-3WW"/>
                     <connections>
                         <outlet property="collectionView" destination="j5W-bh-O9L" id="q1j-gx-AQr"/>
+                        <outlet property="emptyCollectionLabel" destination="ppV-82-kSd" id="OIC-ky-Fhp"/>
                         <segue destination="rTE-pC-Pr6" kind="show" identifier="showArtworkDetailsViewController" id="sq9-8d-lVH"/>
                     </connections>
                 </viewController>
@@ -103,7 +111,7 @@
                 <viewControllerPlaceholder storyboardName="Artworks" referencedIdentifier="ArtworkDetailsViewController" id="rTE-pC-Pr6" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOv-qv-I5L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1994" y="87"/>
+            <point key="canvasLocation" x="2015" y="87"/>
         </scene>
         <!--Collection-->
         <scene sceneID="uJH-zr-B7g">

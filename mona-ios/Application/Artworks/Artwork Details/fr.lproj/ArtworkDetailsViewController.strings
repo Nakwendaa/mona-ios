@@ -6,7 +6,7 @@
   Copyright © 2019 Paul Chaffanet. All rights reserved.
 */
 
-"untitled" = "non titré";
+"Unknown title" = "Titre inconnu";
 
 "need authorization camera open settings title" = "besoin d'une autorisation pour utiliser la caméra";
 "need authorization camera open settings message" = "veuillez permettre à l'application d'utiliser l'appareil photo pour prendre une photo d'une œuvre d'art.";

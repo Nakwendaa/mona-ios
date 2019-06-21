@@ -542,6 +542,9 @@
                                     <constraint firstAttribute="height" constant="250" id="zQo-fH-oiT"/>
                                     <constraint firstItem="05w-QC-wqh" firstAttribute="top" secondItem="5Ep-86-TMe" secondAttribute="bottom" constant="8" id="zXB-nc-3AS"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6Ig-jQ-ptK" appends="YES" id="AlL-1h-EIr"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2SQ-qS-jeF">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="368"/>
@@ -632,6 +635,7 @@
                         <outlet property="detailsView" destination="Y1D-vw-zm6" id="PMv-ti-Xdw"/>
                         <outlet property="detailsViewBottomConstraint" destination="6XD-2e-6bI" id="9yn-SH-sX5"/>
                         <outlet property="detailsViewHeightConstraint" destination="zQo-fH-oiT" id="9YI-oo-dos"/>
+                        <outlet property="detailsViewPanGesture" destination="6Ig-jQ-ptK" id="7nh-rM-gQR"/>
                         <outlet property="headerDetailsView" destination="5Ep-86-TMe" id="0tf-h7-dWR"/>
                         <outlet property="photoImageView" destination="xYy-Kd-8Qm" id="HIy-Zz-NgZ"/>
                         <outlet property="targetButton" destination="iJ5-2T-oVz" id="hzU-52-tMl"/>
@@ -647,8 +651,13 @@
                         <action selector="viewTapped:" destination="Fum-Pc-brt" id="ATw-qt-Zuz"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="6Ig-jQ-ptK">
+                    <connections>
+                        <action selector="detailsViewPanned:" destination="Fum-Pc-brt" id="KSJ-Zf-pVk"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6298" y="-582"/>
+            <point key="canvasLocation" x="6296.8000000000002" y="-582.45877061469275"/>
         </scene>
         <!--Artwork Details Page View Controller-->
         <scene sceneID="AJ2-27-mON">
@@ -867,7 +876,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ax-Au-Etx">
-                                <rect key="frame" x="315" y="80" width="44" height="44"/>
+                                <rect key="frame" x="315" y="542" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Vyq-rx-ujz"/>
                                     <constraint firstAttribute="width" constant="44" id="mWM-ea-dnG"/>
@@ -881,10 +890,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3hC-9z-lCr" firstAttribute="top" secondItem="1Kb-Mf-SRz" secondAttribute="top" id="1Rh-xp-9bi"/>
-                            <constraint firstItem="sti-SN-zkB" firstAttribute="trailing" secondItem="3Ax-Au-Etx" secondAttribute="trailing" constant="16" id="CHZ-fA-SN9"/>
-                            <constraint firstItem="3Ax-Au-Etx" firstAttribute="top" secondItem="sti-SN-zkB" secondAttribute="top" constant="16" id="V2z-87-Z2q"/>
                             <constraint firstItem="3hC-9z-lCr" firstAttribute="leading" secondItem="sti-SN-zkB" secondAttribute="leading" id="lAg-VC-eDQ"/>
                             <constraint firstItem="sti-SN-zkB" firstAttribute="trailing" secondItem="3hC-9z-lCr" secondAttribute="trailing" id="sLG-0g-OaA"/>
+                            <constraint firstItem="sti-SN-zkB" firstAttribute="trailing" secondItem="3Ax-Au-Etx" secondAttribute="trailing" constant="16" id="tY9-OZ-BVp"/>
+                            <constraint firstItem="sti-SN-zkB" firstAttribute="bottom" secondItem="3Ax-Au-Etx" secondAttribute="bottom" constant="32" id="yRJ-pS-KKa"/>
                             <constraint firstItem="sti-SN-zkB" firstAttribute="bottom" secondItem="3hC-9z-lCr" secondAttribute="bottom" id="zcm-Iz-jTC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sti-SN-zkB"/>
@@ -1247,6 +1256,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="k57-ET-KWn"/>
-        <segue reference="9sf-cg-rsu"/>
+        <segue reference="duR-3c-O8r"/>
     </inferredMetricsTieBreakers>
 </document>

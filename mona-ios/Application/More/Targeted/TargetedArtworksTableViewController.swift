@@ -1,8 +1,8 @@
 //
-//  ArtworksTableViewController.swift
+//  TargetedArtworksTableViewController.swift
 //  mona-ios
 //
-//  Created by Paul Chaffanet on 2019-05-18.
+//  Created by Paul Chaffanet on 2019-06-21.
 //  Copyright © 2019 Paul Chaffanet. All rights reserved.
 //
 
@@ -10,12 +10,17 @@ import UIKit
 import CoreData
 import CoreLocation
 
-final class ArtworksTableViewController : SearchViewController {
+final class TargetedArtworksTableViewController : SearchViewController {
     
     
     //MARK: - Types
-    struct Strings {
-        private static let tableName = "ArtworksTableViewController"
+    private struct Strings {
+        
+        private static let tableName = "TargetedArtworksTableViewController"
+        static let targeted = NSLocalizedString("Targeted", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let emptyTargetedArtworksList = NSLocalizedString("empty wishlist", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
+        static let trashTargetedArtworksList = NSLocalizedString("trash your wishlist", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
+        static let hintTrashTargetedArtworksList = NSLocalizedString("hint trash wishlist", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
         
         struct NeedAuthorizationLocationOpenSettings {
             static let title = NSLocalizedString("need authorization", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
@@ -23,7 +28,7 @@ final class ArtworksTableViewController : SearchViewController {
         }
     }
     
-    struct Style {
+    private struct Style {
         struct BackgroundViewOfHeaderViewStickingNavigationBar {
             static let backgroundColor : UIColor = UIColor(red: 250.0/255.0, green: 217.0/255.0, blue: 1.0/255.0, alpha: 1)
             static let shadowColor : CGColor = UIColor.gray.cgColor
@@ -51,7 +56,8 @@ final class ArtworksTableViewController : SearchViewController {
     var tableViewIndexDataSource : TableViewIndexDataSource?
     @IBOutlet weak var tableViewIndexTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewIndexWidthConstraint: NSLayoutConstraint!
-
+    
+    @IBOutlet weak var emptyTargetedArtworksLabel: UILabel!
     // Refresh Control
     let refreshControl = UIRefreshControl()
     let locationManager = CLLocationManager()
@@ -62,33 +68,39 @@ final class ArtworksTableViewController : SearchViewController {
     // This variable is useful to avoid unnecessary tableview.reloadData when the viewDidLoad
     var didViewLoaded = false
     
-    var artworks = [Artwork]()
-    
     //MARK: Overriden methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        filterIsActive = true
+        title = Strings.targeted
         headerTableViewLabel.text = title
         tableViewIndex.itemSpacing = 2
         tableViewIndexTrailingConstraint.constant = -tableViewIndex.frame.width
         tableViewIndex.indexOffset = UIOffset(horizontal: -4, vertical: 0)
         tableViewIndex.backgroundColor = .clear
         tableViewIndex.backgroundView.backgroundColor = .clear
+        searchIsActive = false
         setTransparentNavigationBar(tintColor: .black)
         
         
-        tableView.delegate = self
-        tableViewIndex.delegate = self
-
-        DispatchQueue.main.async {
-            self.artworksTableViewDataSource = ArtworksTableViewDataSource(artworks: self.artworks)
-            self.tableViewIndexDataSource = self.artworksTableViewDataSource
-            self.tableView.dataSource = self.artworksTableViewDataSource
-            self.tableViewIndex.dataSource = self.artworksTableViewDataSource
-            self.tableView.reloadData()
-            self.tableViewIndex.reloadData()
+        let targetedArtworks = AppData.artworks.filter { $0.isTargeted }
+        emptyTargetedArtworksLabel.text = Strings.emptyTargetedArtworksList
+       
+        if targetedArtworks.isEmpty {
+            emptyTargetedArtworksLabel.isHidden = false
+            tableView.isScrollEnabled = false
+        }
+        else {
+            filterIsActive = true
+            emptyTargetedArtworksLabel.isHidden = true
+            tableView.isScrollEnabled = true
         }
         
+        artworksTableViewDataSource = ArtworksTableViewDataSource(artworks: targetedArtworks)
+        tableView.dataSource = artworksTableViewDataSource
+        tableView.delegate = self
+        tableViewIndexDataSource = artworksTableViewDataSource
+        tableViewIndex.dataSource = tableViewIndexDataSource
+        tableViewIndex.delegate = self
         
         setupRefreshControl()
         setupLocationManager()
@@ -108,8 +120,32 @@ final class ArtworksTableViewController : SearchViewController {
         
         // Refresh visible thumbnails when back from a view
         if didViewLoaded {
+            
+            let targetedArtworks = AppData.artworks.filter { $0.isTargeted }
+            
+            if targetedArtworks.isEmpty {
+                filterIsActive = false
+                emptyTargetedArtworksLabel.isHidden = false
+                tableView.isScrollEnabled = false
+            }
+            else {
+                filterIsActive = true
+                emptyTargetedArtworksLabel.isHidden = true
+                tableView.isScrollEnabled = true
+            }
+            
+            artworksTableViewDataSource = ArtworksTableViewDataSource(artworks: targetedArtworks)
+            tableView.dataSource = artworksTableViewDataSource
+            tableView.delegate = self
+            tableViewIndexDataSource = artworksTableViewDataSource
+            tableViewIndex.dataSource = tableViewIndexDataSource
+            tableViewIndex.delegate = self
             tableView.reloadData()
-            scrollViewDidScroll(tableView)
+            tableViewIndex.reloadData()
+            
+            if navigationController?.navigationBar.tintColor != .black {
+                setTransparentNavigationBar(tintColor: .black)
+            }
         }
         didViewLoaded = true
         
@@ -222,7 +258,7 @@ final class ArtworksTableViewController : SearchViewController {
 }
 
 //MARK: - UITableViewDelegate
-extension ArtworksTableViewController : UITableViewDelegate {
+extension TargetedArtworksTableViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
@@ -254,7 +290,7 @@ extension ArtworksTableViewController : UITableViewDelegate {
 }
 
 // MARK: - Scroll View Delegate
-extension ArtworksTableViewController : UIScrollViewDelegate {
+extension TargetedArtworksTableViewController : UIScrollViewDelegate {
     
     // Code le fait que les headers views de chaque section change de couleur d'arrière-plan lorsque ceux-ci stick au top de la view
     // lorsque que l'on scrolle
@@ -282,7 +318,7 @@ extension ArtworksTableViewController : UIScrollViewDelegate {
         default:
             break
         }
-
+        
         if indexes[0].section == 0 && tableView.contentOffset.y < heightTableHeaderView {
             
             tableView.headerView(forSection: 0)?.backgroundView?.backgroundColor = .clear
@@ -348,7 +384,7 @@ extension ArtworksTableViewController : UIScrollViewDelegate {
 }
 
 //MARK: - TableViewIndexDelegate
-extension ArtworksTableViewController : TableViewIndexDelegate {
+extension TargetedArtworksTableViewController : TableViewIndexDelegate {
     
     func tableViewIndexBeginningTouches(_ tableViewIndex: TableViewIndex) {
         if presentedViewController is FilterPopoverViewController {
@@ -397,7 +433,7 @@ extension ArtworksTableViewController : TableViewIndexDelegate {
 }
 
 //MARK: - CLLocationManagerDelegate
-extension ArtworksTableViewController : CLLocationManagerDelegate {
+extension TargetedArtworksTableViewController : CLLocationManagerDelegate {
     
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -441,5 +477,6 @@ extension ArtworksTableViewController : CLLocationManagerDelegate {
     }
     
 }
+
 
 

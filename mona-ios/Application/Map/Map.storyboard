@@ -21,8 +21,8 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hp-1G-eSI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kJ-N7-2RJ">
-                                <rect key="frame" x="245" y="470" width="130" height="132"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kJ-N7-2RJ">
+                                <rect key="frame" x="245" y="454" width="130" height="132"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gsR-Wt-KnX" userLabel="Legend Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="132"/>
@@ -87,14 +87,6 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" red="1" green="0.90196078430000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -104,44 +96,43 @@
                                     <constraint firstItem="gsR-Wt-KnX" firstAttribute="centerY" secondItem="8kJ-N7-2RJ" secondAttribute="centerY" id="sVi-Tg-byw"/>
                                     <constraint firstItem="gsR-Wt-KnX" firstAttribute="width" secondItem="8kJ-N7-2RJ" secondAttribute="width" id="tBV-A3-9AK"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
-                                        <point key="value" x="1" y="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dg-7P-lgS" userLabel="Localize User Button">
-                                <rect key="frame" x="315" y="80" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="NLu-i5-XgC"/>
-                                    <constraint firstAttribute="height" constant="44" id="afH-9D-5TQ"/>
-                                </constraints>
-                                <state key="normal" image="Localize User Default"/>
-                                <connections>
-                                    <action selector="localizeUserButtonTapped:" destination="czs-mE-mM5" eventType="touchUpInside" id="QhN-tb-r4N"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aV9-32-law">
+                                <rect key="frame" x="315" y="490" width="44" height="96"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGc-5k-xtG">
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="Lw8-2K-1bK"/>
+                                            <constraint firstAttribute="height" constant="44" id="u3q-Xm-41c"/>
+                                        </constraints>
+                                        <state key="normal" image="Filter Button"/>
+                                        <connections>
+                                            <action selector="legendTappedd:" destination="czs-mE-mM5" eventType="touchUpInside" id="HR6-6Z-oE3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dg-7P-lgS" userLabel="Localize User Button">
+                                        <rect key="frame" x="0.0" y="52" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="NLu-i5-XgC"/>
+                                            <constraint firstAttribute="height" constant="44" id="afH-9D-5TQ"/>
+                                        </constraints>
+                                        <state key="normal" image="Localize User Default"/>
+                                        <connections>
+                                            <action selector="localizeUserButtonTapped:" destination="czs-mE-mM5" eventType="touchUpInside" id="QhN-tb-r4N"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4lN-pz-AfX" firstAttribute="trailing" secondItem="7dg-7P-lgS" secondAttribute="trailing" constant="16" id="F2d-hV-knU"/>
-                            <constraint firstItem="7dg-7P-lgS" firstAttribute="top" secondItem="4lN-pz-AfX" secondAttribute="top" constant="16" id="HOd-f0-2JH"/>
+                            <constraint firstItem="4lN-pz-AfX" firstAttribute="trailing" secondItem="aV9-32-law" secondAttribute="trailing" constant="16" id="1CZ-QQ-udY"/>
                             <constraint firstAttribute="bottom" secondItem="8Hp-1G-eSI" secondAttribute="bottom" id="NY1-kh-0Bf"/>
-                            <constraint firstItem="4lN-pz-AfX" firstAttribute="bottom" secondItem="8kJ-N7-2RJ" secondAttribute="bottom" constant="16" id="OKj-np-uiL"/>
+                            <constraint firstItem="4lN-pz-AfX" firstAttribute="bottom" secondItem="8kJ-N7-2RJ" secondAttribute="bottom" constant="32" id="OKj-np-uiL"/>
                             <constraint firstItem="8Hp-1G-eSI" firstAttribute="trailing" secondItem="h5x-Rx-1Vt" secondAttribute="trailing" id="Sn9-Tl-WqE"/>
                             <constraint firstItem="8kJ-N7-2RJ" firstAttribute="trailing" secondItem="4lN-pz-AfX" secondAttribute="trailing" id="ZFv-RF-5Wx"/>
+                            <constraint firstItem="4lN-pz-AfX" firstAttribute="bottom" secondItem="aV9-32-law" secondAttribute="bottom" constant="32" id="hse-S4-Crx"/>
                             <constraint firstItem="8Hp-1G-eSI" firstAttribute="top" secondItem="h5x-Rx-1Vt" secondAttribute="top" id="uQ7-Zs-753"/>
                             <constraint firstItem="8Hp-1G-eSI" firstAttribute="leading" secondItem="h5x-Rx-1Vt" secondAttribute="leading" id="wXc-x8-xPc"/>
                         </constraints>
@@ -150,6 +141,7 @@
                     <navigationItem key="navigationItem" id="8Fe-i1-kFL"/>
                     <connections>
                         <outlet property="collectedButton" destination="AWq-tY-5tG" id="4ZL-F1-xlE"/>
+                        <outlet property="legendView" destination="8kJ-N7-2RJ" id="fb4-CJ-AMS"/>
                         <outlet property="localizeUserButton" destination="7dg-7P-lgS" id="WXK-1X-0Vg"/>
                         <outlet property="mapView" destination="8Hp-1G-eSI" id="0Jo-MZ-YZ8"/>
                         <outlet property="targetedButton" destination="bUp-hZ-ghB" id="Ufb-xS-0Cc"/>
@@ -200,6 +192,7 @@
     <resources>
         <image name="Collected Annotation Default" width="24" height="24"/>
         <image name="Collected Annotation Selected" width="24" height="24"/>
+        <image name="Filter Button" width="24" height="24"/>
         <image name="Localize User Default" width="1000" height="1000"/>
         <image name="Map Tabbar Default Image" width="25" height="25"/>
         <image name="Map Tabbar Selected Image" width="25" height="25"/>

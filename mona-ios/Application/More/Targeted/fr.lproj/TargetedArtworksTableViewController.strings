@@ -1,0 +1,17 @@
+/* 
+  TargetedArtworksTableViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-06-21.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+"Targeted" = "Œuvres ciblées";
+
+"empty wishlist" = "Vous cherchez quelque chose ?\nCiblez au moins une oeuvre d'art puis revenez ici consulter votre liste de souhaits.";
+"trash your wishlist" = "Supprimer votre liste de souhaits";
+"hint trash wishlist" = "Est-ce que vous désirez supprimer toutes les oeuvres qui se trouvent dans votre liste de souhaits ?";
+
+"updating location" = "Mise à jour de votre position";
+"sort by distance can not be used if location services are not enabled" = "le tri par distance ne peut pas être utilisé si les service de localisation ne sont pas activés";
+"need authorization" = "autorisation nécessaire";

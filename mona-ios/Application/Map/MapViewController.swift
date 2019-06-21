@@ -21,12 +21,28 @@ class MapViewController: SearchViewController {
             static let message = NSLocalizedString("need authorization location open settings message", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
         }
         
+        /*
         struct Legend {
             static let collected = NSLocalizedString("collected", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
             static let targeted = NSLocalizedString("targeted", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
             static let unvisited = NSLocalizedString("unvisited", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
         }
+        */
     }
+    
+    /*
+    struct Style {
+        struct Legend {
+            struct Layer {
+                static let cornerRadius : CGFloat = 30
+                static let shadowColor : CGColor = UIColor.black.cgColor
+                static let shadowOffset : CGSize = CGSize(width: 1, height: 5)
+                static let shadowOpacity : Float = 0.5
+                static let shadowRadius : CGFloat = 5
+            }
+        }
+    }
+    */
     
     struct Segues {
         static let showArtworkDetailsViewController = "showArtworkDetailsViewController"
@@ -36,9 +52,11 @@ class MapViewController: SearchViewController {
     var viewContext: NSManagedObjectContext?
     let locationManager = CLLocationManager()
     var artworks : [Artwork] = AppData.artworks
+    var legendPopoverViewController : LegendPopoverViewController?
     
     //MARK: - UI Properties
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var legendView: UIView!
     @IBOutlet weak var localizeUserButton: UIButton!
     @IBOutlet weak var collectedButton: UIButton!
     @IBOutlet weak var unvisitedButton: UIButton!
@@ -56,12 +74,13 @@ class MapViewController: SearchViewController {
         centerOnLocation(initialLocation, regionRadius: 30000)
         mapView.addAnnotations(artworks.map{ ArtworkAnnotation(artwork: $0)})
         setupLegendView()
+        setTransparentNavigationBar(tintColor: .black)
     }
     
     //MARK: - Overriden methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        hideNavigationBar()
+        //hideNavigationBar()
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse, .authorizedAlways:
             mapView.showsUserLocation = true
@@ -73,7 +92,7 @@ class MapViewController: SearchViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        showNavigationBar()
+        //showNavigationBar()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -86,6 +105,13 @@ class MapViewController: SearchViewController {
         default:
             break
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        legendPopoverViewController?.dismiss(animated: true) {
+            self.legendPopoverViewController = nil
+        }
+        super.touchesBegan(touches, with: event)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -130,9 +156,17 @@ class MapViewController: SearchViewController {
     }
     
     private func setupLegendView() {
-        collectedButton.setTitle(Strings.Legend.collected, for: .normal)
-        unvisitedButton.setTitle(Strings.Legend.unvisited, for: .normal)
-        targetedButton.setTitle(Strings.Legend.targeted, for: .normal)
+        // Setup legend view style
+        //legendView.layer.cornerRadius = Style.Legend.Layer.cornerRadius
+        //legendView.layer.shadowColor = Style.Legend.Layer.shadowColor
+        //legendView.layer.shadowOffset = Style.Legend.Layer.shadowOffset
+        //legendView.layer.shadowOpacity = Style.Legend.Layer.shadowOpacity
+        //legendView.layer.shadowRadius = Style.Legend.Layer.shadowRadius
+        
+        // Setup titles buttton
+        //collectedButton.setTitle(Strings.Legend.collected, for: .normal)
+        //unvisitedButton.setTitle(Strings.Legend.unvisited, for: .normal)
+        //targetedButton.setTitle(Strings.Legend.targeted, for: .normal)
     }
     
     private func setupLocationManager() {
@@ -168,6 +202,27 @@ class MapViewController: SearchViewController {
         @unknown default:
             return
         }
+    }
+    
+    
+    @IBAction func legendTappedd(_ sender: UIButton) {
+        legendPopoverViewController = LegendPopoverViewController()
+        legendPopoverViewController!.artworks = artworks
+        legendPopoverViewController!.mapView = mapView
+        legendPopoverViewController!.preferredContentSize = CGSize(width: 180, height: 132)
+        legendPopoverViewController!.modalPresentationStyle = .popover
+        
+        if let presentationController = legendPopoverViewController!.presentationController {
+            presentationController.delegate = legendPopoverViewController
+        }
+        
+        if let popoverPresentationController = legendPopoverViewController!.popoverPresentationController {
+            popoverPresentationController.sourceView = sender
+            popoverPresentationController.sourceRect = sender.bounds
+            popoverPresentationController.passthroughViews = [view]
+        }
+        
+        present(legendPopoverViewController!, animated: true)
     }
     
     @IBAction func legendTapped(_ sender: UIButton) {

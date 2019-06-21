@@ -10,7 +10,7 @@ import CoreLocation
 
 extension Artwork : TextRepresentable {
     
-    static let unknownTitle = NSLocalizedString("unknown title", tableName: "Artwork+Protocols", bundle: .main, value: "", comment: "")
+    static let unknownTitle = NSLocalizedString("Unknown title", tableName: "Artwork+Protocols", bundle: .main, value: "", comment: "")
     
     var text : String {
         return title ?? Artwork.unknownTitle

@@ -31,6 +31,7 @@ class BadgesViewController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
+        navigationItem.title = "Badges"
         setTransparentNavigationBar(tintColor: .black)
         // Do any additional setup after loading the view.
     }
@@ -64,6 +65,19 @@ extension BadgesViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let badge = collectionViewCells[indexPath.row]
         performSegue(withIdentifier: Segues.showBadgeDetailsViewController, sender: badge)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // Show title if the user scrolled below the main tableHeaderView
+        let didTheUserScrolledBelowTableHeaderView = scrollView.contentOffset.y >= 8
+        switch (didTheUserScrolledBelowTableHeaderView, navigationItem.titleView) {
+        case (true, let titleView) where titleView != nil:
+            navigationItem.titleView = nil
+        case (false, nil):
+            navigationItem.titleView = UIView()
+        default:
+            break
+        }
     }
 }
 
@@ -148,4 +162,5 @@ extension BadgesViewController : UICollectionViewDelegateFlowLayout {
         let size:CGFloat = (self.collectionView.frame.size.width - space) / 2.0
         return CGSize(width: size, height: size/1.5)
     }
+    
 }

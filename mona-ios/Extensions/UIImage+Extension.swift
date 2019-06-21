@@ -199,3 +199,47 @@ extension UIImage {
     }
     
 }
+
+
+extension UIImage {
+    
+    func getPixelColor(atLocation location: CGPoint, withFrameSize size: CGSize) -> UIColor {
+        let x: CGFloat = (self.size.width) * location.x / size.width
+        let y: CGFloat = (self.size.height) * location.y / size.height
+        
+        let pixelPoint: CGPoint = CGPoint(x: x, y: y)
+        
+        let pixelData = self.cgImage!.dataProvider!.data
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+        
+        let pixelIndex: Int = ((Int(self.size.width) * Int(pixelPoint.y)) + Int(pixelPoint.x)) * 4
+        
+        let r = CGFloat(data[pixelIndex]) / CGFloat(255.0)
+        let g = CGFloat(data[pixelIndex+1]) / CGFloat(255.0)
+        let b = CGFloat(data[pixelIndex+2]) / CGFloat(255.0)
+        let a = CGFloat(data[pixelIndex+3]) / CGFloat(255.0)
+        
+        return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
+    
+    
+    func averageColor(rect: (x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat)?) -> UIColor? {
+        guard let inputImage = CIImage(image: self) else { return nil }
+        let extentVector : CIVector
+        if rect != nil {
+            extentVector = CIVector(x: inputImage.extent.origin.x + rect!.x, y: inputImage.extent.origin.y + rect!.y, z: min(rect!.width, inputImage.extent.size.width), w: min(rect!.height, inputImage.extent.size.height))
+        }
+        else {
+            extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
+        }
+        
+        guard let filter = CIFilter(name: "CIAreaAverage", parameters: [kCIInputImageKey: inputImage, kCIInputExtentKey: extentVector]) else { return nil }
+        guard let outputImage = filter.outputImage else { return nil }
+        
+        var bitmap = [UInt8](repeating: 0, count: 4)
+        let context = CIContext(options: [.workingColorSpace: kCFNull!])
+        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
+        
+        return UIColor(red: CGFloat(bitmap[0]) / 255, green: CGFloat(bitmap[1]) / 255, blue: CGFloat(bitmap[2]) / 255, alpha: CGFloat(bitmap[3]) / 255)
+    }
+}
