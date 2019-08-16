@@ -1,0 +1,15 @@
+/* 
+  RegisterViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-08-16.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+
+"Sign up title" = "Sign up with your email address";
+"Email" = "Email";
+"Confirm email" = "Confirm email";
+"Password" = "Password";
+"Confirm password" = "Confirm password";
+"Sign up button" = "Sign up";

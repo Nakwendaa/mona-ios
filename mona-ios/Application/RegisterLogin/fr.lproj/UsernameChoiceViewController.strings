@@ -1,0 +1,18 @@
+/* 
+  UsernameChoiceViewController.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-08-16.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+
+"Hint username" = "Choose an username.";
+"Username" = "Username";
+"Valid" = "Done";
+"Username already exists" = "Username already exists. Please choose another username."
+
+"hintUsernameLabel_UsernameChoiceViewController" = "Choose a username.";
+"usernameTextField_UsernameChoiceViewController" = "Alphanumeric and allowed from %1$d to %2$d characters.";
+"validButton_UsernameChoiceViewController" = "Done";
+"usernameAlreadyExists_UsernameChoiceViewController" = "Username already exists. Please choose another username.";
