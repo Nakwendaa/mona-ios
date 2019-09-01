@@ -24,13 +24,13 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
         private static let tableName = "ArtworksTableViewDataSource"
         static let unknownTitle = NSLocalizedString("Unknown title", tableName: tableName, bundle: .main, value: "", comment: "")
         static let unknownDate = NSLocalizedString("Unknown date", tableName: tableName, bundle: .main, value: "", comment: "")
+        static let unknownDistance = NSLocalizedString("Unknown distance", tableName: tableName, bundle: .main, value: "", comment: "")
         static let unkn = NSLocalizedString("unkn", tableName: tableName, bundle: .main, value: "", comment: "")
         static let lessThan100m = NSLocalizedString("Less than 100 m", tableName: tableName, bundle: .main, value: "", comment: "")
         static let lessThan1km = NSLocalizedString("Less than 1 km", tableName: tableName, bundle: .main, value: "", comment: "")
         static let lessThan5km = NSLocalizedString("Less than 5 km", tableName: tableName, bundle: .main, value: "", comment: "")
         static let lessThan10km = NSLocalizedString("Less than 10 km", tableName: tableName, bundle: .main, value: "", comment: "")
         static let moreThan10km = NSLocalizedString("More than 10 km", tableName: tableName, bundle: .main, value: "", comment: "")
-        static let unknownDistance = NSLocalizedString("Unknown distance", tableName: tableName, bundle: .main, value: "", comment: "")
     }
     
     enum SortType {
@@ -41,7 +41,7 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
 
     //MARK: - Properties
     private var sections = [ArtworksSection]()
-    private var usingSortType : SortType = .text
+    var usingSortType : SortType = .text
     private var lastUserLocation = CLLocation(latitude: 0, longitude: 0)
 
     // Image Manager
@@ -49,7 +49,7 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
     private var imageRequestOptions = PHImageRequestOptions()
     private var assets = [PHAsset]()
     // A mapping IndexPath to index
-    // This map is used to find an asset based on artwordId. We need this dict because some artwork don't have assets
+    // This map is used to find an asset based on artwordId. We need this dict because some artworks don't have assets
     private var indexAssets = [Int16: Int]()
     
     // Initializers
@@ -221,8 +221,14 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
                 cachingImageManager.startCachingImages(for: [asset], targetSize: CGSize(width: 44, height: 58), contentMode: .aspectFill, options: imageRequestOptions)
             }
             else {
+                // If there is no photo associated to the artwork, remove last asset from artwork
+                assets.remove(at: index)
+                // Remove from indexAssets
+                indexAssets.removeValue(forKey: artworkId)
+                /*
                 // Recursive call to this function
                 artwork.removeFromPhotos(lastPhotoAddedForArtwork)
+                */
             }
         }
     }
@@ -271,18 +277,18 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
             if distance >= 1000 {
                             // If distance is more than 1000m, set subtitle of the cell in km instead of meters. Append district name to this string too.
                 let distanceKm = Double(distance) / 1000.0
-                cell.subtitleLabel.text = String(Double(round(100 * distanceKm) / 100)) + " km \u{25CF} " + artwork.address.district.name
+                cell.subtitleLabel.text = String(Double(round(100 * distanceKm) / 100)) + " km \u{25CF} " + artwork.address.district.text
             }
             else {
                 // Else if distance is less than 1000m, set subtitle of the cell in m. Append district name to this string too.
-                cell.subtitleLabel.text = String(Int(distance)) + " m \u{25CF} " + artwork.address.district.name
+                cell.subtitleLabel.text = String(Int(distance)) + " m \u{25CF} " + artwork.address.district.text
             }
         }
         else {
             // Else if artworks are NOT sorted by distance
             
             // Set district name as subtitle of the cell
-            cell.subtitleLabel.text = artwork.district.name
+            cell.subtitleLabel.text = artwork.district.text
         }
         
         // Set thumbnail for the cell
@@ -375,201 +381,5 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
         }
         
     }
-    
-    /*
-    //MARK: - Private methods
-    private func sectionsByTitle(artworks: [Artwork]) -> [Section] {
-        
-        let artworksSortedByTitle = artworks.sorted(by: sortByTitle)
-        // The key is the name of the section. The value is an array of Nameable inside the section
-        var artworksSections = [String: [Artwork]]()
-        var sortedArtworksSections = [(key: String, value: [Artwork])]()
-        
-        // The lastSection used
-        var lastSectionUsed = ""
-        
-        // Build the sections that we're gonna use for the alphabetical sort
-        for artwork in artworksSortedByTitle {
-            
-            // Extract the first letter of the current Nameable. Ignore accent and uppercase this firstLetter
-            let title : String
-            if artwork.title == nil || artwork.title == "" {
-                title = Strings.unknownTitle
-            }
-            else {
-                title = artwork.title!
-            }
-            var firstLetter = title[0...0].folding(options: .diacriticInsensitive, locale: .current).uppercased()
-            
-            if Int(firstLetter) != nil {
-                firstLetter = "#"
-            }
-            
-            // If this firstLetter is different of the last section used, so append a new section and append this Nameable into it
-            if firstLetter != lastSectionUsed {
-                artworksSections.updateValue([artwork], forKey: firstLetter)
-                lastSectionUsed = firstLetter
-            }
-                // Else just append the Nameable into the last section
-            else if var arr = artworksSections[lastSectionUsed] {
-                arr.append(artwork)
-                artworksSections.updateValue(arr, forKey: lastSectionUsed)
-            }
-        }
-        
-        // Sort the sections because a dictionnary is not sorted
-        sortedArtworksSections = artworksSections.sorted(by: { $0.0 < $1.0 })
-        
-        var sections = sortedArtworksSections.map({Section(name: $0.key, items: $0.value)})
-        
-        // Numbers after character "Z"
-        if sections.contains(where: { return $0.name == "#" }) {
-            sections.append(sections.remove(at: 0))
-        }
-        return sections
-    }
-    
-    private func sortByTitle(_ left: Artwork, _ right: Artwork) -> Bool {
-        var lTitle : String
-        var rTitle : String
-        
-        if left.title == nil || left.title == "" {
-            lTitle = Strings.unknownTitle
-        }
-        else {
-            lTitle = left.title!
-        }
-        
-        if right.title == nil || right.title == "" {
-            rTitle = Strings.unknownTitle
-        }
-        else {
-            rTitle = right.title!
-        }
-        
-        return lTitle.uppercased() < rTitle.uppercased()
-    }
-    
-    private func sectionsByDate(artworks: [Artwork]) -> [Section] {
-        // The key is the name of the section. The value is an array of artworks
-        let artworksSortedByDate = artworks.sorted(by: sortByDate)
-        var artworksSections = [String: [Artwork]]()
-        var sortedArtworksSections = [(key: String, value: [Artwork])]()
-        // The lastSection used
-        var lastSection = ""
-        
-        for artwork in artworksSortedByDate {
-            
-            // Extract the first letter of the current artwork. Ignore accent and uppercase this firstLetter
-            let year : String
-            
-            if let date = artwork.date {
-                year = date.toString(format: "yyyy")
-            }
-            else {
-                year = Strings.unknownDate
-            }
-            
-            // If this firstLetter is different of the last section used, so append a new section and append this artwork into it
-            if year != lastSection {
-                artworksSections.updateValue([artwork], forKey: year)
-                lastSection = year
-            }
-                // Else just append the artwork into the last section
-            else if var arr = artworksSections[lastSection] {
-                arr.append(artwork)
-                artworksSections.updateValue(arr, forKey: lastSection)
-            }
-        }
-        
-        // SORTING [SINCE A DICTIONARY IS AN UNSORTED LIST]
-        sortedArtworksSections = artworksSections.sorted(by: { $0.0 < $1.0 })
-        
-        var sections = [Section]()
-        
-        // And append the new sections
-        for (key, value) in sortedArtworksSections {
-            sections.append(Section(name: key, items: value))
-        }
-        
-        return sections
-    }
-    
-    
-    private func sortByDate(_ left: Artwork, _ right: Artwork) -> Bool {
-        return (left.date ?? .distantPast) < (right.date ?? .distantPast)
-    }
-    
-    private func sectionsByDistance(artworks: [Artwork], coordinateFrom: CLLocation) -> [Section] {
-        
-        struct Distance {
-            let distance : CLLocationDistance
-            let artwork : Artwork
-            
-            init(_ distance: CLLocationDistance, _ artwork: Artwork) {
-                self.distance = distance
-                self.artwork = artwork
-            }
-        }
-        
-        self.lastUserLocation = coordinateFrom
-        
-        // The key is the name of the section. The value is an array of artworks
-        var artworksSections = [String: [Distance]]()
-        var sortedArtworksSections = [(key: String, value: [Distance])]()
-        
-        for artwork in artworks {
-
-            let keyDistance : String
-            
-            let distance = coordinateFrom.distance(from: CLLocation(latitude: artwork.address.coordinate.latitude, longitude: artwork.address.coordinate.longitude))
-            
-            if distance <= 100 {
-                keyDistance = NSLocalizedString("less than 100 m", comment: "")
-            }
-            else if distance <= 1000 {
-                keyDistance = NSLocalizedString("less than 1 km", comment: "")
-            }
-            else if distance <= 5000 {
-                keyDistance = NSLocalizedString("less than 5 km", comment: "")
-            }
-            else if distance <= 10000 {
-                keyDistance = NSLocalizedString("less than 10 km", comment: "")
-            }
-            else {
-                keyDistance = NSLocalizedString("more than 10 km", comment: "")
-            }
-            
-            
-            if var artworksValue = artworksSections[keyDistance] {
-                artworksValue.append(Distance(distance, artwork))
-                artworksSections.updateValue(artworksValue, forKey: keyDistance)
-            }
-            else {
-                artworksSections.updateValue([Distance(distance, artwork)], forKey: keyDistance)
-            }
-        }
-        
-        let keys = [NSLocalizedString("less than 100 m", comment: ""),
-                    NSLocalizedString("less than 1 km", comment: ""),
-                    NSLocalizedString("less than 5 km", comment: ""),
-                    NSLocalizedString("less than 10 km", comment: ""),
-                    NSLocalizedString("more than 10 km", comment: "")]
-        
-        sortedArtworksSections = artworksSections.map({key, value in (key, value.sorted(by: { $0.distance < $1.distance } ) )})
-        
-        var sections = [Section]()
-        
-        for keyDistance in keys {
-            let section = sortedArtworksSections.first(where: { $0.key == keyDistance })
-            if section != nil {
-                sections.append(Section(name: keyDistance.capitalizingFirstLetter(), items : (section?.value.map({$0.artwork}))!))
-            }
-        }
-        
-        return sections
-    }
-    */
-    
     
 }

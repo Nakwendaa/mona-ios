@@ -40,14 +40,17 @@ class LaunchScreenViewController: UIViewController {
     
     private func setupLaunchImageView() {
         DispatchQueue.global().async {
-            let image = UIImage.gif(data: self.getLaunchGifData())
+            guard let gifData = self.getLaunchGifData() else {
+                return
+            }
+            let image = UIImage.gif(data: gifData)
             DispatchQueue.main.async {
                 self.launchImageView.image = image
             }
         }
     }
     
-    private func getLaunchGifData() -> Data {
+    private func getLaunchGifData() -> Data? {
         
         let deviceModel = UIDevice.current.type
         
@@ -62,7 +65,7 @@ class LaunchScreenViewController: UIViewController {
         }
         else {
             log.error("Cannot initialize NSDataAsset because \"" + assetName! + "\" was not found.")
-            fatalError()
+            return nil
         }
     }
     

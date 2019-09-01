@@ -37,7 +37,6 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
         var localIdentifiersOrdered = [String : Int]()
         var index = 0
         artworks.forEach { artwork in
-            
             let photo = artwork.photos!.lastObject! as! Photo
             localIdentifiersOrdered[photo.localIdentifier] = index
             index += 1

@@ -21,6 +21,13 @@ final class LegendPopoverViewController: UIViewController {
 
     //MARK: - Properties
     var artworks = [Artwork]()
+    
+    // C'est bourrin, à check pour les 4 var suivantes
+    weak var mapVc : MapViewController? = nil
+    var collectedButtonIsSelected = true
+    var unvisitedButtonIsSelected = true
+    var targetedButtonIsSelected = true
+    
     //MARK: UI properties
     weak var mapView : MKMapView!
     @IBOutlet weak var collectedButton: UIButton!
@@ -33,6 +40,9 @@ final class LegendPopoverViewController: UIViewController {
         collectedButton.setTitle(Strings.collected, for: .normal)
         targetedButton.setTitle(Strings.targeted, for: .normal)
         unvisitedButton.setTitle(Strings.unvisited, for: .normal)
+        collectedButton.isSelected = collectedButtonIsSelected
+        unvisitedButton.isSelected = unvisitedButtonIsSelected
+        targetedButton.isSelected = targetedButtonIsSelected
     }
     
     @IBAction func legendTapped(_ sender: UIButton) {
@@ -168,13 +178,26 @@ final class LegendPopoverViewController: UIViewController {
             
             updateMap(artworksToAdd: &artworksToAdd, artworksToRemove: artworksToRemove)
         }
-            // 111
+        // 111
         else if collectedButton.isSelected && targetedButton.isSelected && unvisitedButton.isSelected {
             var artworksToAdd = Set<Artwork>.init(artworks)
             let artworksToRemove = Set<Artwork>()
             
             updateMap(artworksToAdd: &artworksToAdd, artworksToRemove: artworksToRemove)
         }
+        // 000
+        else {
+            var artworksToAdd = Set<Artwork>()
+            let artworksToRemove = Set<Artwork>.init(artworks)
+            
+            updateMap(artworksToAdd: &artworksToAdd, artworksToRemove: artworksToRemove)
+        }
+        
+        // Laid, à check
+        mapVc?.collectedButtonIsSelected = collectedButton.isSelected
+        mapVc?.unvisitedButtonIsSelected = unvisitedButton.isSelected
+        mapVc?.targetedButtonIsSelected = targetedButton.isSelected
+        //...
     }
     
 }

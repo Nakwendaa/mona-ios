@@ -10,6 +10,15 @@ import Foundation
 
 extension String
 {
+    
+    var isAlphanumeric : Bool {
+        return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
+    }
+    
+    var isAlpha : Bool {
+        return !isEmpty && range(of: "[^a-zA-Z]", options: .regularExpression) == nil
+    }
+    
     func replacingOccurences(target: String, withString: String) -> String {
         return replacingOccurrences(of: target, with: withString, options: NSString.CompareOptions.literal, range: nil)
     }
@@ -22,6 +31,7 @@ extension String
                              with: "",
                              options: .regularExpression)
     }
+    
     func capitalizingFirstLetter() -> String {
         return prefix(1).uppercased() + dropFirst()
     }
@@ -37,5 +47,6 @@ extension String
         let end = index(startIndex, offsetBy: bounds.upperBound)
         return String(self[start..<end])
     }
+    
     
 }

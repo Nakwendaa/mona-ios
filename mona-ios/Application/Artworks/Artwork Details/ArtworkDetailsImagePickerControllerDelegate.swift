@@ -19,7 +19,6 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
     }
     
     let artwork: Artwork
-    
     let onSuccess : (() -> Void)?
     let onFailure : ((Error) -> Void)?
     
@@ -97,7 +96,9 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
         if !artwork.isCollected {
             let notCollectedBadges = AppData.badges.filter { !$0.isCollected }
             for notCollectedBadge in notCollectedBadges {
-                if notCollectedBadge.text == artwork.district.name {
+                print("notCollectedBadge.text: \(notCollectedBadge.text)")
+                print("artworks.district.text: \(artwork.district.text)")
+                if notCollectedBadge.text == artwork.district.text {
                     notCollectedBadge.currentValue += 1
                 }
                 else if ["1", "3", "5", "8", "10", "15", "20", "25", "30"].contains(notCollectedBadge.collectedImageName) {
@@ -105,10 +106,19 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
                 }
             }
             let newlyCollectedBadges = notCollectedBadges.filter { $0.isCollected }
+            let storyboard = UIStoryboard(name: "Artworks", bundle: .main)
+            
             if !newlyCollectedBadges.isEmpty {
-                picker.performSegue(withIdentifier: Segues.presentWonBadge, sender: newlyCollectedBadges)
+                let navVC = storyboard.instantiateViewController(withIdentifier: "WonBadgeNavigationViewController") as! UINavigationController
+                let wonBadgeVC = navVC.viewControllers[0] as! WonBadgeViewController
+                //let wonBadgeVC = storyboard.instantiateViewController(withIdentifier: "WonBadgeViewController") as! WonBadgeViewController
+                wonBadgeVC.badges = newlyCollectedBadges
+                picker.present(navVC, animated: true, completion: nil)
             }
-            picker.performSegue(withIdentifier: Segues.showArtworkDetailsRatingViewController, sender: picker)
+            
+            let artworkDetailsRatingVC = storyboard.instantiateViewController(withIdentifier: "RatingViewController") as! ArtworkDetailsRatingViewController
+            artworkDetailsRatingVC.artwork = artwork
+            picker.pushViewController(artworkDetailsRatingVC, animated: true)
         }
         else {
             picker.dismiss(animated: true, completion: nil)

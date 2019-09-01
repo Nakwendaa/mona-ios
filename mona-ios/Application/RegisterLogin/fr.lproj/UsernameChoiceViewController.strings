@@ -7,12 +7,8 @@
 */
 
 
-"Hint username" = "Choose an username.";
-"Username" = "Username";
-"Valid" = "Done";
-"Username already exists" = "Username already exists. Please choose another username."
-
-"hintUsernameLabel_UsernameChoiceViewController" = "Choose a username.";
-"usernameTextField_UsernameChoiceViewController" = "Alphanumeric and allowed from %1$d to %2$d characters.";
-"validButton_UsernameChoiceViewController" = "Done";
-"usernameAlreadyExists_UsernameChoiceViewController" = "Username already exists. Please choose another username.";
+"Hint username" = "Choisissez un nom d'utilisateur.";
+"Username" = "Alphanumérique et de %1$d à %2$d caractères.";
+"Valid" = "Valider";
+"Username already exists" = "Le nom d'utilisateur existe déjà. Veuillez choisir un autre nom d'utilisateur.";
+"Error" = "Erreur";

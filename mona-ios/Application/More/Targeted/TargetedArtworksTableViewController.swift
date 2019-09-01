@@ -243,7 +243,13 @@ final class TargetedArtworksTableViewController : SearchViewController {
             locationManager.requestWhenInUseAuthorization()
             break
         case .restricted, .denied:
-            UIAlertController.presentOpenSettings(from: self, title: Strings.NeedAuthorizationLocationOpenSettings.title, message: Strings.NeedAuthorizationLocationOpenSettings.message, completion: {
+            UIAlertController.presentOpenSettings(
+                from: self,
+                title: Strings.NeedAuthorizationLocationOpenSettings.title,
+                message: Strings.NeedAuthorizationLocationOpenSettings.message,
+                cancelCompletion: nil,
+                openSettingsCompletion: nil,
+                presentCompletion: {
                 self.refreshControl.endRefreshing()
             })
             break

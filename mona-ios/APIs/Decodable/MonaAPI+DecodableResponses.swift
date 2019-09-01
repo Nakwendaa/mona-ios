@@ -39,6 +39,8 @@ extension MonaAPI {
                 case district = "borough"
                 case artists
                 case coordinate = "location"
+                case collection
+                case details
             }
             
             struct Artist : Codable {
@@ -62,8 +64,8 @@ extension MonaAPI {
                     case en
                 }
                 
-                let fr: String?
-                let en: String?
+                var fr: String?
+                var en: String?
                 
             }
             
@@ -86,8 +88,8 @@ extension MonaAPI {
                     case en
                 }
                 
-                let fr: String?
-                let en: String?
+                var fr: String?
+                var en: String?
                 
             }
             
@@ -119,16 +121,18 @@ extension MonaAPI {
             let title : String?
             let date : Date?
             let artists : [Artist]?
-            let category : Category?
-            let subcategory : Subcategory?
+            var category : Category?
+            var subcategory : Subcategory?
             let dimensions : [String]?
             let materials : [Material]?
             let techniques : [Technique]?
-            let district : String?
+            var district : String?
             let coordinate : Coordinate?
+            let collection : String?
+            let details : String?
         }
         
-        let data : [Artwork]?
+        var data : [Artwork]?
         
     }
     

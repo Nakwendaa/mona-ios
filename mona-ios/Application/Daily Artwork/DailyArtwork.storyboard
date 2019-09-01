@@ -10,24 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Daily Artwork Image Picker Controller-->
-        <scene sceneID="6UC-Y4-zyS">
-            <objects>
-                <viewController storyboardIdentifier="ImagePickerController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HGv-Lz-dsw" customClass="DailyArtworkImagePickerController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BQF-F8-sL0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="LyY-ej-icG"/>
-                    </view>
-                    <connections>
-                        <segue destination="M45-pm-4gj" kind="show" identifier="showDailyArtworkRatingViewController" id="WrT-yM-vl7"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1EP-hE-lgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="490" y="9"/>
-        </scene>
         <!--Daily Artwork Map View Controller-->
         <scene sceneID="Btv-KS-LWj">
             <objects>
@@ -69,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Igv-oV-awi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1401" y="10"/>
+            <point key="canvasLocation" x="940" y="23"/>
         </scene>
         <!--Daily Artwork View Controller-->
         <scene sceneID="U0q-lf-891">
@@ -256,7 +238,6 @@
                         <outlet property="subcategoryLabel" destination="wPn-YE-89a" id="5ur-io-rnI"/>
                         <outlet property="targetButton" destination="bxP-1i-cUb" id="J6P-ht-a1J"/>
                         <outlet property="titleLabel" destination="lEY-fg-jRA" id="1Ae-g1-gFR"/>
-                        <segue destination="HGv-Lz-dsw" kind="show" identifier="showDailyArtworkImagePickerController" id="pXw-he-YY4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6T-XV-Tvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -290,118 +271,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Hl-mk-DCS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.80000000000000004" y="-762.36881559220399"/>
-        </scene>
-        <!--Daily Artwork Rating View Controller-->
-        <scene sceneID="EbX-sR-Mt8">
-            <objects>
-                <viewController storyboardIdentifier="RatingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M45-pm-4gj" customClass="DailyArtworkRatingViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Hab-gB-PFL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9zY-T4-vEs" customClass="RatingControl" customModule="mona_ios" customModuleProvider="target">
-                                <rect key="frame" x="77.5" y="311.5" width="220" height="44"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="starCount">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFH-Uq-hYL">
-                                <rect key="frame" x="166.5" y="274.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HR0-bs-M5h">
-                                <rect key="frame" x="313" y="572" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="7Jf-r2-b4j"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="validateButtonTapped:" destination="M45-pm-4gj" eventType="touchUpInside" id="bPD-21-OA8"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="9zY-T4-vEs" firstAttribute="centerY" secondItem="Hab-gB-PFL" secondAttribute="centerY" id="CaZ-q1-liy"/>
-                            <constraint firstItem="ttc-V3-gkU" firstAttribute="trailing" secondItem="HR0-bs-M5h" secondAttribute="trailing" constant="16" id="PbG-sC-bdU"/>
-                            <constraint firstItem="HR0-bs-M5h" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ttc-V3-gkU" secondAttribute="leading" symbolic="YES" id="TLf-zQ-RgP"/>
-                            <constraint firstItem="aFH-Uq-hYL" firstAttribute="centerX" secondItem="ttc-V3-gkU" secondAttribute="centerX" id="TmE-7F-mN2"/>
-                            <constraint firstItem="9zY-T4-vEs" firstAttribute="top" secondItem="aFH-Uq-hYL" secondAttribute="bottom" constant="16" id="U1u-Id-M0U"/>
-                            <constraint firstItem="9zY-T4-vEs" firstAttribute="centerX" secondItem="ttc-V3-gkU" secondAttribute="centerX" id="bmZ-vN-LKs"/>
-                            <constraint firstItem="ttc-V3-gkU" firstAttribute="bottom" secondItem="HR0-bs-M5h" secondAttribute="bottom" constant="16" id="kZN-fh-plv"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ttc-V3-gkU"/>
-                    </view>
-                    <connections>
-                        <outlet property="hintLabel" destination="aFH-Uq-hYL" id="oi6-Ga-bE6"/>
-                        <outlet property="ratingControl" destination="9zY-T4-vEs" id="SWS-ZZ-vPi"/>
-                        <outlet property="validateButton" destination="HR0-bs-M5h" id="Wi8-8X-aas"/>
-                        <segue destination="qfR-xk-jh2" kind="show" identifier="showDailyArtworkCommentViewController" id="BWX-EH-hml"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OgO-ky-08q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="489" y="789"/>
-        </scene>
-        <!--Daily Artwork Comment View Controller-->
-        <scene sceneID="89J-KX-JIM">
-            <objects>
-                <viewController storyboardIdentifier="CommentViewController" id="qfR-xk-jh2" customClass="DailyArtworkCommentViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9AA-ga-QRw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1B-2a-Avv">
-                                <rect key="frame" x="20" y="84" width="335" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="USO-2o-QL2">
-                                <rect key="frame" x="20" y="112.5" width="335" height="200"/>
-                                <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="0.3905714897" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="n2g-Ad-TiZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVx-eP-VV7">
-                                <rect key="frame" x="313" y="320.5" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="validateButtonTapped:" destination="qfR-xk-jh2" eventType="touchUpInside" id="tbx-Mz-Qoi"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="USO-2o-QL2" firstAttribute="top" secondItem="R1B-2a-Avv" secondAttribute="bottom" constant="8" id="0LR-EQ-y3r"/>
-                            <constraint firstItem="USO-2o-QL2" firstAttribute="centerX" secondItem="vds-aP-lSV" secondAttribute="centerX" id="2vG-i9-2cU"/>
-                            <constraint firstItem="JVx-eP-VV7" firstAttribute="top" secondItem="USO-2o-QL2" secondAttribute="bottom" constant="8" id="6TF-NR-Tp8"/>
-                            <constraint firstItem="USO-2o-QL2" firstAttribute="leading" secondItem="vds-aP-lSV" secondAttribute="leading" constant="20" id="KZF-SY-3tD"/>
-                            <constraint firstItem="R1B-2a-Avv" firstAttribute="top" secondItem="vds-aP-lSV" secondAttribute="top" constant="20" id="KyK-O1-UGZ"/>
-                            <constraint firstItem="vds-aP-lSV" firstAttribute="trailing" secondItem="R1B-2a-Avv" secondAttribute="trailing" constant="20" id="Rma-6a-nqC"/>
-                            <constraint firstItem="JVx-eP-VV7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vds-aP-lSV" secondAttribute="leading" symbolic="YES" id="a0u-ax-fMk"/>
-                            <constraint firstItem="R1B-2a-Avv" firstAttribute="leading" secondItem="vds-aP-lSV" secondAttribute="leading" constant="20" id="bU2-VI-RaN"/>
-                            <constraint firstItem="vds-aP-lSV" firstAttribute="trailing" secondItem="USO-2o-QL2" secondAttribute="trailing" constant="20" id="mRx-I5-viW"/>
-                            <constraint firstItem="vds-aP-lSV" firstAttribute="trailing" secondItem="JVx-eP-VV7" secondAttribute="trailing" constant="16" id="ppb-b2-VVr"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="vds-aP-lSV"/>
-                    </view>
-                    <connections>
-                        <outlet property="commentTextView" destination="USO-2o-QL2" id="0gB-zq-Y7d"/>
-                        <outlet property="hintLabel" destination="R1B-2a-Avv" id="B4b-ke-s3H"/>
-                        <outlet property="validateButton" destination="JVx-eP-VV7" id="aNQ-xV-dmw"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J5q-98-AJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="489" y="1584"/>
         </scene>
     </scenes>
     <resources>

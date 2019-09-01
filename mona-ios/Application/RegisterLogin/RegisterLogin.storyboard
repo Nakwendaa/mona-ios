@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fif-R2-9DE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -93,7 +93,7 @@
         <!--UsernameChoice-->
         <scene sceneID="np7-Vj-BnI">
             <objects>
-                <viewController restorationIdentifier="UsernameViewControllerRID" storyboardIdentifier="UsernameViewControllerSID" id="Fif-R2-9DE" userLabel="UsernameChoice" customClass="UsernameChoiceViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UsernameChoiceViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fif-R2-9DE" userLabel="UsernameChoice" customClass="UsernameChoiceViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y1L-Sa-Ul0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,7 +101,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZPh-HN-FYV">
                                 <rect key="frame" x="16" y="36" width="343" height="135"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4D-wM-anz">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4D-wM-anz">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="Aoa-na-aOH"/>
@@ -159,7 +159,7 @@
         <!--Sign Up-->
         <scene sceneID="hl5-Ji-R7R">
             <objects>
-                <viewController restorationIdentifier="SignUpViewControllerRID" storyboardIdentifier="SignUpViewControllerSID" id="T8J-DP-QGu" userLabel="Sign Up" customClass="SignUpViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="SignUpViewControllerRID" storyboardIdentifier="SignUpViewControllerSID" id="T8J-DP-QGu" userLabel="Sign Up" customClass="RegisterViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DC7-Y6-gt2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -167,31 +167,31 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ClQ-Nm-wBb">
                                 <rect key="frame" x="62.5" y="213.5" width="250" height="240"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inscription" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aa3-xh-qbK">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uml-41-PFQ">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="33.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Laissez vide" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uml-41-PFQ">
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uuA-ad-ffB">
                                         <rect key="frame" x="0.0" y="41.5" width="250" height="33"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom d'utilisateur" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yoQ-vL-bI1">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yoQ-vL-bI1">
                                         <rect key="frame" x="0.0" y="82.5" width="250" height="33.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M9P-fJ-PAD">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M9P-fJ-PAD">
                                         <rect key="frame" x="0.0" y="124" width="250" height="33.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Répétez votre mot de passe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qx4-kz-rXn">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qx4-kz-rXn">
                                         <rect key="frame" x="0.0" y="165.5" width="250" height="33"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -201,7 +201,7 @@
                                         <rect key="frame" x="0.0" y="206.5" width="250" height="33.5"/>
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
-                                            <action selector="signUpButtonTapped:" destination="T8J-DP-QGu" eventType="touchUpInside" id="36Z-nw-OVL"/>
+                                            <action selector="signUpButtonTapped:" destination="T8J-DP-QGu" eventType="touchUpInside" id="cND-n1-5rG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -210,21 +210,32 @@
                                     <constraint firstAttribute="height" constant="240" id="hdC-5b-FHw"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inscrivez-vous avec votre adresse email" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aa3-xh-qbK">
+                                <rect key="frame" x="62.5" y="156.5" width="250" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Aa3-xh-qbK" firstAttribute="centerX" secondItem="DC7-Y6-gt2" secondAttribute="centerX" id="8FM-81-kqP"/>
+                            <constraint firstItem="ClQ-Nm-wBb" firstAttribute="leading" secondItem="Aa3-xh-qbK" secondAttribute="leading" id="O80-9h-ras"/>
                             <constraint firstItem="ClQ-Nm-wBb" firstAttribute="centerX" secondItem="DC7-Y6-gt2" secondAttribute="centerX" id="RCY-vZ-Gb6"/>
+                            <constraint firstItem="ClQ-Nm-wBb" firstAttribute="top" secondItem="Aa3-xh-qbK" secondAttribute="bottom" constant="16" id="qmo-Jg-WNV"/>
                             <constraint firstItem="ClQ-Nm-wBb" firstAttribute="centerY" secondItem="DC7-Y6-gt2" secondAttribute="centerY" id="sTQ-01-g6k"/>
+                            <constraint firstItem="ClQ-Nm-wBb" firstAttribute="trailing" secondItem="Aa3-xh-qbK" secondAttribute="trailing" id="zok-Lq-gxh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7de-jZ-H6j"/>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="uml-41-PFQ" id="fhi-Kb-HgM"/>
-                        <outlet property="firstPasswordTextField" destination="M9P-fJ-PAD" id="35G-zZ-0GS"/>
-                        <outlet property="secondPasswordTextField" destination="Qx4-kz-rXn" id="4pn-hp-0vY"/>
-                        <outlet property="signUpButton" destination="5FE-e5-ySs" id="5Ui-c5-3zy"/>
-                        <outlet property="titleLabel" destination="Aa3-xh-qbK" id="D8s-OK-aOt"/>
-                        <outlet property="usernameTextfield" destination="yoQ-vL-bI1" id="eKy-6V-57b"/>
+                        <outlet property="confirmEmailTextField" destination="uuA-ad-ffB" id="fnc-zl-BBh"/>
+                        <outlet property="confirmPasswordTextField" destination="Qx4-kz-rXn" id="00o-gU-3gD"/>
+                        <outlet property="emailTextField" destination="uml-41-PFQ" id="Daa-6y-ksB"/>
+                        <outlet property="passwordTextField" destination="M9P-fJ-PAD" id="lSB-nF-PfV"/>
+                        <outlet property="signUpButton" destination="5FE-e5-ySs" id="7g9-vs-5ao"/>
+                        <outlet property="titleLabel" destination="Aa3-xh-qbK" id="TY3-jN-zwx"/>
+                        <outlet property="usernameTextField" destination="yoQ-vL-bI1" id="HpR-5Y-EEn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VgG-9S-b3X" userLabel="First Responder" sceneMemberID="firstResponder"/>

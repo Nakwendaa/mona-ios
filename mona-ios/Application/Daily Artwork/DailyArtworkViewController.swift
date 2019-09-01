@@ -15,7 +15,6 @@ class DailyArtworkViewController: UIViewController {
     //MARK: - Types
     struct Segues {
         struct Identifiers {
-            static let showDailyArtworkImagePickerController = "showDailyArtworkImagePickerController"
             static let showDailyArtworkMapViewController = "showDailyArtworkMapViewController"
         }
     }
@@ -50,6 +49,7 @@ class DailyArtworkViewController: UIViewController {
     
     //MARK: - Properties
     var artwork: Artwork?
+    var imagePickerDelegate: ArtworkDetailsImagePickerControllerDelegate!
     
     //MARK: - UI Properties
     @IBOutlet weak var titleLabel: UILabel!
@@ -63,8 +63,6 @@ class DailyArtworkViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var targetButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
-    
-    //var artworkImagePickerControllerDelegate : ArtworkImagePickerControllerDelegate!
     
     //MARK: - Overriden methods
     override func viewDidLoad() {
@@ -87,11 +85,6 @@ class DailyArtworkViewController: UIViewController {
             dailyArtworkMapViewController.artwork = artwork
             showNavigationBar()
         }
-        else if segue.identifier == Segues.Identifiers.showDailyArtworkImagePickerController {
-            let dailyArtworkImagePickerController = segue.destination as! DailyArtworkImagePickerController
-            dailyArtworkImagePickerController.sourceType = .camera
-            dailyArtworkImagePickerController.artwork = artwork
-        }
     }
     
 
@@ -113,6 +106,11 @@ class DailyArtworkViewController: UIViewController {
         guard let artwork = artwork else {
             return
         }
+        imagePickerDelegate = ArtworkDetailsImagePickerControllerDelegate(
+            artwork: artwork,
+            onSuccess: nil,
+            onFailure: nil
+        )
         setupViewController(artwork: artwork)
     }
     
@@ -183,14 +181,20 @@ class DailyArtworkViewController: UIViewController {
         
         func show() {
             if UIImagePickerController.isSourceTypeAvailable(.camera){
-                performSegue(withIdentifier: Segues.Identifiers.showDailyArtworkImagePickerController, sender: self)
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.sourceType = .camera
+                imagePickerController.delegate = imagePickerDelegate
+                present(imagePickerController, animated: true, completion: nil)
             }
             else {
                 log.error("Camera is not available. Cannot present \(String(describing: self)).")
-                UIAlertController.presentMessage(from: self,
-                                                 title: Strings.CameraUnavailable.title,
-                                                 message: Strings.CameraUnavailable.message,
-                                                 completion: nil)
+                UIAlertController.presentMessage(
+                    from: self,
+                    title: Strings.CameraUnavailable.title,
+                    message: Strings.CameraUnavailable.message,
+                    okCompletion: nil,
+                    presentCompletion: nil
+                )
             }
         }
         
@@ -203,10 +207,14 @@ class DailyArtworkViewController: UIViewController {
             break
         case .denied, .restricted:
             // Faire une demande de modifications des réglages
-            UIAlertController.presentOpenSettings(from: self,
-                                                  title: Strings.NeedAuthorizationCameraOpenSettings.title,
-                                                  message: Strings.NeedAuthorizationCameraOpenSettings.message,
-                                                  completion: nil)
+            UIAlertController.presentOpenSettings(
+                from: self,
+                title: Strings.NeedAuthorizationCameraOpenSettings.title,
+                message: Strings.NeedAuthorizationCameraOpenSettings.message,
+                cancelCompletion: nil,
+                openSettingsCompletion: nil,
+                presentCompletion: nil
+            )
             break
         default:
             // demander pour accés

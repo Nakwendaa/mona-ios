@@ -10,7 +10,7 @@ import Foundation
 
 extension Artist : TextRepresentable {
     
-    static let unknownArtist = NSLocalizedString("unknown artist", tableName: "Artist+Protocols", bundle: .main, value: "", comment: "")
+    static let unknownArtist = NSLocalizedString("Unknown artist", tableName: "Artist+Protocols", bundle: .main, value: "", comment: "")
     
     var text: String {
         return name ?? Artist.unknownArtist

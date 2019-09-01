@@ -17,7 +17,7 @@ extension District {
         return NSFetchRequest<District>(entityName: "District")
     }
 
-    @NSManaged public var name: String
+    @NSManaged public var name: String?
     @NSManaged public var addresses: Set<Address>
     @NSManaged public var artworks: Set<Artwork>
 

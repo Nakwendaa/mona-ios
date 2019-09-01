@@ -74,7 +74,7 @@ class ArtworkDetailsDescriptionViewController: UIViewController {
     }
     
     private func setupDimensionsLabel() {
-        dimensionsLabel.text = artwork.dimensions
+        dimensionsLabel.text = artwork.dimensions ?? Strings.unknownDimensions
     }
     
     private func setupCategoryLabel() {

@@ -90,10 +90,14 @@ class ArtworkDetailsFullMapViewController: SearchViewController {
             locationManager.requestWhenInUseAuthorization()
             return
         case .denied, .restricted:
-            UIAlertController.presentOpenSettings(from: self,
-                                                  title: Strings.NeedAuthorizationLocationOpenSettings.title,
-                                                  message: Strings.NeedAuthorizationLocationOpenSettings.message,
-                                                  completion: nil)
+            UIAlertController.presentOpenSettings(
+                from: self,
+                title: Strings.NeedAuthorizationLocationOpenSettings.title,
+                message: Strings.NeedAuthorizationLocationOpenSettings.message,
+                cancelCompletion: nil,
+                openSettingsCompletion: nil,
+                presentCompletion: nil
+            )
             return
         case .authorizedWhenInUse, .authorizedAlways:
             guard let location = mapView.userLocation.location else {

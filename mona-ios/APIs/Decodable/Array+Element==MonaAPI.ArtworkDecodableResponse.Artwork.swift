@@ -10,7 +10,8 @@ import CoreData
 
 extension Array where Element == MonaAPI.ArtworkDecodableResponse.Artwork {
     
-    func createOrUpdate(into context: NSManagedObjectContext) {
+    mutating func createOrUpdate(into context: NSManagedObjectContext) {
+        
         
         let entityDescription = [
             "Artwork" : NSEntityDescription.entity(forEntityName: String(describing: Artwork.self), in: context)!,
@@ -33,7 +34,32 @@ extension Array where Element == MonaAPI.ArtworkDecodableResponse.Artwork {
         var subcategories = [ Category : [String : Subcategory]]()
         
         // In a first loop, find artists, districts, materials, techniques, categories and subcategories used.
-        for codableArtwork in self {
+        for var codableArtwork in self {
+            // À supprimer qd les cat ne seront plus nulls
+            if codableArtwork.category == nil {
+                //continue
+                if let englishCat = codableArtwork.subcategory?.en {
+                    if ["Collage", "Drawing", "Engraving", "Installation", "Mixed Media", "Multimedia", "Painting", "Photography", "Sculpture"].contains(englishCat) {
+                        codableArtwork.category = MonaAPI.ArtworkDecodableResponse.Artwork.Category(fr: "Beaux-Arts", en: "Fine Arts")
+                    }
+                    else if  ["Ceramic", "Enamels", "Industrial Design", "Furnishings", "Glass", "Mosaic", "Print", "Stained Glass"].contains(englishCat) {
+                        codableArtwork.category = MonaAPI.ArtworkDecodableResponse.Artwork.Category(fr: "Arts decoratifs", en: "Decorative Arts")
+                    }
+                    else if  ["Murals"].contains(englishCat) {
+                        codableArtwork.category = MonaAPI.ArtworkDecodableResponse.Artwork.Category(fr: "Murale", en: "Murals")
+                    }
+                }
+                else if codableArtwork.subcategory == nil {
+                    codableArtwork.category = MonaAPI.ArtworkDecodableResponse.Artwork.Category(fr: "Catégorie inconnue", en: "Unknown category")
+                }
+            }
+            
+            if codableArtwork.collection == "Université de Montréal" {
+                codableArtwork.district = "Université de Montréal"
+            }
+            
+            // Fin de ce qu'il faut suppr
+            
             updateDistricts(from: codableArtwork, to: &districts, entityDescription: entityDescription["District"]!, insertInto: context)
             updateArtists(from: codableArtwork, to: &artists, entityDescription: entityDescription["Artist"]!, insertInto: context)
             updateMaterials(from: codableArtwork, to: &materials, entityMaterial: entityDescription["Material"]!, entityLocalized: entityDescription["LocalizedString"]!, insertInto: context)
@@ -72,7 +98,32 @@ extension Array where Element == MonaAPI.ArtworkDecodableResponse.Artwork {
             }
             
             
-            for codableArtwork in self {
+            for var codableArtwork in self {
+                // À supprimer qd les cat ne seront plus nulls
+                if codableArtwork.category == nil {
+                    //continue
+                    if let englishCat = codableArtwork.subcategory?.en {
+                        if ["Collage", "Drawing", "Engraving", "Installation", "Mixed Media", "Multimedia", "Painting", "Photography", "Sculpture"].contains(englishCat) {
+                            codableArtwork.category = MonaAPI.ArtworkDecodableResponse.Artwork.Category(fr: "Beaux-Arts", en: "Fine Arts")
+                        }
+                        else if  ["Ceramic", "Enamels", "Industrial Design", "Furnishings", "Glass", "Mosaic", "Print", "Stained Glass"].contains(englishCat) {
+                            codableArtwork.category = MonaAPI.ArtworkDecodableResponse.Artwork.Category(fr: "Arts decoratifs", en: "Decorative Arts")
+                        }
+                        else if  ["Murals"].contains(englishCat) {
+                            codableArtwork.category = MonaAPI.ArtworkDecodableResponse.Artwork.Category(fr: "Murale", en: "Murals")
+                        }
+                    }
+                    else if codableArtwork.subcategory == nil {
+                        codableArtwork.category = MonaAPI.ArtworkDecodableResponse.Artwork.Category(fr: "Catégorie inconnue", en: "Unknown category")
+                    }
+                }
+                
+                if codableArtwork.collection == "Université de Montréal" {
+                    codableArtwork.district = "Université de Montréal"
+                }
+                // Fin de ce qu'il faut suppr
+                
+                
                 var artwork = artworks[codableArtwork.id]
                 if artwork == nil {
                     artwork = Artwork(entity: entityDescription["Artwork"]!, insertInto: context)
@@ -198,9 +249,12 @@ extension Array where Element == MonaAPI.ArtworkDecodableResponse.Artwork {
     
     private func setupAddressDistrict(from codableArtwork: Element, into artwork: Artwork, districts: [String : District], context: NSManagedObjectContext) {
         
-        if  let districtName = codableArtwork.district,
-            let district = districts[districtName] {
-            artwork.district = district
+        
+        if let districtName = codableArtwork.district {
+            artwork.district = districts[districtName]!
+        }
+        else {
+            artwork.district = districts["unknown"]!
         }
         
         
@@ -249,12 +303,27 @@ extension Array where Element == MonaAPI.ArtworkDecodableResponse.Artwork {
     }
     
     private func updateDistricts(from codableArtwork: Element, to districts : inout [String : District], entityDescription: NSEntityDescription, insertInto context: NSManagedObjectContext) {
+        // The unknown key is useful because some artworks may not have name
+        let unknownKey = "unknown"
+        // If a district's name has been decoded (not nil)
         if let districtName = codableArtwork.district {
+            // If this district's name doesn't exist in the districts' dictionary [String : District]
             if districts[districtName] == nil {
+                // Insert this district into context
                 let district = District(entity: entityDescription, insertInto: context)
                 district.name = districtName
+                // Update the districts' dictionary [String : District] with this new district
                 districts.updateValue(district, forKey: districtName)
             }
+            // Else do nothing because the district was already inserted into context, and this district exsits in dictionary
+        }
+        // Else if districtName is nil and no district "unknown" exists in the district's dictionary
+        else if districts[unknownKey] == nil {
+            // We need to insert into context the "unknown" district
+            let district = District(entity: entityDescription, insertInto: context)
+            district.name = nil
+            // Update value for the empty dictionary
+            districts.updateValue(district, forKey: unknownKey)
         }
     }
     

@@ -642,7 +642,6 @@
                         <outlet property="titleLabel" destination="frH-cv-Sfs" id="GSD-vQ-ldI"/>
                         <outlet property="titleLabelHeightLayoutConstraint" destination="Edd-Df-W8i" id="TuG-Pv-vhN"/>
                         <outlet property="viewTapGesture" destination="oD6-ow-y1r" id="JUF-aJ-4eN"/>
-                        <segue destination="xQu-av-59p" kind="show" identifier="showArtworkDetailsImagePickerController" id="iAY-eX-F2C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f56-fe-oDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -665,7 +664,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="vertical" spineLocation="none" id="0cJ-Lo-TA3" customClass="ArtworkDetailsPageViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bGM-Iu-hph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6271" y="22"/>
+            <point key="canvasLocation" x="6271" y="218"/>
         </scene>
         <!--Artwork Details Description View Controller-->
         <scene sceneID="80f-A6-qNs">
@@ -796,7 +795,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whS-rk-9vj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6273" y="250"/>
+            <point key="canvasLocation" x="6274" y="445"/>
         </scene>
         <!--Artwork Details Map View Controller-->
         <scene sceneID="ntF-zF-7pC">
@@ -862,7 +861,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6273" y="482"/>
+            <point key="canvasLocation" x="6274" y="677"/>
         </scene>
         <!--Artwork Details Full Map View Controller-->
         <scene sceneID="BtP-Hf-FQL">
@@ -905,7 +904,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdN-Lz-2Z6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7324" y="483"/>
+            <point key="canvasLocation" x="7324" y="681"/>
         </scene>
         <!--Artwork Details Comment Rating View Controller-->
         <scene sceneID="vp2-U0-tkf">
@@ -1025,12 +1024,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ods-ey-Bfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6273" y="717"/>
+            <point key="canvasLocation" x="6274" y="913"/>
         </scene>
         <!--Won Badge View Controller-->
         <scene sceneID="gmK-r3-cdr">
             <objects>
-                <viewController id="stt-s5-XW6" customClass="WonBadgeViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WonBadgeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="stt-s5-XW6" customClass="WonBadgeViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FRB-to-Qzd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1088,7 +1087,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VTH-7Q-tFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9215.2000000000007" y="-1314.6926536731635"/>
+            <point key="canvasLocation" x="8263" y="-949"/>
         </scene>
         <!--Artwork Details Rating View Controller-->
         <scene sceneID="eZ3-3S-dpf">
@@ -1113,7 +1112,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D89-Cg-JEE">
-                                <rect key="frame" x="313" y="572" width="46" height="30"/>
+                                <rect key="frame" x="313" y="621" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="jhU-Gn-7Wc"/>
                                 </constraints>
@@ -1145,7 +1144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4z-bQ-woB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8276" y="-582"/>
+            <point key="canvasLocation" x="7324" y="-216"/>
         </scene>
         <!--Artwork Details Comment View Controller-->
         <scene sceneID="BG5-04-lNq">
@@ -1156,13 +1155,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfC-Tv-pa5">
-                                <rect key="frame" x="20" y="84" width="335" height="20.5"/>
+                                <rect key="frame" x="20" y="40" width="335" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="G1y-7A-vxR">
-                                <rect key="frame" x="20" y="112.5" width="335" height="200"/>
+                                <rect key="frame" x="20" y="68.5" width="335" height="200"/>
                                 <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="0.3905714897" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="CMw-4c-Pa5"/>
@@ -1171,7 +1170,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jiy-ch-Ob1">
-                                <rect key="frame" x="313" y="320.5" width="46" height="30"/>
+                                <rect key="frame" x="313" y="276.5" width="46" height="30"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -1202,31 +1201,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8R-KC-Jhh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9215" y="-582"/>
-        </scene>
-        <!--Artwork Details Image Picker Controller-->
-        <scene sceneID="qhQ-AB-GB1">
-            <objects>
-                <viewController storyboardIdentifier="ImagePickerController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xQu-av-59p" customClass="ArtworkDetailsImagePickerController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vdJ-bl-IBu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Vpf-w3-U6E"/>
-                    </view>
-                    <connections>
-                        <segue destination="3xL-xH-E0W" kind="show" identifier="showArtworkDetailsRatingViewController" id="Ngo-F3-MOQ"/>
-                        <segue destination="MtM-8I-fQo" kind="presentation" identifier="presentWonBadge" id="4Bo-Dt-xuR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LPp-QF-xcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7324" y="-582"/>
+            <point key="canvasLocation" x="8262" y="-216"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qb0-Aj-zvU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MtM-8I-fQo" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="WonBadgeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MtM-8I-fQo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J5K-p6-36r">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1239,7 +1219,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NrK-SH-Sex" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8276" y="-1314.6926536731635"/>
+            <point key="canvasLocation" x="7324" y="-949"/>
         </scene>
     </scenes>
     <resources>

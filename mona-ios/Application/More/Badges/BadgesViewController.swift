@@ -96,9 +96,11 @@ extension BadgesViewController : UICollectionViewDataSource {
             let firstCategoryCollectedArtworksCountLabel = collectionReusableView.subviews[1].subviews[0].subviews[0] as! UILabel
             let secondCategoryCollectedArtworksCountLabel = collectionReusableView.subviews[1].subviews[0].subviews[1] as! UILabel
             let thirdCategoryCollectedArtworksCountLabel = collectionReusableView.subviews[1].subviews[0].subviews[2] as! UILabel
+            let fourthCategoryCollectedArtworksCountLabel = collectionReusableView.subviews[1].subviews[0].subviews[3] as! UILabel
             let firstCategoryLabel = collectionReusableView.subviews[1].subviews[1].subviews[0] as! UILabel
             let secondCategoryLabel = collectionReusableView.subviews[1].subviews[1].subviews[1] as! UILabel
             let thirdCategoryLabel = collectionReusableView.subviews[1].subviews[1].subviews[2] as! UILabel
+            let fourthCategoryLabel = collectionReusableView.subviews[1].subviews[1].subviews[3] as! UILabel
             // Quartier
             let districtLabel = collectionReusableView.subviews[2].subviews[0] as! UILabel
             districtLabel.text = Strings.districts
@@ -113,12 +115,16 @@ extension BadgesViewController : UICollectionViewDataSource {
             secondCategoryLabel.text = secondCategory.text.lowercased()
             let thirdCategory = AppData.categories[2]
             thirdCategoryLabel.text = thirdCategory.text.lowercased()
+            let fourthCategory = AppData.categories[3]
+            fourthCategoryLabel.text = fourthCategory.text.lowercased()
             let firstCategoryCollectedArtworksCount = firstCategory.artworks.filter({ $0.isCollected }).count
             firstCategoryCollectedArtworksCountLabel.text = String(firstCategoryCollectedArtworksCount)
             let secondCategoryCollectedArtworksCount = secondCategory.artworks.filter({ $0.isCollected }).count
             secondCategoryCollectedArtworksCountLabel.text = String(secondCategoryCollectedArtworksCount)
             let thirdCategoryCollectedArtworksCount = thirdCategory.artworks.filter({ $0.isCollected }).count
             thirdCategoryCollectedArtworksCountLabel.text = String(thirdCategoryCollectedArtworksCount)
+            let fourthCategoryCollectedArtworksCount = fourthCategory.artworks.filter({ $0.isCollected }).count
+            fourthCategoryCollectedArtworksCountLabel.text = String(fourthCategoryCollectedArtworksCount)
             
             return collectionReusableView
         }

@@ -100,13 +100,13 @@ extension Artwork {
     
     @objc(removePhotosObject:)
     @NSManaged public func removeFromPhotos(_ value: Photo)
-     */
 
     @objc(addPhotos:)
     @NSManaged public func addToPhotos(_ values: NSOrderedSet)
 
     @objc(removePhotos:)
     @NSManaged public func removeFromPhotos(_ values: NSOrderedSet)
+     */
 
 }
 

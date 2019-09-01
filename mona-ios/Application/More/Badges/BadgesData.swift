@@ -22,8 +22,8 @@ let badgesData : [Int16 : [String : Any]] = [
         ]],
     2 : [
         "name" : [
-            Language.en : "Côte-des-Neiges-Notre-Dame-de-Grâce",
-            Language.fr : "Côte-des-Neiges-Notre-Dame-de-Grâce"
+            Language.en : "Côte-des-Neiges–Notre-Dame-de-Grâce",
+            Language.fr : "Côte-des-Neiges–Notre-Dame-de-Grâce"
         ],
         "currentValue" : 0,
         "targetValue" : 10,
@@ -61,8 +61,8 @@ let badgesData : [Int16 : [String : Any]] = [
         ]],
     5 : [
         "name" : [
-            Language.en : "Le Plateau Mont-Royal",
-            Language.fr : "Le Plateau Mont-Royal"
+            Language.en : "Le Plateau-Mont-Royal",
+            Language.fr : "Le Plateau-Mont-Royal"
         ],
         "currentValue" : 0,
         "targetValue" : 20,
@@ -78,7 +78,7 @@ let badgesData : [Int16 : [String : Any]] = [
             Language.fr : "Le Sud-Ouest"
         ],
         "currentValue" : 0,
-        "targetValue" : 1,
+        "targetValue" : 15,
         "collectedImageName" : "Le Sud-Ouest - Normal",
         "notCollectedImageName" : "Le Sud-Ouest - Gris",
         "comment" : [
@@ -87,8 +87,8 @@ let badgesData : [Int16 : [String : Any]] = [
         ]],
     7 : [
         "name" : [
-            Language.en : "Mercier-Hochelaga-Maisonneuve",
-            Language.fr : "Mercier-Hochelaga-Maisonneuve"
+            Language.en : "Mercier–Hochelaga-Maisonneuve",
+            Language.fr : "Mercier–Hochelaga-Maisonneuve"
         ],
         "currentValue" : 0,
         "targetValue" : 15,
@@ -178,8 +178,8 @@ let badgesData : [Int16 : [String : Any]] = [
         ]],
     14 : [
         "name" : [
-            Language.en : "Villeray-Saint-Michel-Parc-Extension",
-            Language.fr : "Villeray-Saint-Michel-Parc-Extension"
+            Language.en : "Villeray–Saint-Michel–Parc-Extension",
+            Language.fr : "Villeray–Saint-Michel–Parc-Extension"
         ],
         "currentValue" : 0,
         "targetValue" : 10,

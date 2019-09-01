@@ -45,16 +45,55 @@ public class Artwork: NSManagedObject {
             "artworkId" : id ])
     }
     
-    public func removeFromPhotos(_ value: Photo) {
+    public func addToPhotos(_ values: [Photo]) {
+        
         guard let photosOrderedSet = photos else {
+            photos = NSOrderedSet(array: values)
             return
         }
+        
+        let photosMutableOrderedSet = NSMutableOrderedSet(orderedSet: photosOrderedSet)
+        photosMutableOrderedSet.addObjects(from: values)
+        photos = photosMutableOrderedSet
+        //value.artwork = self
+        
+        values.forEach {
+            NotificationCenter.default.post(name: .didAddPhotoToArtwork, object: nil, userInfo: [
+                "photo" : $0.localIdentifier,
+                "artworkId" : id ])
+        }
+        
+    }
+    
+    public func removeFromPhotos(_ value: Photo) {
+        guard let photosOrderedSet = photos, photosOrderedSet.contains(value) else {
+            return
+        }
+        
         let photosMutableOrderedSet = NSMutableOrderedSet(orderedSet: photosOrderedSet)
         photosMutableOrderedSet.remove(value)
-        //value.artwork = nil
         photos = photosMutableOrderedSet.count == 0 ? photosMutableOrderedSet : nil
         NotificationCenter.default.post(name: .didRemovePhotoFromArtwork, object: nil, userInfo: [
             "photo" : value.localIdentifier,
             "artworkId" : id ])
+    }
+    
+    public func removeFromPhotos(_ values: [Photo]) {
+        // Be sure that photos property is not nil
+        guard !values.isEmpty, let photosOrderedSet = photos else {
+            return
+        }
+        // Check which values actually exist in photosOrderedSet.
+        // This step is important in order not to avoid post incorrect .didRemovePhotoFromArtwork notifications
+        let existingPhotos = values.filter { photo in photosOrderedSet.contains(photo) }
+        let photosMutableOrderedSet = NSMutableOrderedSet(orderedSet: photosOrderedSet)
+        photosMutableOrderedSet.removeObjects(in: existingPhotos)
+        photos = photosMutableOrderedSet.count == 0 ? photosMutableOrderedSet : nil
+        
+        existingPhotos.forEach { photo in
+            NotificationCenter.default.post(name: .didRemovePhotoFromArtwork, object: nil, userInfo: [
+                "photo" : photo.localIdentifier,
+                "artworkId" : id ])
+        }
     }
 }

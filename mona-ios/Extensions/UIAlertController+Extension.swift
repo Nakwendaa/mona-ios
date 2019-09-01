@@ -10,31 +10,34 @@ import UIKit
 
 extension UIAlertController {
     
-    private struct AlertActions {
+    
+    private struct AlertAction {
         
-        static var cancel : UIAlertAction {
+        static func cancel(completion: (() -> Void)?) -> UIAlertAction {
             return UIAlertAction(
                 title: NSLocalizedString("cancel", comment: "").capitalizingFirstLetter(),
                 style: .cancel,
                 handler: {
                     (_ : UIAlertAction) in
+                    completion?()
                     return
-            }
+                }
             )
         }
         
-        static var ok : UIAlertAction {
+        static func ok(completion: (() -> Void)?) -> UIAlertAction {
             return UIAlertAction(
                 title: NSLocalizedString("ok", comment: "").capitalizingFirstLetter(),
                 style: .default,
                 handler: {
                     (_ : UIAlertAction) in
+                    completion?()
                     return
-            }
+                }
             )
         }
         
-        static var openSettings : UIAlertAction {
+        static func openSettings(completion: (() -> Void)?) -> UIAlertAction {
             return UIAlertAction(
                 title: NSLocalizedString("settings", comment: "").capitalizingFirstLetter(),
                 style: .default,
@@ -44,25 +47,25 @@ extension UIAlertController {
                     DispatchQueue.main.async {
                         UIApplication.shared.openURL(url)
                     }
-            }
+                    completion?()
+                }
             )
         }
         
     }
     
     // Présenter un message de type Alert Controller qui invite l'utilisateur à ouvrir la page des paramètres de l'application
-    class func presentOpenSettings(from vc: UIViewController, title: String, message: String, completion: (() -> Void)?) {
+    class func presentOpenSettings(from vc: UIViewController, title: String, message: String, cancelCompletion: (() -> Void)?, openSettingsCompletion: (() -> Void)?, presentCompletion: (() -> Void)?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(AlertActions.cancel)
-        alertController.addAction(AlertActions.openSettings)
-        vc.present(alertController, animated: true, completion: completion)
-        
+        alertController.addAction(AlertAction.cancel(completion: cancelCompletion))
+        alertController.addAction(AlertAction.openSettings(completion: openSettingsCompletion))
+        vc.present(alertController, animated: true, completion: presentCompletion)
     }
     
-    class func presentMessage(from vc: UIViewController, title: String, message: String, completion: (() -> Void)?) {
+    class func presentMessage(from vc: UIViewController, title: String, message: String, okCompletion: (() -> Void)?, presentCompletion: (() -> Void)?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(AlertActions.ok)
-        vc.present(alertController, animated: true, completion: completion)
+        alertController.addAction(AlertAction.ok(completion: okCompletion))
+        vc.present(alertController, animated: true, completion: presentCompletion)
     }
     
 }

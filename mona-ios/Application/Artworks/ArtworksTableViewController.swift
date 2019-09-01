@@ -16,7 +16,7 @@ final class ArtworksTableViewController : SearchViewController {
     //MARK: - Types
     struct Strings {
         private static let tableName = "ArtworksTableViewController"
-        
+        static let updatingLocation = NSLocalizedString("updating location", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
         struct NeedAuthorizationLocationOpenSettings {
             static let title = NSLocalizedString("need authorization", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
             static let message = NSLocalizedString("sort by distance can not be used if location services are not enabled", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
@@ -63,6 +63,7 @@ final class ArtworksTableViewController : SearchViewController {
     var didViewLoaded = false
     
     var artworks = [Artwork]()
+    var requestedWhenInUseAuthorization = false
     
     //MARK: Overriden methods
     override func viewDidLoad() {
@@ -159,7 +160,7 @@ final class ArtworksTableViewController : SearchViewController {
     
     private func setupRefreshControl() {
         // Refresh Control handling
-        refreshControl.attributedTitle = NSAttributedString(string: NSLocalizedString("updating location", comment: "").capitalizingFirstLetter())
+        refreshControl.attributedTitle = NSAttributedString(string: Strings.updatingLocation)
         refreshControl.addTarget(self, action: #selector(refreshLocation), for: .valueChanged)
     }
     
@@ -201,15 +202,36 @@ final class ArtworksTableViewController : SearchViewController {
     }
     
     @objc func refreshLocation() {
-        dismiss(animated: true)
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
+            requestedWhenInUseAuthorization = true
             break
         case .restricted, .denied:
-            UIAlertController.presentOpenSettings(from: self, title: Strings.NeedAuthorizationLocationOpenSettings.title, message: Strings.NeedAuthorizationLocationOpenSettings.message, completion: {
-                self.refreshControl.endRefreshing()
-            })
+            UIAlertController.presentOpenSettings(
+                from: self,
+                title: Strings.NeedAuthorizationLocationOpenSettings.title,
+                message: Strings.NeedAuthorizationLocationOpenSettings.message,
+                cancelCompletion: {
+                    self.tableViewIndex.indexOffset = UIOffset(horizontal: -16, vertical: 0)
+                    self.tableViewIndexWidthConstraint.constant = 44
+                    self.tableViewIndexTrailingConstraint.constant = -self.tableViewIndexWidthConstraint.constant
+                    self.tableView.separatorColor = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1)
+                    self.refreshControl.endRefreshing()
+                    self.refreshControl.removeFromSuperview()
+                    self.tableView.isScrollEnabled = true
+                },
+                openSettingsCompletion: {
+                    self.tableViewIndex.indexOffset = UIOffset(horizontal: -16, vertical: 0)
+                    self.tableViewIndexWidthConstraint.constant = 44
+                    self.tableViewIndexTrailingConstraint.constant = -self.tableViewIndexWidthConstraint.constant
+                    self.tableView.separatorColor = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1)
+                    self.refreshControl.endRefreshing()
+                    self.refreshControl.removeFromSuperview()
+                    self.tableView.isScrollEnabled = true
+                },
+                presentCompletion: nil
+            )
             break
         case .authorizedWhenInUse, .authorizedAlways:
             locationManager.startUpdatingLocation()
@@ -398,6 +420,29 @@ extension ArtworksTableViewController : TableViewIndexDelegate {
 
 //MARK: - CLLocationManagerDelegate
 extension ArtworksTableViewController : CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            // Start updating location if location is authorized
+            if requestedWhenInUseAuthorization {
+                locationManager.startUpdatingLocation()
+                tableView.isScrollEnabled = false
+                requestedWhenInUseAuthorization = false
+            }
+            break
+        default:
+            // Else end refreshing
+            tableViewIndex.indexOffset = UIOffset(horizontal: -16, vertical: 0)
+            tableViewIndexWidthConstraint.constant = 44
+            tableViewIndexTrailingConstraint.constant = -tableViewIndexWidthConstraint.constant
+            tableView.separatorColor = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1)
+            refreshControl.endRefreshing()
+            refreshControl.removeFromSuperview()
+            tableView.isScrollEnabled = true
+            break
+        }
+    }
     
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

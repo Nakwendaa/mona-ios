@@ -7,9 +7,10 @@
 */
 
 
-"Sign up title" = "Sign up with your email address";
+"Sign up title" = "Inscrivez-vous avec votre adresse email";
 "Email" = "Email";
-"Confirm email" = "Confirm email";
-"Password" = "Password";
-"Confirm password" = "Confirm password";
-"Sign up button" = "Sign up";
+"Confirm email" = "Confirmer votre email";
+"Username" = "Nom d'utilisateur";
+"Password" = "Mot de passe";
+"Confirm password" = "Confirmer votre mot de passe";
+"Sign up button" = "S'inscrire'";

@@ -21,82 +21,6 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hp-1G-eSI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kJ-N7-2RJ">
-                                <rect key="frame" x="245" y="454" width="130" height="132"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gsR-Wt-KnX" userLabel="Legend Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="132"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWq-tY-5tG">
-                                                <rect key="frame" x="0.0" y="0.0" width="130" height="44"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="XCU-NO-ic9"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                                <inset key="contentEdgeInsets" minX="24" minY="0.0" maxX="16" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="-16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Collected" image="Collected Annotation Default">
-                                                    <color key="titleColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <state key="selected" image="Collected Annotation Selected">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="legendTapped:" destination="czs-mE-mM5" eventType="touchUpInside" id="3br-cV-dk3"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1x-nx-xqy">
-                                                <rect key="frame" x="0.0" y="44" width="130" height="44"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="PEY-kI-zS0"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                                <inset key="contentEdgeInsets" minX="24" minY="0.0" maxX="16" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="-16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Unvisited" image="Unvisited Annotation Default">
-                                                    <color key="titleColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <state key="selected" image="Unvisited Annotation Selected">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="legendTapped:" destination="czs-mE-mM5" eventType="touchUpInside" id="IVB-cX-esH"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUp-hZ-ghB">
-                                                <rect key="frame" x="0.0" y="88" width="130" height="44"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="azi-UB-I1k"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                                <inset key="contentEdgeInsets" minX="24" minY="0.0" maxX="16" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="-16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Targeted" image="Target Annotation Default">
-                                                    <color key="titleColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <state key="selected" image="Target Annotation Selected">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="legendTapped:" destination="czs-mE-mM5" eventType="touchUpInside" id="Xnf-7e-h1i"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" red="1" green="0.90196078430000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="gsR-Wt-KnX" firstAttribute="height" secondItem="8kJ-N7-2RJ" secondAttribute="height" id="IUN-7R-8Wa"/>
-                                    <constraint firstItem="gsR-Wt-KnX" firstAttribute="centerX" secondItem="8kJ-N7-2RJ" secondAttribute="centerX" id="ccw-Ts-mh0"/>
-                                    <constraint firstItem="gsR-Wt-KnX" firstAttribute="centerY" secondItem="8kJ-N7-2RJ" secondAttribute="centerY" id="sVi-Tg-byw"/>
-                                    <constraint firstItem="gsR-Wt-KnX" firstAttribute="width" secondItem="8kJ-N7-2RJ" secondAttribute="width" id="tBV-A3-9AK"/>
-                                </constraints>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aV9-32-law">
                                 <rect key="frame" x="315" y="490" width="44" height="96"/>
                                 <subviews>
@@ -108,7 +32,7 @@
                                         </constraints>
                                         <state key="normal" image="Filter Button"/>
                                         <connections>
-                                            <action selector="legendTappedd:" destination="czs-mE-mM5" eventType="touchUpInside" id="HR6-6Z-oE3"/>
+                                            <action selector="filterTapped:" destination="czs-mE-mM5" eventType="touchUpInside" id="HR6-6Z-oE3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dg-7P-lgS" userLabel="Localize User Button">
@@ -129,9 +53,7 @@
                         <constraints>
                             <constraint firstItem="4lN-pz-AfX" firstAttribute="trailing" secondItem="aV9-32-law" secondAttribute="trailing" constant="16" id="1CZ-QQ-udY"/>
                             <constraint firstAttribute="bottom" secondItem="8Hp-1G-eSI" secondAttribute="bottom" id="NY1-kh-0Bf"/>
-                            <constraint firstItem="4lN-pz-AfX" firstAttribute="bottom" secondItem="8kJ-N7-2RJ" secondAttribute="bottom" constant="32" id="OKj-np-uiL"/>
                             <constraint firstItem="8Hp-1G-eSI" firstAttribute="trailing" secondItem="h5x-Rx-1Vt" secondAttribute="trailing" id="Sn9-Tl-WqE"/>
-                            <constraint firstItem="8kJ-N7-2RJ" firstAttribute="trailing" secondItem="4lN-pz-AfX" secondAttribute="trailing" id="ZFv-RF-5Wx"/>
                             <constraint firstItem="4lN-pz-AfX" firstAttribute="bottom" secondItem="aV9-32-law" secondAttribute="bottom" constant="32" id="hse-S4-Crx"/>
                             <constraint firstItem="8Hp-1G-eSI" firstAttribute="top" secondItem="h5x-Rx-1Vt" secondAttribute="top" id="uQ7-Zs-753"/>
                             <constraint firstItem="8Hp-1G-eSI" firstAttribute="leading" secondItem="h5x-Rx-1Vt" secondAttribute="leading" id="wXc-x8-xPc"/>
@@ -140,12 +62,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="8Fe-i1-kFL"/>
                     <connections>
-                        <outlet property="collectedButton" destination="AWq-tY-5tG" id="4ZL-F1-xlE"/>
-                        <outlet property="legendView" destination="8kJ-N7-2RJ" id="fb4-CJ-AMS"/>
                         <outlet property="localizeUserButton" destination="7dg-7P-lgS" id="WXK-1X-0Vg"/>
                         <outlet property="mapView" destination="8Hp-1G-eSI" id="0Jo-MZ-YZ8"/>
-                        <outlet property="targetedButton" destination="bUp-hZ-ghB" id="Ufb-xS-0Cc"/>
-                        <outlet property="unvisitedButton" destination="U1x-nx-xqy" id="hLe-Ee-vVP"/>
                         <segue destination="cax-ej-HFQ" kind="show" identifier="showArtworkDetailsViewController" id="XFW-fY-JdP"/>
                     </connections>
                 </viewController>
@@ -190,15 +108,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Collected Annotation Default" width="24" height="24"/>
-        <image name="Collected Annotation Selected" width="24" height="24"/>
         <image name="Filter Button" width="24" height="24"/>
         <image name="Localize User Default" width="1000" height="1000"/>
         <image name="Map Tabbar Default Image" width="25" height="25"/>
         <image name="Map Tabbar Selected Image" width="25" height="25"/>
-        <image name="Target Annotation Default" width="24" height="24"/>
-        <image name="Target Annotation Selected" width="24" height="24"/>
-        <image name="Unvisited Annotation Default" width="24" height="24"/>
-        <image name="Unvisited Annotation Selected" width="24" height="24"/>
     </resources>
 </document>

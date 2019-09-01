@@ -29,6 +29,65 @@ struct MonaAPI {
         request.execute(session: session, completion: completion)
     }
     
+    func artworksv2() -> [ArtworkDecodableResponse.Artwork] {
+        let session = URLSession.shared
+        var artworks = [ArtworkDecodableResponse.Artwork]()
+        var pageCount = 0
+        let dispatchGroup = DispatchGroup()
+        for page in 1...24 {
+            dispatchGroup.enter()
+            let request = ArtworksRequest(parameters: [URLQueryItem(name: "page", value: "\(page)")])
+            request.execute(session: session, completion: { result in
+                switch result {
+                case .success(let artworksResponse):
+                    if let artworksData = artworksResponse.data {
+                        artworks += artworksData
+                        pageCount += 1
+                    }
+                    dispatchGroup.leave()
+                case .failure(let artworksError):
+                    log.error(artworksError)
+                    log.error(artworksError.localizedDescription)
+                    dispatchGroup.leave()
+                }
+            })
+        }
+        dispatchGroup.notify(queue: DispatchQueue.main, work: DispatchWorkItem(block: {
+            // All tasks are done.
+            return artworks
+        }))
+        return artworks
+    }
+    
+    func artworksv3(completion: @escaping (Result<ArtworksRequest.Response.HTTPDecodableResponse, HTTPError>) -> Void) {
+        let session = URLSession.shared
+        var artworks = [ArtworkDecodableResponse.Artwork]()
+        var pageCount = 0
+        let dispatchGroup = DispatchGroup()
+        for page in 1...24 {
+            dispatchGroup.enter()
+            let request = ArtworksRequest(parameters: [URLQueryItem(name: "page", value: "\(page)")])
+            request.execute(session: session, completion: { result in
+                switch result {
+                case .success(let artworksResponse):
+                    if let artworksData = artworksResponse.data {
+                        artworks += artworksData
+                        pageCount += 1
+                    }
+                case .failure(let artworksError):
+                    log.error(artworksError)
+                    log.error(artworksError.localizedDescription)
+                }
+                dispatchGroup.leave()
+            })
+        }
+        dispatchGroup.notify(queue: DispatchQueue.main, work: DispatchWorkItem(block: {
+            // All tasks are done.
+            let r = ArtworksRequest.Response.HTTPDecodableResponse(data: artworks)
+            completion(.success(r))
+        }))
+    }
+    
     func login(username: String, password: String, completion: @escaping (Result<LoginRequest.Response.HTTPDecodableResponse, HTTPError>) -> Void) {
         let session = URLSession.shared
         let request = LoginRequest(username: username, password: password)

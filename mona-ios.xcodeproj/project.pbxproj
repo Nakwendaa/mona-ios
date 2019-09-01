@@ -126,7 +126,6 @@
 		B48753C222A327BA00EE6EE6 /* ArtworkDetailsCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753C122A327B900EE6EE6 /* ArtworkDetailsCommentViewController.swift */; };
 		B48753C622A327C100EE6EE6 /* ArtworkDetailsRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753C322A327C100EE6EE6 /* ArtworkDetailsRatingViewController.swift */; };
 		B48753C722A327C100EE6EE6 /* ArtworkDetailsImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753C422A327C100EE6EE6 /* ArtworkDetailsImagePickerControllerDelegate.swift */; };
-		B48753C822A327C100EE6EE6 /* ArtworkDetailsImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753C522A327C100EE6EE6 /* ArtworkDetailsImagePickerController.swift */; };
 		B48753CA22A327C700EE6EE6 /* ArtworkDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753C922A327C700EE6EE6 /* ArtworkDetailsViewController.swift */; };
 		B48753CC22A327DA00EE6EE6 /* ArtworksTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753CB22A327DA00EE6EE6 /* ArtworksTableViewDataSource.swift */; };
 		B48753CE22A327E200EE6EE6 /* ArtworksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753CD22A327E100EE6EE6 /* ArtworksTableViewController.swift */; };
@@ -136,10 +135,6 @@
 		B48753DC22A3282800EE6EE6 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753DB22A3282700EE6EE6 /* MainTableViewCell.swift */; };
 		B48753DE22A3282B00EE6EE6 /* GeneralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753DD22A3282B00EE6EE6 /* GeneralTableViewCell.swift */; };
 		B48753E022A3282F00EE6EE6 /* ArtworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753DF22A3282F00EE6EE6 /* ArtworkTableViewCell.swift */; };
-		B48753E722A3285800EE6EE6 /* DailyArtworkImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753E322A3285800EE6EE6 /* DailyArtworkImagePickerController.swift */; };
-		B48753E822A3285800EE6EE6 /* DailyArtworkImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753E422A3285800EE6EE6 /* DailyArtworkImagePickerControllerDelegate.swift */; };
-		B48753E922A3285800EE6EE6 /* DailyArtworkRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753E522A3285800EE6EE6 /* DailyArtworkRatingViewController.swift */; };
-		B48753EA22A3285800EE6EE6 /* DailyArtworkCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753E622A3285800EE6EE6 /* DailyArtworkCommentViewController.swift */; };
 		B48753EE22A3286500EE6EE6 /* DailyArtworkAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753EB22A3286500EE6EE6 /* DailyArtworkAnnotationView.swift */; };
 		B48753EF22A3286500EE6EE6 /* DailyArtworkAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753EC22A3286500EE6EE6 /* DailyArtworkAnnotation.swift */; };
 		B48753F022A3286500EE6EE6 /* DailyArtworkMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48753ED22A3286500EE6EE6 /* DailyArtworkMapViewController.swift */; };
@@ -172,6 +167,13 @@
 		B48858B22289FF930011360D /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48858B12289FF930011360D /* RatingControl.swift */; };
 		B48858B42289FFCA0011360D /* RatingControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48858B32289FFCA0011360D /* RatingControlDelegate.swift */; };
 		B48ABA412298AD2C00E8E92F /* ArtworkDetailsCommentRatingViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B48ABA432298AD2C00E8E92F /* ArtworkDetailsCommentRatingViewController.strings */; };
+		B48E09DA230587EA0095CF45 /* District+Protocols.strings in Resources */ = {isa = PBXBuildFile; fileRef = B48E09DC230587EA0095CF45 /* District+Protocols.strings */; };
+		B48E09E62306A42F0095CF45 /* RegisterLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48E09E52306A42F0095CF45 /* RegisterLogin.storyboard */; };
+		B48E09E82306A4870095CF45 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E09E72306A4870095CF45 /* RegisterViewController.swift */; };
+		B48E09EA2306A4B40095CF45 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E09E92306A4B40095CF45 /* LoginViewController.swift */; };
+		B48E09EC2306A4F20095CF45 /* UsernameChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E09EB2306A4F20095CF45 /* UsernameChoiceViewController.swift */; };
+		B48E09EF2306A8490095CF45 /* RegisterViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B48E09F12306A8490095CF45 /* RegisterViewController.strings */; };
+		B48E09F72306AF500095CF45 /* UsernameChoiceViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B48E09F92306AF500095CF45 /* UsernameChoiceViewController.strings */; };
 		B49CA252229014CB00FBA757 /* Artworks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B49CA251229014CB00FBA757 /* Artworks.storyboard */; };
 		B49CA254229014D700FBA757 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B49CA253229014D700FBA757 /* MainTableViewCell.xib */; };
 		B49CA256229014E700FBA757 /* MainListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B49CA255229014E700FBA757 /* MainListHeaderView.xib */; };
@@ -385,7 +387,6 @@
 		B48753C122A327B900EE6EE6 /* ArtworkDetailsCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkDetailsCommentViewController.swift; sourceTree = "<group>"; };
 		B48753C322A327C100EE6EE6 /* ArtworkDetailsRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkDetailsRatingViewController.swift; sourceTree = "<group>"; };
 		B48753C422A327C100EE6EE6 /* ArtworkDetailsImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkDetailsImagePickerControllerDelegate.swift; sourceTree = "<group>"; };
-		B48753C522A327C100EE6EE6 /* ArtworkDetailsImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkDetailsImagePickerController.swift; sourceTree = "<group>"; };
 		B48753C922A327C700EE6EE6 /* ArtworkDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkDetailsViewController.swift; sourceTree = "<group>"; };
 		B48753CB22A327DA00EE6EE6 /* ArtworksTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworksTableViewDataSource.swift; sourceTree = "<group>"; };
 		B48753CD22A327E100EE6EE6 /* ArtworksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworksTableViewController.swift; sourceTree = "<group>"; };
@@ -395,10 +396,6 @@
 		B48753DB22A3282700EE6EE6 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		B48753DD22A3282B00EE6EE6 /* GeneralTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableViewCell.swift; sourceTree = "<group>"; };
 		B48753DF22A3282F00EE6EE6 /* ArtworkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtworkTableViewCell.swift; sourceTree = "<group>"; };
-		B48753E322A3285800EE6EE6 /* DailyArtworkImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyArtworkImagePickerController.swift; sourceTree = "<group>"; };
-		B48753E422A3285800EE6EE6 /* DailyArtworkImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyArtworkImagePickerControllerDelegate.swift; sourceTree = "<group>"; };
-		B48753E522A3285800EE6EE6 /* DailyArtworkRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyArtworkRatingViewController.swift; sourceTree = "<group>"; };
-		B48753E622A3285800EE6EE6 /* DailyArtworkCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyArtworkCommentViewController.swift; sourceTree = "<group>"; };
 		B48753EB22A3286500EE6EE6 /* DailyArtworkAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyArtworkAnnotationView.swift; sourceTree = "<group>"; };
 		B48753EC22A3286500EE6EE6 /* DailyArtworkAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyArtworkAnnotation.swift; sourceTree = "<group>"; };
 		B48753ED22A3286500EE6EE6 /* DailyArtworkMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyArtworkMapViewController.swift; sourceTree = "<group>"; };
@@ -435,6 +432,16 @@
 		B48858B32289FFCA0011360D /* RatingControlDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControlDelegate.swift; sourceTree = "<group>"; };
 		B48ABA422298AD2C00E8E92F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ArtworkDetailsCommentRatingViewController.strings; sourceTree = "<group>"; };
 		B48ABA442298AD2D00E8E92F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ArtworkDetailsCommentRatingViewController.strings; sourceTree = "<group>"; };
+		B48E09DB230587EA0095CF45 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "en.lproj/District+Protocols.strings"; sourceTree = "<group>"; };
+		B48E09DD230587ED0095CF45 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = "fr.lproj/District+Protocols.strings"; sourceTree = "<group>"; };
+		B48E09E52306A42F0095CF45 /* RegisterLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RegisterLogin.storyboard; sourceTree = "<group>"; };
+		B48E09E72306A4870095CF45 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B48E09E92306A4B40095CF45 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B48E09EB2306A4F20095CF45 /* UsernameChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameChoiceViewController.swift; sourceTree = "<group>"; };
+		B48E09F02306A8490095CF45 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/RegisterViewController.strings; sourceTree = "<group>"; };
+		B48E09F22306A84D0095CF45 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/RegisterViewController.strings; sourceTree = "<group>"; };
+		B48E09F82306AF500095CF45 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UsernameChoiceViewController.strings; sourceTree = "<group>"; };
+		B48E09FA2306AF520095CF45 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/UsernameChoiceViewController.strings; sourceTree = "<group>"; };
 		B49CA251229014CB00FBA757 /* Artworks.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Artworks.storyboard; sourceTree = "<group>"; };
 		B49CA253229014D700FBA757 /* MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
 		B49CA255229014E700FBA757 /* MainListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainListHeaderView.xib; sourceTree = "<group>"; };
@@ -635,6 +642,7 @@
 				B487535122A3264B00EE6EE6 /* District+CoreDataClass.swift */,
 				B487533822A3264A00EE6EE6 /* District+CoreDataProperties.swift */,
 				B487535922A3264C00EE6EE6 /* District+Protocols.swift */,
+				B48E09DC230587EA0095CF45 /* District+Protocols.strings */,
 				B487535022A3264B00EE6EE6 /* LocalizableEntity+CoreDataClass.swift */,
 				B487533622A3264A00EE6EE6 /* LocalizableEntity+CoreDataProperties.swift */,
 				B4C75B5322B7F3DC00D73C7D /* LocalizableEntity+TextRepresentable.swift */,
@@ -759,7 +767,6 @@
 			children = (
 				B48753C922A327C700EE6EE6 /* ArtworkDetailsViewController.swift */,
 				B48394F9229610B30003065B /* ArtworkDetailsViewController.strings */,
-				B48753C522A327C100EE6EE6 /* ArtworkDetailsImagePickerController.swift */,
 				B48753C422A327C100EE6EE6 /* ArtworkDetailsImagePickerControllerDelegate.swift */,
 				B48753C322A327C100EE6EE6 /* ArtworkDetailsRatingViewController.swift */,
 				B48394DC2295C8AE0003065B /* ArtworkDetailsRatingViewController.strings */,
@@ -932,6 +939,7 @@
 		B48858752289E6230011360D /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				B48E09E423069EEC0095CF45 /* RegisterLogin */,
 				B48858B02289FF640011360D /* Custom controls */,
 				B488586E2289D84D0011360D /* LaunchScreen */,
 				B48858A92289F2480011360D /* Tabbar */,
@@ -953,7 +961,6 @@
 				B48753F122A3287000EE6EE6 /* DailyArtworkViewController.swift */,
 				B48858A02289E8980011360D /* DailyArtworkViewController.strings */,
 				B48858842289E7B80011360D /* Daily Artwork Map */,
-				B48858952289E8160011360D /* Daily Artwork Photo */,
 			);
 			path = "Daily Artwork";
 			sourceTree = "<group>";
@@ -967,17 +974,6 @@
 				B48858A42289E8CB0011360D /* DailyArtworkMapViewController.strings */,
 			);
 			path = "Daily Artwork Map";
-			sourceTree = "<group>";
-		};
-		B48858952289E8160011360D /* Daily Artwork Photo */ = {
-			isa = PBXGroup;
-			children = (
-				B48753E622A3285800EE6EE6 /* DailyArtworkCommentViewController.swift */,
-				B48753E322A3285800EE6EE6 /* DailyArtworkImagePickerController.swift */,
-				B48753E422A3285800EE6EE6 /* DailyArtworkImagePickerControllerDelegate.swift */,
-				B48753E522A3285800EE6EE6 /* DailyArtworkRatingViewController.swift */,
-			);
-			path = "Daily Artwork Photo";
 			sourceTree = "<group>";
 		};
 		B48858A92289F2480011360D /* Tabbar */ = {
@@ -997,6 +993,19 @@
 				B48858B32289FFCA0011360D /* RatingControlDelegate.swift */,
 			);
 			path = "Custom controls";
+			sourceTree = "<group>";
+		};
+		B48E09E423069EEC0095CF45 /* RegisterLogin */ = {
+			isa = PBXGroup;
+			children = (
+				B48E09E52306A42F0095CF45 /* RegisterLogin.storyboard */,
+				B48E09E72306A4870095CF45 /* RegisterViewController.swift */,
+				B48E09F12306A8490095CF45 /* RegisterViewController.strings */,
+				B48E09E92306A4B40095CF45 /* LoginViewController.swift */,
+				B48E09EB2306A4F20095CF45 /* UsernameChoiceViewController.swift */,
+				B48E09F92306AF500095CF45 /* UsernameChoiceViewController.strings */,
+			);
+			path = RegisterLogin;
 			sourceTree = "<group>";
 		};
 		B49CA25D2290178900FBA757 /* Custom Table View Cells */ = {
@@ -1285,6 +1294,7 @@
 				B428797B22A74F1800EABBE6 /* SearchResultsController.strings in Resources */,
 				B487539222A326A200EE6EE6 /* Collection.storyboard in Resources */,
 				B407CA3C2285C55D00D02ABC /* Assets.xcassets in Resources */,
+				B48E09EF2306A8490095CF45 /* RegisterViewController.strings in Resources */,
 				B487538D22A326A200EE6EE6 /* LICENSE.txt in Resources */,
 				B49CA2612290196400FBA757 /* MainTableViewController.strings in Resources */,
 				B4C75B5922B80E4800D73C7D /* Array+Extension.strings in Resources */,
@@ -1293,11 +1303,13 @@
 				B48394BA2295A8E60003065B /* ArtworkDetailsDescriptionViewController.strings in Resources */,
 				B4C75B6822B874F900D73C7D /* GeneralTableViewController.xib in Resources */,
 				B428797522A7037800EABBE6 /* SearchResultsDataSource.strings in Resources */,
+				B48E09DA230587EA0095CF45 /* District+Protocols.strings in Resources */,
 				B49CA256229014E700FBA757 /* MainListHeaderView.xib in Resources */,
 				B4AD5E8C22908E860064A876 /* LICENSE in Resources */,
 				B4AD5E8F229095A60064A876 /* GeneralTableViewController.strings in Resources */,
 				B4C75B4F22B7F15800D73C7D /* Artwork+Protocols.strings in Resources */,
 				B487542B22A32DA200EE6EE6 /* Tabbar.storyboard in Resources */,
+				B48E09E62306A42F0095CF45 /* RegisterLogin.storyboard in Resources */,
 				B428798522A8208D00EABBE6 /* GeneralTableViewDataSource.strings in Resources */,
 				B4C75B4922B7F02D00D73C7D /* Artist+Protocols.strings in Resources */,
 				B4A3D63922BD32B1006CD2FE /* CollectionViewController.strings in Resources */,
@@ -1311,6 +1323,7 @@
 				B455C41122B1795300064F9F /* MoreTableViewController.strings in Resources */,
 				B428794722A49D6800EABBE6 /* HeaderBadge.xib in Resources */,
 				B4A3D64B22BD569A006CD2FE /* LegendPopoverViewController.strings in Resources */,
+				B48E09F72306AF500095CF45 /* UsernameChoiceViewController.strings in Resources */,
 				B428795422A562F600EABBE6 /* BadgesViewController.strings in Resources */,
 				B4D0637F229462EF006E280D /* ArtworksTableViewDataSource.strings in Resources */,
 				B48753A522A3271100EE6EE6 /* Map.storyboard in Resources */,
@@ -1455,7 +1468,6 @@
 				B487537222A3264C00EE6EE6 /* Photo+CoreDataProperties.swift in Sources */,
 				B407CA342285C55D00D02ABC /* LaunchScreenViewController.swift in Sources */,
 				B4AD5E6C22908B410064A876 /* Truncation.swift in Sources */,
-				B48753E722A3285800EE6EE6 /* DailyArtworkImagePickerController.swift in Sources */,
 				B487536A22A3264C00EE6EE6 /* Technique+Protocols.swift in Sources */,
 				B4C8C9CE22A9DEEE00555CDC /* SearchViewController.swift in Sources */,
 				B487536122A3264C00EE6EE6 /* Coordinate+CoreDataProperties.swift in Sources */,
@@ -1469,13 +1481,11 @@
 				B48753F422A3288000EE6EE6 /* MainTableViewController.swift in Sources */,
 				B4C75B6C22B882AD00D73C7D /* MainListHeaderView.swift in Sources */,
 				B487541F22A328B300EE6EE6 /* MonaAPI+DecodableResponses.swift in Sources */,
-				B48753C822A327C100EE6EE6 /* ArtworkDetailsImagePickerController.swift in Sources */,
 				B487536322A3264C00EE6EE6 /* Material+CoreDataProperties.swift in Sources */,
 				B455C3FE22B1615200064F9F /* AboutViewController.swift in Sources */,
 				B42AA67222A3319400D53E87 /* Model.xcdatamodeld in Sources */,
 				B428798022A7521300EABBE6 /* SearchGeneralTableViewController.swift in Sources */,
 				B487533122A3262700EE6EE6 /* CGRect+Extension.swift in Sources */,
-				B48753E822A3285800EE6EE6 /* DailyArtworkImagePickerControllerDelegate.swift in Sources */,
 				B487539322A326A200EE6EE6 /* CollectionViewLayout.swift in Sources */,
 				B4AD5E7B22908B4F0064A876 /* KeyValueObserver.swift in Sources */,
 				B487533222A3262700EE6EE6 /* UIDevice+Extension.swift in Sources */,
@@ -1484,6 +1494,7 @@
 				B48753EF22A3286500EE6EE6 /* DailyArtworkAnnotation.swift in Sources */,
 				B4AD5E6E22908B410064A876 /* Style.swift in Sources */,
 				B48753B922A3278100EE6EE6 /* ArtworkDetailsPageViewController.swift in Sources */,
+				B48E09EA2306A4B40095CF45 /* LoginViewController.swift in Sources */,
 				B4C75B4622B7ED2100D73C7D /* DateRepresentable.swift in Sources */,
 				B455C40022B1618000064F9F /* DataPrivacyViewController.swift in Sources */,
 				B48753BD22A3279600EE6EE6 /* ArtworkDetailsAnnotation.swift in Sources */,
@@ -1526,14 +1537,15 @@
 				B487536C22A3264C00EE6EE6 /* Search+CoreDataClass.swift in Sources */,
 				B487537422A3264C00EE6EE6 /* LocalizableEntity+CoreDataClass.swift in Sources */,
 				B4AD5E7622908B4F0064A876 /* UIView+SuperviewHandler.swift in Sources */,
+				B48E09E82306A4870095CF45 /* RegisterViewController.swift in Sources */,
 				B487537E22A3264C00EE6EE6 /* Photo+CoreDataClass.swift in Sources */,
 				B487536722A3264C00EE6EE6 /* Technique+CoreDataClass.swift in Sources */,
 				B487541922A328B300EE6EE6 /* NetworkError.swift in Sources */,
 				B487541322A328B300EE6EE6 /* HTTPHeaderField.swift in Sources */,
 				B487532822A3262700EE6EE6 /* Data+Extension.swift in Sources */,
 				B487532A22A3262700EE6EE6 /* UIImage+Extension.swift in Sources */,
+				B48E09EC2306A4F20095CF45 /* UsernameChoiceViewController.swift in Sources */,
 				B487541722A328B300EE6EE6 /* HTTPError.swift in Sources */,
-				B48753E922A3285800EE6EE6 /* DailyArtworkRatingViewController.swift in Sources */,
 				B4AD5E8622908B640064A876 /* IndexItem.swift in Sources */,
 				B48753B622A3277A00EE6EE6 /* ArtworkDetailsMapViewController.swift in Sources */,
 				B487537822A3264C00EE6EE6 /* Search+CoreDataProperties.swift in Sources */,
@@ -1566,7 +1578,6 @@
 				B428796E22A6FD3D00EABBE6 /* Artwork+Protocols.swift in Sources */,
 				B48753C722A327C100EE6EE6 /* ArtworkDetailsImagePickerControllerDelegate.swift in Sources */,
 				B4C75B5422B7F3DC00D73C7D /* LocalizableEntity+TextRepresentable.swift in Sources */,
-				B48753EA22A3285800EE6EE6 /* DailyArtworkCommentViewController.swift in Sources */,
 				B487533422A3262700EE6EE6 /* Notification.Name+Extension.swift in Sources */,
 				B428794A22A49D6800EABBE6 /* BadgeDetailsViewController.swift in Sources */,
 				B455C40E22B1702900064F9F /* MoreTableViewController.swift in Sources */,
@@ -1818,6 +1829,33 @@
 			name = ArtworkDetailsCommentRatingViewController.strings;
 			sourceTree = "<group>";
 		};
+		B48E09DC230587EA0095CF45 /* District+Protocols.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B48E09DB230587EA0095CF45 /* en */,
+				B48E09DD230587ED0095CF45 /* fr */,
+			);
+			name = "District+Protocols.strings";
+			sourceTree = "<group>";
+		};
+		B48E09F12306A8490095CF45 /* RegisterViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B48E09F02306A8490095CF45 /* en */,
+				B48E09F22306A84D0095CF45 /* fr */,
+			);
+			name = RegisterViewController.strings;
+			sourceTree = "<group>";
+		};
+		B48E09F92306AF500095CF45 /* UsernameChoiceViewController.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B48E09F82306AF500095CF45 /* en */,
+				B48E09FA2306AF520095CF45 /* fr */,
+			);
+			name = UsernameChoiceViewController.strings;
+			sourceTree = "<group>";
+		};
 		B49CA2632290196400FBA757 /* MainTableViewController.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1936,7 +1974,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

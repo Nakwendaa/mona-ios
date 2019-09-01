@@ -39,6 +39,7 @@ class ArtworkDetailsViewController: SearchViewController {
     
     //MARK: - Properties
     let locationManager = CLLocationManager()
+    var imagePickerDelegate: ArtworkDetailsImagePickerControllerDelegate!
     var artwork : Artwork!
     
     //MARK: - Utils properties
@@ -77,6 +78,18 @@ class ArtworkDetailsViewController: SearchViewController {
         }
         setTransparentNavigationBar(tintColor: .black)
         setupNotificationsForKeyboard()
+        
+        imagePickerDelegate = ArtworkDetailsImagePickerControllerDelegate(
+            artwork: artwork,
+            onSuccess: {
+                DispatchQueue.main.async {
+                    self.setupDefaultView()
+                    self.setupPhotoImageView()
+                    self.pageVC.enableCommentRatingView()
+                }
+        },
+            onFailure: nil
+        )
         // Do any additional setup after loading the view.
     }
     
@@ -97,19 +110,6 @@ class ArtworkDetailsViewController: SearchViewController {
             let vc = segue.destination as? ArtworkDetailsFullMapViewController {
             vc.artwork = artwork
         }
-        else if segue.identifier == Segues.showArtworkDetailsImagePickerController,
-            let vc = segue.destination as? ArtworkDetailsImagePickerController {
-            vc.sourceType = .camera
-            vc.artwork = artwork
-            vc.onSuccess = {
-                DispatchQueue.main.async {
-                    self.setupDefaultView()
-                    self.setupPhotoImageView()
-                    self.pageVC.enableCommentRatingView()
-                }
-            }
-        }
-        
     }
     
     //MARK: - Private methods
@@ -195,14 +195,20 @@ class ArtworkDetailsViewController: SearchViewController {
     @IBAction func cameraButtonTapped(_ sender: UIButton) {
         func show() {
             if UIImagePickerController.isSourceTypeAvailable(.camera){
-                performSegue(withIdentifier: Segues.showArtworkDetailsImagePickerController, sender: self)
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.sourceType = .camera
+                imagePickerController.delegate = imagePickerDelegate
+                present(imagePickerController, animated: true, completion: nil)
             }
             else {
                 log.error("Camera is not available. Cannot present \(String(describing: self)).")
-                UIAlertController.presentMessage(from: self,
-                                                 title: Strings.CameraUnavailable.title,
-                                                 message: Strings.CameraUnavailable.message,
-                                                 completion: nil)
+                UIAlertController.presentMessage(
+                    from: self,
+                    title: Strings.CameraUnavailable.title,
+                    message: Strings.CameraUnavailable.message,
+                    okCompletion: nil,
+                    presentCompletion: nil
+                )
             }
         }
         
@@ -215,10 +221,14 @@ class ArtworkDetailsViewController: SearchViewController {
             break
         case .denied, .restricted:
             // Faire une demande de modifications des réglages
-            UIAlertController.presentOpenSettings(from: self,
-                                                  title: Strings.NeedAuthorizationCameraOpenSettings.title,
-                                                  message: Strings.NeedAuthorizationCameraOpenSettings.message,
-                                                  completion: nil)
+            UIAlertController.presentOpenSettings(
+                from: self,
+                title: Strings.NeedAuthorizationCameraOpenSettings.title,
+                message: Strings.NeedAuthorizationCameraOpenSettings.message,
+                cancelCompletion: nil,
+                openSettingsCompletion: nil,
+                presentCompletion: nil
+            )
             break
         default:
             // demander pour accés

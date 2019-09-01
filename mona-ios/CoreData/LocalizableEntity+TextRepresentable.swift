@@ -25,6 +25,6 @@ extension LocalizableEntity : TextRepresentable {
         if localizedNames.count > 0 {
             return localizedNames.first!.localizedString
         }
-        return "Unknown " + String.init(describing: self).lowercased()
+        return "Unknown " + "cat/sub/mat/tech"
     }
 }

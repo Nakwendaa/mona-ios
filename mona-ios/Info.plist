@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app requires location services to localize you on the artwork&apos;s map.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>This app requires usage of your camera to take pictures of the artworks.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app requires usage of your photo library to save pictures of the artworks.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -23,11 +17,17 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1.3</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>This app requires usage of your camera to take pictures of the artworks.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app requires location services to localize you on the artwork's map.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires usage of your photo library to save pictures of the artworks.</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

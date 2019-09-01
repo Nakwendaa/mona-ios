@@ -79,7 +79,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6gx-rt-5Eq">
-                                <rect key="frame" x="1" y="64" width="374" height="546"/>
+                                <rect key="frame" x="1" y="64" width="374" height="538"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="56" minimumInteritemSpacing="56" id="jVw-lI-OBT">
                                     <size key="itemSize" width="50" height="50"/>
@@ -174,10 +174,10 @@ collectionnées</string>
                                             </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="XxI-Mw-3He">
-                                            <rect key="frame" x="228.5" y="101" width="129.5" height="116"/>
+                                            <rect key="frame" x="208" y="101" width="150" height="162"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="frh-bc-enE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="24.5" height="116"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="24.5" height="162"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pO-wM-fQ9">
                                                             <rect key="frame" x="0.0" y="0.0" width="24.5" height="24"/>
@@ -197,25 +197,37 @@ collectionnées</string>
                                                             <color key="textColor" red="1" green="0.90196078430000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cC6-cq-ihe">
+                                                            <rect key="frame" x="0.0" y="138" width="24.5" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                                            <color key="textColor" red="1" green="0.90196078430000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="mEa-i7-9XB">
-                                                    <rect key="frame" x="40.5" y="0.0" width="89" height="116"/>
+                                                    <rect key="frame" x="40.5" y="0.0" width="109.5" height="162"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sculptures" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPA-jz-5kg">
-                                                            <rect key="frame" x="0.0" y="0.0" width="89" height="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beaux-arts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPA-jz-5kg">
+                                                            <rect key="frame" x="0.0" y="0.0" width="109.5" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="installations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgG-Vy-gsG">
-                                                            <rect key="frame" x="0.0" y="46" width="89" height="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="arts décoratifs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgG-Vy-gsG">
+                                                            <rect key="frame" x="0.0" y="46" width="109.5" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="murales" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPk-VY-Zky">
-                                                            <rect key="frame" x="0.0" y="92" width="89" height="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inconnnu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPk-VY-Zky">
+                                                            <rect key="frame" x="0.0" y="92" width="109.5" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="murales" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wu9-MO-Qxi">
+                                                            <rect key="frame" x="0.0" y="138" width="109.5" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -225,7 +237,7 @@ collectionnées</string>
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dMd-ze-gn9">
-                                            <rect key="frame" x="8" y="249" width="358" height="26"/>
+                                            <rect key="frame" x="8" y="295" width="358" height="26"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quartier" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Td0-tx-NGB">
                                                     <rect key="frame" x="0.0" y="0.0" width="358" height="21"/>
@@ -262,7 +274,7 @@ collectionnées</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Lc0-eF-1JW" firstAttribute="trailing" secondItem="6gx-rt-5Eq" secondAttribute="trailing" id="2Ep-zT-THA"/>
-                            <constraint firstItem="Lc0-eF-1JW" firstAttribute="bottom" secondItem="6gx-rt-5Eq" secondAttribute="bottom" constant="8" id="Usd-xk-r0j"/>
+                            <constraint firstItem="Lc0-eF-1JW" firstAttribute="bottom" secondItem="6gx-rt-5Eq" secondAttribute="bottom" constant="16" id="Usd-xk-r0j"/>
                             <constraint firstItem="6gx-rt-5Eq" firstAttribute="top" secondItem="Lc0-eF-1JW" secondAttribute="top" id="j4N-SI-OHP"/>
                             <constraint firstItem="6gx-rt-5Eq" firstAttribute="leading" secondItem="Lc0-eF-1JW" secondAttribute="leading" constant="1" id="mA5-PC-cv4"/>
                         </constraints>

@@ -138,7 +138,7 @@ class MainTableViewController: SearchViewController {
         case Strings.districts:
             let districtName = title
             destination.title = districtName
-            guard let district = AppData.districts.first(where: { $0.name == districtName }) else {
+            guard let district = AppData.districts.first(where: { $0.text == districtName }) else {
                 return
             }
             destination.artworks = Array(district.artworks)
@@ -159,13 +159,21 @@ class MainTableViewController: SearchViewController {
         case Strings.categories:
             destination.title = Strings.categories
             DispatchQueue.main.async {
-                destination.tableViewCellCollection = AppData.categories.map { $0.text }.sorted()
+                destination.tableViewCellCollection = AppData.categories.map { $0.text }.sorted(by: {
+                    $0.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+                        <
+                        $1.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+                })
             }
             return
         case Strings.districts:
             destination.title = Strings.districts
             DispatchQueue.main.async {
-                destination.tableViewCellCollection = AppData.districts.map { $0.name }.sorted()
+                destination.tableViewCellCollection = AppData.districts.map { $0.text }.sorted(by: {
+                    $0.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+                        <
+                        $1.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+                })
             }
             return
         default:
@@ -184,7 +192,11 @@ class MainTableViewController: SearchViewController {
         }
         destination.title = categoryName
         DispatchQueue.main.async {
-            destination.tableViewCellCollection = subcategories.map{ $0.text }.sorted()
+            destination.tableViewCellCollection = subcategories.map{ $0.text }.sorted(by: {
+                $0.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+                    <
+                    $1.lowercased().folding(options: .diacriticInsensitive, locale: .current)
+            })
         }
     }
 

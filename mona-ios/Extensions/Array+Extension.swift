@@ -23,7 +23,9 @@ extension Array where Element: TextSection {
     func sortText() -> [Element] {
         // Read
         var items = flatMap { $0.items }
-        items.sort(by: { $0.text < $1.text })
+        
+        items.sort(by: {
+            $0.text.lowercased().folding(options: .diacriticInsensitive, locale: .current) < $1.text.lowercased().folding(options: .diacriticInsensitive, locale: .current) })
         
         // The key is the name of the section. The value is an array of Items
         var itemsSections = [String: [Element.Item]]()
@@ -33,9 +35,15 @@ extension Array where Element: TextSection {
             // Extract the first letter of the current Nameable. Ignore accent and uppercase this firstLetter
             var firstCharacterString = item.text[0...0].folding(options: .diacriticInsensitive, locale: .current).uppercased()
             
+            if !firstCharacterString.isAlpha {
+                firstCharacterString = "#"
+            }
+            
+            /*
             if Int(firstCharacterString) != nil {
                 firstCharacterString = "#"
             }
+            */
             
             if itemsSections[firstCharacterString] == nil {
                 itemsSections[firstCharacterString] = [item]
