@@ -213,19 +213,11 @@ final class ArtworksTableViewController : SearchViewController {
                 title: Strings.NeedAuthorizationLocationOpenSettings.title,
                 message: Strings.NeedAuthorizationLocationOpenSettings.message,
                 cancelCompletion: {
-                    self.tableViewIndex.indexOffset = UIOffset(horizontal: -16, vertical: 0)
-                    self.tableViewIndexWidthConstraint.constant = 44
-                    self.tableViewIndexTrailingConstraint.constant = -self.tableViewIndexWidthConstraint.constant
-                    self.tableView.separatorColor = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1)
                     self.refreshControl.endRefreshing()
                     self.refreshControl.removeFromSuperview()
                     self.tableView.isScrollEnabled = true
                 },
                 openSettingsCompletion: {
-                    self.tableViewIndex.indexOffset = UIOffset(horizontal: -16, vertical: 0)
-                    self.tableViewIndexWidthConstraint.constant = 44
-                    self.tableViewIndexTrailingConstraint.constant = -self.tableViewIndexWidthConstraint.constant
-                    self.tableView.separatorColor = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1)
                     self.refreshControl.endRefreshing()
                     self.refreshControl.removeFromSuperview()
                     self.tableView.isScrollEnabled = true
@@ -433,10 +425,6 @@ extension ArtworksTableViewController : CLLocationManagerDelegate {
             break
         default:
             // Else end refreshing
-            tableViewIndex.indexOffset = UIOffset(horizontal: -16, vertical: 0)
-            tableViewIndexWidthConstraint.constant = 44
-            tableViewIndexTrailingConstraint.constant = -tableViewIndexWidthConstraint.constant
-            tableView.separatorColor = UIColor(red: 224.0/255.0, green: 224.0/255.0, blue: 224.0/255.0, alpha: 1)
             refreshControl.endRefreshing()
             refreshControl.removeFromSuperview()
             tableView.isScrollEnabled = true

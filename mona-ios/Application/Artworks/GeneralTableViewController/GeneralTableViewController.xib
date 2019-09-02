@@ -30,7 +30,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXN-yK-Gde" customClass="MYTableViewIndex">
-                    <rect key="frame" x="390" y="76" width="24" height="786"/>
+                    <rect key="frame" x="390" y="104" width="24" height="742"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -44,8 +44,8 @@
                 <constraint firstItem="ALE-pG-vdz" firstAttribute="leading" secondItem="6oq-L6-fdX" secondAttribute="leading" id="6nP-jP-SfD"/>
                 <constraint firstItem="ALE-pG-vdz" firstAttribute="top" secondItem="6oq-L6-fdX" secondAttribute="top" id="8BO-BQ-5rb"/>
                 <constraint firstItem="6oq-L6-fdX" firstAttribute="trailing" secondItem="cXN-yK-Gde" secondAttribute="trailing" id="AKB-Uh-HcH"/>
-                <constraint firstItem="6oq-L6-fdX" firstAttribute="bottom" secondItem="cXN-yK-Gde" secondAttribute="bottom" id="IWV-3h-b1Y"/>
-                <constraint firstItem="cXN-yK-Gde" firstAttribute="top" secondItem="ALE-pG-vdz" secondAttribute="top" constant="32" id="j7g-hD-R46"/>
+                <constraint firstItem="cXN-yK-Gde" firstAttribute="top" secondItem="ALE-pG-vdz" secondAttribute="top" constant="60" id="j7g-hD-R46"/>
+                <constraint firstItem="6oq-L6-fdX" firstAttribute="bottom" secondItem="cXN-yK-Gde" secondAttribute="bottom" constant="16" id="pxN-XA-qju"/>
                 <constraint firstItem="6oq-L6-fdX" firstAttribute="bottom" secondItem="ALE-pG-vdz" secondAttribute="bottom" id="uFS-pq-yoB"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="6oq-L6-fdX"/>

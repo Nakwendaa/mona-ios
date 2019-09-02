@@ -86,7 +86,7 @@
                                                         <rect key="frame" x="51.5" y="58.5" width="176" height="90"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Daily Artwork" translatesAutoresizingMaskIntoConstraints="NO" id="6IY-5m-Y2H">
-                                                                <rect key="frame" x="29" y="0.0" width="90" height="90.000000000000227"/>
+                                                                <rect key="frame" x="29" y="0.0" width="90" height="90"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="90" id="SaC-eX-zwV"/>
