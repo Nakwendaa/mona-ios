@@ -105,10 +105,14 @@ final class GeneralTableViewController<T: ArtworksSettable & TextRepresentable>:
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
             tableView.insetsContentViewsToSafeArea = false
+            tableViewTopConstraint.constant = 0
         }
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        let navigationBarHeight = navigationController?.navigationBar.frame.height ?? 0
-        tableViewTopConstraint.constant = statusBarHeight + navigationBarHeight
+        else if #available(iOS 9.0, *) {
+            let statusBarHeight = UIApplication.shared.statusBarFrame.height
+            let navigationBarHeight = navigationController?.navigationBar.frame.height ?? 0
+            tableViewTopConstraint.constant = statusBarHeight + navigationBarHeight
+        }
+        
     }
     
     

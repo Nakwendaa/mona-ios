@@ -164,7 +164,20 @@ final class ArtworksTableViewController : SearchViewController {
         refreshControl.addTarget(self, action: #selector(refreshLocation), for: .valueChanged)
     }
     
+    @objc override func didTappedFilterButton(_ sender: UIBarButtonItem) {
+        super.didTappedFilterButton(sender)
+        switch artworksTableViewDataSource!.usingSortType {
+        case .text:
+            filterPopoverViewController!.titleButton.isSelected = true
+        case .date:
+            filterPopoverViewController!.dateButton.isSelected = true
+        case .distance:
+            filterPopoverViewController!.distanceButton.isSelected = true
+        }
+    }
+    
     @objc override func didTappedFilterTitleButton() {
+        super.didTappedFilterTitleButton()
         refreshControl.endRefreshing()
         refreshControl.removeFromSuperview()
         artworksTableViewDataSource.sort(by: .text, coordinate: nil)
@@ -178,6 +191,7 @@ final class ArtworksTableViewController : SearchViewController {
     }
     
     @objc override func didTappedFilterDateButton() {
+        super.didTappedFilterDateButton()
         refreshControl.endRefreshing()
         refreshControl.removeFromSuperview()
         artworksTableViewDataSource.sort(by: .date, coordinate: nil)
@@ -191,6 +205,7 @@ final class ArtworksTableViewController : SearchViewController {
     }
     
     @objc override func didTappedFilterDistanceButton() {
+        super.didTappedFilterDistanceButton()
         tableViewIndex.indexOffset = UIOffset(horizontal: -16, vertical: 0)
         tableViewIndexWidthConstraint.constant = 44
         tableViewIndexTrailingConstraint.constant = -tableViewIndexWidthConstraint.constant

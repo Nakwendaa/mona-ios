@@ -107,9 +107,21 @@ class SearchViewController : UIViewController, UITabBarControllerDelegate {
         filterPopoverViewController!.distanceButton.addTarget(self, action: #selector(didTappedFilterDistanceButton), for: .touchUpInside)
     }
     
-    @objc func didTappedFilterTitleButton() {}
-    @objc func didTappedFilterDateButton() {}
-    @objc func didTappedFilterDistanceButton() {}
+    @objc func didTappedFilterTitleButton() {
+        filterPopoverViewController!.titleButton.isSelected = true
+        filterPopoverViewController!.dateButton.isSelected = false
+        filterPopoverViewController!.distanceButton.isSelected = false
+    }
+    @objc func didTappedFilterDateButton() {
+        filterPopoverViewController!.titleButton.isSelected = false
+        filterPopoverViewController!.dateButton.isSelected = true
+        filterPopoverViewController!.distanceButton.isSelected = false
+    }
+    @objc func didTappedFilterDistanceButton() {
+        filterPopoverViewController!.titleButton.isSelected = false
+        filterPopoverViewController!.dateButton.isSelected = false
+        filterPopoverViewController!.distanceButton.isSelected = true
+    }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
