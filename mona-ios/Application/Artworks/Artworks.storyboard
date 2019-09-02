@@ -959,7 +959,9 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFo-Ql-vH5">
                                                 <rect key="frame" x="8" y="150" width="61" height="30"/>
-                                                <state key="normal" title="Terminer"/>
+                                                <state key="normal" title="Terminer">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="endCommentTapped:" destination="L5s-j8-zBR" eventType="touchUpInside" id="kRj-15-F70"/>
                                                 </connections>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FkS-VX-2DP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FkS-VX-2DP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,6 +13,10 @@
         <scene sceneID="Btv-KS-LWj">
             <objects>
                 <viewController storyboardIdentifier="DailyArtworkMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Zv0-9n-cNx" customClass="DailyArtworkMapViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ref-HC-cLS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y4p-hL-7zU"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ry7-qV-RnU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,13 +39,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Psz-9q-pMT" secondAttribute="trailing" id="2zF-5h-avk"/>
-                            <constraint firstItem="IUf-bV-aqB" firstAttribute="bottom" secondItem="MNi-3n-5X0" secondAttribute="bottom" constant="32" id="6cC-fc-dvZ"/>
+                            <constraint firstItem="Y4p-hL-7zU" firstAttribute="top" secondItem="MNi-3n-5X0" secondAttribute="bottom" constant="32" id="6cC-fc-dvZ"/>
                             <constraint firstItem="Psz-9q-pMT" firstAttribute="top" secondItem="Ry7-qV-RnU" secondAttribute="top" id="Fjl-2o-Fdw"/>
-                            <constraint firstItem="IUf-bV-aqB" firstAttribute="trailing" secondItem="MNi-3n-5X0" secondAttribute="trailing" constant="16" id="NQy-xj-vrv"/>
+                            <constraint firstAttribute="trailing" secondItem="MNi-3n-5X0" secondAttribute="trailing" constant="16" id="NQy-xj-vrv"/>
                             <constraint firstItem="Psz-9q-pMT" firstAttribute="leading" secondItem="Ry7-qV-RnU" secondAttribute="leading" id="OTp-E6-vlV"/>
                             <constraint firstAttribute="bottom" secondItem="Psz-9q-pMT" secondAttribute="bottom" id="SCd-22-yta"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="IUf-bV-aqB"/>
                     </view>
                     <connections>
                         <outlet property="localizeUserButton" destination="MNi-3n-5X0" id="DNN-M8-swr"/>
@@ -57,6 +59,10 @@
         <scene sceneID="U0q-lf-891">
             <objects>
                 <viewController storyboardIdentifier="DailyArtworkViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UqB-aZ-pab" customClass="DailyArtworkViewController" customModule="mona_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XfL-GF-ABB"/>
+                        <viewControllerLayoutGuide type="bottom" id="zXb-ab-5Vm"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Sro-zo-3GA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,20 +73,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ErB-it-Um6">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="hrL-8y-0sg">
-                                                <rect key="frame" x="72" y="66" width="231" height="444.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="hrL-8y-0sg">
+                                                <rect key="frame" x="48" y="66" width="279" height="425"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OEUVRE DU JOUR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEY-fg-jRA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="231" height="26.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OEUVRE DU JOUR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEY-fg-jRA">
+                                                        <rect key="frame" x="46" y="0.0" width="187" height="26.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fB7-6p-8Jw">
-                                                        <rect key="frame" x="0.0" y="58.5" width="231" height="90"/>
+                                                        <rect key="frame" x="51.5" y="58.5" width="176" height="90"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Daily Artwork" translatesAutoresizingMaskIntoConstraints="NO" id="6IY-5m-Y2H">
-                                                                <rect key="frame" x="56.5" y="0.0" width="90" height="90"/>
+                                                                <rect key="frame" x="29" y="0.0" width="90" height="90.000000000000227"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="90" id="SaC-eX-zwV"/>
@@ -101,16 +107,16 @@
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="P9Q-qH-2b4">
-                                                        <rect key="frame" x="0.0" y="180.5" width="231" height="170"/>
+                                                        <rect key="frame" x="42" y="180.5" width="195" height="170"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="La mort de Dante" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSd-xV-nKv">
-                                                                <rect key="frame" x="16" y="0.0" width="199" height="26.5"/>
+                                                                <rect key="frame" x="16" y="0.0" width="163" height="26.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fB-DZ-FTv">
-                                                                <rect key="frame" x="68.5" y="42.5" width="94" height="1.5"/>
+                                                                <rect key="frame" x="50.5" y="42.5" width="94" height="1.5"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1.5" id="S6l-lk-xr6"/>
@@ -118,31 +124,31 @@
                                                                 </constraints>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="lU0-7X-DpP">
-                                                                <rect key="frame" x="16" y="60" width="199" height="110"/>
+                                                                <rect key="frame" x="16" y="60" width="163" height="110"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carlo Balboni, 1921" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2E-49-d2A">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="19.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="163" height="19.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7sW-8I-yce">
-                                                                        <rect key="frame" x="0.0" y="43.5" width="199" height="66.5"/>
+                                                                        <rect key="frame" x="0.0" y="43.5" width="163" height="66.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="390x250x241 cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXU-4l-ROq">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="199" height="19.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="390x250x241 cm" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXU-4l-ROq">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="163" height="19.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beaux-arts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApR-CY-2zx">
-                                                                                <rect key="frame" x="0.0" y="23.5" width="199" height="19.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beaux-arts" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApR-CY-2zx">
+                                                                                <rect key="frame" x="0.0" y="23.5" width="163" height="19.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sculpture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPn-YE-89a">
-                                                                                <rect key="frame" x="0.0" y="47" width="199" height="19.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sculpture" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPn-YE-89a">
+                                                                                <rect key="frame" x="0.0" y="47" width="163" height="19.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
@@ -159,40 +165,88 @@
                                                             <constraint firstItem="lU0-7X-DpP" firstAttribute="leading" secondItem="P9Q-qH-2b4" secondAttribute="leading" constant="16" id="wzc-aE-G9w"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="lec-uI-AUn">
-                                                        <rect key="frame" x="0.0" y="382.5" width="231" height="62"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lec-uI-AUn">
+                                                        <rect key="frame" x="40" y="382.5" width="199" height="42.5"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StP-0C-yIZ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="68" height="62"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hws-P2-QA7">
+                                                                <rect key="frame" x="0.0" y="0.0" width="64" height="42.5"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StP-0C-yIZ">
+                                                                        <rect key="frame" x="0.0" y="-13.5" width="64" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="64" id="XKe-He-GWQ"/>
+                                                                            <constraint firstAttribute="width" secondItem="StP-0C-yIZ" secondAttribute="height" multiplier="83:76" id="u4X-iJ-y9o"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="Daily Artwork Camera Button Default"/>
+                                                                        <connections>
+                                                                            <action selector="cameraButtonTapped:" destination="UqB-aZ-pab" eventType="touchUpInside" id="4fa-I5-FJm"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="StP-0C-yIZ" secondAttribute="height" multiplier="83:76" id="u4X-iJ-y9o"/>
+                                                                    <constraint firstItem="StP-0C-yIZ" firstAttribute="height" secondItem="hws-P2-QA7" secondAttribute="height" constant="16" id="4kr-JV-h1P"/>
+                                                                    <constraint firstItem="StP-0C-yIZ" firstAttribute="centerX" secondItem="hws-P2-QA7" secondAttribute="centerX" id="YsJ-zA-qEp"/>
+                                                                    <constraint firstItem="StP-0C-yIZ" firstAttribute="centerY" secondItem="hws-P2-QA7" secondAttribute="top" constant="16" id="mSQ-E7-xDt"/>
+                                                                    <constraint firstItem="StP-0C-yIZ" firstAttribute="width" secondItem="hws-P2-QA7" secondAttribute="width" id="suB-QE-oJb"/>
                                                                 </constraints>
-                                                                <state key="normal" image="Daily Artwork Camera Button Default"/>
-                                                                <connections>
-                                                                    <action selector="cameraButtonTapped:" destination="UqB-aZ-pab" eventType="touchUpInside" id="4fa-I5-FJm"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxP-1i-cUb">
-                                                                <rect key="frame" x="84" y="0.0" width="62" height="62"/>
+                                                            </view>
+                                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJR-K5-Qal">
+                                                                <rect key="frame" x="64" y="0.0" width="21" height="42.5"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="bxP-1i-cUb" secondAttribute="height" multiplier="1:1" id="XDG-F2-J64"/>
+                                                                    <constraint firstAttribute="width" constant="21" id="Wjp-RL-3ls"/>
                                                                 </constraints>
-                                                                <state key="normal" image="Daily Artwork Target Button Default"/>
-                                                                <state key="selected" image="Daily Artwork Target Button Selected"/>
-                                                                <connections>
-                                                                    <action selector="targetButtonTapped:" destination="UqB-aZ-pab" eventType="touchUpInside" id="pXW-pg-1ul"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvr-mQ-Aou">
-                                                                <rect key="frame" x="162" y="0.0" width="69" height="62"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLA-9d-JrQ">
+                                                                <rect key="frame" x="85" y="0.0" width="42" height="42.5"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxP-1i-cUb">
+                                                                        <rect key="frame" x="0.0" y="-5" width="42" height="42"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="42" id="RZL-dM-Rto"/>
+                                                                            <constraint firstAttribute="width" secondItem="bxP-1i-cUb" secondAttribute="height" multiplier="1:1" id="XDG-F2-J64"/>
+                                                                        </constraints>
+                                                                        <state key="normal" image="Daily Artwork Target Button Default"/>
+                                                                        <state key="selected" image="Daily Artwork Target Button Selected"/>
+                                                                        <connections>
+                                                                            <action selector="targetButtonTapped:" destination="UqB-aZ-pab" eventType="touchUpInside" id="pXW-pg-1ul"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="Vvr-mQ-Aou" secondAttribute="height" multiplier="10:9" id="HvM-St-8cX"/>
+                                                                    <constraint firstItem="bxP-1i-cUb" firstAttribute="centerX" secondItem="pLA-9d-JrQ" secondAttribute="centerX" id="Ja7-vc-mP9"/>
+                                                                    <constraint firstItem="bxP-1i-cUb" firstAttribute="centerY" secondItem="pLA-9d-JrQ" secondAttribute="top" constant="16" id="dV3-JR-FpD"/>
+                                                                    <constraint firstItem="bxP-1i-cUb" firstAttribute="width" secondItem="pLA-9d-JrQ" secondAttribute="width" id="wB4-lW-Kfn"/>
                                                                 </constraints>
-                                                                <state key="normal" title="" image="Daily Artwork Map Button Default"/>
-                                                                <connections>
-                                                                    <segue destination="Zv0-9n-cNx" kind="show" identifier="showDailyArtworkMapViewController" id="JYc-Z0-uwd"/>
-                                                                </connections>
-                                                            </button>
+                                                            </view>
+                                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SpC-We-7pY">
+                                                                <rect key="frame" x="127" y="0.0" width="26" height="42.5"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="26" id="gSc-dP-vbm"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8BV-hj-heV">
+                                                                <rect key="frame" x="153" y="0.0" width="46" height="42.5"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vvr-mQ-Aou">
+                                                                        <rect key="frame" x="0.0" y="-4.5" width="46" height="41"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="46" id="E5B-o8-SnU"/>
+                                                                            <constraint firstAttribute="width" secondItem="Vvr-mQ-Aou" secondAttribute="height" multiplier="10:9" id="HvM-St-8cX"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="" image="Daily Artwork Map Button Default"/>
+                                                                        <connections>
+                                                                            <segue destination="Zv0-9n-cNx" kind="show" identifier="showDailyArtworkMapViewController" id="JYc-Z0-uwd"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="Vvr-mQ-Aou" firstAttribute="centerY" secondItem="8BV-hj-heV" secondAttribute="top" constant="16" id="EAc-FF-GkI"/>
+                                                                    <constraint firstItem="Vvr-mQ-Aou" firstAttribute="width" secondItem="8BV-hj-heV" secondAttribute="width" id="NOt-K2-34a"/>
+                                                                    <constraint firstItem="Vvr-mQ-Aou" firstAttribute="centerX" secondItem="8BV-hj-heV" secondAttribute="centerX" id="cwu-Im-HNn"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
@@ -200,9 +254,9 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.70588235290000001" green="0.71764705880000002" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="hrL-8y-0sg" secondAttribute="trailing" constant="72" id="KVa-fm-dos"/>
+                                            <constraint firstAttribute="trailing" secondItem="hrL-8y-0sg" secondAttribute="trailing" constant="48" id="KVa-fm-dos"/>
                                             <constraint firstItem="hrL-8y-0sg" firstAttribute="top" secondItem="ErB-it-Um6" secondAttribute="top" constant="66" id="fKs-hb-h1r"/>
-                                            <constraint firstItem="hrL-8y-0sg" firstAttribute="leading" secondItem="ErB-it-Um6" secondAttribute="leading" constant="72" id="gs2-Tn-VS4"/>
+                                            <constraint firstItem="hrL-8y-0sg" firstAttribute="leading" secondItem="ErB-it-Um6" secondAttribute="leading" constant="48" id="gs2-Tn-VS4"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -219,30 +273,42 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="S1o-ld-j1A" firstAttribute="bottom" secondItem="Bas-LZ-sMz" secondAttribute="bottom" id="5nD-i7-W3N"/>
-                            <constraint firstItem="Bas-LZ-sMz" firstAttribute="leading" secondItem="S1o-ld-j1A" secondAttribute="leading" id="FWS-9l-Yuc"/>
-                            <constraint firstItem="S1o-ld-j1A" firstAttribute="trailing" secondItem="Bas-LZ-sMz" secondAttribute="trailing" id="S8i-Q3-ZbK"/>
+                            <constraint firstItem="zXb-ab-5Vm" firstAttribute="top" secondItem="Bas-LZ-sMz" secondAttribute="bottom" id="5nD-i7-W3N"/>
+                            <constraint firstItem="Bas-LZ-sMz" firstAttribute="leading" secondItem="Sro-zo-3GA" secondAttribute="leading" id="FWS-9l-Yuc"/>
+                            <constraint firstAttribute="trailing" secondItem="Bas-LZ-sMz" secondAttribute="trailing" id="S8i-Q3-ZbK"/>
                             <constraint firstItem="Bas-LZ-sMz" firstAttribute="top" secondItem="Sro-zo-3GA" secondAttribute="top" id="dNW-Z8-A5S"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="S1o-ld-j1A"/>
                     </view>
                     <navigationItem key="navigationItem" id="U34-oh-P9a"/>
                     <connections>
                         <outlet property="artistsAndDateLabel" destination="o2E-49-d2A" id="53G-ry-TDi"/>
+                        <outlet property="artworkDetailsStackView" destination="P9Q-qH-2b4" id="oiL-rQ-XUu"/>
                         <outlet property="artworkTitleLabel" destination="QSd-xV-nKv" id="Yxb-aw-c1c"/>
                         <outlet property="cameraButton" destination="StP-0C-yIZ" id="wBS-dz-epD"/>
                         <outlet property="categoryLabel" destination="ApR-CY-2zx" id="Xla-R0-6FY"/>
+                        <outlet property="contentView" destination="ErB-it-Um6" id="w8A-qq-46G"/>
                         <outlet property="dimensionsLabel" destination="OXU-4l-ROq" id="dvf-2t-V0Q"/>
                         <outlet property="imageView" destination="6IY-5m-Y2H" id="dF4-A7-mbR"/>
+                        <outlet property="mainStackView" destination="hrL-8y-0sg" id="kug-HM-S95"/>
                         <outlet property="mapButton" destination="Vvr-mQ-Aou" id="dqV-pk-dx5"/>
+                        <outlet property="scrollView" destination="Bas-LZ-sMz" id="OeU-0C-oDb"/>
                         <outlet property="subcategoryLabel" destination="wPn-YE-89a" id="5ur-io-rnI"/>
                         <outlet property="targetButton" destination="bxP-1i-cUb" id="J6P-ht-a1J"/>
                         <outlet property="titleLabel" destination="lEY-fg-jRA" id="1Ae-g1-gFR"/>
+                        <segue destination="kQ1-bu-EUU" kind="show" identifier="showArtworkDetailsViewController" id="BSn-0N-VqE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6T-XV-Tvd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="940" y="-762.36881559220399"/>
+        </scene>
+        <!--ArtworkDetailsViewController-->
+        <scene sceneID="Sb5-tK-X1E">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Artworks" referencedIdentifier="ArtworkDetailsViewController" id="kQ1-bu-EUU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SMF-Le-4Ay" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1690" y="-763"/>
         </scene>
         <!--Daily Artwork-->
         <scene sceneID="ecC-C1-9cg">

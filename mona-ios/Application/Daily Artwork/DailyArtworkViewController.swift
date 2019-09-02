@@ -16,6 +16,7 @@ class DailyArtworkViewController: UIViewController {
     struct Segues {
         struct Identifiers {
             static let showDailyArtworkMapViewController = "showDailyArtworkMapViewController"
+            static let showArtworkDetailsViewController = "showArtworkDetailsViewController"
         }
     }
     
@@ -52,6 +53,11 @@ class DailyArtworkViewController: UIViewController {
     var imagePickerDelegate: ArtworkDetailsImagePickerControllerDelegate!
     
     //MARK: - UI Properties
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var mainStackView: UIStackView!
+    
+    @IBOutlet weak var artworkDetailsStackView: UIStackView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var artworkTitleLabel: UILabel!
@@ -75,16 +81,37 @@ class DailyArtworkViewController: UIViewController {
         hideNavigationBar()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Provisoire, améliorer ceci quand ça sera possible
+        contentView.frame.size.height = max(contentView.frame.size.height, mainStackView.frame.size.height + tabBarController!.tabBar.frame.height + 32)
+        scrollView.contentSize = contentView.frame.size
+        // Fin de la chose provisoire
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segues.Identifiers.showDailyArtworkMapViewController {
+        
+        guard let identifier = segue.identifier else {
+            return
+        }
+        
+        switch identifier {
+        case Segues.Identifiers.showDailyArtworkMapViewController:
             let dailyArtworkMapViewController = segue.destination as! DailyArtworkMapViewController
             dailyArtworkMapViewController.artwork = artwork
             showNavigationBar()
+        case Segues.Identifiers.showArtworkDetailsViewController:
+            let artworkDetailsViewController = segue.destination as! ArtworkDetailsViewController
+            artworkDetailsViewController.artwork = artwork
+            showNavigationBar()
+        default:
+            return
         }
+        
     }
     
 
@@ -114,7 +141,14 @@ class DailyArtworkViewController: UIViewController {
         setupViewController(artwork: artwork)
     }
     
+    @objc private func artworkDetailsStackViewTapped() {
+        performSegue(withIdentifier: Segues.Identifiers.showArtworkDetailsViewController, sender: nil)
+    }
+    
     private func setupViewController(artwork: Artwork) {
+        
+        let artworkDetailsTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(artworkDetailsStackViewTapped))
+        artworkDetailsStackView.addGestureRecognizer(artworkDetailsTapGestureRecognizer)
         
         title = Strings.General.title
         // Set title of the view controller as "DAILY ARTWORK" or "OEUVRE DU JOUR"
