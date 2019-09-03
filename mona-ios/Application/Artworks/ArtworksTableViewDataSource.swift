@@ -50,6 +50,7 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
     private var assets = [PHAsset]()
     // A mapping IndexPath to index
     // This map is used to find an asset based on artwordId. We need this dict because some artworks don't have assets
+    // artworkId : position in assets array
     private var indexAssets = [Int16: Int]()
     
     // Initializers
@@ -206,6 +207,7 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
                 return
             }
             
+
             // Find the last photo added to the artwork
             guard   let photosOrderedSetForArtwork = artwork.photos,
                     let lastPhotoAddedForArtwork = photosOrderedSetForArtwork.lastObject as? Photo else {
@@ -213,6 +215,14 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
                     assets.remove(at: index)
                     // Remove from indexAssets
                     indexAssets.removeValue(forKey: artworkId)
+                    
+                    // Decrement indexes
+                    indexAssets.forEach { (key, value) in
+                        if index < value {
+                            indexAssets[key] = value - 1
+                        }
+                    }
+                    
                     return
             }
             if let asset = MonaPhotosAlbum.shared.fetchAsset(withLocalIdentifier: lastPhotoAddedForArtwork.localIdentifier) {
@@ -225,6 +235,14 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
                 assets.remove(at: index)
                 // Remove from indexAssets
                 indexAssets.removeValue(forKey: artworkId)
+                
+                // Decrement indexes
+                indexAssets.forEach { (key, value) in
+                    if index < value {
+                        indexAssets[key] = value - 1
+                    }
+                }
+                
                 /*
                 // Recursive call to this function
                 artwork.removeFromPhotos(lastPhotoAddedForArtwork)

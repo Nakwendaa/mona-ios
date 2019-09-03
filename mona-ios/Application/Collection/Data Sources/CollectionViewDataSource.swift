@@ -17,6 +17,7 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
     private let cachingImageManager = PHCachingImageManager()
     private var imageRequestOptions = PHImageRequestOptions()
     private var assets = [PHAsset]()
+    private var indexAssets = [Int16: Int]()
     
     override init() {
         super.init()
@@ -37,9 +38,19 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
         var localIdentifiersOrdered = [String : Int]()
         var index = 0
         artworks.forEach { artwork in
-            let photo = artwork.photos!.lastObject! as! Photo
-            localIdentifiersOrdered[photo.localIdentifier] = index
+            
+            // Get the last Photo added in artwork.photos for the current artwork
+            guard   let photosOrderedSetForArtwork = artwork.photos,
+                let lastPhotoAddedForArtwork = photosOrderedSetForArtwork.lastObject as? Photo else {
+                    return
+            }
+            // localIdentifier is the localIdentifier of the last asset saved for the current artwork
+            // index is the asset's order in the tableViewDataSource
+            localIdentifiersOrdered.updateValue(index, forKey: lastPhotoAddedForArtwork.localIdentifier)
+            // key: artwork.id, value: index is the artwork's order in the tableViewDataSource
+            indexAssets.updateValue(index, forKey: artwork.id)
             index += 1
+
         }
         assets = MonaPhotosAlbum.shared.fetchAssets(withLocalIdentifiers: localIdentifiersOrdered).compactMap { $0 }
         cachingImageManager.startCachingImages(for: assets, targetSize: CGSize(width: 100, height: 200), contentMode: .aspectFill, options: imageRequestOptions)
@@ -91,9 +102,96 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
     }
     
     //MARK: - Notification handlers
-    @objc func didAddPhotoToArtwork(_ notification: Notification) {}
+    @objc func didAddPhotoToArtwork(_ notification: Notification) {
+        guard   let userInfo = notification.userInfo,
+            let localIdentifier = userInfo["photo"] as? String,
+            let artworkId = userInfo["artworkId"] as? Int16 else {
+                return
+        }
+        // If an asset exists for this artwork...
+        if let index = indexAssets[artworkId] {
+            // Stop caching this asset
+            cachingImageManager.stopCachingImages(for: [assets[index]], targetSize: CGSize(width: 44, height: 58), contentMode: .aspectFill, options: imageRequestOptions)
+            // Fetch the new asset
+            guard let asset = MonaPhotosAlbum.shared.fetchAsset(withLocalIdentifier: localIdentifier) else {
+                return
+            }
+            // Set new asset
+            assets[index] = asset
+            // Start caching it
+            cachingImageManager.startCachingImages(for: [asset], targetSize: CGSize(width: 44, height: 58), contentMode: .aspectFill, options: imageRequestOptions)
+        }
+            // Else an asset doesn't exist for this artwork, so we have to start caching it
+        else {
+            // First, let's fetch this asset with local identifier
+            guard let asset = MonaPhotosAlbum.shared.fetchAsset(withLocalIdentifier: localIdentifier) else {
+                return
+            }
+            cachingImageManager.startCachingImages(for: [asset], targetSize: CGSize(width: 44, height: 58), contentMode: .aspectFill, options: imageRequestOptions)
+            indexAssets.updateValue(assets.count, forKey: artworkId)
+            assets.append(asset)
+        }
+    }
     
-    @objc func didRemovePhotoFromArtwork(_ notification: Notification) {}
+    @objc func didRemovePhotoFromArtwork(_ notification: Notification) {
+        guard   let userInfo = notification.userInfo,
+            let localIdentifier = userInfo["photo"] as? String,
+            let artworkId = userInfo["artworkId"] as? Int16 else {
+                return
+        }
+        // If an asset exists for this artwork, and this asset that is loaded in caching manager is the one which was deleted
+        if let index = indexAssets[artworkId], assets[index].localIdentifier == localIdentifier {
+            
+            // Stop caching this asset
+            cachingImageManager.stopCachingImages(for: [assets[index]], targetSize: CGSize(width: 44, height: 58), contentMode: .aspectFill, options: imageRequestOptions)
+            
+            // Find the artwork with artworkId
+            guard let artwork = artworks.first(where: {$0.id == artworkId}) else {
+                return
+            }
+            
+            // Find the last photo added to the artwork
+            guard   let photosOrderedSetForArtwork = artwork.photos,
+                    let lastPhotoAddedForArtwork = photosOrderedSetForArtwork.lastObject as? Photo else {
+                    // If there is no photo associated to the artwork, remove last asset from artwork
+                    assets.remove(at: index)
+                    // Remove from indexAssets
+                    indexAssets.removeValue(forKey: artworkId)
+                    
+                    // Decrement indexes
+                    indexAssets.forEach { (key, value) in
+                        if index < value {
+                            indexAssets[key] = value - 1
+                        }
+                    }
+                    
+                    return
+            }
+            if let asset = MonaPhotosAlbum.shared.fetchAsset(withLocalIdentifier: lastPhotoAddedForArtwork.localIdentifier) {
+                // Set the new asset with this artwork
+                assets[index] = asset
+                cachingImageManager.startCachingImages(for: [asset], targetSize: CGSize(width: 44, height: 58), contentMode: .aspectFill, options: imageRequestOptions)
+            }
+            else {
+                // If there is no photo associated to the artwork, remove last asset from artwork
+                assets.remove(at: index)
+                // Remove from indexAssets
+                indexAssets.removeValue(forKey: artworkId)
+                
+                // Decrement indexes
+                indexAssets.forEach { (key, value) in
+                    if index < value {
+                        indexAssets[key] = value - 1
+                    }
+                }
+                
+                /*
+                 // Recursive call to this function
+                 artwork.removeFromPhotos(lastPhotoAddedForArtwork)
+                 */
+            }
+        }
+    }
     
     
 }

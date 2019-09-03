@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fetchData { result in
             switch result {
             case .success():
+                self.updatePhotosArtworks(artworks: AppData.artworks)
                 self.handleSuccess()
                 AppData.artworks.forEach {
                     self.isCurrentlyUploading.updateValue([.photo : false, .rating : false, .comment : false ], forKey: $0.id)
@@ -134,6 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         if !didStart {
+            // J'update déjà au lancement de l'application
             updatePhotosArtworks(artworks: AppData.artworks)
         }
         didStart = false
@@ -144,7 +146,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for artwork in artworks {
             // Les photos sont ordonnées par ordre d'ajout (comme un tableau classique en fait)
             // La plus récente photo pour une œuvre est à la fin de artwork.photos
-            guard let photosOrderedSet = artwork.photos else { continue }
+            guard let photosOrderedSet = artwork.photos else {
+                continue
+            }
             // On cast cet orderedSet en tableau de Photo car c'est plus simple pour les manipulations
             let photos = photosOrderedSet.array as! [Photo]
             // On vérifie que ce tableau contient des Photo, sinon on continue à l'artwork suivant

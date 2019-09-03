@@ -36,9 +36,12 @@ class MosaicCell: UICollectionViewCell {
         addSubview(imageView)
         
         // Use a random background color.
-        let redColor = CGFloat(arc4random_uniform(255)) / 255.0
-        let greenColor = CGFloat(arc4random_uniform(255)) / 255.0
-        let blueColor = CGFloat(arc4random_uniform(255)) / 255.0
+        //let redColor = CGFloat(arc4random_uniform(255)) / 255.0
+        //let greenColor = CGFloat(arc4random_uniform(255)) / 255.0
+        //let blueColor = CGFloat(arc4random_uniform(255)) / 255.0
+        let redColor = CGFloat(230.0) / 255.0
+        let greenColor = CGFloat(230.0) / 255.0
+        let blueColor = CGFloat(230.0) / 255.0
         backgroundColor = UIColor(red: redColor, green: greenColor, blue: blueColor, alpha: 1.0)
     }
     

@@ -72,7 +72,7 @@ public class Artwork: NSManagedObject {
         
         let photosMutableOrderedSet = NSMutableOrderedSet(orderedSet: photosOrderedSet)
         photosMutableOrderedSet.remove(value)
-        photos = photosMutableOrderedSet.count == 0 ? photosMutableOrderedSet : nil
+        photos = photosMutableOrderedSet.count == 0 ? nil : photosMutableOrderedSet
         NotificationCenter.default.post(name: .didRemovePhotoFromArtwork, object: nil, userInfo: [
             "photo" : value.localIdentifier,
             "artworkId" : id ])
@@ -83,12 +83,13 @@ public class Artwork: NSManagedObject {
         guard !values.isEmpty, let photosOrderedSet = photos else {
             return
         }
+
         // Check which values actually exist in photosOrderedSet.
         // This step is important in order not to avoid post incorrect .didRemovePhotoFromArtwork notifications
         let existingPhotos = values.filter { photo in photosOrderedSet.contains(photo) }
         let photosMutableOrderedSet = NSMutableOrderedSet(orderedSet: photosOrderedSet)
         photosMutableOrderedSet.removeObjects(in: existingPhotos)
-        photos = photosMutableOrderedSet.count == 0 ? photosMutableOrderedSet : nil
+        photos = photosMutableOrderedSet.count == 0 ? nil : photosMutableOrderedSet
         
         existingPhotos.forEach { photo in
             NotificationCenter.default.post(name: .didRemovePhotoFromArtwork, object: nil, userInfo: [
