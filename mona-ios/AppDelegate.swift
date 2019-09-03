@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import SwiftyBeaver
 import Foundation
+import Photos
 
 let log = SwiftyBeaver.self
 
@@ -30,16 +31,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     private var didStart = true
+    
+    private var timer : Timer?
+    // If internet is slow, this is useful in order to not repeat the upload task multiple times.
+    
+    private enum Request {
+        case photo
+        case rating
+        case comment
+    }
+    private var isCurrentlyUploading = [Int16 : [Request : Bool]]()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setupLogger()
         setupPreferences()
         
+        AppData.context.retainsRegisteredObjects = true
+        
+        // Mis là temporairement pour éviter la longueur de chargement à chaque lancement de l'application
+        fetchData { result in
+            switch result {
+            case .success():
+                self.handleSuccess()
+                AppData.artworks.forEach {
+                    self.isCurrentlyUploading.updateValue([.photo : false, .rating : false, .comment : false ], forKey: $0.id)
+                }
+                self.timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.uploadData), userInfo: nil, repeats: true)
+            case .failure(let error):
+                // Dire pourquoi y a erreur par message si nécessaire
+                fatalError(error.localizedDescription)
+            }
+        }
+        
+        /*
+        Uncomment ce bloc de code là si on veut fetch les data et construire la base de données sans utiliser celle préchargée.
         // Fetch Data
         // Inutile d'avoir un token valide pour cela
-        AppData.context.retainsRegisteredObjects = true
-
         fetchData { result in
             switch result {
             case .success():
@@ -83,6 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError(error.localizedDescription)
             }
         }
+        */
         
         return true
  
@@ -235,6 +264,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
     /*
     private func setupArtworks(completion: @escaping (Result<Void, Error>) -> Void) {
         MonaAPI.shared.artworks { result in
@@ -337,22 +367,121 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    
-    private func handleSuccess() {
-        if  let username = UserDefaults.Credentials.get(forKey: .username),
-            let password = UserDefaults.Credentials.get(forKey: .password) {
-            // Login and show app
+    @objc func uploadData() {
+        // If a token exists
+        if let token = UserDefaults.Credentials.get(forKey: .token), token != "" {
+            let manager = PHImageManager.default()
+            let option = PHImageRequestOptions()
+            option.deliveryMode = .highQualityFormat
+            option.isNetworkAccessAllowed = true
+            option.version = .original
+            option.isSynchronous = false
+            
+            for artwork in AppData.artworks {
+                if artwork.isCollected {
+                    if  artwork.photoSent == false,
+                        !isCurrentlyUploading[artwork.id]![.photo]!,
+                        let photosOrderedSet = artwork.photos,
+                        let lastPhotoAdded = photosOrderedSet.lastObject as? Photo,
+                        let asset = MonaPhotosAlbum.shared.fetchAsset(withLocalIdentifier: lastPhotoAdded.localIdentifier) {
+                        
+                        // Load image
+                        // Get image from asset
+                        manager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: option, resultHandler: {
+                            result, info in
+                            if let image = result {
+                                self.isCurrentlyUploading[artwork.id]![.photo] = true
+                                MonaAPI.shared.artwork(id: Int(artwork.id), rating: nil, comment: nil, photo: image) { result in
+                                    self.isCurrentlyUploading[artwork.id]![.photo] = false
+                                    switch result {
+                                    case .success(_):
+                                        log.info("Successful upload for artwork's photo with id: \(artwork.id).")
+                                        artwork.photoSent = true
+                                        do {
+                                            try AppData.context.save()
+                                        }
+                                        catch {
+                                            log.error("Failed to save context: \(error)")
+                                        }
+                                    case .failure(let userArtworkError):
+                                        log.error("Failed to upload photo for artwork with id: \(artwork.id).")
+                                        log.error(userArtworkError)
+                                        log.error(userArtworkError.localizedDescription)
+                                    }
+                                }
+                            }
+                        })
+                    }
+                    
+                    if artwork.ratingSent == false && !isCurrentlyUploading[artwork.id]![.rating]! {
+                        isCurrentlyUploading[artwork.id]![.rating] = true
+                        MonaAPI.shared.artwork(id: Int(artwork.id), rating: Int(artwork.rating), comment: nil, photo: nil) { (result) in
+                            self.isCurrentlyUploading[artwork.id]![.rating] = false
+                            switch result {
+                            case .success(_):
+                                log.info("Rating \"\(artwork.rating)\" sent successfully for artwork with id: \(artwork.id).")
+                                artwork.ratingSent = true
+                                do {
+                                    try AppData.context.save()
+                                }
+                                catch {
+                                    log.error("Failed to save context: \(error)")
+                                }
+                            case .failure(let userArtworkError):
+                                log.error("Failed to send rating \"\(artwork.rating)\" for artwork with id: \(artwork.id).")
+                                log.error(userArtworkError)
+                                log.error(userArtworkError.localizedDescription)
+                            }
+                        }
+                    }
+                    
+                    if artwork.commentSent == false &&  !isCurrentlyUploading[artwork.id]![.comment]! {
+                        isCurrentlyUploading[artwork.id]![.comment] = true
+                        MonaAPI.shared.artwork(id: Int(artwork.id), rating: nil, comment: artwork.comment, photo: nil) { (result) in
+                            self.isCurrentlyUploading[artwork.id]![.comment] = false
+                            switch result {
+                            case .success(_):
+                                log.info("Comment sent \"\(artwork.comment!)\" successfully for artwork with id: \(artwork.id).")
+                                artwork.commentSent = true
+                                do {
+                                    try AppData.context.save()
+                                }
+                                catch {
+                                    log.error("Failed to save context: \(error)")
+                                }
+                            case .failure(let userArtworkError):
+                                log.error("Failed to send comment \"\(artwork.comment!)\" for artwork with id: \(artwork.id).")
+                                log.error(userArtworkError)
+                                log.error(userArtworkError.localizedDescription)
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        else if  let username = UserDefaults.Credentials.get(forKey: .username),
+                 let password = UserDefaults.Credentials.get(forKey: .password) {
             MonaAPI.shared.login(username: username, password: password) { result in
                 switch result {
                 case .success(let loginResponse):
                     UserDefaults.Credentials.set(loginResponse.token, forKey: .token)
-                    DispatchQueue.main.async {
-                        self.showApp()
-                    }
                 case .failure(let httpError):
-                    // Show login error
+                // Show login error
                     log.error(httpError)
+                    
                 }
+            }
+        }
+    }
+    
+    
+    private func handleSuccess() {
+        if  let _ = UserDefaults.Credentials.get(forKey: .username),
+            let _ = UserDefaults.Credentials.get(forKey: .password) {
+            UserDefaults.Credentials.set("", forKey: .token)
+            DispatchQueue.main.async {
+                self.showApp()
             }
         }
         else {

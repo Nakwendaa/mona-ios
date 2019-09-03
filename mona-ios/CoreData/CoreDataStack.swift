@@ -30,14 +30,46 @@ class CoreDataStack {
     
     static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
-        // Create the coordinator and store
+        // Create the coordinator
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
         let url = applicationDocumentsDirectory.appendingPathComponent("Model.sqlite") // type your database name here...
+
+        // Copy the data
+        if !FileManager.default.fileExists(atPath: url.path) {
+            print("Bundle url: \(Bundle.main.bundlePath)")
+            let sourceSqliteURLs = [
+                Bundle.main.url(forResource: "Model", withExtension: "sqlite")!,
+                Bundle.main.url(forResource: "Model", withExtension: "sqlite-shm")!,
+                Bundle.main.url(forResource: "Model", withExtension: "sqlite-wal")!
+            ]
+            
+            let destSqliteURLs = [
+                applicationDocumentsDirectory.appendingPathComponent("Model.sqlite"),
+                applicationDocumentsDirectory.appendingPathComponent("Model.sqlite-shm"),
+                applicationDocumentsDirectory.appendingPathComponent("Model.sqlite-wal"),
+            ]
+            
+            for index in 0..<sourceSqliteURLs.count {
+                do {
+                    try FileManager.default.copyItem(at: sourceSqliteURLs[index], to: destSqliteURLs[index])
+                }
+                catch let error as NSError {
+                    print("Could not copy item. \(error), \(error.userInfo)")
+                }
+            }
+        }
+        
+        // Create the store
         var failureReason = "There was an error creating or loading the application's saved data."
-        let options = [NSMigratePersistentStoresAutomaticallyOption: NSNumber(value: true as Bool), NSInferMappingModelAutomaticallyOption: NSNumber(value: true as Bool)]
+        let options = [
+         NSMigratePersistentStoresAutomaticallyOption: NSNumber(value: true as Bool),
+         NSInferMappingModelAutomaticallyOption: NSNumber(value: true as Bool)
+        ]
         do {
+            // Create the store
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
-        } catch {
+        }
+        catch {
             // Report any error we got.
             var dict = [String: AnyObject]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data" as AnyObject
@@ -50,7 +82,7 @@ class CoreDataStack {
             log.error("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
             abort()
         }
-        
+
         return coordinator
     }()
     

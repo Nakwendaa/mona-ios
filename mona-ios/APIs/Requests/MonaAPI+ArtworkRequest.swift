@@ -56,7 +56,7 @@ extension MonaAPI {
                 return
             }
             
-            log.debug("Image size is \(data.size(unit: .useMB))")
+            //log.debug("Image size is \(data.size(unit: .useMB))")
             body!.append("--\(boundary)\r\n")
             body!.append("Content-Disposition: form-data; name=\"photo\"; filename=\"artwork-\(id).jpg\"\r\n")
             body!.append("Content-Type: image/jpeg\r\n\r\n")

@@ -84,7 +84,15 @@ extension ArtworkDetailsCommentRatingViewController : RatingControlDelegate {
         }
         
         self.artwork.rating = Int16(ratingControl.rating)
+        self.artwork.ratingSent = false
+        do {
+            try AppData.context.save()
+        }
+        catch {
+            log.error("Failed to save context: \(error)")
+        }
         
+        /*
         MonaAPI.shared.artwork(id: Int(self.artwork.id), rating: Int(self.artwork.rating), comment: nil, photo: nil) { (result) in
             switch result {
             case .success(_):
@@ -103,6 +111,7 @@ extension ArtworkDetailsCommentRatingViewController : RatingControlDelegate {
                 log.error(userArtworkError.localizedDescription)
             }
         }
+        */
     }
 }
 
@@ -130,7 +139,16 @@ extension ArtworkDetailsCommentRatingViewController : UITextViewDelegate {
         }
         
         artwork.comment = textView.text
+        artwork.commentSent = false
         
+        do {
+            try AppData.context.save()
+        }
+        catch {
+            log.error("Failed to save context: \(error)")
+        }
+        
+        /*
         MonaAPI.shared.artwork(id: Int(self.artwork.id), rating: nil, comment: self.artwork.comment, photo: nil) { (result) in
             switch result {
             case .success(_):
@@ -149,6 +167,7 @@ extension ArtworkDetailsCommentRatingViewController : UITextViewDelegate {
                 log.error(userArtworkError.localizedDescription)
             }
         }
+        */
         
     }
 }

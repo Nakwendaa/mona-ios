@@ -78,6 +78,7 @@ class ArtworkDetailsRatingViewController: UIViewController {
                 return
             }
             
+            /*
             MonaAPI.shared.artwork(id: Int(self.artwork.id), rating: Int(self.artwork.rating), comment: nil, photo: nil) { (result) in
                 switch result {
                 case .success(_):
@@ -95,6 +96,7 @@ class ArtworkDetailsRatingViewController: UIViewController {
                     log.error(userArtworkError.localizedDescription)
                 }   
             }
+            */
             
             performSegue(withIdentifier: Segues.showArtworkDetailsCommentViewController, sender: self)
         }

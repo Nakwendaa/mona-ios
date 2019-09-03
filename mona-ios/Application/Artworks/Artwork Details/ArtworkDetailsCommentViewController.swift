@@ -63,6 +63,7 @@ class ArtworkDetailsCommentViewController: UIViewController {
                 log.error("Failed to save context: \(error)")
             }
             
+            /*
             MonaAPI.shared.artwork(id: Int(artwork.id), rating: nil, comment: artwork.comment, photo: nil) { (result) in
                 switch result {
                 case .success(_):
@@ -80,7 +81,7 @@ class ArtworkDetailsCommentViewController: UIViewController {
                     log.error(userArtworkError.localizedDescription)
                 }
             }
-            
+            */
         }
         
         dismiss(animated: true, completion: nil)

@@ -1088,7 +1088,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Universite de Montreal 2 - Normal" translatesAutoresizingMaskIntoConstraints="NO" id="Ora-ud-z1N">
-                                <rect key="frame" x="47" y="80" width="281.00000000000023" height="281.5"/>
+                                <rect key="frame" x="47" y="80" width="281" height="281.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ora-ud-z1N" secondAttribute="height" multiplier="1:1" id="SOa-n7-XmH"/>
                                 </constraints>

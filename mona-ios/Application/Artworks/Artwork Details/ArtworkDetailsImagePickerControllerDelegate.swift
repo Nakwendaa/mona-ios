@@ -54,7 +54,7 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
                                         self.artwork.isCollected = true
                                         self.artwork.isTargeted = false
                                         
-
+                                        /*
                                         MonaAPI.shared.artwork(id: Int(self.artwork.id), rating: nil, comment: nil, photo: originalImage) { result in
                                             switch result {
                                             case .success(_):
@@ -72,6 +72,7 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
                                                 log.error(userArtworkError.localizedDescription)
                                             }
                                         }
+                                        */
                                         do {
                                             try AppData.context.save()
                                         }

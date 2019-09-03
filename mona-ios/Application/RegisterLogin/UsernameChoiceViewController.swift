@@ -75,7 +75,9 @@ class UsernameChoiceViewController: UIViewController {
                     self.showApp()
                 }
             case .failure(let httpError):
-                UIAlertController.presentMessage(from: self, title: Strings.error, message: httpError.errorDescription ?? "No error description", okCompletion: nil, presentCompletion: nil)
+                DispatchQueue.main.async {
+                    UIAlertController.presentMessage(from: self, title: Strings.error, message: httpError.errorDescription ?? "No error description", okCompletion: nil, presentCompletion: nil)
+                }
             }
         }
     }

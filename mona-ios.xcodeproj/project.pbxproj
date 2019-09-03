@@ -223,6 +223,9 @@
 		B4C75B6E22B886B200D73C7D /* UIViewLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C75B6D22B886B200D73C7D /* UIViewLoading.swift */; };
 		B4C8C9CE22A9DEEE00555CDC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8C9CD22A9DEEE00555CDC /* SearchViewController.swift */; };
 		B4D0637F229462EF006E280D /* ArtworksTableViewDataSource.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4D06381229462EF006E280D /* ArtworksTableViewDataSource.strings */; };
+		B4F3CC2D231D8FD800418799 /* Model.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B4F3CC2A231D88B300418799 /* Model.sqlite */; };
+		B4F3CC2E231D8FD800418799 /* Model.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = B4F3CC2B231D88B400418799 /* Model.sqlite-shm */; };
+		B4F3CC2F231D8FD800418799 /* Model.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = B4F3CC2C231D88B400418799 /* Model.sqlite-wal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -500,6 +503,9 @@
 		B4C8C9CD22A9DEEE00555CDC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B4D06380229462EF006E280D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ArtworksTableViewDataSource.strings; sourceTree = "<group>"; };
 		B4D06382229462F0006E280D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ArtworksTableViewDataSource.strings; sourceTree = "<group>"; };
+		B4F3CC2A231D88B300418799 /* Model.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Model.sqlite; sourceTree = "<group>"; };
+		B4F3CC2B231D88B400418799 /* Model.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Model.sqlite-shm"; sourceTree = "<group>"; };
+		B4F3CC2C231D88B400418799 /* Model.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Model.sqlite-wal"; sourceTree = "<group>"; };
 		DEE08286C27FB802BF9DAE6C /* Pods-mona-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mona-ios.release.xcconfig"; path = "Target Support Files/Pods-mona-ios/Pods-mona-ios.release.xcconfig"; sourceTree = "<group>"; };
 		DF044398E06932CCC962E88D /* Pods-mona-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mona-iosTests.debug.xcconfig"; path = "Target Support Files/Pods-mona-iosTests/Pods-mona-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2C60F1A3FFED457A4A8E2E /* Pods-mona-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mona-iosTests.release.xcconfig"; path = "Target Support Files/Pods-mona-iosTests/Pods-mona-iosTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -619,6 +625,9 @@
 			isa = PBXGroup;
 			children = (
 				B42AA66F22A3319400D53E87 /* Model.xcdatamodeld */,
+				B4F3CC2A231D88B300418799 /* Model.sqlite */,
+				B4F3CC2B231D88B400418799 /* Model.sqlite-shm */,
+				B4F3CC2C231D88B400418799 /* Model.sqlite-wal */,
 				B487533E22A3264A00EE6EE6 /* CoreDataStack.swift */,
 				B487538022A3266000EE6EE6 /* Protocols */,
 				B4795CA2228D1480007688FA /* Seed */,
@@ -1279,6 +1288,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4F3CC2D231D8FD800418799 /* Model.sqlite in Resources */,
+				B4F3CC2E231D8FD800418799 /* Model.sqlite-shm in Resources */,
+				B4F3CC2F231D8FD800418799 /* Model.sqlite-wal in Resources */,
 				B48ABA412298AD2C00E8E92F /* ArtworkDetailsCommentRatingViewController.strings in Resources */,
 				B48858A22289E8CB0011360D /* DailyArtworkMapViewController.strings in Resources */,
 				B4AD5E5F22908ACD0064A876 /* FilterPopoverViewController.xib in Resources */,
