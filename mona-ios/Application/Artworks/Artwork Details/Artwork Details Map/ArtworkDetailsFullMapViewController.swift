@@ -32,11 +32,12 @@ class ArtworkDetailsFullMapViewController: SearchViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocationManager()
-        setupMapView(with: artwork)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupMapView(with: artwork)
         
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse, .authorizedAlways:
@@ -50,9 +51,10 @@ class ArtworkDetailsFullMapViewController: SearchViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
+        freeUpMapView()
+        
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse, .authorizedAlways:
-            mapView.showsUserLocation = false
             locationManager.stopUpdatingLocation()
         default:
             break
@@ -70,6 +72,12 @@ class ArtworkDetailsFullMapViewController: SearchViewController {
         centerOnLocation(initialLocation, regionRadius: 30000)
         // Add artwork annotation to the map
         mapView.addAnnotation(ArtworkDetailsAnnotation(artwork: artwork))
+    }
+    
+    private func freeUpMapView() {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.delegate = nil
+        mapView.showsUserLocation = false
     }
     
     private func setupLocationManager() {

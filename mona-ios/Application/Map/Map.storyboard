@@ -26,6 +26,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGc-5k-xtG">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                        <color key="backgroundColor" red="0.98039215690000003" green="0.85098039219999999" blue="0.0039215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="Lw8-2K-1bK"/>
                                             <constraint firstAttribute="height" constant="44" id="u3q-Xm-41c"/>
@@ -62,6 +63,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="8Fe-i1-kFL"/>
                     <connections>
+                        <outlet property="filterButton" destination="OGc-5k-xtG" id="lVO-tm-3TT"/>
                         <outlet property="localizeUserButton" destination="7dg-7P-lgS" id="WXK-1X-0Vg"/>
                         <outlet property="mapView" destination="8Hp-1G-eSI" id="0Jo-MZ-YZ8"/>
                         <segue destination="cax-ej-HFQ" kind="show" identifier="showArtworkDetailsViewController" id="XFW-fY-JdP"/>
@@ -110,7 +112,7 @@
     <resources>
         <image name="Filter Button" width="24" height="24"/>
         <image name="Localize User Default" width="1000" height="1000"/>
-        <image name="Map Tabbar Default Image" width="25" height="25"/>
+        <image name="Map Tabbar Default Image" width="25" height="24"/>
         <image name="Map Tabbar Selected Image" width="25" height="25"/>
     </resources>
 </document>

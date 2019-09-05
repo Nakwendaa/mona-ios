@@ -29,13 +29,20 @@ class BadgeDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set the badge name in the view.
         badgeNameLabel.text = badge.text
         
+        // Set the image
+        var bundlePath : String!
         if badge.isCollected {
-            badgeImageView.image = UIImage(named: badge.collectedImageName)
+            bundlePath = Bundle.main.path(forResource: badge.collectedImageName, ofType: "png")
         }
         else {
-            badgeImageView.image = UIImage(named: badge.notCollectedImageName)
+            bundlePath = Bundle.main.path(forResource: badge.notCollectedImageName, ofType: "png")
+        }
+        
+        DispatchQueue.main.async {
+            self.badgeImageView.image = UIImage(contentsOfFile: bundlePath)
         }
         
         if badge.isCollected {

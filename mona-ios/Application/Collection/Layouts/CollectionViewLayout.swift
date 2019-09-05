@@ -28,7 +28,7 @@ class CollectionViewLayout: UICollectionViewLayout {
         //  - Store attributes in the cachedAttributes array.
         //  - Combine contentBounds with attributes.frame.
         let count = collectionView.numberOfItems(inSection: 0)
-        log.debug("NumberOfItems in collectionView in section 0: \(count)")
+        //log.debug("NumberOfItems in collectionView in section 0: \(count)")
         var currentIndex = 0
         let nombre = 4
         var lastFrame: CGRect = .zero

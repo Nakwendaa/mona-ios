@@ -40,6 +40,7 @@ class MapViewController: SearchViewController {
     
     //MARK: - UI Properties
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var localizeUserButton: UIButton!
     
     //MARK: - Overriden methods
@@ -54,6 +55,10 @@ class MapViewController: SearchViewController {
         centerOnLocation(initialLocation, regionRadius: 30000)
         mapView.addAnnotations(artworks.map{ ArtworkAnnotation(artwork: $0)})
         setTransparentNavigationBar(tintColor: .black)
+        filterButton.layer.cornerRadius = 5.0
+        filterButton.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        filterButton.layer.shadowRadius = 1
+        filterButton.layer.shadowOpacity = 0.25
     }
     
     //MARK: - Overriden methods

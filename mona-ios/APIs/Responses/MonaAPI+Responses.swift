@@ -24,7 +24,7 @@ extension MonaAPI {
             return {
                 data, response, error in
                 if data != nil {
-                    log.debug(String(decoding: data!, as: UTF8.self))
+                    //log.debug(String(decoding: data!, as: UTF8.self))
                 }
                 if error != nil {
                     completion?(self.handle(.failure(error!)))
@@ -110,7 +110,7 @@ extension MonaAPI {
             return {
                 data, response, error in
                 if data != nil {
-                    log.debug(String(decoding: data!, as: UTF8.self))
+                    //log.debug(String(decoding: data!, as: UTF8.self))
                 }
                 if error != nil {
                     completion?(self.handle(.failure(error!)))

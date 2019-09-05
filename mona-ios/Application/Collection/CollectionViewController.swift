@@ -82,7 +82,7 @@ final class CollectionViewController: SearchViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         heightHeaderCollectionView = collectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).first?.bounds.height ?? 0
-        print(heightHeaderCollectionView)
+        //print(heightHeaderCollectionView)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

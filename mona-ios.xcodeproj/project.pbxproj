@@ -223,6 +223,54 @@
 		B4C75B6E22B886B200D73C7D /* UIViewLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C75B6D22B886B200D73C7D /* UIViewLoading.swift */; };
 		B4C8C9CE22A9DEEE00555CDC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8C9CD22A9DEEE00555CDC /* SearchViewController.swift */; };
 		B4D0637F229462EF006E280D /* ArtworksTableViewDataSource.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4D06381229462EF006E280D /* ArtworksTableViewDataSource.strings */; };
+		B4DA8AFD23200EDE00E0E147 /* 30.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8AF523200EDD00E0E147 /* 30.png */; };
+		B4DA8AFE23200EDE00E0E147 /* 20.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8AF623200EDD00E0E147 /* 20.png */; };
+		B4DA8AFF23200EDE00E0E147 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8AF723200EDD00E0E147 /* 10.png */; };
+		B4DA8B0023200EDE00E0E147 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8AF823200EDD00E0E147 /* 8.png */; };
+		B4DA8B0123200EDE00E0E147 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8AF923200EDD00E0E147 /* 5.png */; };
+		B4DA8B0223200EDE00E0E147 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8AFA23200EDD00E0E147 /* 3.png */; };
+		B4DA8B0323200EDE00E0E147 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8AFB23200EDD00E0E147 /* 1.png */; };
+		B4DA8B0423200EDE00E0E147 /* 25.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8AFC23200EDE00E0E147 /* 25.png */; };
+		B4DA8B4C23200EFD00E0E147 /* Verdun - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B1123200EFD00E0E147 /* Verdun - Normal.png */; };
+		B4DA8B4D23200EFD00E0E147 /* Verdun - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B1223200EFD00E0E147 /* Verdun - Gris.png */; };
+		B4DA8B5023200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve - Normal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B1723200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve - Normal.pdf */; };
+		B4DA8B5123200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve - Gris.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B1823200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve - Gris.pdf */; };
+		B4DA8B5223200EFD00E0E147 /* Ahuntsic-Cartierville - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B1A23200EFD00E0E147 /* Ahuntsic-Cartierville - Gris.png */; };
+		B4DA8B5323200EFD00E0E147 /* Ahuntsic-Cartierville - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B1B23200EFD00E0E147 /* Ahuntsic-Cartierville - Normal.png */; };
+		B4DA8B5623200EFD00E0E147 /* Outremont - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B2023200EFD00E0E147 /* Outremont - Gris.png */; };
+		B4DA8B5723200EFD00E0E147 /* Outremont - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B2223200EFD00E0E147 /* Outremont - Normal.png */; };
+		B4DA8B5A23200EFD00E0E147 /* Le Sud-Ouest - Normal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B2A23200EFD00E0E147 /* Le Sud-Ouest - Normal.pdf */; };
+		B4DA8B5B23200EFD00E0E147 /* Le Sud-Ouest - Gris.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B2C23200EFD00E0E147 /* Le Sud-Ouest - Gris.pdf */; };
+		B4DA8B5E23200EFD00E0E147 /* Cote-des-Neiges - Normal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B3523200EFD00E0E147 /* Cote-des-Neiges - Normal.pdf */; };
+		B4DA8B5F23200EFD00E0E147 /* Cote-des-Neiges - Gris.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B3723200EFD00E0E147 /* Cote-des-Neiges - Gris.pdf */; };
+		B4DA8B6023200EFD00E0E147 /* Ville-Marie - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B3923200EFD00E0E147 /* Ville-Marie - Normal.png */; };
+		B4DA8B6123200EFD00E0E147 /* Ville-Marie - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B3A23200EFD00E0E147 /* Ville-Marie - Gris.png */; };
+		B4DA8B6223200EFD00E0E147 /* Le Plateau Mont-Royal - Gris.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B3E23200EFD00E0E147 /* Le Plateau Mont-Royal - Gris.pdf */; };
+		B4DA8B6323200EFD00E0E147 /* Le Plateau Mont-Royal - Normal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B4023200EFD00E0E147 /* Le Plateau Mont-Royal - Normal.pdf */; };
+		B4DA8B6423200EFD00E0E147 /* Lachine - Normal.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B4323200EFD00E0E147 /* Lachine - Normal.pdf */; };
+		B4DA8B6523200EFD00E0E147 /* Lachine - Gris.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B4423200EFD00E0E147 /* Lachine - Gris.pdf */; };
+		B4DA8B702320115200E0E147 /* Lachine - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B6E2320115200E0E147 /* Lachine - Normal.png */; };
+		B4DA8B712320115200E0E147 /* Lachine - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B6F2320115200E0E147 /* Lachine - Gris.png */; };
+		B4DA8B742320115D00E0E147 /* Le Plateau Mont-Royal - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B722320115D00E0E147 /* Le Plateau Mont-Royal - Normal.png */; };
+		B4DA8B752320115D00E0E147 /* Le Plateau Mont-Royal - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B732320115D00E0E147 /* Le Plateau Mont-Royal - Gris.png */; };
+		B4DA8B782320116600E0E147 /* Cote-des-Neiges - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B762320116600E0E147 /* Cote-des-Neiges - Gris.png */; };
+		B4DA8B792320116600E0E147 /* Cote-des-Neiges - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B772320116600E0E147 /* Cote-des-Neiges - Normal.png */; };
+		B4DA8B7C2320117200E0E147 /* Le Sud-Ouest - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B7A2320117200E0E147 /* Le Sud-Ouest - Gris.png */; };
+		B4DA8B7D2320117200E0E147 /* Le Sud-Ouest - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B7B2320117200E0E147 /* Le Sud-Ouest - Normal.png */; };
+		B4DA8B842320119B00E0E147 /* Mercier-Hochelaga-Maisonneuve - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B822320119A00E0E147 /* Mercier-Hochelaga-Maisonneuve - Gris.png */; };
+		B4DA8B852320119B00E0E147 /* Mercier-Hochelaga-Maisonneuve - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B832320119A00E0E147 /* Mercier-Hochelaga-Maisonneuve - Normal.png */; };
+		B4DA8B882320129C00E0E147 /* LaSalle - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B862320129C00E0E147 /* LaSalle - Gris.png */; };
+		B4DA8B892320129C00E0E147 /* LaSalle - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B872320129C00E0E147 /* LaSalle - Normal.png */; };
+		B4DA8B8C232012E800E0E147 /* Villeray-Saint-Michel-Parc-Extension - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B8A232012E800E0E147 /* Villeray-Saint-Michel-Parc-Extension - Normal.png */; };
+		B4DA8B8D232012E800E0E147 /* Villeray-Saint-Michel-Parc-Extension - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B8B232012E800E0E147 /* Villeray-Saint-Michel-Parc-Extension - Gris.png */; };
+		B4DA8B902320135B00E0E147 /* Universite de Montreal 2 - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B8E2320135B00E0E147 /* Universite de Montreal 2 - Gris.png */; };
+		B4DA8B912320135B00E0E147 /* Universite de Montreal 2 - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B8F2320135B00E0E147 /* Universite de Montreal 2 - Normal.png */; };
+		B4DA8B982320138100E0E147 /* Universite de Montreal 1 - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B942320138100E0E147 /* Universite de Montreal 1 - Gris.png */; };
+		B4DA8B992320138100E0E147 /* Universite de Montreal 1 - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B952320138100E0E147 /* Universite de Montreal 1 - Normal.png */; };
+		B4DA8B9C232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B9A232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Gris.png */; };
+		B4DA8B9D232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B9B232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Normal.png */; };
+		B4DA8B9F23217B7A00E0E147 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA8B9E23217B7A00E0E147 /* UIApplication+Extension.swift */; };
+		B4DA8BA223217D0E00E0E147 /* AppDelegate.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8BA423217D0E00E0E147 /* AppDelegate.strings */; };
 		B4F3CC2D231D8FD800418799 /* Model.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B4F3CC2A231D88B300418799 /* Model.sqlite */; };
 		B4F3CC2E231D8FD800418799 /* Model.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = B4F3CC2B231D88B400418799 /* Model.sqlite-shm */; };
 		B4F3CC2F231D8FD800418799 /* Model.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = B4F3CC2C231D88B400418799 /* Model.sqlite-wal */; };
@@ -503,6 +551,55 @@
 		B4C8C9CD22A9DEEE00555CDC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B4D06380229462EF006E280D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ArtworksTableViewDataSource.strings; sourceTree = "<group>"; };
 		B4D06382229462F0006E280D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/ArtworksTableViewDataSource.strings; sourceTree = "<group>"; };
+		B4DA8AF523200EDD00E0E147 /* 30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 30.png; path = "mona-ios/Images/Bagdes/Numbers/30.png"; sourceTree = SOURCE_ROOT; };
+		B4DA8AF623200EDD00E0E147 /* 20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 20.png; path = "mona-ios/Images/Bagdes/Numbers/20.png"; sourceTree = SOURCE_ROOT; };
+		B4DA8AF723200EDD00E0E147 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 10.png; path = "mona-ios/Images/Bagdes/Numbers/10.png"; sourceTree = SOURCE_ROOT; };
+		B4DA8AF823200EDD00E0E147 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 8.png; path = "mona-ios/Images/Bagdes/Numbers/8.png"; sourceTree = SOURCE_ROOT; };
+		B4DA8AF923200EDD00E0E147 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 5.png; path = "mona-ios/Images/Bagdes/Numbers/5.png"; sourceTree = SOURCE_ROOT; };
+		B4DA8AFA23200EDD00E0E147 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = "mona-ios/Images/Bagdes/Numbers/3.png"; sourceTree = SOURCE_ROOT; };
+		B4DA8AFB23200EDD00E0E147 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = "mona-ios/Images/Bagdes/Numbers/1.png"; sourceTree = SOURCE_ROOT; };
+		B4DA8AFC23200EDE00E0E147 /* 25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 25.png; path = "mona-ios/Images/Bagdes/Numbers/25.png"; sourceTree = SOURCE_ROOT; };
+		B4DA8B1123200EFD00E0E147 /* Verdun - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Verdun - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B1223200EFD00E0E147 /* Verdun - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Verdun - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B1723200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve - Normal.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Mercier-Hochelaga-Maisonneuve - Normal.pdf"; sourceTree = "<group>"; };
+		B4DA8B1823200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve - Gris.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Mercier-Hochelaga-Maisonneuve - Gris.pdf"; sourceTree = "<group>"; };
+		B4DA8B1A23200EFD00E0E147 /* Ahuntsic-Cartierville - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ahuntsic-Cartierville - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B1B23200EFD00E0E147 /* Ahuntsic-Cartierville - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ahuntsic-Cartierville - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B2023200EFD00E0E147 /* Outremont - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Outremont - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B2223200EFD00E0E147 /* Outremont - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Outremont - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B2A23200EFD00E0E147 /* Le Sud-Ouest - Normal.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Le Sud-Ouest - Normal.pdf"; sourceTree = "<group>"; };
+		B4DA8B2C23200EFD00E0E147 /* Le Sud-Ouest - Gris.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Le Sud-Ouest - Gris.pdf"; sourceTree = "<group>"; };
+		B4DA8B3523200EFD00E0E147 /* Cote-des-Neiges - Normal.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Cote-des-Neiges - Normal.pdf"; sourceTree = "<group>"; };
+		B4DA8B3723200EFD00E0E147 /* Cote-des-Neiges - Gris.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Cote-des-Neiges - Gris.pdf"; sourceTree = "<group>"; };
+		B4DA8B3923200EFD00E0E147 /* Ville-Marie - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ville-Marie - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B3A23200EFD00E0E147 /* Ville-Marie - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ville-Marie - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B3E23200EFD00E0E147 /* Le Plateau Mont-Royal - Gris.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Le Plateau Mont-Royal - Gris.pdf"; sourceTree = "<group>"; };
+		B4DA8B4023200EFD00E0E147 /* Le Plateau Mont-Royal - Normal.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Le Plateau Mont-Royal - Normal.pdf"; sourceTree = "<group>"; };
+		B4DA8B4323200EFD00E0E147 /* Lachine - Normal.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Lachine - Normal.pdf"; sourceTree = "<group>"; };
+		B4DA8B4423200EFD00E0E147 /* Lachine - Gris.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Lachine - Gris.pdf"; sourceTree = "<group>"; };
+		B4DA8B6E2320115200E0E147 /* Lachine - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lachine - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B6F2320115200E0E147 /* Lachine - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lachine - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B722320115D00E0E147 /* Le Plateau Mont-Royal - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Le Plateau Mont-Royal - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B732320115D00E0E147 /* Le Plateau Mont-Royal - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Le Plateau Mont-Royal - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B762320116600E0E147 /* Cote-des-Neiges - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cote-des-Neiges - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B772320116600E0E147 /* Cote-des-Neiges - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cote-des-Neiges - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B7A2320117200E0E147 /* Le Sud-Ouest - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Le Sud-Ouest - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B7B2320117200E0E147 /* Le Sud-Ouest - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Le Sud-Ouest - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B822320119A00E0E147 /* Mercier-Hochelaga-Maisonneuve - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mercier-Hochelaga-Maisonneuve - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B832320119A00E0E147 /* Mercier-Hochelaga-Maisonneuve - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mercier-Hochelaga-Maisonneuve - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B862320129C00E0E147 /* LaSalle - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaSalle - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B872320129C00E0E147 /* LaSalle - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaSalle - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B8A232012E800E0E147 /* Villeray-Saint-Michel-Parc-Extension - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Villeray-Saint-Michel-Parc-Extension - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B8B232012E800E0E147 /* Villeray-Saint-Michel-Parc-Extension - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Villeray-Saint-Michel-Parc-Extension - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B8E2320135B00E0E147 /* Universite de Montreal 2 - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Universite de Montreal 2 - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B8F2320135B00E0E147 /* Universite de Montreal 2 - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Universite de Montreal 2 - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B942320138100E0E147 /* Universite de Montreal 1 - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Universite de Montreal 1 - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B952320138100E0E147 /* Universite de Montreal 1 - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Universite de Montreal 1 - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B9A232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Riviere-des-Prairies-Pointe-aux-Trembles - Gris.png"; sourceTree = "<group>"; };
+		B4DA8B9B232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Riviere-des-Prairies-Pointe-aux-Trembles - Normal.png"; sourceTree = "<group>"; };
+		B4DA8B9E23217B7A00E0E147 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		B4DA8BA323217D0E00E0E147 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppDelegate.strings; sourceTree = "<group>"; };
+		B4DA8BA523217D1200E0E147 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AppDelegate.strings; sourceTree = "<group>"; };
 		B4F3CC2A231D88B300418799 /* Model.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Model.sqlite; sourceTree = "<group>"; };
 		B4F3CC2B231D88B400418799 /* Model.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Model.sqlite-shm"; sourceTree = "<group>"; };
 		B4F3CC2C231D88B400418799 /* Model.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Model.sqlite-wal"; sourceTree = "<group>"; };
@@ -592,11 +689,13 @@
 				B48394F3229609CC0003065B /* Info.plist */,
 				B48394F1229609400003065B /* InfoPlist.strings */,
 				B487542622A329B400EE6EE6 /* AppDelegate.swift */,
+				B4DA8BA423217D0E00E0E147 /* AppDelegate.strings */,
 				B407CA3B2285C55D00D02ABC /* Assets.xcassets */,
 				B48753FA22A328B300EE6EE6 /* APIs */,
 				B48858752289E6230011360D /* Application */,
 				B407CA682285C79900D02ABC /* CoreData */,
 				B488586922890D460011360D /* Extensions */,
+				B4DA89EF2320090500E0E147 /* Images */,
 				B4B0E154228A8459002CE2BF /* Preferences */,
 				B4795CA5228D8C73007688FA /* Utils */,
 			);
@@ -925,6 +1024,7 @@
 				B487531A22A3262600EE6EE6 /* NSDate+Extension.swift */,
 				B487531822A3262600EE6EE6 /* String+Extension.swift */,
 				B487532422A3262700EE6EE6 /* UIAlertController+Extension.swift */,
+				B4DA8B9E23217B7A00E0E147 /* UIApplication+Extension.swift */,
 				B4BC300422BC4BA6000F8303 /* UIColor+Extension.swift */,
 				B487532322A3262700EE6EE6 /* UIDevice+Extension.swift */,
 				B487531B22A3262600EE6EE6 /* UIImage+Extension.swift */,
@@ -1129,6 +1229,197 @@
 			path = GeneralTableViewController;
 			sourceTree = "<group>";
 		};
+		B4DA89EF2320090500E0E147 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA89F02320095400E0E147 /* Badges */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		B4DA89F02320095400E0E147 /* Badges */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B0F23200EFD00E0E147 /* Districts */,
+				B4DA89F12320095400E0E147 /* Numbers */,
+			);
+			name = Badges;
+			path = "mona-ios/Assets.xcassets/Images/Badges";
+			sourceTree = SOURCE_ROOT;
+		};
+		B4DA89F12320095400E0E147 /* Numbers */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8AFB23200EDD00E0E147 /* 1.png */,
+				B4DA8AFA23200EDD00E0E147 /* 3.png */,
+				B4DA8AF923200EDD00E0E147 /* 5.png */,
+				B4DA8AF823200EDD00E0E147 /* 8.png */,
+				B4DA8AF723200EDD00E0E147 /* 10.png */,
+				B4DA8AF623200EDD00E0E147 /* 20.png */,
+				B4DA8AFC23200EDE00E0E147 /* 25.png */,
+				B4DA8AF523200EDD00E0E147 /* 30.png */,
+			);
+			path = Numbers;
+			sourceTree = "<group>";
+		};
+		B4DA8B0F23200EFD00E0E147 /* Districts */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B1923200EFD00E0E147 /* Ahuntsic-Cartierville */,
+				B4DA8B3323200EFD00E0E147 /* Cote-des-Neiges */,
+				B4DA8B4223200EFD00E0E147 /* Lachine */,
+				B4DA8B1323200EFD00E0E147 /* LaSalle */,
+				B4DA8B2923200EFD00E0E147 /* Le Sud-Ouest */,
+				B4DA8B3D23200EFD00E0E147 /* Le Plateau Mont-Royal */,
+				B4DA8B1623200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve */,
+				B4DA8B1F23200EFD00E0E147 /* Outremont */,
+				B4DA8B2E23200EFD00E0E147 /* Rivière-des-Prairies-Pointe-aux-Trembles */,
+				B4DA8B2423200EFD00E0E147 /* Université de Montréal 1 */,
+				B4DA8B4723200EFD00E0E147 /* Université de Montréal 2 */,
+				B4DA8B1023200EFD00E0E147 /* Verdun */,
+				B4DA8B3823200EFD00E0E147 /* Ville-Marie */,
+				B4DA8B1C23200EFD00E0E147 /* Villeray-Saint-Michel-Parc-Extension */,
+			);
+			name = Districts;
+			path = "mona-ios/Images/Bagdes/Districts";
+			sourceTree = SOURCE_ROOT;
+		};
+		B4DA8B1023200EFD00E0E147 /* Verdun */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B1123200EFD00E0E147 /* Verdun - Normal.png */,
+				B4DA8B1223200EFD00E0E147 /* Verdun - Gris.png */,
+			);
+			path = Verdun;
+			sourceTree = "<group>";
+		};
+		B4DA8B1323200EFD00E0E147 /* LaSalle */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B862320129C00E0E147 /* LaSalle - Gris.png */,
+				B4DA8B872320129C00E0E147 /* LaSalle - Normal.png */,
+			);
+			path = LaSalle;
+			sourceTree = "<group>";
+		};
+		B4DA8B1623200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B822320119A00E0E147 /* Mercier-Hochelaga-Maisonneuve - Gris.png */,
+				B4DA8B832320119A00E0E147 /* Mercier-Hochelaga-Maisonneuve - Normal.png */,
+				B4DA8B1723200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve - Normal.pdf */,
+				B4DA8B1823200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve - Gris.pdf */,
+			);
+			path = "Mercier-Hochelaga-Maisonneuve";
+			sourceTree = "<group>";
+		};
+		B4DA8B1923200EFD00E0E147 /* Ahuntsic-Cartierville */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B1A23200EFD00E0E147 /* Ahuntsic-Cartierville - Gris.png */,
+				B4DA8B1B23200EFD00E0E147 /* Ahuntsic-Cartierville - Normal.png */,
+			);
+			path = "Ahuntsic-Cartierville";
+			sourceTree = "<group>";
+		};
+		B4DA8B1C23200EFD00E0E147 /* Villeray-Saint-Michel-Parc-Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B8B232012E800E0E147 /* Villeray-Saint-Michel-Parc-Extension - Gris.png */,
+				B4DA8B8A232012E800E0E147 /* Villeray-Saint-Michel-Parc-Extension - Normal.png */,
+			);
+			path = "Villeray-Saint-Michel-Parc-Extension";
+			sourceTree = "<group>";
+		};
+		B4DA8B1F23200EFD00E0E147 /* Outremont */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B2023200EFD00E0E147 /* Outremont - Gris.png */,
+				B4DA8B2223200EFD00E0E147 /* Outremont - Normal.png */,
+			);
+			path = Outremont;
+			sourceTree = "<group>";
+		};
+		B4DA8B2423200EFD00E0E147 /* Université de Montréal 1 */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B942320138100E0E147 /* Universite de Montreal 1 - Gris.png */,
+				B4DA8B952320138100E0E147 /* Universite de Montreal 1 - Normal.png */,
+			);
+			path = "Université de Montréal 1";
+			sourceTree = "<group>";
+		};
+		B4DA8B2923200EFD00E0E147 /* Le Sud-Ouest */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B7A2320117200E0E147 /* Le Sud-Ouest - Gris.png */,
+				B4DA8B7B2320117200E0E147 /* Le Sud-Ouest - Normal.png */,
+				B4DA8B2A23200EFD00E0E147 /* Le Sud-Ouest - Normal.pdf */,
+				B4DA8B2C23200EFD00E0E147 /* Le Sud-Ouest - Gris.pdf */,
+			);
+			path = "Le Sud-Ouest";
+			sourceTree = "<group>";
+		};
+		B4DA8B2E23200EFD00E0E147 /* Rivière-des-Prairies-Pointe-aux-Trembles */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B9A232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Gris.png */,
+				B4DA8B9B232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Normal.png */,
+			);
+			path = "Rivière-des-Prairies-Pointe-aux-Trembles";
+			sourceTree = "<group>";
+		};
+		B4DA8B3323200EFD00E0E147 /* Cote-des-Neiges */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B762320116600E0E147 /* Cote-des-Neiges - Gris.png */,
+				B4DA8B772320116600E0E147 /* Cote-des-Neiges - Normal.png */,
+				B4DA8B3523200EFD00E0E147 /* Cote-des-Neiges - Normal.pdf */,
+				B4DA8B3723200EFD00E0E147 /* Cote-des-Neiges - Gris.pdf */,
+			);
+			path = "Cote-des-Neiges";
+			sourceTree = "<group>";
+		};
+		B4DA8B3823200EFD00E0E147 /* Ville-Marie */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B3923200EFD00E0E147 /* Ville-Marie - Normal.png */,
+				B4DA8B3A23200EFD00E0E147 /* Ville-Marie - Gris.png */,
+			);
+			path = "Ville-Marie";
+			sourceTree = "<group>";
+		};
+		B4DA8B3D23200EFD00E0E147 /* Le Plateau Mont-Royal */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B732320115D00E0E147 /* Le Plateau Mont-Royal - Gris.png */,
+				B4DA8B722320115D00E0E147 /* Le Plateau Mont-Royal - Normal.png */,
+				B4DA8B3E23200EFD00E0E147 /* Le Plateau Mont-Royal - Gris.pdf */,
+				B4DA8B4023200EFD00E0E147 /* Le Plateau Mont-Royal - Normal.pdf */,
+			);
+			path = "Le Plateau Mont-Royal";
+			sourceTree = "<group>";
+		};
+		B4DA8B4223200EFD00E0E147 /* Lachine */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B6F2320115200E0E147 /* Lachine - Gris.png */,
+				B4DA8B6E2320115200E0E147 /* Lachine - Normal.png */,
+				B4DA8B4323200EFD00E0E147 /* Lachine - Normal.pdf */,
+				B4DA8B4423200EFD00E0E147 /* Lachine - Gris.pdf */,
+			);
+			path = Lachine;
+			sourceTree = "<group>";
+		};
+		B4DA8B4723200EFD00E0E147 /* Université de Montréal 2 */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8B8E2320135B00E0E147 /* Universite de Montreal 2 - Gris.png */,
+				B4DA8B8F2320135B00E0E147 /* Universite de Montreal 2 - Normal.png */,
+			);
+			path = "Université de Montréal 2";
+			sourceTree = "<group>";
+		};
 		B4E73C39228FCE6700350FC1 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1295,56 +1586,103 @@
 				B48858A22289E8CB0011360D /* DailyArtworkMapViewController.strings in Resources */,
 				B4AD5E5F22908ACD0064A876 /* FilterPopoverViewController.xib in Resources */,
 				B48858702289D8970011360D /* LaunchScreen.storyboard in Resources */,
+				B4DA8AFE23200EDE00E0E147 /* 20.png in Resources */,
 				B48858AC2289F29A0011360D /* Tabbar.strings in Resources */,
+				B4DA8B6423200EFD00E0E147 /* Lachine - Normal.pdf in Resources */,
 				B48394DE2295C9030003065B /* ArtworkDetailsCommentViewController.strings in Resources */,
 				B49CA254229014D700FBA757 /* MainTableViewCell.xib in Resources */,
+				B4DA8B9D232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Normal.png in Resources */,
+				B4DA8B5B23200EFD00E0E147 /* Le Sud-Ouest - Gris.pdf in Resources */,
 				B4A3D64122BD4299006CD2FE /* TargetedArtworksTableViewController.strings in Resources */,
 				B48394FD22961DBA0003065B /* ArtworksTableViewController.strings in Resources */,
 				B48753AF22A3273700EE6EE6 /* MapViewController.strings in Resources */,
 				B488589E2289E8980011360D /* DailyArtworkViewController.strings in Resources */,
+				B4DA8B6223200EFD00E0E147 /* Le Plateau Mont-Royal - Gris.pdf in Resources */,
+				B4DA8B6023200EFD00E0E147 /* Ville-Marie - Normal.png in Resources */,
 				B48394F7229610B30003065B /* ArtworkDetailsViewController.strings in Resources */,
+				B4DA8AFD23200EDE00E0E147 /* 30.png in Resources */,
 				B428797B22A74F1800EABBE6 /* SearchResultsController.strings in Resources */,
+				B4DA8B792320116600E0E147 /* Cote-des-Neiges - Normal.png in Resources */,
 				B487539222A326A200EE6EE6 /* Collection.storyboard in Resources */,
 				B407CA3C2285C55D00D02ABC /* Assets.xcassets in Resources */,
+				B4DA8B0423200EDE00E0E147 /* 25.png in Resources */,
 				B48E09EF2306A8490095CF45 /* RegisterViewController.strings in Resources */,
 				B487538D22A326A200EE6EE6 /* LICENSE.txt in Resources */,
+				B4DA8B7D2320117200E0E147 /* Le Sud-Ouest - Normal.png in Resources */,
+				B4DA8B0023200EDE00E0E147 /* 8.png in Resources */,
 				B49CA2612290196400FBA757 /* MainTableViewController.strings in Resources */,
+				B4DA8B5623200EFD00E0E147 /* Outremont - Gris.png in Resources */,
 				B4C75B5922B80E4800D73C7D /* Array+Extension.strings in Resources */,
+				B4DA8B8D232012E800E0E147 /* Villeray-Saint-Michel-Parc-Extension - Gris.png in Resources */,
+				B4DA8B852320119B00E0E147 /* Mercier-Hochelaga-Maisonneuve - Normal.png in Resources */,
 				B455C40322B16B7000064F9F /* DataPrivacyViewController.strings in Resources */,
+				B4DA8B912320135B00E0E147 /* Universite de Montreal 2 - Normal.png in Resources */,
+				B4DA8B892320129C00E0E147 /* LaSalle - Normal.png in Resources */,
 				B48394DA2295C8AE0003065B /* ArtworkDetailsRatingViewController.strings in Resources */,
 				B48394BA2295A8E60003065B /* ArtworkDetailsDescriptionViewController.strings in Resources */,
 				B4C75B6822B874F900D73C7D /* GeneralTableViewController.xib in Resources */,
+				B4DA8B6123200EFD00E0E147 /* Ville-Marie - Gris.png in Resources */,
+				B4DA8B5A23200EFD00E0E147 /* Le Sud-Ouest - Normal.pdf in Resources */,
+				B4DA8B0223200EDE00E0E147 /* 3.png in Resources */,
+				B4DA8B842320119B00E0E147 /* Mercier-Hochelaga-Maisonneuve - Gris.png in Resources */,
+				B4DA8B7C2320117200E0E147 /* Le Sud-Ouest - Gris.png in Resources */,
+				B4DA8BA223217D0E00E0E147 /* AppDelegate.strings in Resources */,
 				B428797522A7037800EABBE6 /* SearchResultsDataSource.strings in Resources */,
 				B48E09DA230587EA0095CF45 /* District+Protocols.strings in Resources */,
+				B4DA8B0123200EDE00E0E147 /* 5.png in Resources */,
 				B49CA256229014E700FBA757 /* MainListHeaderView.xib in Resources */,
+				B4DA8B8C232012E800E0E147 /* Villeray-Saint-Michel-Parc-Extension - Normal.png in Resources */,
 				B4AD5E8C22908E860064A876 /* LICENSE in Resources */,
+				B4DA8B4D23200EFD00E0E147 /* Verdun - Gris.png in Resources */,
 				B4AD5E8F229095A60064A876 /* GeneralTableViewController.strings in Resources */,
 				B4C75B4F22B7F15800D73C7D /* Artwork+Protocols.strings in Resources */,
+				B4DA8B702320115200E0E147 /* Lachine - Normal.png in Resources */,
+				B4DA8AFF23200EDE00E0E147 /* 10.png in Resources */,
+				B4DA8B982320138100E0E147 /* Universite de Montreal 1 - Gris.png in Resources */,
 				B487542B22A32DA200EE6EE6 /* Tabbar.storyboard in Resources */,
 				B48E09E62306A42F0095CF45 /* RegisterLogin.storyboard in Resources */,
 				B428798522A8208D00EABBE6 /* GeneralTableViewDataSource.strings in Resources */,
 				B4C75B4922B7F02D00D73C7D /* Artist+Protocols.strings in Resources */,
 				B4A3D63922BD32B1006CD2FE /* CollectionViewController.strings in Resources */,
+				B4DA8B5723200EFD00E0E147 /* Outremont - Normal.png in Resources */,
 				B428796222A6129700EABBE6 /* Search.storyboard in Resources */,
 				B48753AB22A3271800EE6EE6 /* ArtworkAnnotation.strings in Resources */,
+				B4DA8B5123200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve - Gris.pdf in Resources */,
 				B488587D2289E78E0011360D /* DailyArtwork.storyboard in Resources */,
+				B4DA8B5323200EFD00E0E147 /* Ahuntsic-Cartierville - Normal.png in Resources */,
+				B4DA8B882320129C00E0E147 /* LaSalle - Gris.png in Resources */,
 				B48394EF229609400003065B /* InfoPlist.strings in Resources */,
+				B4DA8B992320138100E0E147 /* Universite de Montreal 1 - Normal.png in Resources */,
 				B4AD5E54229026D50064A876 /* GeneralTableViewCell.xib in Resources */,
 				B4AD5E562290271A0064A876 /* ArtworkTableViewCell.xib in Resources */,
 				B428795C22A60CA500EABBE6 /* BadgeDetailsViewController.strings in Resources */,
 				B455C41122B1795300064F9F /* MoreTableViewController.strings in Resources */,
 				B428794722A49D6800EABBE6 /* HeaderBadge.xib in Resources */,
 				B4A3D64B22BD569A006CD2FE /* LegendPopoverViewController.strings in Resources */,
+				B4DA8B5F23200EFD00E0E147 /* Cote-des-Neiges - Gris.pdf in Resources */,
 				B48E09F72306AF500095CF45 /* UsernameChoiceViewController.strings in Resources */,
 				B428795422A562F600EABBE6 /* BadgesViewController.strings in Resources */,
+				B4DA8B712320115200E0E147 /* Lachine - Gris.png in Resources */,
 				B4D0637F229462EF006E280D /* ArtworksTableViewDataSource.strings in Resources */,
 				B48753A522A3271100EE6EE6 /* Map.storyboard in Resources */,
+				B4DA8B5223200EFD00E0E147 /* Ahuntsic-Cartierville - Gris.png in Resources */,
+				B4DA8B4C23200EFD00E0E147 /* Verdun - Normal.png in Resources */,
 				B49CA252229014CB00FBA757 /* Artworks.storyboard in Resources */,
 				B4BC300322BC096E000F8303 /* CollectionFilterPopoverViewController.xib in Resources */,
+				B4DA8B902320135B00E0E147 /* Universite de Montreal 2 - Gris.png in Resources */,
+				B4DA8B9C232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Gris.png in Resources */,
+				B4DA8B782320116600E0E147 /* Cote-des-Neiges - Gris.png in Resources */,
+				B4DA8B6523200EFD00E0E147 /* Lachine - Gris.pdf in Resources */,
+				B4DA8B742320115D00E0E147 /* Le Plateau Mont-Royal - Normal.png in Resources */,
+				B4DA8B752320115D00E0E147 /* Le Plateau Mont-Royal - Gris.png in Resources */,
 				B4A3D64822BD5427006CD2FE /* LegendPopoverViewController.xib in Resources */,
+				B4DA8B5E23200EFD00E0E147 /* Cote-des-Neiges - Normal.pdf in Resources */,
+				B4DA8B5023200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve - Normal.pdf in Resources */,
 				B455C40922B16CBF00064F9F /* AboutViewController.strings in Resources */,
 				B487538222A3268900EE6EE6 /* More.storyboard in Resources */,
+				B4DA8B0323200EDE00E0E147 /* 1.png in Resources */,
 				B48394C72295BA9E0003065B /* ArtworkDetailsFullMapViewController.strings in Resources */,
+				B4DA8B6323200EFD00E0E147 /* Le Plateau Mont-Royal - Normal.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1592,6 +1930,7 @@
 				B4C75B5422B7F3DC00D73C7D /* LocalizableEntity+TextRepresentable.swift in Sources */,
 				B487533422A3262700EE6EE6 /* Notification.Name+Extension.swift in Sources */,
 				B428794A22A49D6800EABBE6 /* BadgeDetailsViewController.swift in Sources */,
+				B4DA8B9F23217B7A00E0E147 /* UIApplication+Extension.swift in Sources */,
 				B455C40E22B1702900064F9F /* MoreTableViewController.swift in Sources */,
 				B487537922A3264C00EE6EE6 /* Coordinate+CoreDataClass.swift in Sources */,
 				B487537D22A3264C00EE6EE6 /* District+Protocols.swift in Sources */,
@@ -1947,6 +2286,15 @@
 				B4D06382229462F0006E280D /* fr */,
 			);
 			name = ArtworksTableViewDataSource.strings;
+			sourceTree = "<group>";
+		};
+		B4DA8BA423217D0E00E0E147 /* AppDelegate.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B4DA8BA323217D0E00E0E147 /* en */,
+				B4DA8BA523217D1200E0E147 /* fr */,
+			);
+			name = AppDelegate.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

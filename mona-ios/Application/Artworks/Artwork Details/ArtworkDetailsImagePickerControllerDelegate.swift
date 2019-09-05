@@ -41,10 +41,10 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
             return
         }
         
-        MonaPhotosAlbum.shared.save(image: originalImage,
+        MonaPhotosAlbum.shared.save(image: forcePortraitMode(originalImage: originalImage),
                                     onSuccess: {
                                         localIdentifier in
-                                        log.info("Successfully saved image to Camera Roll with localIdentifier \(localIdentifier).")
+                                        //log.info("Successfully saved image to Camera Roll with localIdentifier \(localIdentifier).")
                                         let entityName = String(describing: Photo.self)
                                         let entityDescription = NSEntityDescription.entity(forEntityName: entityName, in: AppData.context)
                                         let photo = Photo(entity: entityDescription!, insertInto: AppData.context)
@@ -97,8 +97,8 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
         if !artwork.isCollected {
             let notCollectedBadges = AppData.badges.filter { !$0.isCollected }
             for notCollectedBadge in notCollectedBadges {
-                print("notCollectedBadge.text: \(notCollectedBadge.text)")
-                print("artworks.district.text: \(artwork.district.text)")
+                //print("notCollectedBadge.text: \(notCollectedBadge.text)")
+                //print("artworks.district.text: \(artwork.district.text)")
                 if notCollectedBadge.text == artwork.district.text {
                     notCollectedBadge.currentValue += 1
                 }
@@ -126,64 +126,49 @@ class ArtworkDetailsImagePickerControllerDelegate : NSObject, UIImagePickerContr
         }
     }
     
-    private func forcePortraitMode(originalImage: UIImage, mediaMetadata: NSDictionary) -> UIImage {
+    private func forcePortraitMode(originalImage image: UIImage) -> UIImage {
         
         let portraitImageResult : UIImage
         
-        guard let orientationObjectValue = mediaMetadata.object(forKey: "Orientation") else {
-            log.error("Orientation key doesn't exists.")
-            fatalError()
-        }
-        
-        guard let rawValueCGImageOrientation = orientationObjectValue as? UInt32 else {
-            log.error("Orientation object is not UInt32.")
-            fatalError()
-        }
-        
-        guard let cgImageOrientation = CGImagePropertyOrientation(rawValue: rawValueCGImageOrientation) else {
-            log.error("Cannot create an instance of CGImagePropertyOrientation with the raw value specified.")
-            fatalError()
-        }
-        
-        switch cgImageOrientation {
+        switch image.imageOrientation {
         case .up:
             log.debug("Image's orientation is up")
-            portraitImageResult = UIImage(cgImage: originalImage.cgImage!, scale: CGFloat(1.0), orientation: .right)
+            portraitImageResult = UIImage(cgImage: image.cgImage!, scale: CGFloat(1.0), orientation: .right)
             break
         case .down:
             log.debug("Image's orientation is down")
-            portraitImageResult = UIImage(cgImage: originalImage.cgImage!, scale: CGFloat(1.0), orientation: .left)
+            portraitImageResult = UIImage(cgImage: image.cgImage!, scale: CGFloat(1.0), orientation: .right)
             break
         case .left:
             log.debug("Image's orientation is left")
-            portraitImageResult = UIImage(cgImage: originalImage.cgImage!, scale: CGFloat(1.0), orientation: originalImage.imageOrientation)
+            portraitImageResult = UIImage(cgImage: image.cgImage!, scale: CGFloat(1.0), orientation: image.imageOrientation)
             break
         case .right:
             log.debug("Image's orientation is right")
-            portraitImageResult = UIImage(cgImage: originalImage.cgImage!, scale: CGFloat(1.0), orientation: originalImage.imageOrientation)
+            portraitImageResult = UIImage(cgImage: image.cgImage!, scale: CGFloat(1.0), orientation: image.imageOrientation)
             break
         case .upMirrored:
             log.debug("Image's orientation is upMirrored")
-            portraitImageResult = UIImage(cgImage: originalImage.cgImage!, scale: CGFloat(1.0), orientation: originalImage.imageOrientation)
+            portraitImageResult = UIImage(cgImage: image.cgImage!, scale: CGFloat(1.0), orientation: image.imageOrientation)
             break
         case .downMirrored:
             log.debug("Image's orientation is downMirrored")
-            portraitImageResult = UIImage(cgImage: originalImage.cgImage!, scale: CGFloat(1.0), orientation: originalImage.imageOrientation)
+            portraitImageResult = UIImage(cgImage: image.cgImage!, scale: CGFloat(1.0), orientation: image.imageOrientation)
             break
         case .leftMirrored:
             log.debug("Image's orientation is leftMirrored")
-            portraitImageResult = UIImage(cgImage: originalImage.cgImage!, scale: CGFloat(1.0), orientation: originalImage.imageOrientation)
+            portraitImageResult = UIImage(cgImage: image.cgImage!, scale: CGFloat(1.0), orientation: image.imageOrientation)
             break
         case .rightMirrored:
             log.debug("Image's orientation is rightMirrored")
-            portraitImageResult = UIImage(cgImage: originalImage.cgImage!, scale: CGFloat(1.0), orientation: originalImage.imageOrientation)
+            portraitImageResult = UIImage(cgImage: image.cgImage!, scale: CGFloat(1.0), orientation: image.imageOrientation)
             break
         @unknown default:
             log.debug("Image's orientation is unknow")
-            portraitImageResult = UIImage(cgImage: originalImage.cgImage!, scale: CGFloat(1.0), orientation: originalImage.imageOrientation)
+            portraitImageResult = UIImage(cgImage: image.cgImage!, scale: CGFloat(1.0), orientation: image.imageOrientation)
         }
         
-        return portraitImageResult 
+        return portraitImageResult
     }
 }
 

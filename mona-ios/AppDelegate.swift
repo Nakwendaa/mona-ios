@@ -140,6 +140,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         didStart = false
         NotificationCenter.default.post(name: .applicationDidBecomeActive, object: nil)
+        
+        handlePhotoLibraryUsageStatus()
+    }
+    
+    private func handlePhotoLibraryUsageStatus() {
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+        
+        switch status {
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({ (status) in
+                self.handlePhotoLibraryUsageStatus()
+            })
+        case .denied, .restricted:
+            // Deal with it
+            guard let visibleVC = UIApplication.topViewController() else {
+                // home button pressed programmatically - to thorw app to background
+                UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+                // terminaing app in background
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                    exit(EXIT_SUCCESS)
+                })
+                return
+            }
+            UIAlertController.presentMessage(from: visibleVC,
+                                             title: NSLocalizedString("PhotoLibraryUsageTitle", tableName: "AppDelegate", bundle: .main, value: "", comment: ""),
+                                             message: NSLocalizedString("PhotoLibraryUsageDescription", tableName: "AppDelegate", bundle: .main, value: "", comment: ""),
+                                             okCompletion: {
+                                                // home button pressed programmatically - to thorw app to background
+                                                DispatchQueue.main.async {
+                                                    UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+                                                    // terminaing app in background
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                                                        exit(EXIT_SUCCESS)
+                                                    })
+                                                }
+            },
+                                             presentCompletion: nil)
+            break
+        case .authorized:
+            // All is good
+            break
+        @unknown default:
+            break
+        }
     }
     
     private func updatePhotosArtworks(artworks: [Artwork]) {

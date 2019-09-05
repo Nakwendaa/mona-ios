@@ -327,7 +327,11 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
             targetSize: cell.photoImageView.frame.size,
             contentMode: .aspectFill,
             options: nil) { (result, info) in
-            cell.photoImageView.image = result
+                guard let image = result else {
+                    cell.photoImageView.image = nil
+                    return
+                }
+                cell.photoImageView.image = image
         })
         
         return cell

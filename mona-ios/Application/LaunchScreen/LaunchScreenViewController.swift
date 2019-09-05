@@ -70,7 +70,7 @@ class LaunchScreenViewController: UIViewController {
     }
     
     deinit {
-        log.debug("LaunchScreenViewController deallocated.")
+        //log.debug("LaunchScreenViewController deallocated.")
     }
 
 }

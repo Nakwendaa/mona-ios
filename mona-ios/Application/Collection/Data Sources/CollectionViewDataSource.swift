@@ -78,7 +78,11 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
                                                             targetSize: cell.imageView.bounds.size,
                                                             contentMode: .aspectFill,
                                                             options: nil) { (result, info) in
-                                                                cell.imageView.image = result
+                                                                guard let image = result else {
+                                                                    cell.imageView.image = nil
+                                                                    return
+                                                                }
+                                                                cell.imageView.image = image
             })
         }
         return cell
@@ -92,7 +96,7 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
             let headerId = "Header Collection View"
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
             reusableView = headerView
-            print("HeaderView. Item: \(indexPath.item), Section: \(indexPath.section)")
+            //print("HeaderView. Item: \(indexPath.item), Section: \(indexPath.section)")
         }
         else {
             reusableView = UICollectionReusableView()
@@ -192,6 +196,4 @@ class CollectionViewDataSource : NSObject, UICollectionViewDataSource {
             }
         }
     }
-    
-    
 }

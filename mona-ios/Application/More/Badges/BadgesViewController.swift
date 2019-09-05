@@ -22,7 +22,7 @@ class BadgesViewController: UIViewController {
         static let districts = NSLocalizedString("districts", tableName: tableName, bundle: .main, value: "", comment: "").capitalizingFirstLetter()
     }
 
-    var collectionViewCells = AppData.badges.filter { !Set([15,16,17,18,19,20,21,22,23]).contains(Int($0.id)) }
+    var collectionViewCells = AppData.badges.filter { !Set([15,16,17,18,19,20,21,22,23]).contains(Int($0.id)) }.sorted(by: { $0.collectedImageName < $1.collectedImageName })
     @IBOutlet weak var collectionView: UICollectionView!
     
     var didViewLoaded = false
@@ -140,21 +140,24 @@ extension BadgesViewController : UICollectionViewDataSource {
         
         let collectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath)
         
+        
+        let badge = collectionViewCells[indexPath.row]
+        
+        var bundlePath : String!
+        if badge.isCollected {
+            bundlePath = Bundle.main.path(forResource: badge.collectedImageName, ofType: "png")
+        }
+        else {
+            bundlePath = Bundle.main.path(forResource: badge.notCollectedImageName, ofType: "png")
+        }
+       
         let imageView = collectionViewCell.subviews[0].subviews[0].subviews[0].subviews[0] as! UIImageView
         let progressionView = collectionViewCell.subviews[0].subviews[0].subviews[0].subviews[1] as! UIProgressView
         
-        let badge = collectionViewCells[indexPath.row]
-        if badge.isCollected {
-            imageView.image = UIImage(named: badge.collectedImageName)
+        DispatchQueue.main.async {
+            imageView.image = UIImage(contentsOfFile: bundlePath!)
+            progressionView.progress = badge.progress
         }
-        else {
-            let image = UIImage(named: badge.notCollectedImageName)
-            if image == nil {
-                log.error("Badge with name \(badge.notCollectedImageName) is nil")
-            }
-            imageView.image = UIImage(named: badge.notCollectedImageName)
-        }
-        progressionView.progress = badge.progress
         
         return collectionViewCell
     }

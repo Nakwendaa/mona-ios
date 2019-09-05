@@ -1,0 +1,11 @@
+/* 
+  AppDelegate.strings
+  mona-ios
+
+  Created by Paul Chaffanet on 2019-09-05.
+  Copyright © 2019 Paul Chaffanet. All rights reserved.
+*/
+
+
+"PhotoLibraryUsageTitle" = "Bibliothèque photo";
+"PhotoLibraryUsageDescription" = "Cette application requiert l'utilisation de votre bibliothèque de photos afin de sauvegarder les photos des œuvres d'art. L'application ne peut fonctionner normalement sans cette autorisation. Merci de l'autoriser dans vos paramètres.";

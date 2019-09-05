@@ -73,9 +73,8 @@ class ArtworkDetailsViewController: SearchViewController {
         setupHeaderViewAndTitle()
         setupDetailsView()
         self.setupDefaultView()
-        DispatchQueue.main.async {
-            self.setupPhotoImageView()
-        }
+        //self.setupPhotoImageView()
+
         setTransparentNavigationBar(tintColor: .black)
         setupNotificationsForKeyboard()
         
@@ -98,6 +97,11 @@ class ArtworkDetailsViewController: SearchViewController {
         if !artwork.isCollected {
             targetButton.isSelected = artwork.isTargeted
         }
+        self.setupPhotoImageView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.photoImageView.image = nil
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -161,26 +165,28 @@ class ArtworkDetailsViewController: SearchViewController {
             manager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: option, resultHandler: {
                 result, info in
                 if let image = result {
-                    self.photoImageView.image = image
-                    /*
-                    guard   let navigationBar = self.navigationController?.navigationBar,
-                            let averageColor = image.averageColor(rect: (x: 0, y: 0, width: navigationBar.frame.width, height: navigationBar.frame.height)) else {
-                        return
+                    DispatchQueue.main.async {
+                        self.photoImageView.image = image
                     }
-                    self.setTransparentNavigationBar(tintColor: UIColor.getBestContrastColor(color: averageColor))
-                    */
                     /*
-                    let averageColorRgb = averageColor.rgbaInt
-                    print("averageColorRgb: r: \(averageColorRgb.red) g: \(averageColorRgb.green) b: \(averageColorRgb.blue)")
-                    let complementaryRgb = averageColor.complementaryRgb.rgbaInt
-                    print("complementaryRgb: r: \(complementaryRgb.red) g: \(complementaryRgb.green) b: \(complementaryRgb.blue)")
-                    let averageColorHsv = averageColor.hsvaInt
-                    print("averageColorHsv: h: \(averageColorHsv.hue) s: \(averageColorHsv.saturation) b: \(averageColorHsv.brightness)")
-                    let complementaryHsv = averageColor.complementaryHsv.hsvaInt
-                    print("complementaryHsv: h: \(complementaryHsv.hue) s: \(complementaryHsv.saturation) b: \(complementaryHsv.brightness)")
-                    print("Contrast ratio averageColor-complementaryRgb: \(UIColor.contrastRatio(averageColor, averageColor.complementaryRgb))")
-                    print("Contrast ratio averageColor-complementaryHsv: \(UIColor.contrastRatio(averageColor, averageColor.complementaryHsv))")
-                    */
+                     guard   let navigationBar = self.navigationController?.navigationBar,
+                     let averageColor = image.averageColor(rect: (x: 0, y: 0, width: navigationBar.frame.width, height: navigationBar.frame.height)) else {
+                     return
+                     }
+                     self.setTransparentNavigationBar(tintColor: UIColor.getBestContrastColor(color: averageColor))
+                     */
+                    /*
+                     let averageColorRgb = averageColor.rgbaInt
+                     print("averageColorRgb: r: \(averageColorRgb.red) g: \(averageColorRgb.green) b: \(averageColorRgb.blue)")
+                     let complementaryRgb = averageColor.complementaryRgb.rgbaInt
+                     print("complementaryRgb: r: \(complementaryRgb.red) g: \(complementaryRgb.green) b: \(complementaryRgb.blue)")
+                     let averageColorHsv = averageColor.hsvaInt
+                     print("averageColorHsv: h: \(averageColorHsv.hue) s: \(averageColorHsv.saturation) b: \(averageColorHsv.brightness)")
+                     let complementaryHsv = averageColor.complementaryHsv.hsvaInt
+                     print("complementaryHsv: h: \(complementaryHsv.hue) s: \(complementaryHsv.saturation) b: \(complementaryHsv.brightness)")
+                     print("Contrast ratio averageColor-complementaryRgb: \(UIColor.contrastRatio(averageColor, averageColor.complementaryRgb))")
+                     print("Contrast ratio averageColor-complementaryHsv: \(UIColor.contrastRatio(averageColor, averageColor.complementaryHsv))")
+                     */
                 }
             })
         }
@@ -316,7 +322,7 @@ class ArtworkDetailsViewController: SearchViewController {
         }
         // Update the position for the .began and .changed  states
         if sender.state == .began || sender.state == .changed {
-            print(detailsViewBottomConstraint.constant)
+            //print(detailsViewBottomConstraint.constant)
             if bottomConstant - translation.y < downBoundary {
                 detailsViewBottomConstraint.constant = downBoundary
             }
@@ -358,13 +364,7 @@ class ArtworkDetailsViewController: SearchViewController {
             }
         }
         
-        
-        
-        
-        
-        
-        
-        
+
         /*
         switch sender.state {
         case .changed:
@@ -391,12 +391,12 @@ class ArtworkDetailsViewController: SearchViewController {
     func keyboardWasShown(notification: NSNotification) {
         keyboardWasShown = true
         let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height - (tabBarController?.tabBar.frame.height ?? 0)
-        log.debug("Keyboard's height is \(keyboardHeight)")
+        //log.debug("Keyboard's height is \(keyboardHeight)")
         
         UIView.animate(withDuration: 0.6, animations: {
-            log.debug("detailsViewBottomConstraint.constant is \(self.detailsViewBottomConstraint.constant)")
+            //log.debug("detailsViewBottomConstraint.constant is \(self.detailsViewBottomConstraint.constant)")
             self.detailsViewBottomConstraint.constant = keyboardHeight
-            log.debug("detailsViewBottomConstraint.constant is \(self.detailsViewBottomConstraint.constant)")
+            //log.debug("detailsViewBottomConstraint.constant is \(self.detailsViewBottomConstraint.constant)")
             self.view.layoutIfNeeded()
         })
     }
@@ -407,10 +407,11 @@ class ArtworkDetailsViewController: SearchViewController {
         keyboardWasShown = false
         
         UIView.animate(withDuration: 0.6, animations: {
-            log.debug("detailsViewBottomConstraint.constant is \(self.detailsViewBottomConstraint.constant)")
+            //log.debug("detailsViewBottomConstraint.constant is \(self.detailsViewBottomConstraint.constant)")
             self.detailsViewBottomConstraint.constant = 0
-            log.debug("detailsViewBottomConstraint.constant is \(self.detailsViewBottomConstraint.constant)")
+            //log.debug("detailsViewBottomConstraint.constant is \(self.detailsViewBottomConstraint.constant)")
             self.view.layoutIfNeeded()
         })
     }
+    
 }
