@@ -261,7 +261,13 @@ final class ArtworksTableViewDataSource : NSObject, UITableViewDataSource, Table
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].name.capitalizingFirstLetter()
+        if section < sections.count {
+            return sections[section].name.capitalizingFirstLetter()
+        }
+        else {
+            return nil
+        }
+        //return sections[section].name.capitalizingFirstLetter()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

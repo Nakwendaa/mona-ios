@@ -428,6 +428,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             for artwork in AppData.artworks {
                 if artwork.isCollected {
+                    if  !artwork.photoSent || !artwork.ratingSent || !artwork.commentSent,
+                        !isCurrentlyUploading[artwork.id]![.photo]!,
+                        let photosOrderedSet = artwork.photos,
+                        let lastPhotoAdded = photosOrderedSet.lastObject as? Photo,
+                        let asset = MonaPhotosAlbum.shared.fetchAsset(withLocalIdentifier: lastPhotoAdded.localIdentifier) {
+                        
+                        // Load image
+                        // Get image from asset
+                        manager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: option, resultHandler: {
+                            result, info in
+                            if let image = result {
+                                self.isCurrentlyUploading[artwork.id]![.photo] = true
+                                MonaAPI.shared.artwork(id: Int(artwork.id), rating: Int(artwork.rating), comment: artwork.comment, photo: image) { result in
+                                    self.isCurrentlyUploading[artwork.id]![.photo] = false
+                                    switch result {
+                                    case .success(_):
+                                        log.info("Successful upload for artwork's photo with id: \(artwork.id).")
+                                        artwork.photoSent = true
+                                        artwork.ratingSent = true
+                                        artwork.commentSent = true
+                                        do {
+                                            try AppData.context.save()
+                                        }
+                                        catch {
+                                            log.error("Failed to save context: \(error)")
+                                        }
+                                    case .failure(let userArtworkError):
+                                        // If there is any error, stop upload task until the app restart.
+                                        self.timer?.invalidate()
+                                        self.timer = nil
+                                        log.error("Failed to upload photo for artwork with id: \(artwork.id).")
+                                        log.error(userArtworkError)
+                                        //log.error(userArtworkError.localizedDescription)
+                                    }
+                                }
+                            }
+                        })
+                    }
+                    
+                    
+                    
+                    
+                    
+                    // Because PUT Request not working for multipart/form-data with Laravel (i guess)....
+                    /*
                     if  artwork.photoSent == false,
                         !isCurrentlyUploading[artwork.id]![.photo]!,
                         let photosOrderedSet = artwork.photos,
@@ -455,7 +500,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     case .failure(let userArtworkError):
                                         log.error("Failed to upload photo for artwork with id: \(artwork.id).")
                                         log.error(userArtworkError)
-                                        log.error(userArtworkError.localizedDescription)
+                                        //log.error(userArtworkError.localizedDescription)
                                     }
                                 }
                             }
@@ -479,7 +524,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             case .failure(let userArtworkError):
                                 log.error("Failed to send rating \"\(artwork.rating)\" for artwork with id: \(artwork.id).")
                                 log.error(userArtworkError)
-                                log.error(userArtworkError.localizedDescription)
+                                //log.error(userArtworkError.localizedDescription)
                             }
                         }
                     }
@@ -501,12 +546,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             case .failure(let userArtworkError):
                                 log.error("Failed to send comment \"\(artwork.comment!)\" for artwork with id: \(artwork.id).")
                                 log.error(userArtworkError)
-                                log.error(userArtworkError.localizedDescription)
+                                //log.error(userArtworkError.localizedDescription)
                             }
                         }
                     }
+                     */
                 }
-                
             }
         }
         else if  let username = UserDefaults.Credentials.get(forKey: .username),

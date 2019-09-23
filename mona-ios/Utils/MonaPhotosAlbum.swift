@@ -6,6 +6,7 @@
 //  Copyright © 2019 Paul Chaffanet. All rights reserved.
 //
 
+import UIKit
 import Photos
 
 class MonaPhotosAlbum: NSObject {

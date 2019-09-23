@@ -51,7 +51,7 @@ extension MonaAPI {
                 }
             }
             
-            guard let image = photo, let data = image.jpegData(compressionQuality: 0.8) else {
+            guard let image = photo, let data = image.jpegData(compressionQuality: 0.3) else {
                 body!.append("--\(boundary)--\r\n")
                 return
             }
@@ -68,7 +68,6 @@ extension MonaAPI {
         func execute(session: URLSession, completion: @escaping (Result<Response.HTTPDecodableResponse, HTTPError>) -> Void) {
             let response = ArtworkResponse()
             let task = session.uploadTask(with: urlRequest, from: body!, completionHandler: response.process(completion: completion))
-            //log.debug(String(decoding: body!, as: UTF8.self))
             task.resume()
         }
         

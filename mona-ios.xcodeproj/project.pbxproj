@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,7 +35,6 @@
 		B428798522A8208D00EABBE6 /* GeneralTableViewDataSource.strings in Resources */ = {isa = PBXBuildFile; fileRef = B428798722A8208D00EABBE6 /* GeneralTableViewDataSource.strings */; };
 		B428798A22A897BD00EABBE6 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B428798922A897BD00EABBE6 /* SearchController.swift */; };
 		B42AA67222A3319400D53E87 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B42AA66F22A3319400D53E87 /* Model.xcdatamodeld */; };
-		B42AA67422A3323900D53E87 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42AA67322A3323900D53E87 /* NavigationController.swift */; };
 		B455C3FE22B1615200064F9F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B455C3FD22B1615200064F9F /* AboutViewController.swift */; };
 		B455C40022B1618000064F9F /* DataPrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B455C3FF22B1618000064F9F /* DataPrivacyViewController.swift */; };
 		B455C40322B16B7000064F9F /* DataPrivacyViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = B455C40522B16B7000064F9F /* DataPrivacyViewController.strings */; };
@@ -271,6 +270,8 @@
 		B4DA8B9D232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8B9B232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Normal.png */; };
 		B4DA8B9F23217B7A00E0E147 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DA8B9E23217B7A00E0E147 /* UIApplication+Extension.swift */; };
 		B4DA8BA223217D0E00E0E147 /* AppDelegate.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8BA423217D0E00E0E147 /* AppDelegate.strings */; };
+		B4DA8BAA2324FAAF00E0E147 /* Dose Culture - Gris.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8BA82324FAAF00E0E147 /* Dose Culture - Gris.png */; };
+		B4DA8BAB2324FAAF00E0E147 /* Dose Culture - Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B4DA8BA92324FAAF00E0E147 /* Dose Culture - Normal.png */; };
 		B4F3CC2D231D8FD800418799 /* Model.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B4F3CC2A231D88B300418799 /* Model.sqlite */; };
 		B4F3CC2E231D8FD800418799 /* Model.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = B4F3CC2B231D88B400418799 /* Model.sqlite-shm */; };
 		B4F3CC2F231D8FD800418799 /* Model.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = B4F3CC2C231D88B400418799 /* Model.sqlite-wal */; };
@@ -334,7 +335,6 @@
 		B428798922A897BD00EABBE6 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		B42AA67022A3319400D53E87 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		B42AA67122A3319400D53E87 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		B42AA67322A3323900D53E87 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		B455C3FD22B1615200064F9F /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		B455C3FF22B1618000064F9F /* DataPrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPrivacyViewController.swift; sourceTree = "<group>"; };
 		B455C40422B16B7000064F9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/DataPrivacyViewController.strings; sourceTree = "<group>"; };
@@ -600,6 +600,8 @@
 		B4DA8B9E23217B7A00E0E147 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		B4DA8BA323217D0E00E0E147 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppDelegate.strings; sourceTree = "<group>"; };
 		B4DA8BA523217D1200E0E147 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AppDelegate.strings; sourceTree = "<group>"; };
+		B4DA8BA82324FAAF00E0E147 /* Dose Culture - Gris.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dose Culture - Gris.png"; sourceTree = "<group>"; };
+		B4DA8BA92324FAAF00E0E147 /* Dose Culture - Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dose Culture - Normal.png"; sourceTree = "<group>"; };
 		B4F3CC2A231D88B300418799 /* Model.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Model.sqlite; sourceTree = "<group>"; };
 		B4F3CC2B231D88B400418799 /* Model.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Model.sqlite-shm"; sourceTree = "<group>"; };
 		B4F3CC2C231D88B400418799 /* Model.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Model.sqlite-wal"; sourceTree = "<group>"; };
@@ -724,9 +726,6 @@
 			isa = PBXGroup;
 			children = (
 				B42AA66F22A3319400D53E87 /* Model.xcdatamodeld */,
-				B4F3CC2A231D88B300418799 /* Model.sqlite */,
-				B4F3CC2B231D88B400418799 /* Model.sqlite-shm */,
-				B4F3CC2C231D88B400418799 /* Model.sqlite-wal */,
 				B487533E22A3264A00EE6EE6 /* CoreDataStack.swift */,
 				B487538022A3266000EE6EE6 /* Protocols */,
 				B4795CA2228D1480007688FA /* Seed */,
@@ -831,6 +830,9 @@
 		B4795CA2228D1480007688FA /* Seed */ = {
 			isa = PBXGroup;
 			children = (
+				B4F3CC2A231D88B300418799 /* Model.sqlite */,
+				B4F3CC2B231D88B400418799 /* Model.sqlite-shm */,
+				B4F3CC2C231D88B400418799 /* Model.sqlite-wal */,
 			);
 			path = Seed;
 			sourceTree = "<group>";
@@ -939,15 +941,6 @@
 			path = "Data Sources";
 			sourceTree = "<group>";
 		};
-		B48753F522A3288900EE6EE6 /* NavigationController */ = {
-			isa = PBXGroup;
-			children = (
-				B42AA67322A3323900D53E87 /* NavigationController.swift */,
-			);
-			name = NavigationController;
-			path = "../../../../Documents/Documents/Travail/Université de Montréal/mona-ios/mona-ios/Application/NavigationController";
-			sourceTree = "<group>";
-		};
 		B48753FA22A328B300EE6EE6 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1052,7 +1045,6 @@
 				B48858B02289FF640011360D /* Custom controls */,
 				B488586E2289D84D0011360D /* LaunchScreen */,
 				B48858A92289F2480011360D /* Tabbar */,
-				B48753F522A3288900EE6EE6 /* NavigationController */,
 				B48858762289E74F0011360D /* Daily Artwork */,
 				B4E73C39228FCE6700350FC1 /* Artworks */,
 				B4E73C3A228FCE7500350FC1 /* Map */,
@@ -1267,6 +1259,7 @@
 			children = (
 				B4DA8B1923200EFD00E0E147 /* Ahuntsic-Cartierville */,
 				B4DA8B3323200EFD00E0E147 /* Cote-des-Neiges */,
+				B4DA8BA72324FAAF00E0E147 /* Dose Culture */,
 				B4DA8B4223200EFD00E0E147 /* Lachine */,
 				B4DA8B1323200EFD00E0E147 /* LaSalle */,
 				B4DA8B2923200EFD00E0E147 /* Le Sud-Ouest */,
@@ -1420,6 +1413,15 @@
 			path = "Université de Montréal 2";
 			sourceTree = "<group>";
 		};
+		B4DA8BA72324FAAF00E0E147 /* Dose Culture */ = {
+			isa = PBXGroup;
+			children = (
+				B4DA8BA82324FAAF00E0E147 /* Dose Culture - Gris.png */,
+				B4DA8BA92324FAAF00E0E147 /* Dose Culture - Normal.png */,
+			);
+			path = "Dose Culture";
+			sourceTree = "<group>";
+		};
 		B4E73C39228FCE6700350FC1 /* Artworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1537,7 +1539,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Paul Chaffanet";
 				TargetAttributes = {
 					B407CA2D2285C55D00D02ABC = {
@@ -1670,11 +1672,13 @@
 				B49CA252229014CB00FBA757 /* Artworks.storyboard in Resources */,
 				B4BC300322BC096E000F8303 /* CollectionFilterPopoverViewController.xib in Resources */,
 				B4DA8B902320135B00E0E147 /* Universite de Montreal 2 - Gris.png in Resources */,
+				B4DA8BAB2324FAAF00E0E147 /* Dose Culture - Normal.png in Resources */,
 				B4DA8B9C232013B300E0E147 /* Riviere-des-Prairies-Pointe-aux-Trembles - Gris.png in Resources */,
 				B4DA8B782320116600E0E147 /* Cote-des-Neiges - Gris.png in Resources */,
 				B4DA8B6523200EFD00E0E147 /* Lachine - Gris.pdf in Resources */,
 				B4DA8B742320115D00E0E147 /* Le Plateau Mont-Royal - Normal.png in Resources */,
 				B4DA8B752320115D00E0E147 /* Le Plateau Mont-Royal - Gris.png in Resources */,
+				B4DA8BAA2324FAAF00E0E147 /* Dose Culture - Gris.png in Resources */,
 				B4A3D64822BD5427006CD2FE /* LegendPopoverViewController.xib in Resources */,
 				B4DA8B5E23200EFD00E0E147 /* Cote-des-Neiges - Normal.pdf in Resources */,
 				B4DA8B5023200EFD00E0E147 /* Mercier-Hochelaga-Maisonneuve - Normal.pdf in Resources */,
@@ -1775,16 +1779,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mona-ios/Pods-mona-ios-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-mona-ios/Pods-mona-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-mona-ios/Pods-mona-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1873,7 +1872,6 @@
 				B48753F222A3287000EE6EE6 /* DailyArtworkViewController.swift in Sources */,
 				B4AD5E7922908B4F0064A876 /* UIScrollView+Helpers.swift in Sources */,
 				B487541C22A328B300EE6EE6 /* MonaAPI+ArtworksRequest.swift in Sources */,
-				B42AA67422A3323900D53E87 /* NavigationController.swift in Sources */,
 				B487531722A3261500EE6EE6 /* UserDefaultsManager.swift in Sources */,
 				B428796C22A6F74F00EABBE6 /* TextRepresentable.swift in Sources */,
 				B48753DC22A3282800EE6EE6 /* MainTableViewCell.swift in Sources */,
@@ -2304,6 +2302,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2366,6 +2365,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2431,6 +2431,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "ca.umontreal.mona-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2451,6 +2452,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "ca.umontreal.mona-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

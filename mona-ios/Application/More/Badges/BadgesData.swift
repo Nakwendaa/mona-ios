@@ -305,5 +305,18 @@ let badgesData : [Int16 : [String : Any]] = [
         "comment" : [
             Language.en : "You just collected your 30th artwork. AMAZING!",
             Language.fr : "Vous venez de collectionner votre 30e oeuvre. FÉLICITATIONS!"
+        ]],
+    24 : [
+        "name" : [
+            Language.en : "Dose Culture",
+            Language.fr : "Dose Culture"
+        ],
+        "currentValue" : 0,
+        "targetValue" : 15,
+        "collectedImageName" : "Dose Culture - Normal",
+        "notCollectedImageName" : "Dose Culture - Gris",
+        "comment" : [
+            Language.en : "You just collected your 15th artwork.",
+            Language.fr : "Vous venez de collectionner votre 15e oeuvre."
         ]]
 ]
